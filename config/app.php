@@ -212,5 +212,9 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
-
+    
+    'vindi_args' => [
+        'VINDI_API_KEY' => env('VINDI_API_KEY'),
+        'VINDI_API_URI' => env('VINDI_API_URI'),
+    ],
 ];
