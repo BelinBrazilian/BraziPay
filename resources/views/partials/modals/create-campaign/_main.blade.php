@@ -1,55 +1,55 @@
-<!--begin::Modal - Create Campaign-->
+{{-- begin::Modal - Create Campaign --}}
 <div class="modal fade" id="kt_modal_create_campaign" tabindex="-1" aria-hidden="true">
-	<!--begin::Modal dialog-->
+	{{-- begin::Modal dialog --}}
 	<div class="modal-dialog modal-fullscreen p-9">
-		<!--begin::Modal content-->
+		{{-- begin::Modal content --}}
 		<div class="modal-content modal-rounded">
-			<!--begin::Modal header-->
+			{{-- begin::Modal header --}}
 			<div class="modal-header py-7 d-flex justify-content-between">
-				<!--begin::Modal title-->
+				{{-- begin::Modal title --}}
 				<h2>Create Campaign</h2>
-				<!--end::Modal title-->
-				<!--begin::Close-->
+				{{-- end::Modal title --}}
+				{{-- begin::Close --}}
 				<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
 					{!! getSvgIcon('duotune/arrows/arr061.svg', 'svg-icon svg-icon-1') !!}
 				</div>
-				<!--end::Close-->
+				{{-- end::Close --}}
 			</div>
-			<!--begin::Modal header-->
-			<!--begin::Modal body-->
+			{{-- begin::Modal header --}}
+			{{-- begin::Modal body --}}
 			<div class="modal-body scroll-y m-5">
-				<!--begin::Stepper-->
+				{{-- begin::Stepper --}}
 				<div class="stepper stepper-links d-flex flex-column" id="kt_modal_create_campaign_stepper">
-					<!--begin::Nav-->
+					{{-- begin::Nav --}}
 					<div class="stepper-nav justify-content-center py-2">
-						<!--begin::Step 1-->
+						{{-- begin::Step 1 --}}
 						<div class="stepper-item me-5 me-md-15 current" data-kt-stepper-element="nav">
 							<h3 class="stepper-title">Campaign Details</h3>
 						</div>
-						<!--end::Step 1-->
-						<!--begin::Step 2-->
+						{{-- end::Step 1 --}}
+						{{-- begin::Step 2 --}}
 						<div class="stepper-item me-5 me-md-15" data-kt-stepper-element="nav">
 							<h3 class="stepper-title">Creative Uploads</h3>
 						</div>
-						<!--end::Step 2-->
-						<!--begin::Step 3-->
+						{{-- end::Step 2 --}}
+						{{-- begin::Step 3 --}}
 						<div class="stepper-item me-5 me-md-15" data-kt-stepper-element="nav">
 							<h3 class="stepper-title">Audiences</h3>
 						</div>
-						<!--end::Step 3-->
-						<!--begin::Step 4-->
+						{{-- end::Step 3 --}}
+						{{-- begin::Step 4 --}}
 						<div class="stepper-item me-5 me-md-15" data-kt-stepper-element="nav">
 							<h3 class="stepper-title">Budget Estimates</h3>
 						</div>
-						<!--end::Step 4-->
-						<!--begin::Step 5-->
+						{{-- end::Step 4 --}}
+						{{-- begin::Step 5 --}}
 						<div class="stepper-item" data-kt-stepper-element="nav">
 							<h3 class="stepper-title">Completed</h3>
 						</div>
-						<!--end::Step 5-->
+						{{-- end::Step 5 --}}
 					</div>
-					<!--end::Nav-->
-					<!--begin::Form-->
+					{{-- end::Nav --}}
+					{{-- begin::Form --}}
 					<form class="mx-auto w-100 mw-600px pt-15 pb-10" novalidate="novalidate" id="kt_modal_create_campaign_stepper_form">
 
 						@include('partials/modals/create-campaign/steps/_step-1')
@@ -58,16 +58,16 @@
 						@include('partials/modals/create-campaign/steps/_step-4')
 						@include('partials/modals/create-campaign/steps/_step-5')
 
-						<!--begin::Actions-->
+						{{-- begin::Actions --}}
 						<div class="d-flex flex-stack pt-10">
-							<!--begin::Wrapper-->
+							{{-- begin::Wrapper --}}
 							<div class="me-2">
 								<button type="button" class="btn btn-lg btn-light-primary me-3" data-kt-stepper-action="previous">
 									{!! getSvgIcon('duotune/arrows/arr063.svg', 'svg-icon svg-icon-3 me-1') !!} Back
 								</button>
 							</div>
-							<!--end::Wrapper-->
-							<!--begin::Wrapper-->
+							{{-- end::Wrapper --}}
+							{{-- begin::Wrapper --}}
 							<div>
 								<button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="submit">
 									<span class="indicator-label">Submit {!! getSvgIcon('duotune/arrows/arr064.svg', 'svg-icon svg-icon-3 ms-2 me-0') !!}</span>
@@ -76,16 +76,16 @@
 								</button>
 								<button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="next">Continue {!! getSvgIcon('duotune/arrows/arr064.svg', 'svg-icon svg-icon-3 ms-1 me-0') !!}</button>
 							</div>
-							<!--end::Wrapper-->
+							{{-- end::Wrapper --}}
 						</div>
-						<!--end::Actions-->
+						{{-- end::Actions --}}
 					</form>
-					<!--end::Form-->
+					{{-- end::Form --}}
 				</div>
-				<!--end::Stepper-->
+				{{-- end::Stepper --}}
 			</div>
-			<!--begin::Modal body-->
+			{{-- begin::Modal body --}}
 		</div>
 	</div>
 </div>
-<!--end::Modal - Create Campaign-->
+{{-- end::Modal - Create Campaign --}}

@@ -1,62 +1,62 @@
 <div class="modal fade" id="kt_modal_update_permission" tabindex="-1" aria-hidden="true" wire:ignore.self>
-    <!--begin::Modal dialog-->
+    {{-- begin::Modal dialog --}}
     <div class="modal-dialog modal-dialog-centered mw-650px">
-        <!--begin::Modal content-->
+        {{-- begin::Modal content --}}
         <div class="modal-content">
-            <!--begin::Modal header-->
+            {{-- begin::Modal header --}}
             <div class="modal-header">
-                <!--begin::Modal title-->
+                {{-- begin::Modal title --}}
                 <h2 class="fw-bold">Update Permission</h2>
-                <!--end::Modal title-->
-                <!--begin::Close-->
+                {{-- end::Modal title --}}
+                {{-- begin::Close --}}
                 <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal" aria-label="Close">
                     {!! getIcon('cross','fs-1') !!}
                 </div>
-                <!--end::Close-->
+                {{-- end::Close --}}
             </div>
-            <!--end::Modal header-->
-            <!--begin::Modal body-->
+            {{-- end::Modal header --}}
+            {{-- begin::Modal body --}}
             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-                <!--begin::Notice-->
-                <!--begin::Notice-->
+                {{-- begin::Notice --}}
+                {{-- begin::Notice --}}
                 <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed mb-9 p-6">
-                    <!--begin::Icon-->
+                    {{-- begin::Icon --}}
                     {!! getIcon('information','fs-2tx text-warning me-4') !!}
-                    <!--end::Icon-->
-                    <!--begin::Wrapper-->
+                    {{-- end::Icon --}}
+                    {{-- begin::Wrapper --}}
                     <div class="d-flex flex-stack flex-grow-1">
-                        <!--begin::Content-->
+                        {{-- begin::Content --}}
                         <div class="fw-semibold">
                             <div class="fs-6 text-gray-700">
                                 <strong class="me-1">Warning!</strong>By editing the permission name, you might break the system permissions functionality. Please ensure you're absolutely certain before proceeding.
                             </div>
                         </div>
-                        <!--end::Content-->
+                        {{-- end::Content --}}
                     </div>
-                    <!--end::Wrapper-->
+                    {{-- end::Wrapper --}}
                 </div>
-                <!--end::Notice-->
-                <!--end::Notice-->
-                <!--begin::Form-->
+                {{-- end::Notice --}}
+                {{-- end::Notice --}}
+                {{-- begin::Form --}}
                 <form id="kt_modal_update_permission_form" class="form" action="#" wire:submit="submit">
-                    <!--begin::Input group-->
+                    {{-- begin::Input group --}}
                     <div class="fv-row mb-7">
-                        <!--begin::Label-->
+                        {{-- begin::Label --}}
                         <label class="fs-6 fw-semibold form-label mb-2">
                             <span class="required">Permission Name</span>
                             <span class="ms-2" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Permission names is required to be unique.">
                                 {!! getIcon('information','fs-7') !!}
                             </span>
                         </label>
-                        <!--end::Label-->
-                        <!--begin::Input-->
+                        {{-- end::Label --}}
+                        {{-- begin::Input --}}
                         <input class="form-control form-control-solid" placeholder="Enter a permission name" name="name" wire:model.live="name"/>
-                        <!--end::Input-->
+                        {{-- end::Input --}}
                         @error('name')
                         <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <!--end::Input group-->
-                    <!--begin::Actions-->
+                    {{-- end::Input group --}}
+                    {{-- begin::Actions --}}
                     <div class="text-center pt-15">
                         <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal" aria-label="Close" wire:loading.attr="disabled">Discard</button>
                         <button type="submit" class="btn btn-primary">
@@ -67,15 +67,15 @@
                             </span>
                         </button>
                     </div>
-                    <!--end::Actions-->
+                    {{-- end::Actions --}}
                 </form>
-                <!--end::Form-->
+                {{-- end::Form --}}
             </div>
-            <!--end::Modal body-->
+            {{-- end::Modal body --}}
         </div>
-        <!--end::Modal content-->
+        {{-- end::Modal content --}}
     </div>
-    <!--end::Modal dialog-->
+    {{-- end::Modal dialog --}}
 </div>
 
 @push('scripts')

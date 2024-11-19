@@ -1,32 +1,32 @@
 <x-auth-layout>
 
-    <!--begin::Form-->
+    {{-- begin::Form --}}
     <form class="form w-100" novalidate="novalidate" id="kt_password_reset_form" data-kt-redirect-url="{{ route('login') }}" action="{{ route('password.request') }}">
         @csrf
-        <!--begin::Heading-->
+        {{-- begin::Heading --}}
         <div class="text-center mb-10">
-            <!--begin::Title-->
+            {{-- begin::Title --}}
             <h1 class="text-gray-900 fw-bolder mb-3">
                 Forgot Password ?
             </h1>
-            <!--end::Title-->
+            {{-- end::Title --}}
 
-            <!--begin::Link-->
+            {{-- begin::Link --}}
             <div class="text-gray-500 fw-semibold fs-6">
                 Enter your email to reset your password.
             </div>
-            <!--end::Link-->
+            {{-- end::Link --}}
         </div>
-        <!--begin::Heading-->
+        {{-- begin::Heading --}}
 
-        <!--begin::Input group--->
+        {{-- begin::Input group- --}}
         <div class="fv-row mb-8">
-            <!--begin::Email-->
+            {{-- begin::Email --}}
             <input type="text" placeholder="Email" name="email" autocomplete="off" class="form-control bg-transparent" value="demo@demo.com"/>
-            <!--end::Email-->
+            {{-- end::Email --}}
         </div>
 
-        <!--begin::Actions-->
+        {{-- begin::Actions --}}
         <div class="d-flex flex-wrap justify-content-center pb-lg-0">
             <button type="button" id="kt_password_reset_submit" class="btn btn-primary me-4">
                 @include('partials/general/_button-indicator', ['label' => 'Submit'])
@@ -34,8 +34,8 @@
 
             <a href="{{ route('login') }}" class="btn btn-light">Cancel</a>
         </div>
-        <!--end::Actions-->
+        {{-- end::Actions --}}
     </form>
-    <!--end::Form-->
+    {{-- end::Form --}}
 
 </x-auth-layout>

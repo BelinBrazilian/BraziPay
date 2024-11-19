@@ -8,14 +8,14 @@
         {{ Breadcrumbs::render('user-management.roles.index') }}
     @endsection
 
-    <!--begin::Content container-->
+    {{-- begin::Content container --}}
     <div id="kt_app_content_container" class="app-container container-xxl">
         <livewire:permission.role-list></livewire:permission.role-list>
     </div>
-    <!--end::Content container-->
+    {{-- end::Content container --}}
 
-    <!--begin::Modal-->
+    {{-- begin::Modal --}}
     <livewire:permission.role-modal></livewire:permission.role-modal>
-    <!--end::Modal-->
+    {{-- end::Modal --}}
 
 </x-default-layout>
