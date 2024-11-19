@@ -1,63 +1,63 @@
 
 <div class="modal fade" id="kt_modal_update_email" tabindex="-1" aria-hidden="true">
-    <!--begin::Modal dialog-->
+    {{-- begin::Modal dialog --}}
     <div class="modal-dialog modal-dialog-centered mw-650px">
-        <!--begin::Modal content-->
+        {{-- begin::Modal content --}}
         <div class="modal-content">
-            <!--begin::Modal header-->
+            {{-- begin::Modal header --}}
             <div class="modal-header">
-                <!--begin::Modal title-->
+                {{-- begin::Modal title --}}
                 <h2 class="fw-bold">Update Email Address</h2>
-                <!--end::Modal title-->
-                <!--begin::Close-->
+                {{-- end::Modal title --}}
+                {{-- begin::Close --}}
                 <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-users-modal-action="close">
                     <i class="ki-duotone ki-cross fs-1">
                         <span class="path1"></span>
                         <span class="path2"></span>
                     </i>
                 </div>
-                <!--end::Close-->
+                {{-- end::Close --}}
             </div>
-            <!--end::Modal header-->
-            <!--begin::Modal body-->
+            {{-- end::Modal header --}}
+            {{-- begin::Modal body --}}
             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-                <!--begin::Form-->
+                {{-- begin::Form --}}
                 <form id="kt_modal_update_email_form" class="form" action="#">
-                    <!--begin::Notice-->
-                    <!--begin::Notice-->
+                    {{-- begin::Notice --}}
+                    {{-- begin::Notice --}}
                     <div class="notice d-flex bg-light-primary rounded border-primary border border-dashed mb-9 p-6">
-                        <!--begin::Icon-->
+                        {{-- begin::Icon --}}
                         <i class="ki-duotone ki-information fs-2tx text-primary me-4">
                             <span class="path1"></span>
                             <span class="path2"></span>
                             <span class="path3"></span>
                         </i>
-                        <!--end::Icon-->
-                        <!--begin::Wrapper-->
+                        {{-- end::Icon --}}
+                        {{-- begin::Wrapper --}}
                         <div class="d-flex flex-stack flex-grow-1">
-                            <!--begin::Content-->
+                            {{-- begin::Content --}}
                             <div class="fw-semibold">
                                 <div class="fs-6 text-gray-700">Please note that a valid email address is required to complete the email verification.</div>
                             </div>
-                            <!--end::Content-->
+                            {{-- end::Content --}}
                         </div>
-                        <!--end::Wrapper-->
+                        {{-- end::Wrapper --}}
                     </div>
-                    <!--end::Notice-->
-                    <!--end::Notice-->
-                    <!--begin::Input group-->
+                    {{-- end::Notice --}}
+                    {{-- end::Notice --}}
+                    {{-- begin::Input group --}}
                     <div class="fv-row mb-7">
-                        <!--begin::Label-->
+                        {{-- begin::Label --}}
                         <label class="fs-6 fw-semibold form-label mb-2">
                             <span class="required">Email Address</span>
                         </label>
-                        <!--end::Label-->
-                        <!--begin::Input-->
+                        {{-- end::Label --}}
+                        {{-- begin::Input --}}
                         <input class="form-control form-control-solid" placeholder="" name="profile_email" value="smith@kpmg.com" />
-                        <!--end::Input-->
+                        {{-- end::Input --}}
                     </div>
-                    <!--end::Input group-->
-                    <!--begin::Actions-->
+                    {{-- end::Input group --}}
+                    {{-- begin::Actions --}}
                     <div class="text-center pt-15">
                         <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Discard</button>
                         <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
@@ -66,13 +66,13 @@
                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                         </button>
                     </div>
-                    <!--end::Actions-->
+                    {{-- end::Actions --}}
                 </form>
-                <!--end::Form-->
+                {{-- end::Form --}}
             </div>
-            <!--end::Modal body-->
+            {{-- end::Modal body --}}
         </div>
-        <!--end::Modal content-->
+        {{-- end::Modal content --}}
     </div>
-    <!--end::Modal dialog-->
+    {{-- end::Modal dialog --}}
 </div>

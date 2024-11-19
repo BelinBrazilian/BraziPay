@@ -8,26 +8,26 @@
         {{ Breadcrumbs::render('user-management.roles.show', $role) }}
     @endsection
 
-    <!--begin::Content container-->
+    {{-- begin::Content container --}}
     <div id="kt_app_content_container" class="app-container container-xxl">
-        <!--begin::Layout-->
+        {{-- begin::Layout --}}
         <div class="d-flex flex-column flex-lg-row">
-            <!--begin::Sidebar-->
+            {{-- begin::Sidebar --}}
             <div class="flex-column flex-lg-row-auto w-100 w-lg-200px w-xl-300px mb-10">
-                <!--begin::Card-->
+                {{-- begin::Card --}}
                 <div class="card card-flush">
-                    <!--begin::Card header-->
+                    {{-- begin::Card header --}}
                     <div class="card-header">
-                        <!--begin::Card title-->
+                        {{-- begin::Card title --}}
                         <div class="card-title">
                             <h2 class="mb-0">{{ ucwords($role->name) }}</h2>
                         </div>
-                        <!--end::Card title-->
+                        {{-- end::Card title --}}
                     </div>
-                    <!--end::Card header-->
-                    <!--begin::Card body-->
+                    {{-- end::Card header --}}
+                    {{-- begin::Card body --}}
                     <div class="card-body pt-0">
-                        <!--begin::Permissions-->
+                        {{-- begin::Permissions --}}
                         <div class="d-flex flex-column text-gray-600">
                             @foreach($role->permissions->shuffle()->take(5) as $permission)
                                 <div class="d-flex align-items-center py-2">
@@ -48,58 +48,58 @@
                                 </div>
                             @endif
                         </div>
-                        <!--end::Permissions-->
+                        {{-- end::Permissions --}}
                     </div>
-                    <!--end::Card body-->
-                    <!--begin::Card footer-->
+                    {{-- end::Card body --}}
+                    {{-- begin::Card footer --}}
                     <div class="card-footer pt-0">
                         <button type="button" class="btn btn-light btn-active-primary" data-role-id="{{ $role->name }}" data-bs-toggle="modal" data-bs-target="#kt_modal_update_role">Edit Role</button>
                     </div>
-                    <!--end::Card footer-->
+                    {{-- end::Card footer --}}
                 </div>
-                <!--end::Card-->
+                {{-- end::Card --}}
             </div>
-            <!--end::Sidebar-->
-            <!--begin::Content-->
+            {{-- end::Sidebar --}}
+            {{-- begin::Content --}}
             <div class="flex-lg-row-fluid ms-lg-10">
-                <!--begin::Card-->
+                {{-- begin::Card --}}
                 <div class="card card-flush mb-6 mb-xl-9">
-                    <!--begin::Card header-->
+                    {{-- begin::Card header --}}
                     <div class="card-header pt-5">
-                        <!--begin::Card title-->
+                        {{-- begin::Card title --}}
                         <div class="card-title">
                             <h2 class="d-flex align-items-center">Users Assigned
                                 <span class="text-gray-600 fs-6 ms-1">({{ $role->users->count() }})</span>
                             </h2>
                         </div>
-                        <!--end::Card title-->
-                        <!--begin::Card toolbar-->
+                        {{-- end::Card title --}}
+                        {{-- begin::Card toolbar --}}
                         <div class="card-toolbar">
                         </div>
-                        <!--end::Card toolbar-->
+                        {{-- end::Card toolbar --}}
                     </div>
-                    <!--end::Card header-->
-                    <!--begin::Card body-->
+                    {{-- end::Card header --}}
+                    {{-- begin::Card body --}}
                     <div class="card-body pt-0">
-                        <!--begin::Table-->
+                        {{-- begin::Table --}}
                         <div class="table-responsive">
                             {{ $dataTable->table() }}
                         </div>
-                        <!--end::Table-->
+                        {{-- end::Table --}}
                     </div>
-                    <!--end::Card body-->
+                    {{-- end::Card body --}}
                 </div>
-                <!--end::Card-->
+                {{-- end::Card --}}
             </div>
-            <!--end::Content-->
+            {{-- end::Content --}}
         </div>
-        <!--end::Layout-->
+        {{-- end::Layout --}}
     </div>
-    <!--end::Content container-->
+    {{-- end::Content container --}}
 
-    <!--begin::Modal-->
+    {{-- begin::Modal --}}
     <livewire:permission.role-modal></livewire:permission.role-modal>
-    <!--end::Modal-->
+    {{-- end::Modal --}}
 
     @push('scripts')
         {{ $dataTable->scripts() }}
