@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Html\DTOs;
+namespace App\Http\DTOs;
 
 use App\Exceptions\InvalidPhoneAssociationException;
 use App\Http\DTOs\DTO;
@@ -10,21 +10,15 @@ use App\Http\Interfaces\UpdateRequestInterface;
 class PhoneDTO extends DTO
 {
     public function __construct(
-        public readonly ?int $customerId,
-        public readonly ?int $merchantId,
+        public readonly ?int $customerId = null,
+        public readonly ?int $merchantId = null,
         public readonly string $phoneType,
         public readonly string $number,
-        public readonly ?string $extension,
+        public readonly ?string $extension = null,
     ) {
         if ((is_null($customerId) && is_null($merchantId)) || (!is_null($customerId) && !is_null($merchantId))) {
             throw new InvalidPhoneAssociationException();
         }
-
-        $this->customerId = $customerId;
-        $this->merchantId = $merchantId;
-        $this->phoneType = $phoneType;
-        $this->number = $number;
-        $this->extension = $extension;
     }
 
     public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
