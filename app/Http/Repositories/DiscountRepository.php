@@ -2,16 +2,16 @@
 
 namespace App\Http\Repositories;
 
-use App\Models\Plan;
+use App\Models\Discount;
 
-class PlanRepository extends Repository
+class DiscountRepository extends Repository
 {
     /**
      * Create a new class instance.
      */
     public function __construct()
     {
-        $this->modelClass = Plan::class;
+        $this->modelClass = Discount::class;
         parent::__construct();
     }
 }

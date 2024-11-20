@@ -113,11 +113,12 @@ class CustomerService
             DB::beginTransaction();
 
             $customer = $this->repository->find($id);
+            $external_id = $customer->external_id;
             $customer->delete();
 
             DB::commit();
 
-            (new CustomerDeleteJob($customer))->handle();
+            (new CustomerDeleteJob($external_id))->handle();
 
             return response()->json([], 200);
         } catch (Exception $e) {

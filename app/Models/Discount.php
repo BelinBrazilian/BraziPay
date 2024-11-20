@@ -4,40 +4,30 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Plan extends Model
+class Discount extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
-    protected $table = 'plans';
+    protected $table = 'discounts';
 
     protected $fillable = [
         'external_id',
-        'name',
-        'status',
-        'interval_count',
-        'billing_trigger_type',
-        'billing_trigger_day',
-        'billing_cycles',
-        'code',
-        'description',
-        'installments',
-        'invoice_split',
-        'metadata',
+        'product_item_id',
+        'discount_type',
+        'percentage',
+        'amount',
+        'quantity',
+        'cycles',
     ];
 
-    protected $casts = [
-        'metadata' => 'array',
-        'status' => 'string',
-    ];
+    // public function productItem() : BelongsTo
+    // {
+    //     return $this->belongsTo(ProductItem::class);
+    // }
 
-    public function planItems()
-    {
-        return $this->hasMany(PlanItem::class);
-    }
-
-    public function normalize() : array
+    public function normalize(): array
     {
         $data = [
             'body' => $this->toJson(),
@@ -56,7 +46,7 @@ class Plan extends Model
             'plan_items' => [] ?? null,
         ];
 
-        foreach($this->planItems() as $planItem) {
+        foreach ($this->planItems() as $planItem) {
             $data['plan_items'][] = [
                 'cycles' => $planItem->cycles,
                 'product_id' => $planItem->product_id,

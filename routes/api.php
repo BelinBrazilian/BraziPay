@@ -4,6 +4,7 @@ use App\Actions\SamplePermissionApi;
 use App\Actions\SampleRoleApi;
 use App\Actions\SampleUserApi;
 use App\Http\Controllers\API\Customers;
+use App\Http\Controllers\API\Discounts;
 use App\Http\Controllers\API\Plans;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -83,8 +84,6 @@ Route::prefix('v1')->group(function () {
         return app(SampleRoleApi::class)->deleteUser($id, $user_id);
     });
 
-
-
     Route::get('/permissions', function (Request $request) {
         return app(SamplePermissionApi::class)->datatableList($request);
     });
@@ -126,5 +125,11 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::post('/plans', [Plans::class, 'store'])->name('plans.store');
     Route::put('/plans/{id}', [Plans::class, 'update'])->name('plans.update');
     Route::get('/plans/{id}/plan_items', [Plans::class, 'plan_items'])->name('plans.plan_items');
+
+    // Discounts
+    Route::get('/discounts', [Discounts::class, 'index'])->name('discounts.index');
+    Route::get('/discounts/{id}', [Discounts::class, 'show'])->name('discounts.show');
+    Route::post('/discounts', [Discounts::class, 'store'])->name('discounts.store');
+    Route::delete('/discounts/{id}', [Discounts::class, 'destroy'])->name('discounts.destroy');
 });
     

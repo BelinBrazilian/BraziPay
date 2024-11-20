@@ -6,6 +6,7 @@ use App\Http\Controllers\Apps\UserManagementController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Customers;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Discounts;
 use App\Http\Controllers\Plans;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/plans', [Plans::class, 'store'])->name('plans.store');
     Route::put('/plans/{id}', [Plans::class, 'update'])->name('plans.update');
     Route::get('/plans/{id}/plan_items', [Plans::class, 'plan_items'])->name('plans.plan_items');
+
+    // Discounts
+    Route::get('/discounts', [Discounts::class, 'index'])->name('discounts.index');
+    Route::get('/discounts/{id}', [Discounts::class, 'show'])->name('discounts.show');
+    Route::post('/discounts', [Discounts::class, 'store'])->name('discounts.store');
+    Route::delete('/discounts/{id}', [Discounts::class, 'destroy'])->name('discounts.destroy');
 });
 
 Route::get('/error', function () {
