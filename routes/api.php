@@ -3,7 +3,8 @@
 use App\Actions\SamplePermissionApi;
 use App\Actions\SampleRoleApi;
 use App\Actions\SampleUserApi;
-use App\Models\User;
+use App\Http\Controllers\API\Customers;
+use App\Http\Controllers\API\Plans;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -108,3 +109,22 @@ Route::prefix('v1')->group(function () {
         return app(SamplePermissionApi::class)->delete($id);
     });
 });
+
+
+Route::middleware('auth:sanctum')->group(function() {
+    // Customers
+    Route::get('/customers', [Customers::class, 'index'])->name('customers.index');
+    Route::get('/customers/{id}', [Customers::class, 'show'])->name('customers.show');
+    Route::post('/customers', [Customers::class, 'store'])->name('customers.store');
+    Route::put('/customers/{id}', [Customers::class, 'update'])->name('customers.update');
+    Route::delete('/customers/{id}', [Customers::class, 'destroy'])->name('customers.destroy');
+    Route::post('/customers/{id}/unarchive', [Customers::class, 'unarchive']);
+
+    // Plans
+    Route::get('/plans', [Plans::class, 'index'])->name('plans.index');
+    Route::get('/plans/{id}', [Plans::class, 'show'])->name('plans.show');
+    Route::post('/plans', [Plans::class, 'store'])->name('plans.store');
+    Route::put('/plans/{id}', [Plans::class, 'update'])->name('plans.update');
+    Route::get('/plans/{id}/plan_items', [Plans::class, 'plan_items'])->name('plans.plan_items');
+});
+    
