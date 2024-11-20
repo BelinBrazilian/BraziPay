@@ -2,12 +2,12 @@
 
 namespace App\Http\Services;
 
-use App\Html\DTOs\PhoneDTO;
 use App\Http\DTOs\AddressDTO;
 use App\Http\DTOs\CustomerDTO;
+use App\Http\DTOs\PhoneDTO;
 use App\Http\Repositories\CustomerRepository;
-use App\Http\Requests\CustomerStoreRequest;
-use App\Http\Requests\CustomerUpdateRequest;
+use App\Http\Requests\Customer\CustomerStoreRequest;
+use App\Http\Requests\Customer\CustomerUpdateRequest;
 use App\Jobs\Customer\CustomerStoreJob;
 use App\Jobs\Customer\CustomerUpdateJob;
 use App\Jobs\Customer\CustomerDeleteJob;
