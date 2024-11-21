@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Affiliates;
 use App\Http\Controllers\Apps\PermissionManagementController;
 use App\Http\Controllers\Apps\RoleManagementController;
 use App\Http\Controllers\Apps\UserManagementController;
@@ -53,6 +54,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/discounts/{id}', [Discounts::class, 'show'])->name('discounts.show');
     Route::post('/discounts', [Discounts::class, 'store'])->name('discounts.store');
     Route::delete('/discounts/{id}', [Discounts::class, 'destroy'])->name('discounts.destroy');
+
+    // Affiliates
+    Route::get('/affiliates', [Affiliates::class, 'index'])->name('affiliates.index');
+    Route::get('/affiliates/{id}', [Affiliates::class, 'show'])->name('affiliates.show');
+    Route::post('/affiliates', [Affiliates::class, 'store'])->name('affiliates.store');
+    Route::put('/affiliates/{id}', [Affiliates::class, 'update'])->name('affiliates.update');
+    Route::put('/affiliates/{id}/verify', [Affiliates::class, 'verify'])->name('affiliates.verify');
 });
 
 Route::get('/error', function () {

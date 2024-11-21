@@ -21,9 +21,9 @@ class CustomerDeleteJob implements ShouldQueue
             $vindiCustomerService = new VindiCustomer(config('app.vindi_args'));
             $vindiCustomerService->delete($this->external_id);
 
-            Log::debug('Customer created succesfully!');
+            Log::debug('Customer deleted succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on creating Vindi Customer: ' . $e->getMessage());
+            Log::error('Error on deleting Vindi Customer: ' . $e->getMessage());
         }
     }
 }

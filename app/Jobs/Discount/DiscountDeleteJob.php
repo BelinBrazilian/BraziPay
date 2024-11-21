@@ -20,9 +20,9 @@ class DiscountDeleteJob implements ShouldQueue
             $vindiDiscountService = new VindiDiscount(config('app.vindi_args'));
             $vindiDiscountService->delete($this->external_id);
 
-            Log::debug('Discount created succesfully!');
+            Log::debug('Discount deleted succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on creating Vindi Discount: ' . $e->getMessage());
+            Log::error('Error on deleting Vindi Discount: ' . $e->getMessage());
         }
     }
 }
