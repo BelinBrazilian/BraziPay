@@ -9,6 +9,7 @@ use App\Http\Controllers\Customers;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Discounts;
 use App\Http\Controllers\Plans;
+use App\Http\Controllers\Roles;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,6 +62,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/affiliates', [Affiliates::class, 'store'])->name('affiliates.store');
     Route::put('/affiliates/{id}', [Affiliates::class, 'update'])->name('affiliates.update');
     Route::put('/affiliates/{id}/verify', [Affiliates::class, 'verify'])->name('affiliates.verify');
+
+    // Roles
+    Route::get('/roles', [Roles::class, 'index'])->name('roles.index');
 });
 
 Route::get('/error', function () {

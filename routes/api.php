@@ -7,6 +7,7 @@ use App\Http\Controllers\API\Affiliates;
 use App\Http\Controllers\API\Customers;
 use App\Http\Controllers\API\Discounts;
 use App\Http\Controllers\API\Plans;
+use App\Http\Controllers\API\Roles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -139,5 +140,8 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::post('/affiliates', [Affiliates::class, 'store'])->name('affiliates.store');
     Route::put('/affiliates/{id}', [Affiliates::class, 'update'])->name('affiliates.update');
     Route::put('/affiliates/{id}/verify', [Affiliates::class, 'verify'])->name('affiliates.verify');
+
+    // Roles
+    Route::get('/roles', [Roles::class, 'index'])->name('roles.index');
 });
     
