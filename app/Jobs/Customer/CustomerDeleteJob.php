@@ -13,17 +13,17 @@ class CustomerDeleteJob implements ShouldQueue
 {
     use Queueable;
 
-    public function __construct(private readonly Customer $customer) {}
+    public function __construct(private readonly int $external_id) {}
 
     public function handle(): void
     {
         try {
             $vindiCustomerService = new VindiCustomer(config('app.vindi_args'));
-            $vindiCustomerService->delete($this->customer->external_id);
+            $vindiCustomerService->delete($this->external_id);
 
-            Log::debug('Customer created succesfully!');
+            Log::debug('Customer deleted succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on creating Vindi Customer: ' . $e->getMessage());
+            Log::error('Error on deleting Vindi Customer: ' . $e->getMessage());
         }
     }
 }

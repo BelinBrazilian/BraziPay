@@ -21,9 +21,9 @@ class CustomerUpdateJob implements ShouldQueue
             $vindiCustomerService = new VindiCustomer(config('app.vindi_args'));
             $vindiCustomerService->update($this->customer->external_id, $this->customer->normalize());
 
-            Log::debug('Customer created succesfully!');
+            Log::debug('Customer updated succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on creating Vindi Customer: ' . $e->getMessage());
+            Log::error('Error on updating Vindi Customer: ' . $e->getMessage());
         }
     }
 }

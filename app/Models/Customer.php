@@ -37,24 +37,27 @@ class Customer extends Model
     public function normalize() : array
     {
         $data = [
+            'body' => $this->toJson(),
             'name' => $this->name,
             'email' => $this->email ?? null,
             'registry_code' => $this->registry_code ?? null,
             'code' => $this->code ?? null,
             'notes' => $this->notes ?? null,
             'metadata' => 'array' ?? null,
-            'address' => null,
-            'phones' => null,
+            'address' => [],
+            'phones' => [],
         ];
 
-        $data['address']['street'] = $this->address->street;
-        $data['address']['number'] = $this->address->number;
-        $data['address']['additional_details'] = $this->address->additional_details ?? null;
-        $data['address']['zipcode'] = $this->address->zipcode;
-        $data['address']['neighborhood'] = $this->address->neighborhood;
-        $data['address']['city'] = $this->address->city;
-        $data['address']['state'] = $this->address->state;
-        $data['address']['country'] = $this->address->country;
+        $data['address'] = [
+            'street' => $this->address->street,
+            'number' => $this->address->number,
+            'additional_details' => $this->address->additional_details ?? null,
+            'zipcode' => $this->address->zipcode,
+            'neighborhood' => $this->address->neighborhood,
+            'city' => $this->address->city,
+            'state' => $this->address->state,
+            'country' => $this->address->country,
+        ];
 
         foreach($this->phones as $phone) {
             $data['phones'][] = [
@@ -63,8 +66,6 @@ class Customer extends Model
                 'extension' => $phone->extension ?? null,
             ];
         }
-
-        $data['body'] = $this->toJson();
 
         return $data;
     }
