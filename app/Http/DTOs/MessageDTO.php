@@ -5,22 +5,22 @@ namespace App\Http\DTOs;
 use App\Http\Interfaces\StoreRequestInterface;
 use App\Http\Interfaces\UpdateRequestInterface;
 
-class PhoneDTO extends DTO
+class MessageDTO extends DTO
 {
     public function __construct(
         private readonly int $customerId,
-        private readonly string $phoneType,
-        private readonly string $number,
-        private readonly ?string $extension,
+        private readonly int $chargeId,
+        private readonly int $notificationId,
+        private readonly ?string $email,
     ) {}
 
     public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('customer_id'),
-            $request->get('phone_type'),
-            $request->get('number'),
-            $request->get('extension', null),
+            $request->get('charge_id'),
+            $request->get('notification_id'),
+            $request->get('email', null),
         );
     }
 
@@ -28,9 +28,9 @@ class PhoneDTO extends DTO
     {
         return new self(
             $data['customer_id'],
-            $data['phone_type'],
-            $data['number'],
-            $data['extension'] ?? null,
+            $data['charge_id'],
+            $data['notification_id'],
+            $data['email'] ?? null,
         );
     }
 }
