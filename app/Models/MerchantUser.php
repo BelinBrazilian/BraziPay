@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Phone extends Model
+class MerchantUser extends Model
 {
     use HasFactory;
 
@@ -16,17 +16,18 @@ class Phone extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'customer_id',
-        'phone_type',
-        'number',
-        'extension',
+        'role_id',
+        'name',
+        'email',
+        'action',
+        // 'password', 
     ];
 
     /**
-     * Get the customer that owns the phone.
+     * Get the role that owns the merchant user.
      */
-    public function customer(): BelongsTo
+    public function role(): BelongsTo
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Role::class);
     }
 }

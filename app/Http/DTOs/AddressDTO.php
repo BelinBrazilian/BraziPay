@@ -2,20 +2,24 @@
 
 namespace App\Http\DTOs;
 
+use App\Http\Interfaces\StoreRequestInterface;
+use App\Http\Interfaces\UpdateRequestInterface;
+
 class AddressDTO extends DTO
 {
     public function __construct(
-        public readonly string $street,
-        public readonly string $number,
-        public readonly ?string $additionalDetails,
-        public readonly string $zipcode,
-        public readonly string $neighborhood,
-        public readonly string $city,
-        public readonly string $state,
-        public readonly string $country,
+        private readonly string $street,
+        private readonly string $number,
+        private readonly ?string $additionalDetails,
+        private readonly string $zipcode,
+        private readonly string $neighborhood,
+        private readonly string $city,
+        private readonly string $state,
+        private readonly string $country,
     ) {}
 
-    public static function fromRequest($request): self
+
+    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('street'),

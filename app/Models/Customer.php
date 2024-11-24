@@ -2,70 +2,67 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Customer extends Model
 {
-    use SoftDeletes;
+    use HasFactory;
 
-    public static $uuidField = 'code';
-
-    public $fillable = [
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'address_id',
         'external_id',
+        'code',
         'name',
         'email',
         'registry_code',
         'notes',
-        'status',
-        'metadata',
-        'address_id',
     ];
 
-    public function address() : HasOne
+    /**
+     * Get the address associated with the customer.
+     */
+    public function address(): HasOne
     {
-        return $this->hasOne('addresses', 'id', 'address_id');
+        return $this->hasOne(Address::class);
     }
 
-    public function phones() : HasMany
+    /**
+     * Get the phones associated with the customer.
+     */
+    public function phones(): HasMany
     {
-        return $this->hasMany('phones', 'customer_id', 'id');
+        return $this->hasMany(Phone::class);
     }
 
-    public function normalize() : array
+    /**
+     * Get the subscriptions associated with the customer.
+     */
+    public function subscriptions(): HasMany
     {
-        $data = [
-            'name' => $this->name,
-            'email' => $this->email ?? null,
-            'registry_code' => $this->registry_code ?? null,
-            'code' => $this->code ?? null,
-            'notes' => $this->notes ?? null,
-            'metadata' => 'array' ?? null,
-            'address' => null,
-            'phones' => null,
-        ];
+        return $this->hasMany(Subscription::class);
+    }
 
-        $data['address']['street'] = $this->address->street;
-        $data['address']['number'] = $this->address->number;
-        $data['address']['additional_details'] = $this->address->additional_details ?? null;
-        $data['address']['zipcode'] = $this->address->zipcode;
-        $data['address']['neighborhood'] = $this->address->neighborhood;
-        $data['address']['city'] = $this->address->city;
-        $data['address']['state'] = $this->address->state;
-        $data['address']['country'] = $this->address->country;
+    /**
+     * Get the payment profiles associated with the customer.
+     */
+    public function paymentProfiles(): HasMany
+    {
+        return $this->hasMany(PaymentProfile::class);
+    }
 
-        foreach($this->phones as $phone) {
-            $data['phones'][] = [
-                'phone_type' => $phone->phone_type,
-                'number' => $phone->number,
-                'extension' => $phone->extension ?? null,
-            ];
-        }
-
-        $data['body'] = $this->toJson();
-
-        return $data;
+    /**
+     * Get the messages associated with the customer.
+     */
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Phone extends Model
+class PaymentProfile extends Model
 {
     use HasFactory;
 
@@ -17,13 +17,24 @@ class Phone extends Model
      */
     protected $fillable = [
         'customer_id',
-        'phone_type',
-        'number',
-        'extension',
+        'token',
+        'holder_name',
+        'registry_code',
+        'bank_branch',
+        'bank_account',
+        'card_expiration',
+        'allow_as_fallback',
+        'card_number',
+        'card_cvv',
+        'card_token',
+        'gateway_id',
+        'payment_method_code',
+        'payment_company_code',
+        'gateway_token',
     ];
 
     /**
-     * Get the customer that owns the phone.
+     * Get the customer that owns the payment profile.
      */
     public function customer(): BelongsTo
     {
