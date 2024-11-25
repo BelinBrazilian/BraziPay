@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Phone extends Model
+class PaymentConditionDiscount extends Model
 {
     use HasFactory;
 
@@ -16,17 +16,17 @@ class Phone extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'customer_id',
-        'phone_type',
-        'number',
-        'extension',
+        'payment_condition_id',
+        'value',
+        'value_type',
+        'days_before_due',
     ];
 
     /**
-     * Get the customer that owns the phone.
+     * Get the payment condition that owns the discount.
      */
-    public function customer(): BelongsTo
+    public function paymentCondition(): BelongsTo
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(PaymentCondition::class);
     }
 }

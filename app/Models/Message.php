@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Phone extends Model
+class Message extends Model
 {
     use HasFactory;
 
@@ -17,13 +17,13 @@ class Phone extends Model
      */
     protected $fillable = [
         'customer_id',
-        'phone_type',
-        'number',
-        'extension',
+        'charge_id',
+        'notification_id',
+        'email',
     ];
 
     /**
-     * Get the customer that owns the phone.
+     * Get the customer that owns the message.
      */
     public function customer(): BelongsTo
     {

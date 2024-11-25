@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Phone extends Model
+class PricingRange extends Model
 {
     use HasFactory;
 
@@ -16,17 +16,18 @@ class Phone extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'customer_id',
-        'phone_type',
-        'number',
-        'extension',
+        'pricing_schema_id',
+        'start_quantity',
+        'end_quantity',
+        'price',
+        'overage_price',
     ];
 
     /**
-     * Get the customer that owns the phone.
+     * Get the pricing schema that owns the pricing range.
      */
-    public function customer(): BelongsTo
+    public function pricingSchema(): BelongsTo
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(PricingSchema::class);
     }
 }
