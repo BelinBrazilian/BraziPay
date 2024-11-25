@@ -19,15 +19,15 @@ return new class extends Migration
             $table->unsignedBigInteger('external_id')->nullable();
             $table->uuid('code')->unique();
             $table->string('name');
-            $table->string('interval'); // Ex: day, week, month
+            $table->enum('interval', array_column(PlanIntervalEnum::cases(), 'value'))->required();
             $table->integer('interval_count');
-            $table->string('billing_trigger_type'); // Ex: beginning_of_period, end_of_period
+            $table->enum('billing_trigger_type', array_column(PlanBillingTriggerTypeEnum::cases(), 'value'))->required();
             $table->integer('billing_trigger_day');
             $table->integer('billing_cycles')->nullable();
             $table->text('description')->nullable();
             $table->integer('installments')->nullable();
             $table->boolean('invoice_split')->nullable();
-            $table->string('status')->nullable(); // Ex: active, inactive
+            $table->enum('status', array_column(PlanStatusEnum::cases(), 'value'));
             $table->timestamps();
         });
     }

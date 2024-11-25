@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\API\Customers as APICustomers;
-use App\Http\Requests\Customer\CustomerStoreRequest;
+use App\Http\Controllers\API\Plans as APIPlans;
+use App\Http\Requests\Customer\PlanstoreRequest;
 use App\Http\Requests\Customer\CustomerUpdateRequest;
+use App\Http\Requests\Plan\PlanStoreRequest as PlanPlanStoreRequest;
+use App\Http\Requests\Plan\PlanUpdateRequest;
 use App\Models\Customer;
 use Illuminate\View\View;
 
-class Customers extends Controller
+class Plans extends Controller
 {
-    public function __construct(private readonly APICustomers $api) {}
+    public function __construct(private readonly APIPlans $api) {}
 
     public function index(mixed $queryParams = null): View
     {
@@ -26,7 +28,7 @@ class Customers extends Controller
         return View('customets.index', compact('data'));
     }
 
-    public function store(CustomerStoreRequest $request): View
+    public function store(PlanPlanStoreRequest $request): View
     {
         if ($data = $this->api->store($request)) {
             /** @var Customer $data */
@@ -36,7 +38,7 @@ class Customers extends Controller
         /** @todo consenso sobre exibição de erros */
     }
 
-    public function update(CustomerUpdateRequest $request, string $code): View
+    public function update(PlanUpdateRequest $request, string $code): View
     {
         if ($data = $this->api->update($request, $code)) {
             /** @var Customer $data */
@@ -46,18 +48,9 @@ class Customers extends Controller
         /** @todo consenso sobre exibição de erros */
     }
 
-    public function destroy(?string $code): View
+    public function plan_items(string $code): View
     {
-        if ($this->api->destroy($code)) {
-            return $this->index();
-        }
-
-        /** @todo consenso sobre exibição de erros */
-    }
-
-    public function unarchive(string $code): View
-    {
-        if ($this->api->unarchive($code)) {
+        if ($this->api->plan_items($code)) {
             return $this->show($code);
         }
 

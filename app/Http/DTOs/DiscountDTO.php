@@ -2,21 +2,34 @@
 
 namespace App\Http\DTOs;
 
-use App\Http\Interfaces\StoreRequestInterface;
-use App\Http\Interfaces\UpdateRequestInterface;
+use App\Http\Enums\DiscountTypeEnum;
+use App\Http\Requests\Discount\DiscountStoreRequest;
+use InvalidArgumentException;
 
 class DiscountDTO extends DTO
 {
     public function __construct(
-        private readonly int $productItemId,
-        private readonly string $discountType,
-        private readonly ?float $percentage,
-        private readonly ?float $amount,
-        private readonly ?int $quantity,
-        private readonly ?int $cycles,
-    ) {}
+        private readonly int $product_item_id,
+        private readonly DiscountTypeEnum $discount_type,
+        private readonly ?float $percentage = null,
+        private readonly ?float $amount = null,
+        private readonly ?int $quantity = null,
+        private readonly ?int $cycles = null
+    ) {
+        if ($discount_type === DiscountTypeEnum::Percentage->value && is_null($percentage)) {
+            throw new InvalidArgumentException('Percentage cannot be null when discount type is percentage.');
+        }
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+        if ($discount_type === DiscountTypeEnum::Amount->value && is_null($amount)) {
+            throw new InvalidArgumentException('Amount cannot be null when discount type is amount.');
+        }
+        
+        if ($discount_type === DiscountTypeEnum::Quantity->value && is_null($quantity)) {
+            throw new InvalidArgumentException('Quantity cannot be null when discount type is quantity.');
+        }
+    }
+
+    public static function fromRequest(DiscountStoreRequest $request): self
     {
         return new self(
             $request->get('product_item_id'),

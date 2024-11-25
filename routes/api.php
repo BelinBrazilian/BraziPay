@@ -3,7 +3,11 @@
 use App\Actions\SamplePermissionApi;
 use App\Actions\SampleRoleApi;
 use App\Actions\SampleUserApi;
-use App\Models\User;
+use App\Http\Controllers\API\Affiliates;
+use App\Http\Controllers\API\Customers;
+use App\Http\Controllers\API\Discounts;
+use App\Http\Controllers\API\Plans;
+use App\Http\Controllers\API\Roles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -82,8 +86,6 @@ Route::prefix('v1')->group(function () {
         return app(SampleRoleApi::class)->deleteUser($id, $user_id);
     });
 
-
-
     Route::get('/permissions', function (Request $request) {
         return app(SamplePermissionApi::class)->datatableList($request);
     });
@@ -108,3 +110,38 @@ Route::prefix('v1')->group(function () {
         return app(SamplePermissionApi::class)->delete($id);
     });
 });
+
+
+Route::middleware('auth:sanctum')->group(function() {
+    // Customers
+    Route::get('/customers', [Customers::class, 'index'])->name('customers.index');
+    Route::get('/customers/{id}', [Customers::class, 'show'])->name('customers.show');
+    Route::post('/customers', [Customers::class, 'store'])->name('customers.store');
+    Route::put('/customers/{id}', [Customers::class, 'update'])->name('customers.update');
+    Route::delete('/customers/{id}', [Customers::class, 'destroy'])->name('customers.destroy');
+    Route::post('/customers/{id}/unarchive', [Customers::class, 'unarchive']);
+
+    // Plans
+    Route::get('/plans', [Plans::class, 'index'])->name('plans.index');
+    Route::get('/plans/{id}', [Plans::class, 'show'])->name('plans.show');
+    Route::post('/plans', [Plans::class, 'store'])->name('plans.store');
+    Route::put('/plans/{id}', [Plans::class, 'update'])->name('plans.update');
+    Route::get('/plans/{id}/plan_items', [Plans::class, 'plan_items'])->name('plans.plan_items');
+
+    // Discounts
+    Route::get('/discounts', [Discounts::class, 'index'])->name('discounts.index');
+    Route::get('/discounts/{id}', [Discounts::class, 'show'])->name('discounts.show');
+    Route::post('/discounts', [Discounts::class, 'store'])->name('discounts.store');
+    Route::delete('/discounts/{id}', [Discounts::class, 'destroy'])->name('discounts.destroy');
+
+    // Affiliates
+    Route::get('/affiliates', [Affiliates::class, 'index'])->name('affiliates.index');
+    Route::get('/affiliates/{id}', [Affiliates::class, 'show'])->name('affiliates.show');
+    Route::post('/affiliates', [Affiliates::class, 'store'])->name('affiliates.store');
+    Route::put('/affiliates/{id}', [Affiliates::class, 'update'])->name('affiliates.update');
+    Route::put('/affiliates/{id}/verify', [Affiliates::class, 'verify'])->name('affiliates.verify');
+
+    // Roles
+    Route::get('/roles', [Roles::class, 'index'])->name('roles.index');
+});
+    

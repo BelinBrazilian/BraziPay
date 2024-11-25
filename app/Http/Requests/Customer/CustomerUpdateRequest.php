@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Customer;
 
+use App\Http\Interfaces\UpdateRequestInterface;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CustomerUpdateRequest extends FormRequest
+class CustomerUpdateRequest extends FormRequest implements UpdateRequestInterface
 {
     /**
      * Determine if the user is authorized to make this request.
