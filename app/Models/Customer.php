@@ -2,36 +2,68 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Customer extends Model
 {
-    use SoftDeletes;
+    use HasFactory;
 
-    public static $uuidField = 'code';
-
-    public $fillable = [
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'address_id',
         'external_id',
+        'code',
         'name',
         'email',
         'registry_code',
         'notes',
-        'status',
-        'metadata',
-        'address_id',
     ];
 
-    public function address() : HasOne
+    /**
+     * Get the address associated with the customer.
+     */
+    public function address(): HasOne
     {
-        return $this->hasOne('addresses', 'id', 'address_id');
+        return $this->hasOne(Address::class);
     }
 
-    public function phones() : HasMany
+    /**
+     * Get the phones associated with the customer.
+     */
+    public function phones(): HasMany
     {
-        return $this->hasMany('phones', 'customer_id', 'id');
+        return $this->hasMany(Phone::class);
+    }
+
+    /**
+     * Get the subscriptions associated with the customer.
+     */
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    /**
+     * Get the payment profiles associated with the customer.
+     */
+    public function paymentProfiles(): HasMany
+    {
+        return $this->hasMany(PaymentProfile::class);
+    }
+
+    /**
+     * Get the messages associated with the customer.
+     */
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
     }
 
     public function normalize() : array

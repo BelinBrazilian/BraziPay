@@ -4,32 +4,36 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PlanItem extends Model
 {
     use HasFactory;
 
-    protected $table = 'plan_items';
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'plan_id',
-        'product_id',
-        'pricing_schema_id',
         'cycles',
+        'product_id',
     ];
 
-    public function plan()
+    /**
+     * Get the plan that owns the plan item.
+     */
+    public function plan(): BelongsTo
     {
         return $this->belongsTo(Plan::class);
     }
 
-    public function product()
+    /**
+     * Get the product that owns the plan item.
+     */
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
-    }
-
-    public function pricingSchema()
-    {
-        return $this->belongsTo(PricingSchema::class);
     }
 }

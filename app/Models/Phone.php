@@ -10,21 +10,23 @@ class Phone extends Model
 {
     use HasFactory;
 
-    public $fillable = [
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
         'customer_id',
-        'merchant_id',
         'phone_type',
         'number',
         'extension',
     ];
 
-    public function customer() : BelongsTo
+    /**
+     * Get the customer that owns the phone.
+     */
+    public function customer(): BelongsTo
     {
-        return $this->belongsTo('customers', 'id', 'id');
-    }
-
-    public function merchant() : BelongsTo
-    {
-        return $this->belongsTo('merchants', 'id', 'id');
+        return $this->belongsTo(Customer::class);
     }
 }

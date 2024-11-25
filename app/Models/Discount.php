@@ -10,10 +10,12 @@ class Discount extends Model
 {
     use HasFactory;
 
-    protected $table = 'discounts';
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
-        'external_id',
         'product_item_id',
         'discount_type',
         'percentage',
@@ -22,10 +24,13 @@ class Discount extends Model
         'cycles',
     ];
 
-    // public function productItem() : BelongsTo
-    // {
-    //     return $this->belongsTo(ProductItem::class);
-    // }
+    /**
+     * Get the product item that owns the discount.
+     */
+    public function productItem(): BelongsTo
+    {
+        return $this->belongsTo(ProductItem::class);
+    }
 
     public function normalize(): array
     {
