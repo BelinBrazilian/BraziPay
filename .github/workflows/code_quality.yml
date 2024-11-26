@@ -48,7 +48,7 @@ jobs:
 
       # 4. Instalar dependências do Composer
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest --no-scripts
+        run: composer install --prefer-dist --no-progress --no-cache
 
       - name: Check installed binaries
         run: ls -la vendor/bin
