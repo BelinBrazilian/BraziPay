@@ -48,7 +48,13 @@ jobs:
 
       # 4. Instalar dependências do Composer
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run: composer install --prefer-dist --no-progress --no-suggest --no-scripts
+
+      - name: Check installed binaries
+        run: ls -la vendor/bin
+
+      - name: Check PHPStan installation
+        run: composer show phpstan/phpstan
 
       # 5. Verificar vulnerabilidades nas dependências
       - name: Check for vulnerabilities
