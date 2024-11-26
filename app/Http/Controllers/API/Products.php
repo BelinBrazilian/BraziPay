@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Services\ProductService;
+use App\Http\Traits\ApiIndexTrait;
+use App\Http\Traits\ApiShowTrait;
+use App\Http\Traits\ApiStoreTrait;
 use App\Http\Traits\ApiTraits;
+use App\Http\Traits\ApiUpdateTrait;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -19,7 +23,7 @@ use Illuminate\Http\Request;
  */
 class Products extends ApiController
 {
-    use ApiTraits;
+    use ApiTraits, ApiIndexTrait, ApiShowTrait, ApiStoreTrait, ApiUpdateTrait;
 
     /**
      * Products API controller constructor.

@@ -1,0 +1,101 @@
+name: Code Quality
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: brazipay
+          POSTGRES_USER: sail
+          POSTGRES_PASSWORD: password
+        options: >-
+          --health-cmd "pg_isready -U sail"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      # 1. Checkout do código
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Configurar PHP
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          extensions: mbstring, bcmath, curl, dom, pdo_pgsql, pgsql
+          tools: composer
+
+      # 3. Cache das dependências do Composer
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      # 4. Instalar dependências do Composer
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      # 5. Verificar vulnerabilidades nas dependências
+      - name: Check for vulnerabilities
+        run: composer audit || exit 0
+
+      # 6. Configurar o ambiente
+      - name: Setup environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+        env:
+          DB_CONNECTION: pgsql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 5432
+          DB_DATABASE: brazipay
+          DB_USERNAME: sail
+          DB_PASSWORD: password
+
+      # 7. Migrar banco de dados
+      - name: Run database migrations
+        run: php artisan migrate --force
+
+      # 8. Executar Laravel Pint
+      - name: Run Laravel Pint
+        run: vendor/bin/pint
+
+      # 9. Executar PHPStan
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse --memory-limit=1G
+
+      # 10. Rodar os testes com Pest ou PHPUnit
+      - name: Run tests
+        env:
+          DB_CONNECTION: pgsql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 5432
+          DB_DATABASE: brazipay
+          DB_USERNAME: sail
+          DB_PASSWORD: password
+        run: vendor/bin/pest
+
+      - name: Snyk Dependency Scan
+        uses: snyk/actions@v2
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Run Trivy Vulnerability Scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs

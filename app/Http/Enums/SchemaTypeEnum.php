@@ -25,4 +25,9 @@ enum SchemaTypeEnum: string
      * @var string
      */
     case Tiered = 'tiered';
+
+    case PerUnit = 'per_unit';
+    case StepUsage = 'step_usage';
+    case VolumeUsage = 'volume_usage';
+    case TierUsage = 'tier_usage';
 }
