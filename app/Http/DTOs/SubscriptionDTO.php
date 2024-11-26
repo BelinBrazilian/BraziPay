@@ -2,8 +2,8 @@
 
 namespace App\Http\DTOs;
 
-use App\Http\Interfaces\StoreRequestInterface;
-use App\Http\Interfaces\UpdateRequestInterface;
+use App\Http\Requests\SubscriptionStoreRequest;
+use App\Http\Requests\SubscriptionUpdateRequest;
 
 class SubscriptionDTO extends DTO
 {
@@ -21,7 +21,7 @@ class SubscriptionDTO extends DTO
         private readonly ?bool $invoiceSplit,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(SubscriptionStoreRequest | SubscriptionUpdateRequest $request): self
     {
         return new self(
             $request->get('plan_id'),

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('plan_id')->constrained()->onDelete('cascade');
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
             $table->foreignId('payment_method_id')->constrained()->onDelete('cascade');
+            $table->foreignId('payment_profile_id')->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('external_id')->nullable();
             $table->uuid('code')->unique();
             $table->timestamp('start_at')->nullable();
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->integer('billing_trigger_day')->nullable();
             $table->integer('billing_cycles')->nullable();
             $table->boolean('invoice_split')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
