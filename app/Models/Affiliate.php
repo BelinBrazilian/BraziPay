@@ -53,4 +53,36 @@ class Affiliate extends Model
     {
         return $this->belongsToMany(Bill::class, 'bill_affiliates');
     }
+
+    /**
+     * The subscriptions that belong to the affiliate.
+     */
+    public function subscriptions(): BelongsToMany
+    {
+        return $this->belongsToMany(Subscription::class)
+                    ->withPivot('ammount', 'amount_type', 'status', 'remove');
+    }
+
+    public function normalize($subscriptionPattern = false) :  array
+    {
+        $data = [
+            'body' => $this->toJson(),
+            'login' => $this->login,
+            'status' => $this->status,
+            'enabled' => $this->enabled,
+        ];
+
+        if ($subscriptionPattern) {
+            $data = [
+                'affiliate_id' => $this->external_id,
+                'amount' => $this->subscriptions->amount,
+                'amount_type' => $this->subscriptions->amount_type,
+                'status' => $this->subscriptions->status,
+                'id' => $this->subscriptions->external_id,
+                'remove' => $this->subscriptions->remove,
+            ];
+        }
+
+        return array_filter($data);
+    }
 }
