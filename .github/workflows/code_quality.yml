@@ -67,20 +67,13 @@ jobs:
           DB_USERNAME: sail
           DB_PASSWORD: password
 
-      # 7. Migrar banco de dados
+      # 7. Limpar cache de configurações
+      - name: Clear configuration cache
+        run: php artisan config:clear
+
+      # 8. Migrar banco de dados
       - name: Run database migrations
         run: php artisan migrate --force
-
-      # 8. Executar Laravel Pint
-      - name: Run Laravel Pint
-        run: vendor/bin/pint
-
-      # 9. Executar PHPStan
-      - name: Run PHPStan
-        run: vendor/bin/phpstan analyse --memory-limit=1G
-
-      # 10. Rodar os testes com Pest ou PHPUnit
-      - name: Run tests
         env:
           DB_CONNECTION: pgsql
           DB_HOST: 127.0.0.1
@@ -88,13 +81,33 @@ jobs:
           DB_DATABASE: brazipay
           DB_USERNAME: sail
           DB_PASSWORD: password
-        run: vendor/bin/pest
 
+      # 9. Executar Laravel Pint
+      - name: Run Laravel Pint
+        run: vendor/bin/pint
+
+      # 10. Executar PHPStan
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse --memory-limit=1G
+
+      # 11. Rodar os testes com Pest ou PHPUnit
+      - name: Run tests
+        run: vendor/bin/pest
+        env:
+          DB_CONNECTION: pgsql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 5432
+          DB_DATABASE: brazipay
+          DB_USERNAME: sail
+          DB_PASSWORD: password
+
+      # 12. Snyk Dependency Scan
       - name: Snyk Dependency Scan
         uses: snyk/actions/php@master
         env:
           SNYK_TOKEN: '58d74067-9602-4238-9654-3584df5d67c3'
 
+      # 13. Run Trivy Vulnerability Scanner
       - name: Run Trivy Vulnerability Scanner
         uses: aquasecurity/trivy-action@master
         with:
