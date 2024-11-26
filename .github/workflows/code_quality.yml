@@ -119,6 +119,6 @@ jobs:
                         - Job: `${{ github.job }}`
                         - Branch: `${{ github.ref_name }}`
                         - Commit: `${{ github.sha }}`
-            Check the logs: `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`
+            Check the logs: `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`"
           }' \
           https://discord.com/api/webhooks/1311038258129403944/0HIIXxAm0tdNgRVrVh38w9_abuw9fezJwrkx7-W5Tn_dkftgaKGTxjCYDq6yojWGPj9E
