@@ -94,7 +94,7 @@ jobs:
 
       # 9. Executar PHPStan
       - name: Run PHPStan
-        run: vendor/bin/phpstan analyse --memory-limit=1G
+        run: vendor/bin/phpstan analyse app bootstrap config database lang resources routes tests --memory-limit=1G
 
       # 10. Rodar os testes com Pest ou PHPUnit
       - name: Run tests
