@@ -91,9 +91,9 @@ jobs:
         run: vendor/bin/pest
 
       - name: Snyk Dependency Scan
-        uses: snyk/actions@v2
+        uses: snyk/actions/php@master
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          SNYK_TOKEN: '58d74067-9602-4238-9654-3584df5d67c3'
 
       - name: Run Trivy Vulnerability Scanner
         uses: aquasecurity/trivy-action@master
