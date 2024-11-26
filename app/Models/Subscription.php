@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Subscription extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +22,7 @@ class Subscription extends Model
         'plan_id',
         'customer_id',
         'payment_method_id',
+        'payment_profile_id',
         'external_id',
         'code',
         'start_at',
@@ -55,10 +58,49 @@ class Subscription extends Model
     }
 
     /**
+     * Get the payment method that owns the subscription.
+     */
+    public function paymentProfile(): BelongsTo
+    {
+        return $this->belongsTo(PaymentProfile::class);
+    }
+
+    /**
      * Get the product items for the subscription.
      */
     public function productItems(): HasMany
     {
         return $this->hasMany(ProductItem::class);
+    }
+
+    /**
+     * The affiliates that belong to the subscription.
+     */
+    public function affiliates(): BelongsToMany
+    {
+        return $this->belongsToMany(Affiliate::class)
+                    ->withPivot('ammount', 'amount_type', 'status', 'remove');
+    }
+
+    public function normalize() : array
+    {
+        $data = [
+            'body' => $this->toJson(),
+            'code' => $this->code,
+            'payment_method_code' => $this->paymentMethod->code,
+            'installments' => $this->installments,
+            'billing_trigger_type' => $this->billing_trigger_type,
+            'billing_trigger_day' => $this->billing_trigger_day,
+            'metadata' => $this->metadata ?? [],
+            'payment_profile' => $this->paymentProfile->normalize(true),
+            'invoice_split' => $this->invoice_split,
+            'subscription_affiliates' => [],
+        ];
+
+        foreach($this->affiliates as $affiliate) {
+            $data['subscription_affiliates'][] = $affiliate->normalize(true);
+        }
+
+        return array_filter($data);
     }
 }

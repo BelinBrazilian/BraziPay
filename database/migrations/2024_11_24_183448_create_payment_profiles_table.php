@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('payment_profiles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('external_id')->nullable();
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
             $table->string('token')->nullable();
             $table->string('holder_name')->nullable();
