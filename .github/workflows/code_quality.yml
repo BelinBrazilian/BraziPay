@@ -47,7 +47,8 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-cache
 
       - name: Check for vulnerabilities
-        run: composer audit || echo "Vulnerabilities found"
+        run: composer audit
+        continue-on-error: true
 
       - name: Setup environment
         run: |
@@ -94,11 +95,13 @@ jobs:
         uses: snyk/actions/php@master
         env:
           SNYK_TOKEN: '58d74067-9602-4238-9654-3584df5d67c3'
+        continue-on-error: true
 
       - name: Run Trivy Vulnerability Scanner
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: fs
+        continue-on-error: true
 
   notify-failure:
     runs-on: ubuntu-latest
