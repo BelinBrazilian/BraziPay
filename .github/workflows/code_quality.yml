@@ -115,24 +115,31 @@ jobs:
       - name: Aggregate Step Results
         id: aggregate-results
         run: |
-          echo "RESULTS={}" >> $GITHUB_ENV
+          FAILED=false
+          REPORT="Steps Status Report:\n"
+
           steps=("install-dependencies" "check-vulnerabilities" "setup-environment" "clear-cache" "run-migrations" "run-pint" "run-phpstan" "run-tests" "run-snyk" "run-trivy")
           for step in "${steps[@]}"; do
-            if [ "${{ steps[$step].outcome }}" == "failure" ]; then
-              echo "$step: Failed" >> results.txt
+            OUTCOME="${{ steps[$step].outcome }}"
+            if [[ "$OUTCOME" == "failure" ]]; then
+              FAILED=true
+              REPORT+="❌ $step: Failed\n"
             else
-              echo "$step: Succeeded" >> results.txt
+              REPORT+="✅ $step: Succeeded\n"
             fi
           done
-          echo "RESULTS=$(cat results.txt | jq -Rs .)" >> $GITHUB_ENV
+
+          echo -e "$REPORT" > report.txt
+          echo "FAILED=$FAILED" >> $GITHUB_ENV
+          echo "STEP_RESULTS=$(cat report.txt)" >> $GITHUB_ENV
 
   notify-failure:
     runs-on: ubuntu-latest
     needs: code-quality
-    if: failure()
+    if: ${{ env.FAILED == 'true' }}
     steps:
       - name: Send Discord Notification
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d "{\"content\": \"⚠️ Workflow Failed: \`Code Quality\`\n- Steps Status:\n${{ env.RESULTS }}\n- Branch: \`${{ github.ref_name }}\`\n- Commit: \`${{ github.sha }}\`\nCheck the logs: \`${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\`\"}" \
+          -d "{\"content\": \"⚠️ Workflow Failed: \`Code Quality\`\n- Steps Status:\n${{ env.STEP_RESULTS }}\n- Branch: \`${{ github.ref_name }}\`\n- Commit: \`${{ github.sha }}\`\nCheck the logs: \`${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\`\"}" \
           https://discord.com/api/webhooks/1311038258129403944/0HIIXxAm0tdNgRVrVh38w9_abuw9fezJwrkx7-W5Tn_dkftgaKGTxjCYDq6yojWGPj9E
