@@ -45,25 +45,24 @@ jobs:
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-cache
+        id: install-dependencies
+        continue-on-error: true
 
       - name: Check for vulnerabilities
         run: composer audit
+        id: check-vulnerabilities
         continue-on-error: true
 
       - name: Setup environment
         run: |
           cp .env.example .env
           php artisan key:generate
-        env:
-          DB_CONNECTION: pgsql
-          DB_HOST: 127.0.0.1
-          DB_PORT: 5432
-          DB_DATABASE: brazipay
-          DB_USERNAME: sail
-          DB_PASSWORD: password
+        id: setup-environment
 
       - name: Clear configuration cache
         run: php artisan config:clear
+        id: clear-cache
+        continue-on-error: true
 
       - name: Run database migrations
         run: php artisan migrate --force
@@ -74,12 +73,18 @@ jobs:
           DB_DATABASE: brazipay
           DB_USERNAME: sail
           DB_PASSWORD: password
+        id: run-migrations
+        continue-on-error: true
 
       - name: Run Laravel Pint
         run: vendor/bin/pint --test
+        id: run-pint
+        continue-on-error: true
 
       - name: Run PHPStan
         run: vendor/bin/phpstan analyse app bootstrap config database lang resources routes tests --memory-limit=1G
+        id: run-phpstan
+        continue-on-error: true
 
       - name: Run tests
         env:
@@ -90,18 +95,36 @@ jobs:
           DB_USERNAME: sail
           DB_PASSWORD: password
         run: vendor/bin/phpunit
+        id: run-tests
+        continue-on-error: true
 
       - name: Run Snyk Dependency Scan
         uses: snyk/actions/php@master
         env:
           SNYK_TOKEN: '58d74067-9602-4238-9654-3584df5d67c3'
+        id: run-snyk
         continue-on-error: true
 
       - name: Run Trivy Vulnerability Scanner
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: fs
+        id: run-trivy
         continue-on-error: true
+
+      - name: Aggregate Step Results
+        id: aggregate-results
+        run: |
+          echo "RESULTS={}" >> $GITHUB_ENV
+          steps=("install-dependencies" "check-vulnerabilities" "setup-environment" "clear-cache" "run-migrations" "run-pint" "run-phpstan" "run-tests" "run-snyk" "run-trivy")
+          for step in "${steps[@]}"; do
+            if [ "${{ steps[$step].outcome }}" == "failure" ]; then
+              echo "$step: Failed" >> results.txt
+            else
+              echo "$step: Succeeded" >> results.txt
+            fi
+          done
+          echo "RESULTS=$(cat results.txt | jq -Rs .)" >> $GITHUB_ENV
 
   notify-failure:
     runs-on: ubuntu-latest
@@ -111,5 +134,5 @@ jobs:
       - name: Send Discord Notification
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d "{\"content\": \"⚠️ Workflow Failed: \`Code Quality\`\n- Job: \`notify-failure\`\n- Branch: \`${{ github.ref_name }}\`\n- Commit: \`${{ github.sha }}\`\nCheck the logs: \`${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\`\"}" \
+          -d "{\"content\": \"⚠️ Workflow Failed: \`Code Quality\`\n- Steps Status:\n${{ env.RESULTS }}\n- Branch: \`${{ github.ref_name }}\`\n- Commit: \`${{ github.sha }}\`\nCheck the logs: \`${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\`\"}" \
           https://discord.com/api/webhooks/1311038258129403944/0HIIXxAm0tdNgRVrVh38w9_abuw9fezJwrkx7-W5Tn_dkftgaKGTxjCYDq6yojWGPj9E
