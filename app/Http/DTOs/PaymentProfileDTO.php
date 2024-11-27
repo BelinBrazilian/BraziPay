@@ -25,7 +25,7 @@ class PaymentProfileDTO extends DTO
         private readonly ?string $gatewayToken,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('customer_id'),

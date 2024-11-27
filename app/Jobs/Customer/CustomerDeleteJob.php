@@ -2,7 +2,6 @@
 
 namespace App\Jobs\Customer;
 
-use App\Models\Customer;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -23,7 +22,7 @@ class CustomerDeleteJob implements ShouldQueue
 
             Log::debug('Customer deleted succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on deleting Vindi Customer: ' . $e->getMessage());
+            Log::error('Error on deleting Vindi Customer: '.$e->getMessage());
         }
     }
 }

@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PaymentMethod extends Model
 {
@@ -25,7 +25,7 @@ class PaymentMethod extends Model
         'settings',
         'set_subscription_on_success',
         'allow_as_alternative',
-        'maximum_attempts'
+        'maximum_attempts',
     ];
 
     /**

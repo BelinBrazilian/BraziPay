@@ -7,8 +7,6 @@ namespace App\Http\Enums;
  *
  * Represents the types of pricing schemas available for a product. This enum
  * ensures consistency in handling schema types across the application.
- *
- * @package App\Http\Enums
  */
 enum SchemaTypeEnum: string
 {

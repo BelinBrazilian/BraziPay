@@ -23,7 +23,7 @@ class ProductUpdateJob implements ShouldQueue
 
             Log::debug('Product updated succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on updating Vindi Product: ' . $e->getMessage());
+            Log::error('Error on updating Vindi Product: '.$e->getMessage());
         }
     }
 }

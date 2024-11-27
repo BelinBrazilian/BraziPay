@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', fn(Request $request) => $request->user());
+Route::middleware('auth:sanctum')->get('/user', fn (Request $request) => $request->user());
 
 // Prefixo da API v1
 Route::prefix('v1')->group(function () {

@@ -15,8 +15,6 @@ return new class extends Migration
      * This migration creates the 'plans' and 'plan_items' tables if they do not exist.
      * It also verifies the existence of each column within each table, adding missing
      * columns where necessary to ensure table structure consistency.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -44,8 +42,6 @@ return new class extends Migration
 
     /**
      * Reverse the migrations by dropping the 'plan_items' and 'plans' tables.
-     *
-     * @return void
      */
     public function down(): void
     {

@@ -22,7 +22,7 @@ class SubscriptionDeleteJob implements ShouldQueue
 
             Log::debug('Subscription deleted succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on deleting Vindi Subscription: ' . $e->getMessage());
+            Log::error('Error on deleting Vindi Subscription: '.$e->getMessage());
         }
     }
 }

@@ -18,7 +18,7 @@ class NotificationDTO extends DTO
         private readonly ?string $bcc,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('status', null),

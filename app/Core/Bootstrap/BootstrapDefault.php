@@ -18,16 +18,16 @@ class BootstrapDefault
         // 4) Light header layout (default_header_layout.html)
         // $this->initLightHeaderLayout();
 
-        # Init global assets for default layout
+        // Init global assets for default layout
         $this->initAssets();
     }
 
     public function initAssets(): void
     {
-        # Include global vendors
+        // Include global vendors
         addVendors(['datatables']);
 
-        # Include global javascript files
+        // Include global javascript files
         addJavascriptFile('assets/js/custom/widgets.js');
         addJavascriptFile('assets/js/custom/apps/chat/chat.js');
         addJavascriptFile('assets/js/custom/utilities/modals/upgrade-plan.js');
@@ -83,5 +83,4 @@ class BootstrapDefault
 
         addHtmlClass('body', 'app-default');
     }
-
 }

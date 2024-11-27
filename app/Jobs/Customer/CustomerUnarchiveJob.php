@@ -23,7 +23,7 @@ class CustomerUnarchiveJob implements ShouldQueue
 
             Log::debug('Customer unarchived succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on unarchiving Vindi Customer: ' . $e->getMessage());
+            Log::error('Error on unarchiving Vindi Customer: '.$e->getMessage());
         }
     }
 }

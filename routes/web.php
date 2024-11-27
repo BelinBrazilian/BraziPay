@@ -64,4 +64,4 @@ Route::get('/error', function () {
 
 Route::get('/auth/redirect/{provider}', [SocialiteController::class, 'redirect']);
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

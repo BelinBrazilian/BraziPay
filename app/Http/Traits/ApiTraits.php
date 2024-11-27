@@ -4,5 +4,5 @@ namespace App\Http\Traits;
 
 trait ApiTraits
 {
-    use ApiIndexTrait, ApiShowTrait, ApiStoreTrait, ApiUpdateTrait, ApiDestroyTrait;
+    use ApiDestroyTrait, ApiIndexTrait, ApiShowTrait, ApiStoreTrait, ApiUpdateTrait;
 }

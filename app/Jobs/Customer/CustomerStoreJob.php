@@ -25,7 +25,7 @@ class CustomerStoreJob implements ShouldQueue
 
             Log::debug('Customer created succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on creating Vindi Customer: ' . $e->getMessage());
+            Log::error('Error on creating Vindi Customer: '.$e->getMessage());
         }
     }
 }

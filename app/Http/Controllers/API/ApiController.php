@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\API;
 
-use Livewire\Attributes\Url;
 use Livewire\Component;
 
 class ApiController extends Component
@@ -12,13 +11,20 @@ class ApiController extends Component
 
     // Default Laravel/PHP paginator
     public ?string $filter;
+
     public ?string $sort;
+
     public ?int $page;
+
     public ?int $per_page;
+
     public ?string $include;
+
     public ?string $with;
+
     public ?string $fields;
+
     public ?string $select;
 
-    public function __constuct() {} 
+    public function __constuct() {}
 }

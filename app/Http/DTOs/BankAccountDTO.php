@@ -14,7 +14,7 @@ class BankAccountDTO extends DTO
         private readonly string $accountDigit,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('bank_code'),

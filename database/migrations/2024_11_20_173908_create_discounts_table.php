@@ -20,7 +20,7 @@ return new class extends Migration
 
             // Tipo de desconto
             $table->enum('discount_type', array_column(DiscountTypeEnum::cases(), 'value')) // Primeira Migração
-            ->comment('Ex: percentage, fixed_amount'); // Adicionando explicação da segunda migração
+                ->comment('Ex: percentage, fixed_amount'); // Adicionando explicação da segunda migração
 
             // Valores de desconto
             $table->decimal('percentage', 10, 2)->nullable(); // Segunda Migração

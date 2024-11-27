@@ -46,12 +46,6 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-cache
 
-      - name: Check installed binaries
-        run: ls -la vendor/bin
-
-      - name: Check PHPStan installation
-        run: composer show phpstan/phpstan
-
       - name: Check for vulnerabilities
         run: composer audit
 

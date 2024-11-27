@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Affiliate extends Model
 {
@@ -60,10 +60,10 @@ class Affiliate extends Model
     public function subscriptions(): BelongsToMany
     {
         return $this->belongsToMany(Subscription::class)
-                    ->withPivot('ammount', 'amount_type', 'status', 'remove');
+            ->withPivot('ammount', 'amount_type', 'status', 'remove');
     }
 
-    public function normalize($subscriptionPattern = false) :  array
+    public function normalize($subscriptionPattern = false): array
     {
         $data = [
             'body' => $this->toJson(),

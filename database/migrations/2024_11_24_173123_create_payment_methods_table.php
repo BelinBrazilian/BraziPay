@@ -7,14 +7,13 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.   
-
+     * Run the migrations.
      */
     public function up(): void
     {
         Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
-            $table->string('public_name'); 
+            $table->string('public_name');
             $table->string('name');
             $table->string('code')->unique();
             $table->string('type');
@@ -36,8 +35,7 @@ return new class extends Migration
     }
 
     /**
-     * Reverse the migrations.   
-
+     * Reverse the migrations.
      */
     public function down(): void
     {

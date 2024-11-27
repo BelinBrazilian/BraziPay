@@ -15,7 +15,7 @@ class ImportBatchDTO extends DTO
         private readonly string $status,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('payment_method_id'),

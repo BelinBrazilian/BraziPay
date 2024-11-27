@@ -25,7 +25,7 @@ class DiscountStoreJob implements ShouldQueue
 
             Log::debug('Discount created succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on creating Vindi Discount: ' . $e->getMessage());
+            Log::error('Error on creating Vindi Discount: '.$e->getMessage());
         }
     }
 }

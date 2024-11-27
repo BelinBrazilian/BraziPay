@@ -6,7 +6,6 @@ use App\Http\Services\PlanService;
 use App\Http\Traits\ApiIndexTrait;
 use App\Http\Traits\ApiShowTrait;
 use App\Http\Traits\ApiStoreTrait;
-use App\Http\Traits\ApiTraits;
 use App\Http\Traits\ApiUpdateTrait;
 use App\Models\Plan;
 use Psr\Http\Message\RequestInterface;

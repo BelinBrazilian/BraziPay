@@ -14,7 +14,7 @@ class MerchantUserDTO extends DTO
         private readonly ?string $action,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('role_id'),

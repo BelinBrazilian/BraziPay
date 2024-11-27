@@ -19,7 +19,7 @@ class Subscription extends ApiController
         parent::__construct();
     }
 
-    public function reactivate(mixed $id) : JsonResponse
+    public function reactivate(mixed $id): JsonResponse
     {
         return $this->service->reactivate($id);
     }

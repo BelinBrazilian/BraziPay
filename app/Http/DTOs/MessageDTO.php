@@ -14,7 +14,7 @@ class MessageDTO extends DTO
         private readonly ?string $email,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('customer_id'),

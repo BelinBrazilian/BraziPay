@@ -18,12 +18,10 @@ use Illuminate\Http\Request;
  * leveraging the `ProductService` to handle business logic and the
  * `ApiTraits` for common API response functionalities. It acts as
  * an intermediary between the API routes and the service layer.
- *
- * @package App\Http\Controllers\API
  */
 class Products extends ApiController
 {
-    use ApiTraits, ApiIndexTrait, ApiShowTrait, ApiStoreTrait, ApiUpdateTrait;
+    use ApiIndexTrait, ApiShowTrait, ApiStoreTrait, ApiTraits, ApiUpdateTrait;
 
     /**
      * Products API controller constructor.
@@ -33,9 +31,9 @@ class Products extends ApiController
      * product-related API requests. The `parent::__construct()` call
      * initializes the base API controller.
      *
-     * @param Request $request The HTTP request instance.
-     * @param ProductService $service The service layer for product business logic.
-     * @param Product $model The product model instance.
+     * @param  Request  $request  The HTTP request instance.
+     * @param  ProductService  $service  The service layer for product business logic.
+     * @param  Product  $model  The product model instance.
      */
     public function __construct(
         private readonly Request $request,

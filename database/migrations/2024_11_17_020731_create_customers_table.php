@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Enums\PhoneTypeEnum;
 use App\Http\Enums\PlanStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,8 +12,6 @@ return new class extends Migration
      *
      * This migration creates the required tables if they do not exist, and checks for each column
      * within each table, adding missing columns if needed to ensure structure consistency.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -37,8 +34,6 @@ return new class extends Migration
 
     /**
      * Reverse the migrations by dropping the 'customers', 'addresses', and 'phones' tables.
-     *
-     * @return void
      */
     public function down(): void
     {

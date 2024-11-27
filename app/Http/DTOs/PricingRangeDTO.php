@@ -7,19 +7,17 @@ namespace App\Http\DTOs;
  *
  * This DTO encapsulates the details of a pricing range, providing
  * convenient methods to create instances from arrays or request data.
- *
- * @package App\Http\DTOs
  */
 class PricingRangeDTO extends DTO
 {
     /**
      * PricingRangeDTO constructor.
      *
-     * @param string $id              The unique identifier for the pricing range.
-     * @param float  $start_quantity  The starting quantity for the range.
-     * @param float  $end_quantity    The ending quantity for the range.
-     * @param float  $price           The price associated with the range.
-     * @param float  $overage_price   The overage price for quantities beyond the range.
+     * @param  string  $id  The unique identifier for the pricing range.
+     * @param  float  $start_quantity  The starting quantity for the range.
+     * @param  float  $end_quantity  The ending quantity for the range.
+     * @param  float  $price  The price associated with the range.
+     * @param  float  $overage_price  The overage price for quantities beyond the range.
      */
     public function __construct(
         public readonly string $id,
@@ -32,9 +30,7 @@ class PricingRangeDTO extends DTO
     /**
      * Create a new PricingRangeDTO instance from request data.
      *
-     * @param array<string, mixed> $data  The request data containing pricing range attributes.
-     *
-     * @return self
+     * @param  array<string, mixed>  $data  The request data containing pricing range attributes.
      */
     public static function fromRequest(array $data): self
     {
@@ -48,9 +44,7 @@ class PricingRangeDTO extends DTO
      * a structured data array, typically sourced from a database or
      * external service.
      *
-     * @param array<string, mixed> $data  The array containing pricing range attributes.
-     *
-     * @return self
+     * @param  array<string, mixed>  $data  The array containing pricing range attributes.
      */
     public static function fromArray(array $data): self
     {

@@ -23,7 +23,7 @@ class SubscriptionUpdateJob implements ShouldQueue
 
             Log::debug('Subscription updated succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on updating Vindi Subscription: ' . $e->getMessage());
+            Log::error('Error on updating Vindi Subscription: '.$e->getMessage());
         }
     }
 }

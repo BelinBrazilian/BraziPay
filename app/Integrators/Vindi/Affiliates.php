@@ -6,15 +6,11 @@ use Vindi\Resource;
 
 /**
  * Class Plan
- *
- * @package Vindi
  */
 class Affiliates extends Resource
 {
     /**
      * The endpoint that will hit the API.
-     *
-     * @return string
      */
     public function endpoint(): string
     {
@@ -24,9 +20,9 @@ class Affiliates extends Resource
     /**
      * Make a GET request to plans/{id}/plan_items.
      *
-     * @param int $id The resource's id.
-     *
+     * @param  int  $id  The resource's id.
      * @return mixed
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Vindi\Exceptions\RateLimitException
      * @throws \Vindi\Exceptions\RequestException

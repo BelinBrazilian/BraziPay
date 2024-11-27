@@ -2,7 +2,7 @@
 
 namespace App\Http\Enums;
 
-enum ProductStatusEnum: string 
+enum ProductStatusEnum: string
 {
     case Active = 'active';
     case Inactive = 'inactive';

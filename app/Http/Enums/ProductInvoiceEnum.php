@@ -8,8 +8,6 @@ namespace App\Http\Enums;
  * Represents the possible invoice types for a product. This enum provides
  * a standardized way to handle invoice type values, ensuring consistency
  * across the application.
- *
- * @package App\Http\Enums
  */
 enum ProductInvoiceEnum: string
 {

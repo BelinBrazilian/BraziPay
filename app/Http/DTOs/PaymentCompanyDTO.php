@@ -12,7 +12,7 @@ class PaymentCompanyDTO extends DTO
         private readonly string $code,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('name'),

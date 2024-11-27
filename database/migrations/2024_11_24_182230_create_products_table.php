@@ -10,8 +10,6 @@ return new class extends Migration
 {
     /**
      * Run the migrations to create ou atualizar as tabelas 'products', 'pricing_schemas' e 'pricing_ranges'.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -45,8 +43,6 @@ return new class extends Migration
 
     /**
      * Reverse the migrations by dropping as tabelas 'products', 'pricing_schemas' e 'pricing_ranges'.
-     *
-     * @return void
      */
     public function down(): void
     {

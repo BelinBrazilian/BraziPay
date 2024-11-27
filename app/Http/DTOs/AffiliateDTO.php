@@ -21,14 +21,14 @@ class AffiliateDTO extends DTO
         private readonly ?string $phone,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('address_id', null),
             $request->get('bank_account_id', null),
             $request->get('login'),
-            $request->get('status', 0), 
-            $request->get('enabled', false), 
+            $request->get('status', 0),
+            $request->get('enabled', false),
             $request->get('name', null),
             $request->get('cpf', null),
             $request->get('cnpj', null),

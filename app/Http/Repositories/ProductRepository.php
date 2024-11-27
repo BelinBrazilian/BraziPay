@@ -11,8 +11,6 @@ use App\Models\Product;
  * allowing for CRUD operations and other interactions with the
  * `Product` model. It inherits shared functionality from the base
  * `Repository` class.
- *
- * @package App\Http\Repositories
  */
 class ProductRepository extends Repository
 {

@@ -14,7 +14,7 @@ class PaymentConditionDiscountDTO extends DTO
         private readonly int $daysBeforeDue,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('payment_condition_id'),

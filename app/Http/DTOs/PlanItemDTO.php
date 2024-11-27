@@ -13,7 +13,7 @@ class PlanItemDTO extends DTO
         private readonly int $productId,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('plan_id'),

@@ -23,13 +23,13 @@ class AddressStoreRequest extends FormRequest implements StoreRequestInterface
     public function rules(): array
     {
         return [
-            'street' => 'required|string|max:255', 
-            'number' => 'required|string|max:10', 
-            'additional_details' => 'nullable|string|max:255', 
-            'zipcode' => 'required|string|max:10', 
-            'neighborhood' => 'required|string|max:50', 
-            'city' => 'required|string|max:30', 
-            'state' => 'required|string|max:30', 
+            'street' => 'required|string|max:255',
+            'number' => 'required|string|max:10',
+            'additional_details' => 'nullable|string|max:255',
+            'zipcode' => 'required|string|max:10',
+            'neighborhood' => 'required|string|max:50',
+            'city' => 'required|string|max:30',
+            'state' => 'required|string|max:30',
             'country' => 'required|string|max:30',
         ];
     }

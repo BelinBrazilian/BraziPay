@@ -9,20 +9,16 @@ class SubscriptionUpdateRequest extends FormRequest implements UpdateRequestInte
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
-    public function authorize() : bool
+    public function authorize(): bool
     {
         return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
-    public function rules() : array
+    public function rules(): array
     {
         return [
             'plan_id' => 'required|exists:plans,id',
@@ -30,7 +26,7 @@ class SubscriptionUpdateRequest extends FormRequest implements UpdateRequestInte
             'payment_method_id' => 'required|exists:payment_methods,id',
             'payment_profile_id' => 'required|exists:payment_profiles,id',
             'external_id' => 'nullable|integer',
-            'code' => 'required|uuid|unique:subscriptions,code,' . $this->subscription->code,
+            'code' => 'required|uuid|unique:subscriptions,code,'.$this->subscription->code,
             'start_at' => 'nullable|date',
             'installments' => 'nullable|integer',
             'billing_trigger_type' => 'nullable|string',

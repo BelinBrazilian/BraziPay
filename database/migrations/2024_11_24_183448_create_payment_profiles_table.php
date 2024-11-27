@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('bank_account')->nullable();
             $table->string('card_expiration')->nullable();
             $table->boolean('allow_as_fallback')->default(false);
-            $table->string('card_number')->nullable(); 
-            $table->string('card_cvv')->nullable(); 
+            $table->string('card_number')->nullable();
+            $table->string('card_cvv')->nullable();
             $table->string('card_token')->nullable();
             $table->string('gateway_id')->nullable();
             $table->string('payment_method_code')->nullable();
