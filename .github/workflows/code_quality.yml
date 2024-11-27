@@ -46,7 +46,6 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-cache
         id: install-dependencies
-        continue-on-error: true
 
       - name: Check for vulnerabilities
         run: composer audit
@@ -62,7 +61,6 @@ jobs:
       - name: Clear configuration cache
         run: php artisan config:clear
         id: clear-cache
-        continue-on-error: true
 
       - name: Run database migrations
         run: php artisan migrate --force
@@ -74,7 +72,6 @@ jobs:
           DB_USERNAME: sail
           DB_PASSWORD: password
         id: run-migrations
-        continue-on-error: true
 
       - name: Run Laravel Pint
         run: vendor/bin/pint --test
@@ -96,7 +93,6 @@ jobs:
           DB_PASSWORD: password
         run: vendor/bin/phpunit
         id: run-tests
-        continue-on-error: true
 
       - name: Run Snyk Dependency Scan
         uses: snyk/actions/php@master
@@ -118,25 +114,76 @@ jobs:
           FAILED=false
           REPORT="Steps Status Report:\n"
 
-          steps=("install-dependencies" "check-vulnerabilities" "setup-environment" "clear-cache" "run-migrations" "run-pint" "run-phpstan" "run-tests" "run-snyk" "run-trivy")
-          for step in "${steps[@]}"; do
-            OUTCOME="${{ steps[$step].outcome }}"
-            if [[ "$OUTCOME" == "failure" ]]; then
-              FAILED=true
-              REPORT+="❌ $step: Failed\n"
-            else
-              REPORT+="✅ $step: Succeeded\n"
-            fi
-          done
+          if [ "${{ steps.install-dependencies.outcome }}" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Install dependencies: Failed\n"
+          else
+            REPORT+="✅ Install dependencies: Succeeded\n"
+          fi
+
+          if [ "${{ steps.check-vulnerabilities.outcome }}" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Check vulnerabilities: Failed\n"
+          else
+            REPORT+="✅ Check vulnerabilities: Succeeded\n"
+          fi
+
+          if [ "${{ steps.clear-cache.outcome }}" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Clear configuration cache: Failed\n"
+          else
+            REPORT+="✅ Clear configuration cache: Succeeded\n"
+          fi
+
+          if [ "${{ steps.run-migrations.outcome }}" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Run migrations: Failed\n"
+          else
+            REPORT+="✅ Run migrations: Succeeded\n"
+          fi
+
+          if [ "${{ steps.run-pint.outcome }}" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Run Laravel Pint: Failed\n"
+          else
+            REPORT+="✅ Run Laravel Pint: Succeeded\n"
+          fi
+
+          if [ "${{ steps.run-phpstan.outcome }}" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Run PHPStan: Failed\n"
+          else
+            REPORT+="✅ Run PHPStan: Succeeded\n"
+          fi
+
+          if [ "${{ steps.run-tests.outcome }}" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Run tests: Failed\n"
+          else
+            REPORT+="✅ Run tests: Succeeded\n"
+          fi
+
+          if [ "${{ steps.run-snyk.outcome }}" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Run Snyk: Failed\n"
+          else
+            REPORT+="✅ Run Snyk: Succeeded\n"
+          fi
+
+          if [ "${{ steps.run-trivy.outcome }}" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Run Trivy: Failed\n"
+          else
+            REPORT+="✅ Run Trivy: Succeeded\n"
+          fi
 
           echo -e "$REPORT" > report.txt
-          echo "FAILED=$FAILED" >> $GITHUB_ENV
           echo "STEP_RESULTS=$(cat report.txt)" >> $GITHUB_ENV
 
   notify-failure:
     runs-on: ubuntu-latest
     needs: code-quality
-    if: ${{ env.FAILED == 'true' }}
+    if: failure()
     steps:
       - name: Send Discord Notification
         run: |
