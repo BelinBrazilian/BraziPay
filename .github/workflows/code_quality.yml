@@ -114,63 +114,63 @@ jobs:
           FAILED=false
           REPORT="Steps Status Report:\n"
 
-          if [ "${{ steps.install-dependencies.outcome }}" == "failure" ]; then
+          if [ "success" == "failure" ]; then
             FAILED=true
             REPORT+="❌ Install dependencies: Failed\n"
           else
             REPORT+="✅ Install dependencies: Succeeded\n"
           fi
 
-          if [ "${{ steps.check-vulnerabilities.outcome }}" == "failure" ]; then
+          if [ "failure" == "failure" ]; then
             FAILED=true
             REPORT+="❌ Check vulnerabilities: Failed\n"
           else
             REPORT+="✅ Check vulnerabilities: Succeeded\n"
           fi
 
-          if [ "${{ steps.clear-cache.outcome }}" == "failure" ]; then
+          if [ "success" == "failure" ]; then
             FAILED=true
             REPORT+="❌ Clear configuration cache: Failed\n"
           else
             REPORT+="✅ Clear configuration cache: Succeeded\n"
           fi
 
-          if [ "${{ steps.run-migrations.outcome }}" == "failure" ]; then
+          if [ "success" == "failure" ]; then
             FAILED=true
             REPORT+="❌ Run migrations: Failed\n"
           else
             REPORT+="✅ Run migrations: Succeeded\n"
           fi
 
-          if [ "${{ steps.run-pint.outcome }}" == "failure" ]; then
+          if [ "success" == "failure" ]; then
             FAILED=true
             REPORT+="❌ Run Laravel Pint: Failed\n"
           else
             REPORT+="✅ Run Laravel Pint: Succeeded\n"
           fi
 
-          if [ "${{ steps.run-phpstan.outcome }}" == "failure" ]; then
+          if [ "success" == "failure" ]; then
             FAILED=true
             REPORT+="❌ Run PHPStan: Failed\n"
           else
             REPORT+="✅ Run PHPStan: Succeeded\n"
           fi
 
-          if [ "${{ steps.run-tests.outcome }}" == "failure" ]; then
+          if [ "success" == "failure" ]; then
             FAILED=true
             REPORT+="❌ Run tests: Failed\n"
           else
             REPORT+="✅ Run tests: Succeeded\n"
           fi
 
-          if [ "${{ steps.run-snyk.outcome }}" == "failure" ]; then
+          if [ "failure" == "failure" ]; then
             FAILED=true
             REPORT+="❌ Run Snyk: Failed\n"
           else
             REPORT+="✅ Run Snyk: Succeeded\n"
           fi
 
-          if [ "${{ steps.run-trivy.outcome }}" == "failure" ]; then
+          if [ "success" == "failure" ]; then
             FAILED=true
             REPORT+="❌ Run Trivy: Failed\n"
           else
@@ -178,7 +178,14 @@ jobs:
           fi
 
           echo -e "$REPORT" > report.txt
-          echo "STEP_RESULTS=$(cat report.txt)" >> $GITHUB_ENV
+          echo "FAILED=$FAILED" >> $GITHUB_ENV
+
+      - name: Set Step Results
+        if: failure()
+        run: |
+          echo "Reporting Results:"
+          cat report.txt
+
 
   notify-failure:
     runs-on: ubuntu-latest
@@ -187,6 +194,8 @@ jobs:
     steps:
       - name: Send Discord Notification
         run: |
+          REPORT=$(cat report.txt)
           curl -X POST -H "Content-Type: application/json" \
-          -d "{\"content\": \"⚠️ Workflow Failed: \`Code Quality\`\n- Steps Status:\n${{ env.STEP_RESULTS }}\n- Branch: \`${{ github.ref_name }}\`\n- Commit: \`${{ github.sha }}\`\nCheck the logs: \`${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\`\"}" \
+          -d "{\"content\": \"⚠️ Workflow Failed: \`Code Quality\`\n- Steps Status:\n${REPORT}\n- Branch: \`${{ github.ref_name }}\`\n- Commit: \`${{ github.sha }}\`\nCheck the logs: \`${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\`\"}" \
           https://discord.com/api/webhooks/1311038258129403944/0HIIXxAm0tdNgRVrVh38w9_abuw9fezJwrkx7-W5Tn_dkftgaKGTxjCYDq6yojWGPj9E
+
