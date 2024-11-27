@@ -18,8 +18,7 @@ class AddressDTO extends DTO
         private readonly string $country,
     ) {}
 
-
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('street'),

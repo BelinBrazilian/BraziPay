@@ -11,35 +11,35 @@ trait ApiStoreTrait
 {
     use HasMRRS;
 
-    public function store(StoreRequestInterface $request) : JsonResponse
+    public function store(StoreRequestInterface $request): JsonResponse
     {
         try {
             return $this->_hasService() && $this->_hasStoreFunction() ?
-                    $this->_service_store($request) : 
+                    $this->_service_store($request) :
                     $this->_store($request);
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
 
-    private function _store(StoreRequestInterface $request) : JsonResponse
+    private function _store(StoreRequestInterface $request): JsonResponse
     {
         $data = $this->_hasDto() ? ($this->dto::fomRequest($request))->toArray() : $request->all();
         if ($stored = ($this->_getModelClass())::create($data)) {
-            return $this->_hasResource() ? 
-                    new ($this->resource::class)($stored) : 
+            return $this->_hasResource() ?
+                    new ($this->resource::class)($stored) :
                     new JsonResource($stored);
         }
 
-        throw new Exception('Error on "store": ' . $this::class . ' class', 1);
+        throw new Exception('Error on "store": '.$this::class.' class', 1);
     }
 
-    private function _service_store(StoreRequestInterface $request) : JsonResponse
+    private function _service_store(StoreRequestInterface $request): JsonResponse
     {
         $stored = $this->service->store($request);
-        
-        return $this->_hasResource() ? 
-                    new ($this->resource::class)($stored) : 
+
+        return $this->_hasResource() ?
+                    new ($this->resource::class)($stored) :
                     new JsonResource($stored);
     }
 }

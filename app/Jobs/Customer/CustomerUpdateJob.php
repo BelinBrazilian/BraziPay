@@ -23,7 +23,7 @@ class CustomerUpdateJob implements ShouldQueue
 
             Log::debug('Customer updated succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on updating Vindi Customer: ' . $e->getMessage());
+            Log::error('Error on updating Vindi Customer: '.$e->getMessage());
         }
     }
 }

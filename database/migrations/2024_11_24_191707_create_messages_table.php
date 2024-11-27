@@ -7,14 +7,14 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.   
-
+     * Run the migrations.
      */
     public function up(): void
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->constrained()->onDelete('cascade');$table->unsignedBigInteger('charge_id');
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('charge_id');
             $table->unsignedBigInteger('notification_id');
             $table->string('email')->nullable();
             $table->timestamps();

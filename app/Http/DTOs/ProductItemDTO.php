@@ -15,7 +15,7 @@ class ProductItemDTO extends DTO
         private readonly ?int $quantity,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('product_id'),

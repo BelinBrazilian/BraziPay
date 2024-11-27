@@ -15,7 +15,7 @@ class PaymentConditionDTO extends DTO
         private readonly ?int $afterDueDays,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('penalty_fee_value', null),

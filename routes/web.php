@@ -9,6 +9,7 @@ use App\Http\Controllers\Customers;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Discounts;
 use App\Http\Controllers\Plans;
+use App\Http\Controllers\Products;
 use App\Http\Controllers\Roles;
 use Illuminate\Support\Facades\Route;
 
@@ -24,44 +25,34 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth', 'verified'])->group(function () {
-
+    // Dashboard
     Route::get('/', [DashboardController::class, 'index']);
-
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::name('user-management.')->group(function () {
-        Route::resource('/user-management/users', UserManagementController::class);
-        Route::resource('/user-management/roles', RoleManagementController::class);
-        Route::resource('/user-management/permissions', PermissionManagementController::class);
+    // User Management
+    Route::prefix('user-management')->name('user-management.')->group(function () {
+        Route::resource('users', UserManagementController::class);
+        Route::resource('roles', RoleManagementController::class);
+        Route::resource('permissions', PermissionManagementController::class);
     });
 
     // Customers
-    Route::get('/customers', [Customers::class, 'index'])->name('customers.index');
-    Route::get('/customers/{id}', [Customers::class, 'show'])->name('customers.show');
-    Route::post('/customers', [Customers::class, 'store'])->name('customers.store');
-    Route::put('/customers/{id}', [Customers::class, 'update'])->name('customers.update');
-    Route::delete('/customers/{id}', [Customers::class, 'destroy'])->name('customers.destroy');
-    Route::post('/customers/{id}/unarchive', [Customers::class, 'unarchive']);
+    Route::resource('customers', Customers::class)->except(['create', 'edit']);
+    Route::post('customers/{id}/unarchive', [Customers::class, 'unarchive'])->name('customers.unarchive');
 
     // Plans
-    Route::get('/plans', [Plans::class, 'index'])->name('plans.index');
-    Route::get('/plans/{id}', [Plans::class, 'show'])->name('plans.show');
-    Route::post('/plans', [Plans::class, 'store'])->name('plans.store');
-    Route::put('/plans/{id}', [Plans::class, 'update'])->name('plans.update');
-    Route::get('/plans/{id}/plan_items', [Plans::class, 'plan_items'])->name('plans.plan_items');
+    Route::resource('plans', Plans::class)->except(['create', 'edit']);
+    Route::get('plans/{id}/plan_items', [Plans::class, 'plan_items'])->name('plans.plan_items');
+
+    // Products
+    Route::resource('products', Products::class)->except(['create', 'edit']);
 
     // Discounts
-    Route::get('/discounts', [Discounts::class, 'index'])->name('discounts.index');
-    Route::get('/discounts/{id}', [Discounts::class, 'show'])->name('discounts.show');
-    Route::post('/discounts', [Discounts::class, 'store'])->name('discounts.store');
-    Route::delete('/discounts/{id}', [Discounts::class, 'destroy'])->name('discounts.destroy');
+    Route::resource('discounts', Discounts::class)->only(['index', 'show', 'store', 'destroy']);
 
     // Affiliates
-    Route::get('/affiliates', [Affiliates::class, 'index'])->name('affiliates.index');
-    Route::get('/affiliates/{id}', [Affiliates::class, 'show'])->name('affiliates.show');
-    Route::post('/affiliates', [Affiliates::class, 'store'])->name('affiliates.store');
-    Route::put('/affiliates/{id}', [Affiliates::class, 'update'])->name('affiliates.update');
-    Route::put('/affiliates/{id}/verify', [Affiliates::class, 'verify'])->name('affiliates.verify');
+    Route::resource('affiliates', Affiliates::class)->except(['create', 'edit']);
+    Route::put('affiliates/{id}/verify', [Affiliates::class, 'verify'])->name('affiliates.verify');
 
     // Roles
     Route::get('/roles', [Roles::class, 'index'])->name('roles.index');
@@ -73,4 +64,4 @@ Route::get('/error', function () {
 
 Route::get('/auth/redirect/{provider}', [SocialiteController::class, 'redirect']);
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

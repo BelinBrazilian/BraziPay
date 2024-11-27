@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Customer extends Model
 {
@@ -66,7 +66,7 @@ class Customer extends Model
         return $this->hasMany(Message::class);
     }
 
-    public function normalize() : array
+    public function normalize(): array
     {
         $data = [
             'body' => $this->toJson(),
@@ -91,7 +91,7 @@ class Customer extends Model
             'country' => $this->address->country,
         ];
 
-        foreach($this->phones as $phone) {
+        foreach ($this->phones as $phone) {
             $data['phones'][] = [
                 'phone_type' => $phone->phone_type,
                 'number' => $phone->number,

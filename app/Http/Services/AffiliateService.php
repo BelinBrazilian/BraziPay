@@ -19,7 +19,7 @@ class AffiliateService
 {
     public function __construct(private readonly AffiliateRepository $repository) {}
 
-    public function store(AffiliateStoreRequest $request) : Affiliate
+    public function store(AffiliateStoreRequest $request): Affiliate
     {
         try {
             DB::beginTransaction();
@@ -38,7 +38,7 @@ class AffiliateService
         }
     }
 
-    public function update(AffiliateUpdateRequest $request, mixed $id) : Affiliate
+    public function update(AffiliateUpdateRequest $request, mixed $id): Affiliate
     {
         try {
             DB::beginTransaction();
@@ -58,17 +58,17 @@ class AffiliateService
         }
     }
 
-    public function verify(mixed $id) : void
+    public function verify(mixed $id): void
     {
         $affiliate = $this->repository->find($id);
         (new AffiliateVerifyJob($affiliate))->handle();
     }
 
-    public function _verify(mixed $id) : JsonResponse
+    public function _verify(mixed $id): JsonResponse
     {
         $affiliate = $this->repository->find($id);
         $vindiAffiliateService = new Affiliates(config('app.vindi_args'));
-        
+
         return $vindiAffiliateService->verify($affiliate->external_id);
     }
 }

@@ -26,7 +26,7 @@ class SamplePermissionApi
             $searchColumns = ['name'];
             $query->where(function ($query) use ($searchValue, $searchColumns) {
                 foreach ($searchColumns as $column) {
-                    $query->orWhere(DB::raw("LOWER($column)"), 'LIKE', '%' . strtolower($searchValue) . '%');
+                    $query->orWhere(DB::raw("LOWER($column)"), 'LIKE', '%'.strtolower($searchValue).'%');
                 }
             });
         }

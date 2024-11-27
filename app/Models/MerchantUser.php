@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\Permission\Models\Role;
 
 class MerchantUser extends Model
 {
@@ -20,7 +21,7 @@ class MerchantUser extends Model
         'name',
         'email',
         'action',
-        // 'password', 
+        // 'password',
     ];
 
     /**

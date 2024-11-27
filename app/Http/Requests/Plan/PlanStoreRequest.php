@@ -26,17 +26,17 @@ class PlanStoreRequest extends FormRequest implements StoreRequestInterface
      */
     public function rules(): array
     {
-        return [ 
-            'name' => 'required|string|max:255', 
-            'interval' => ['required', Rule::in(PlanIntervalEnum::cases())], 
-            'interval_count' => 'required|integer|min:1', 
-            'billing_trigger_type' => ['required', Rule::in(PlanBillingTriggerTypeEnum::cases())], 
-            'billing_trigger_day' => 'required|integer|min:1|max:31', 
-            'billing_cycles' => 'nullable|integer|min:1', 
-            'description' => 'nullable|string', 
-            'installments' => 'required|integer|min:1', 
-            'invoice_split' => 'nullable|string|max:255', 
-            'status' => ['required', Rule::in(PlanStatusEnum::cases())], 
+        return [
+            'name' => 'required|string|max:255',
+            'interval' => ['required', Rule::in(PlanIntervalEnum::cases())],
+            'interval_count' => 'required|integer|min:1',
+            'billing_trigger_type' => ['required', Rule::in(PlanBillingTriggerTypeEnum::cases())],
+            'billing_trigger_day' => 'required|integer|min:1|max:31',
+            'billing_cycles' => 'nullable|integer|min:1',
+            'description' => 'nullable|string',
+            'installments' => 'required|integer|min:1',
+            'invoice_split' => 'nullable|string|max:255',
+            'status' => ['required', Rule::in(PlanStatusEnum::cases())],
             'metadata' => 'nullable|string',
         ];
     }

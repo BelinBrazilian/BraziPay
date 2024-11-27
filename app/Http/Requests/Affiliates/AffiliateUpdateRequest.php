@@ -9,8 +9,6 @@ class AffiliateUpdateRequest extends FormRequest implements UpdateRequestInterfa
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
     public function authorize(): bool
     {
@@ -25,7 +23,7 @@ class AffiliateUpdateRequest extends FormRequest implements UpdateRequestInterfa
     public function rules(): array
     {
         return [
-            'login' => 'sometimes|required|string|unique:affiliates,login,' . $this->route('affiliate')->id . '|max:255',
+            'login' => 'sometimes|required|string|unique:affiliates,login,'.$this->route('affiliate')->id.'|max:255',
             'status' => 'sometimes|required|integer',
             'enabled' => 'sometimes|required|string|max:255',
         ];

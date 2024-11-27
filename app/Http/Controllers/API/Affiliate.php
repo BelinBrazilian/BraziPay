@@ -10,7 +10,7 @@ use App\Http\Traits\ApiUpdateTrait;
 use App\Models\Affiliate;
 use Psr\Http\Message\RequestInterface;
 
-class Affiliates extends ApiController 
+class Affiliates extends ApiController
 {
     use ApiIndexTrait, ApiShowTrait, ApiStoreTrait, ApiUpdateTrait;
 
@@ -20,7 +20,7 @@ class Affiliates extends ApiController
         private readonly Affiliate $model,
     ) {}
 
-    public function verify(mixed $id) : void
+    public function verify(mixed $id): void
     {
         $this->service->verify($id);
     }

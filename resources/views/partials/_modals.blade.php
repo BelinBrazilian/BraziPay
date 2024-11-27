@@ -1,4 +1,4 @@
-<!--begin::Modals-->
+{{-- begin::Modals --}}
 @include('partials/modals/_upgrade-plan')
 
 @include('partials/modals/create-app/_main')
@@ -14,4 +14,4 @@
 @include('partials/modals/users-search/_main')
 
 @include('partials/modals/_invite-friends')
-<!--end::Modals-->
+{{-- end::Modals --}}

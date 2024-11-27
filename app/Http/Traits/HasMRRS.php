@@ -4,5 +4,5 @@ namespace App\Http\Traits;
 
 trait HasMRRS
 {
-    use HasModel, HasResource, HasRepository, HasService;
+    use HasModel, HasRepository, HasResource, HasService;
 }

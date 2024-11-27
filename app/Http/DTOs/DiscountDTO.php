@@ -23,7 +23,7 @@ class DiscountDTO extends DTO
         if ($discount_type === DiscountTypeEnum::Amount->value && is_null($amount)) {
             throw new InvalidArgumentException('Amount cannot be null when discount type is amount.');
         }
-        
+
         if ($discount_type === DiscountTypeEnum::Quantity->value && is_null($quantity)) {
             throw new InvalidArgumentException('Quantity cannot be null when discount type is quantity.');
         }

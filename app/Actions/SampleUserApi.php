@@ -26,7 +26,7 @@ class SampleUserApi
             $searchColumns = ['name', 'email'];
             $query->where(function ($query) use ($searchValue, $searchColumns) {
                 foreach ($searchColumns as $column) {
-                    $query->orWhere(DB::raw("LOWER($column)"), 'LIKE', '%' . strtolower($searchValue) . '%');
+                    $query->orWhere(DB::raw("LOWER($column)"), 'LIKE', '%'.strtolower($searchValue).'%');
                 }
             });
         }
@@ -83,7 +83,7 @@ class SampleUserApi
     {
         $data = $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email|unique:users,email,' . $id,
+            'email' => 'required|email|unique:users,email,'.$id,
             'role' => 'required|string',
         ]);
 

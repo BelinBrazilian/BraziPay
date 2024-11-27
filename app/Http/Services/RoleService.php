@@ -8,9 +8,10 @@ class RoleService
 {
     public function __construct() {}
 
-    public function index(?string $queryParams) : array
+    public function index(?string $queryParams): array
     {
         $vindiRoleService = new Roles(config('app.vindi_args'));
+
         return $vindiRoleService->all();
     }
 }

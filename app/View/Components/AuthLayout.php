@@ -22,8 +22,6 @@ class AuthLayout extends Component
 
     /**
      * Get the view / contents that represents the component.
-     *
-     * @return Application|Factory|View
      */
     public function render(): Factory|View|Application
     {

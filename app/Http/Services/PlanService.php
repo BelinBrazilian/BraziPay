@@ -19,26 +19,27 @@ class PlanService
 {
     public function __construct(private readonly PlanRepository $repository) {}
 
-    public function plan_items(mixed $id) : array
+    public function plan_items(mixed $id): array
     {
         return $this->repository->find($id)->planItems()->toArray();
     }
 
-    public function _plan_items(mixed $id) : array
+    public function _plan_items(mixed $id): array
     {
         $plan = $this->repository->find($id);
 
         $vindiPlanItemService = new PlanItems(config('app.vindi_args'));
+
         return $vindiPlanItemService->plan_items($plan->external_id);
     }
 
-    public function store(PlanStoreRequest $request) : Plan
+    public function store(PlanStoreRequest $request): Plan
     {
         try {
             DB::beginTransaction();
 
             $new = Plan::create((PlanDTO::fromRequest($request)));
-            foreach($request->getPlanItemFields() as $planItem) {
+            foreach ($request->getPlanItemFields() as $planItem) {
                 $planItem['plan_id'] = $new->id;
                 PlanItem::create((PlanItemDTO::fromArray($planItem))->toArray());
             }
@@ -55,7 +56,7 @@ class PlanService
         }
     }
 
-    public function update(PlanUpdateRequest $request, mixed $id) : Plan
+    public function update(PlanUpdateRequest $request, mixed $id): Plan
     {
         try {
             DB::beginTransaction();

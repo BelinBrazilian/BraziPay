@@ -23,19 +23,19 @@ class CustomerUpdateRequest extends FormRequest implements UpdateRequestInterfac
      */
     public function rules(): array
     {
-        return [ 
-            'name' => 'required|string|max:50', 
-            'email' => [ 
-                'required', 
-                'string', 
-                'email', 
-                'max:50', 
-                Rule::unique('customers')->ignore($this->route('customer')), 
-            ], 
-            'registry_code' => 'nullable|string|max:20', 
-            'code' => 'required|uuid', 
-            'notes' => 'nullable|string', 
-            'metadata' => 'nullable|string', 
+        return [
+            'name' => 'required|string|max:50',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:50',
+                Rule::unique('customers')->ignore($this->route('customer')),
+            ],
+            'registry_code' => 'nullable|string|max:20',
+            'code' => 'required|uuid',
+            'notes' => 'nullable|string',
+            'metadata' => 'nullable|string',
             'address_id' => 'nullable|exists:addresses,id',
         ];
     }

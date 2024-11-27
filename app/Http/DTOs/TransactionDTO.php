@@ -15,7 +15,7 @@ class TransactionDTO extends DTO
         private readonly ?string $comments,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('charge_id'),

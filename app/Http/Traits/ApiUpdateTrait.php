@@ -10,21 +10,21 @@ trait ApiUpdateTrait
 {
     use HasMRRS;
 
-    public function update(UpdateRequestInterface $request, mixed $id) : JsonResponse
+    public function update(UpdateRequestInterface $request, mixed $id): JsonResponse
     {
         try {
             return $this->_hasService() && $this->_hasUpdateFunction() ?
-                    $this->_service_update($request, $id) : 
+                    $this->_service_update($request, $id) :
                     $this->_update($request, $id);
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
 
-    private function _update(UpdateRequestInterface $request, mixed $id) : JsonResponse
+    private function _update(UpdateRequestInterface $request, mixed $id): JsonResponse
     {
         if (! $this->_getModelClass()) {
-            throw new Exception('Model not found on ' . $this::class . ' class', 1);
+            throw new Exception('Model not found on '.$this::class.' class', 1);
         }
 
         if ($this->_hasUuid()) {
@@ -34,7 +34,7 @@ trait ApiUpdateTrait
         }
 
         if (empty($res->id)) {
-            throw new Exception('Record not found on ' . $this::class . ' class', 1);
+            throw new Exception('Record not found on '.$this::class.' class', 1);
         }
 
         $data = $this->_hasDto() ? ($this->dto::fomRequest($request))->toArray() : $request->all();
@@ -42,10 +42,10 @@ trait ApiUpdateTrait
             return response()->json([], 200);
         }
 
-        throw new Exception('Error on "update": ' . $this::class . ' class', 1);
+        throw new Exception('Error on "update": '.$this::class.' class', 1);
     }
 
-    private function _service_update(UpdateRequestInterface $request, mixed $id) : JsonResponse
+    private function _service_update(UpdateRequestInterface $request, mixed $id): JsonResponse
     {
         $this->service->update($request, $id);
 

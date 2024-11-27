@@ -11,7 +11,7 @@ use Psr\Http\Message\RequestInterface;
 
 class Discounts extends ApiController
 {
-    use ApiShowTrait, ApiStoreTrait, ApiDestroyTrait;
+    use ApiDestroyTrait, ApiShowTrait, ApiStoreTrait;
 
     public function __construct(
         private readonly RequestInterface $request,
