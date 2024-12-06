@@ -35,9 +35,7 @@ return new class extends Migration
             $table->json('metadata')->nullable();
             $table->integer('installments')->default(1);
             $table->string('invoice_split')->nullable();
-            $table->string('interval_name')->nullable();
             $table->timestamps();
-            $table->json('metadata')->nullable();
             $table->softDeletes();
         });
     }
