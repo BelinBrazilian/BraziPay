@@ -16,7 +16,7 @@ class InvoiceDTO extends DTO
         private readonly ?array $settings,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('bill_id'),

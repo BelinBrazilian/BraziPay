@@ -3,18 +3,24 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Traits\ApiTraits;
 use App\Models\Address;
 use Illuminate\Http\Request;
 
+/**
+ * Class Addresses
+ *
+ * Handles API operations related to addresses.*
+ */
 class Addresses extends Controller
 {
-    use ApiTraits;
-
+    /**
+     * Constructor.
+     *
+     * @param  Request  $request  The HTTP request instance.
+     * @param  Address  $model  The Address model instance.
+     */
     public function __construct(
         private readonly Request $request,
         private readonly Address $model,
-    ) {
-        parent::__construct();
-    }
+    ) {}
 }

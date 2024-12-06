@@ -23,7 +23,7 @@ class DiscountDeleteJob implements ShouldQueue
 
             Log::debug('Discount deleted succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on deleting Vindi Discount: ' . $e->getMessage());
+            Log::error('Error on deleting Vindi Discount: '.$e->getMessage());
         }
     }
 }

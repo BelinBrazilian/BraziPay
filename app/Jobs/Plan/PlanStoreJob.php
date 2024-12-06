@@ -26,7 +26,7 @@ class PlanStoreJob implements ShouldQueue
 
             Log::debug('Plan created succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on creating Vindi Plan: ' . $e->getMessage());
+            Log::error('Error on creating Vindi Plan: '.$e->getMessage());
         }
     }
 }

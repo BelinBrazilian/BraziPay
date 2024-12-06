@@ -52,7 +52,7 @@ class RolesPermissionsSeeder extends Seeder
 
         foreach ($permissions_by_role['administrator'] as $permission) {
             foreach ($abilities as $ability) {
-                Permission::create(['name' => $ability . ' ' . $permission]);
+                Permission::create(['name' => $ability.' '.$permission]);
             }
         }
 
@@ -60,7 +60,7 @@ class RolesPermissionsSeeder extends Seeder
             $full_permissions_list = [];
             foreach ($abilities as $ability) {
                 foreach ($permissions as $permission) {
-                    $full_permissions_list[] = $ability . ' ' . $permission;
+                    $full_permissions_list[] = $ability.' '.$permission;
                 }
             }
             Role::create(['name' => $role])->syncPermissions($full_permissions_list);

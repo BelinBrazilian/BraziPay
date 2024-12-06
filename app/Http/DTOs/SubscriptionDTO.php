@@ -21,7 +21,7 @@ class SubscriptionDTO extends DTO
         private readonly ?bool $invoiceSplit,
     ) {}
 
-    public static function fromRequest(SubscriptionStoreRequest | SubscriptionUpdateRequest $request): self
+    public static function fromRequest(SubscriptionStoreRequest|SubscriptionUpdateRequest $request): self
     {
         return new self(
             $request->get('plan_id'),

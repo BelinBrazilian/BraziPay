@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" {!! printHtmlAttributes('html') !!}>
-<!--begin::Head-->
+{{-- begin::Head --}}
 <head>
     <base href=""/>
     <title>{{ config('app.name', 'Laravel') }}</title>
@@ -16,59 +16,59 @@
 
     {!! includeFavicon() !!}
 
-    <!--begin::Fonts-->
+    {{-- begin::Fonts --}}
     {!! includeFonts() !!}
-    <!--end::Fonts-->
+    {{-- end::Fonts --}}
 
-    <!--begin::Global Stylesheets Bundle(used by all pages)-->
+    {{-- begin::Global Stylesheets Bundle(used by all pages) --}}
     @foreach(getGlobalAssets('css') as $path)
         {!! sprintf('<link rel="stylesheet" href="%s">', asset($path)) !!}
     @endforeach
-    <!--end::Global Stylesheets Bundle-->
+    {{-- end::Global Stylesheets Bundle --}}
 
-    <!--begin::Vendor Stylesheets(used by this page)-->
+    {{-- begin::Vendor Stylesheets(used by this page) --}}
     @foreach(getVendors('css') as $path)
         {!! sprintf('<link rel="stylesheet" href="%s">', asset($path)) !!}
     @endforeach
-    <!--end::Vendor Stylesheets-->
+    {{-- end::Vendor Stylesheets --}}
 
-    <!--begin::Custom Stylesheets(optional)-->
+    {{-- begin::Custom Stylesheets(optional) --}}
     @foreach(getCustomCss() as $path)
         {!! sprintf('<link rel="stylesheet" href="%s">', asset($path)) !!}
     @endforeach
-    <!--end::Custom Stylesheets-->
+    {{-- end::Custom Stylesheets --}}
 
     @livewireStyles
 </head>
-<!--end::Head-->
+{{-- end::Head --}}
 
-<!--begin::Body-->
+{{-- begin::Body --}}
 <body {!! printHtmlClasses('body') !!} {!! printHtmlAttributes('body') !!}>
 
 @include('partials/theme-mode/_init')
 
 @yield('content')
 
-<!--begin::Javascript-->
-<!--begin::Global Javascript Bundle(mandatory for all pages)-->
+{{-- begin::Javascript --}}
+{{-- begin::Global Javascript Bundle(mandatory for all pages) --}}
 @foreach(getGlobalAssets() as $path)
     {!! sprintf('<script src="%s"></script>', asset($path)) !!}
 @endforeach
-<!--end::Global Javascript Bundle-->
+{{-- end::Global Javascript Bundle --}}
 
-<!--begin::Vendors Javascript(used by this page)-->
+{{-- begin::Vendors Javascript(used by this page) --}}
 @foreach(getVendors('js') as $path)
     {!! sprintf('<script src="%s"></script>', asset($path)) !!}
 @endforeach
-<!--end::Vendors Javascript-->
+{{-- end::Vendors Javascript --}}
 
-<!--begin::Custom Javascript(optional)-->
+{{-- begin::Custom Javascript(optional) --}}
 @foreach(getCustomJs() as $path)
     {!! sprintf('<script src="%s"></script>', asset($path)) !!}
 @endforeach
-<!--end::Custom Javascript-->
+{{-- end::Custom Javascript --}}
 @stack('scripts')
-<!--end::Javascript-->
+{{-- end::Javascript --}}
 
 <script>
     document.addEventListener('livewire:init', () => {
@@ -101,6 +101,6 @@
 
 @livewireScripts
 </body>
-<!--end::Body-->
+{{-- end::Body --}}
 
 </html>

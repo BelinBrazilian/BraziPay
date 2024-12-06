@@ -26,7 +26,7 @@ class AffiliateStoreJob implements ShouldQueue
 
             Log::debug('Affiliate created succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on creating Vindi Affiliate: ' . $e->getMessage());
+            Log::error('Error on creating Vindi Affiliate: '.$e->getMessage());
         }
     }
 }

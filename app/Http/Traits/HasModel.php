@@ -19,7 +19,7 @@ trait HasModel
 
         if ($this->_hasRepository()) {
             $modelClass = $this->repository->modelClass;
-            $this->model = new $modelClass();
+            $this->model = new $modelClass;
 
             return $modelClass;
         }
@@ -34,7 +34,7 @@ trait HasModel
 
     public function _hasDto(): bool
     {
-        $dtoName = $this->model::class . 'DTO';
+        $dtoName = $this->model::class.'DTO';
         if (class_exists($dtoName)) {
             $this->dto = $dtoName;
         }

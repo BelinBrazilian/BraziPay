@@ -21,7 +21,7 @@ class AffiliateDTO extends DTO
         private readonly ?string $phone,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('address_id', null),

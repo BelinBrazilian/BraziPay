@@ -52,7 +52,7 @@ class Plan extends Model
         return $this->hasMany(PlanItem::class);
     }
 
-    public function normalize() : array
+    public function normalize(): array
     {
         $data = [
             'body' => $this->toJson(),
@@ -71,7 +71,7 @@ class Plan extends Model
             'plan_items' => [] ?? null,
         ];
 
-        foreach($this->planItems() as $planItem) {
+        foreach ($this->planItems() as $planItem) {
             $data['plan_items'][] = [
                 'cycles' => $planItem->cycles,
                 'product_id' => $planItem->product_id,

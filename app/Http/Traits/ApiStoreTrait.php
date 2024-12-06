@@ -12,6 +12,7 @@ trait ApiStoreTrait
     use HasMRRS;
 
     public function store(StoreRequestInterface $request): JsonResponse
+    public function store(StoreRequestInterface $request): JsonResponse
     {
         try {
             return $this->_hasService() && ($this->_hasStoreFunction() || $this->_hasVindiStoreFunction()) ?
@@ -23,6 +24,7 @@ trait ApiStoreTrait
     }
 
     private function _store(StoreRequestInterface $request): JsonResponse
+    private function _store(StoreRequestInterface $request): JsonResponse
     {
         $data = $this->_hasDto() ? ($this->dto::fomRequest($request))->toArray() : $request->all();
         if ($stored = ($this->_getModelClass())::create($data)) {
@@ -31,9 +33,10 @@ trait ApiStoreTrait
                 new JsonResource($stored);
         }
 
-        throw new Exception('Error on "store": ' . $this::class . ' class', 1);
+        throw new Exception('Error on "store": '.$this::class.' class', 1);
     }
 
+    private function _service_store(StoreRequestInterface $request): JsonResponse
     private function _service_store(StoreRequestInterface $request): JsonResponse
     {
         if ($this->_hasStoreFunction()) {

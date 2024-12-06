@@ -1,432 +1,297 @@
 <?php
 
-if (!function_exists('theme')) {
+if (! function_exists('theme')) {
     function theme()
     {
         return app(App\Core\Theme::class);
     }
 }
 
-
-if (!function_exists('getName')) {
+if (! function_exists('getName')) {
     /**
      * Get product name
-     *
-     * @return void
      */
-    function getName()
+    function getName(): string
     {
         return config('settings.KT_THEME');
     }
 }
 
-
-if (!function_exists('addHtmlAttribute')) {
+if (! function_exists('addHtmlAttribute')) {
     /**
      * Add HTML attributes by scope
-     *
-     * @param $scope
-     * @param $name
-     * @param $value
-     *
-     * @return void
      */
-    function addHtmlAttribute($scope, $name, $value)
+    function addHtmlAttribute($scope, $name, $value): void
     {
         theme()->addHtmlAttribute($scope, $name, $value);
     }
 }
 
-
-if (!function_exists('addHtmlAttributes')) {
+if (! function_exists('addHtmlAttributes')) {
     /**
      * Add multiple HTML attributes by scope
-     *
-     * @param $scope
-     * @param $attributes
-     *
-     * @return void
      */
-    function addHtmlAttributes($scope, $attributes)
+    function addHtmlAttributes($scope, $attributes): void
     {
         theme()->addHtmlAttributes($scope, $attributes);
     }
 }
 
-
-if (!function_exists('addHtmlClass')) {
+if (! function_exists('addHtmlClass')) {
     /**
      * Add HTML class by scope
-     *
-     * @param $scope
-     * @param $value
-     *
-     * @return void
      */
-    function addHtmlClass($scope, $value)
+    function addHtmlClass($scope, $value): void
     {
         theme()->addHtmlClass($scope, $value);
     }
 }
 
-
-if (!function_exists('printHtmlAttributes')) {
+if (! function_exists('printHtmlAttributes')) {
     /**
      * Print HTML attributes for the HTML template
-     *
-     * @param $scope
-     *
-     * @return string
      */
-    function printHtmlAttributes($scope)
+    function printHtmlAttributes($scope): string
     {
         return theme()->printHtmlAttributes($scope);
     }
 }
 
-
-if (!function_exists('printHtmlClasses')) {
+if (! function_exists('printHtmlClasses')) {
     /**
      * Print HTML classes for the HTML template
-     *
-     * @param $scope
-     * @param $full
-     *
-     * @return string
      */
-    function printHtmlClasses($scope, $full = true)
+    function printHtmlClasses($scope, bool $full = true): string
     {
         return theme()->printHtmlClasses($scope, $full);
     }
 }
 
-
-if (!function_exists('getSvgIcon')) {
+if (! function_exists('getSvgIcon')) {
     /**
      * Get SVG icon content
-     *
-     * @param $path
-     * @param $classNames
-     * @param $folder
-     *
-     * @return string
      */
-    function getSvgIcon($path, $classNames = 'svg-icon', $folder = 'assets/media/icons/')
+    function getSvgIcon($path, string $classNames = 'svg-icon', string $folder = 'assets/media/icons/'): string
     {
         return theme()->getSvgIcon($path, $classNames, $folder);
     }
 }
 
-
-if (!function_exists('setModeSwitch')) {
+if (! function_exists('setModeSwitch')) {
     /**
      * Set dark mode enabled status
-     *
-     * @param $flag
-     *
-     * @return void
      */
-    function setModeSwitch($flag)
+    function setModeSwitch($flag): void
     {
         theme()->setModeSwitch($flag);
     }
 }
 
-
-if (!function_exists('isModeSwitchEnabled')) {
+if (! function_exists('isModeSwitchEnabled')) {
     /**
      * Check dark mode status
-     *
-     * @return void
      */
-    function isModeSwitchEnabled()
+    function isModeSwitchEnabled(): bool
     {
         return theme()->isModeSwitchEnabled();
     }
 }
 
-
-if (!function_exists('setModeDefault')) {
+if (! function_exists('setModeDefault')) {
     /**
      * Set the mode to dark or light
-     *
-     * @param $mode
-     *
-     * @return void
      */
-    function setModeDefault($mode)
+    function setModeDefault($mode): void
     {
         theme()->setModeDefault($mode);
     }
 }
 
-
-if (!function_exists('getModeDefault')) {
+if (! function_exists('getModeDefault')) {
     /**
      * Get current mode
-     *
-     * @return void
      */
-    function getModeDefault()
+    function getModeDefault(): string
     {
         return theme()->getModeDefault();
     }
 }
 
-
-if (!function_exists('setDirection')) {
+if (! function_exists('setDirection')) {
     /**
      * Set style direction
-     *
-     * @param $direction
-     *
-     * @return void
      */
-    function setDirection($direction)
+    function setDirection($direction): void
     {
         theme()->setDirection($direction);
     }
 }
 
-
-if (!function_exists('getDirection')) {
+if (! function_exists('getDirection')) {
     /**
      * Get style direction
-     *
-     * @return void
      */
-    function getDirection()
+    function getDirection(): string
     {
         return theme()->getDirection();
     }
 }
 
-
-if (!function_exists('isRtlDirection')) {
+if (! function_exists('isRtlDirection')) {
     /**
      * Check if style direction is RTL
-     *
-     * @return void
      */
-    function isRtlDirection()
+    function isRtlDirection(): bool
     {
         return theme()->isRtlDirection();
     }
 }
 
-
-if (!function_exists('extendCssFilename')) {
+if (! function_exists('extendCssFilename')) {
     /**
      * Extend CSS file name with RTL or dark mode
-     *
-     * @param $path
-     *
-     * @return void
      */
-    function extendCssFilename($path)
+    function extendCssFilename($path): string
     {
         return theme()->extendCssFilename($path);
     }
 }
 
-
-if (!function_exists('includeFavicon')) {
+if (! function_exists('includeFavicon')) {
     /**
      * Include favicon from settings
-     *
-     * @return string
      */
-    function includeFavicon()
+    function includeFavicon(): string
     {
         return theme()->includeFavicon();
     }
 }
 
-
-if (!function_exists('includeFonts')) {
+if (! function_exists('includeFonts')) {
     /**
      * Include the fonts from settings
-     *
-     * @return string
      */
-    function includeFonts()
+    function includeFonts(): string
     {
         return theme()->includeFonts();
     }
 }
 
-
-if (!function_exists('getGlobalAssets')) {
+if (! function_exists('getGlobalAssets')) {
     /**
      * Get the global assets
-     *
-     * @param $type
-     *
-     * @return array
      */
-    function getGlobalAssets($type = 'js')
+    function getGlobalAssets(string $type = 'js'): array
     {
         return theme()->getGlobalAssets($type);
     }
 }
 
-
-if (!function_exists('addVendors')) {
+if (! function_exists('addVendors')) {
     /**
      * Add multiple vendors to the page by name. Refer to settings KT_THEME_VENDORS
-     *
-     * @param $vendors
-     *
-     * @return void
      */
-    function addVendors($vendors)
+    function addVendors($vendors): void
     {
         theme()->addVendors($vendors);
     }
 }
 
-
-if (!function_exists('addVendor')) {
+if (! function_exists('addVendor')) {
     /**
      * Add single vendor to the page by name. Refer to settings KT_THEME_VENDORS
-     *
-     * @param $vendor
-     *
-     * @return void
      */
-    function addVendor($vendor)
+    function addVendor($vendor): void
     {
         theme()->addVendor($vendor);
     }
 }
 
-
-if (!function_exists('addJavascriptFile')) {
+if (! function_exists('addJavascriptFile')) {
     /**
      * Add custom javascript file to the page
-     *
-     * @param $file
-     *
-     * @return void
      */
-    function addJavascriptFile($file)
+    function addJavascriptFile($file): void
     {
         theme()->addJavascriptFile($file);
     }
 }
 
-
-if (!function_exists('addCssFile')) {
+if (! function_exists('addCssFile')) {
     /**
      * Add custom CSS file to the page
-     *
-     * @param $file
-     *
-     * @return void
      */
-    function addCssFile($file)
+    function addCssFile($file): void
     {
         theme()->addCssFile($file);
     }
 }
 
-
-if (!function_exists('getVendors')) {
+if (! function_exists('getVendors')) {
     /**
      * Get vendor files from settings. Refer to settings KT_THEME_VENDORS
-     *
-     * @param $type
-     *
-     * @return array
      */
-    function getVendors($type)
+    function getVendors($type): array
     {
         return theme()->getVendors($type);
     }
 }
 
-
-if (!function_exists('getCustomJs')) {
+if (! function_exists('getCustomJs')) {
     /**
      * Get custom js files from the settings
-     *
-     * @return array
      */
-    function getCustomJs()
+    function getCustomJs(): array
     {
         return theme()->getCustomJs();
     }
 }
 
-
-if (!function_exists('getCustomCss')) {
+if (! function_exists('getCustomCss')) {
     /**
      * Get custom css files from the settings
-     *
-     * @return array
      */
-    function getCustomCss()
+    function getCustomCss(): array
     {
         return theme()->getCustomCss();
     }
 }
 
-
-if (!function_exists('getHtmlAttribute')) {
+if (! function_exists('getHtmlAttribute')) {
     /**
      * Get HTML attribute based on the scope
-     *
-     * @param $scope
-     * @param $attribute
-     *
-     * @return array
      */
-    function getHtmlAttribute($scope, $attribute)
+    function getHtmlAttribute($scope, $attribute): array
     {
         return theme()->getHtmlAttribute($scope, $attribute);
     }
 }
 
-
-if (!function_exists('isUrl')) {
+if (! function_exists('isUrl')) {
     /**
      * Get HTML attribute based on the scope
-     *
-     * @param $url
-     *
-     * @return mixed
      */
-    function isUrl($url)
+    function isUrl($url): mixed
     {
         return filter_var($url, FILTER_VALIDATE_URL);
     }
 }
 
-
-if (!function_exists('image')) {
+if (! function_exists('image')) {
     /**
      * Get image url by path
-     *
-     * @param $path
-     *
-     * @return string
      */
-    function image($path)
+    function image($path): string
     {
         return asset('assets/media/' . $path);
     }
 }
 
-
-if (!function_exists('getIcon')) {
+if (! function_exists('getIcon')) {
     /**
      * Get icon
-     *
-     * @param $path
-     *
-     * @return string
      */
-    function getIcon($name, $class = '', $type = '', $tag = 'span')
+    function getIcon($name, string $class = '', string $type = '', string $tag = 'span'): string
     {
         return theme()->getIcon($name, $class, $type, $tag);
     }

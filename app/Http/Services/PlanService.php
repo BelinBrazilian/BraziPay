@@ -55,6 +55,7 @@ final class PlanService
 
             $new = Plan::create((PlanDTO::fromRequest($request)));
             foreach ($request->getPlanItemFields() as $planItem) {
+            foreach ($request->getPlanItemFields() as $planItem) {
                 $planItem['plan_id'] = $new->id;
                 PlanItem::create((PlanItemDTO::fromArray($planItem))->toArray());
             }
@@ -71,6 +72,7 @@ final class PlanService
         }
     }
 
+    public function update(PlanUpdateRequest $request, mixed $id): Plan
     public function update(PlanUpdateRequest $request, mixed $id): Plan
     {
         try {

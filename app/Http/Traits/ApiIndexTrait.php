@@ -18,10 +18,14 @@ trait ApiIndexTrait
     }
 
     private function _index(): JsonResponse
+    private function _index(): JsonResponse
     {
         if (empty($this->search)) {
             $res = QueryBuilder::for($this->_getModelClass())
                 ->allowedFilters($this->_getAllowedFilters())
+                ->allowedSorts($this->_getAllowedSorts())
+                ->allowedIncludes($this->_getAllowedIncludes())
+                ->allowedFields($this->_getAllowedFields())
                 ->allowedSorts($this->_getAllowedSorts())
                 ->allowedIncludes($this->_getAllowedIncludes())
                 ->allowedFields($this->_getAllowedFields())

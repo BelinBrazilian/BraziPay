@@ -21,9 +21,10 @@ trait ApiDestroyTrait
     }
 
     private function _destroy(int $id): JsonResponse
+    private function _destroy(int $id): JsonResponse
     {
         if (! $this->_getModelClass()) {
-            throw new Exception('Model not found on ' . $this::class . ' class', 1);
+            throw new Exception('Model not found on '.$this::class.' class', 1);
         }
 
         if ($this->_hasUuid()) {
@@ -33,7 +34,7 @@ trait ApiDestroyTrait
         }
 
         if (empty($res->id)) {
-            throw new Exception('Record not found on ' . $this::class . ' class', 1);
+            throw new Exception('Record not found on '.$this::class.' class', 1);
         }
 
         $res->delete();

@@ -23,6 +23,7 @@ use App\Http\Controllers\API\PaymentProfile;
 use App\Http\Controllers\API\Periods;
 use App\Http\Controllers\API\Plans;
 use App\Http\Controllers\API\Roles;
+use App\Http\Controllers\Products;
 use App\Http\Controllers\API\Subscription;
 use App\Http\Controllers\API\Transactions;
 use App\Http\Controllers\API\Usages;
@@ -41,104 +42,47 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:sanctum')->get('/user', fn (Request $request) => $request->user());
 
+// Prefixo da API v1
 Route::prefix('v1')->group(function () {
-
-    Route::get('/users', function (Request $request) {
-        return app(SampleUserApi::class)->datatableList($request);
+    // Users API
+    Route::prefix('users')->name('users.')->group(function () {
+        Route::get('/', [SampleUserApi::class, 'datatableList'])->name('index');
+        Route::post('/list', [SampleUserApi::class, 'datatableList'])->name('list');
+        Route::post('/', [SampleUserApi::class, 'create'])->name('create');
+        Route::get('/{id}', [SampleUserApi::class, 'get'])->name('show');
+        Route::put('/{id}', [SampleUserApi::class, 'update'])->name('update');
+        Route::delete('/{id}', [SampleUserApi::class, 'delete'])->name('destroy');
     });
 
-    Route::post('/users-list', function (Request $request) {
-        return app(SampleUserApi::class)->datatableList($request);
+    // Roles API
+    Route::prefix('roles')->name('roles.')->group(function () {
+        Route::get('/', [SampleRoleApi::class, 'datatableList'])->name('index');
+        Route::post('/list', [SampleRoleApi::class, 'datatableList'])->name('list');
+        Route::post('/', [SampleRoleApi::class, 'create'])->name('create');
+        Route::get('/{id}', [SampleRoleApi::class, 'get'])->name('show');
+        Route::put('/{id}', [SampleRoleApi::class, 'update'])->name('update');
+        Route::delete('/{id}', [SampleRoleApi::class, 'delete'])->name('destroy');
+        Route::post('/{id}/users', [SampleRoleApi::class, 'usersDatatableList'])->name('users.list');
+        Route::delete('/{id}/users/{user_id}', [SampleRoleApi::class, 'deleteUser'])->name('users.destroy');
     });
 
-    Route::post('/users', function (Request $request) {
-        return app(SampleUserApi::class)->create($request);
+    // Permissions API
+    Route::prefix('permissions')->name('permissions.')->group(function () {
+        Route::get('/', [SamplePermissionApi::class, 'datatableList'])->name('index');
+        Route::post('/list', [SamplePermissionApi::class, 'datatableList'])->name('list');
+        Route::post('/', [SamplePermissionApi::class, 'create'])->name('create');
+        Route::get('/{id}', [SamplePermissionApi::class, 'get'])->name('show');
+        Route::put('/{id}', [SamplePermissionApi::class, 'update'])->name('update');
+        Route::delete('/{id}', [SamplePermissionApi::class, 'delete'])->name('destroy');
     });
 
-    Route::get('/users/{id}', function ($id) {
-        return app(SampleUserApi::class)->get($id);
-    });
-
-    Route::put('/users/{id}', function ($id, Request $request) {
-        return app(SampleUserApi::class)->update($id, $request);
-    });
-
-    Route::delete('/users/{id}', function ($id) {
-        return app(SampleUserApi::class)->delete($id);
-    });
-
-
-    Route::get('/roles', function (Request $request) {
-        return app(SampleRoleApi::class)->datatableList($request);
-    });
-
-    Route::post('/roles-list', function (Request $request) {
-        return app(SampleRoleApi::class)->datatableList($request);
-    });
-
-    Route::post('/roles', function (Request $request) {
-        return app(SampleRoleApi::class)->create($request);
-    });
-
-    Route::get('/roles/{id}', function ($id) {
-        return app(SampleRoleApi::class)->get($id);
-    });
-
-    Route::put('/roles/{id}', function ($id, Request $request) {
-        return app(SampleRoleApi::class)->update($id, $request);
-    });
-
-    Route::delete('/roles/{id}', function ($id) {
-        return app(SampleRoleApi::class)->delete($id);
-    });
-
-    Route::post('/roles/{id}/users', function (Request $request, $id) {
-        $request->merge(['id' => $id]);
-        return app(SampleRoleApi::class)->usersDatatableList($request);
-    });
-
-    Route::delete('/roles/{id}/users/{user_id}', function ($id, $user_id) {
-        return app(SampleRoleApi::class)->deleteUser($id, $user_id);
-    });
-
-    Route::get('/permissions', function (Request $request) {
-        return app(SamplePermissionApi::class)->datatableList($request);
-    });
-
-    Route::post('/permissions-list', function (Request $request) {
-        return app(SamplePermissionApi::class)->datatableList($request);
-    });
-
-    Route::post('/permissions', function (Request $request) {
-        return app(SamplePermissionApi::class)->create($request);
-    });
-
-    Route::get('/permissions/{id}', function ($id) {
-        return app(SamplePermissionApi::class)->get($id);
-    });
-
-    Route::put('/permissions/{id}', function ($id, Request $request) {
-        return app(SamplePermissionApi::class)->update($id, $request);
-    });
-
-    Route::delete('/permissions/{id}', function ($id) {
-        return app(SamplePermissionApi::class)->delete($id);
-    });
-});
-
-
-Route::middleware('auth:sanctum')->group(function () {
-    // Customers
-    Route::get('/customers', [Customers::class, 'index'])->name('customers.index');
-    Route::get('/customers/{id}', [Customers::class, 'show'])->name('customers.show');
-    Route::post('/customers', [Customers::class, 'store'])->name('customers.store');
-    Route::put('/customers/{id}', [Customers::class, 'update'])->name('customers.update');
-    Route::delete('/customers/{id}', [Customers::class, 'destroy'])->name('customers.destroy');
-    Route::post('/customers/{id}/unarchive', [Customers::class, 'unarchive'])->name('customers.unarchive');
+    // Customers, Plans, Products, Discounts, Affiliates
+    Route::middleware('auth:sanctum')->group(function  () {
+        // Customers
+        Route::resource('customers', Customers::class)->except(['create', 'edit']);
+        Route::post('customers/{id}/unarchive', [Customers::class, 'unarchive'])->name('customers.unarchive')->name('customers.unarchive');
 
     // Plans
     Route::get('/plans', [Plans::class, 'index'])->name('plans.index');
@@ -292,12 +236,9 @@ Route::middleware('auth:sanctum')->group(function () {
     // User
     Route::get('/users', [Users::class, 'index'])->name('users.index');
 
-    // Affiliates
-    Route::get('/affiliates', [Affiliates::class, 'index'])->name('affiliates.index');
-    Route::get('/affiliates/{id}', [Affiliates::class, 'show'])->name('affiliates.show');
-    Route::post('/affiliates', [Affiliates::class, 'store'])->name('affiliates.store');
-    Route::put('/affiliates/{id}', [Affiliates::class, 'update'])->name('affiliates.update');
-    Route::put('/affiliates/{id}/verify', [Affiliates::class, 'verify'])->name('affiliates.verify');
+        // Affiliates
+        Route::resource('affiliates', Affiliates::class)->except(['create', 'edit']);
+        Route::put('affiliates/{id}/verify', [Affiliates::class, 'verify'])->name('affiliates.verify');
 
     // Partner
     Route::get('/partner', [Partners::class, 'index'])->name('partner.index');

@@ -19,7 +19,7 @@ class PaymentMethodDTO extends DTO
         private readonly int $maximumAttempts,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('public_name'),

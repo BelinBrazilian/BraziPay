@@ -9,5 +9,6 @@ namespace App\Http\Interfaces;
 interface StoreRequestInterface
 {
     public function authorize(): bool;
+
     public function rules(): array;
 }

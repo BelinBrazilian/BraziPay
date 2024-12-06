@@ -51,7 +51,7 @@ class PaymentProfile extends Model
         return $this->hasOne(Subscription::class);
     }
 
-    public function normalize($subscriptionPattern = false) : array
+    public function normalize($subscriptionPattern = false): array
     {
         $data = [
             'holder_name' => $this->holder_name,

@@ -79,7 +79,7 @@ class Subscription extends Model
     public function affiliates(): BelongsToMany
     {
         return $this->belongsToMany(Affiliate::class)
-                    ->withPivot('ammount', 'amount_type', 'status', 'remove');
+            ->withPivot('ammount', 'amount_type', 'status', 'remove');
     }
 
     /**
@@ -90,7 +90,7 @@ class Subscription extends Model
         return $this->hasMany(Period::class);
     }
 
-    public function normalize() : array
+    public function normalize(): array
     {
         $data = [
             'body' => $this->toJson(),
@@ -105,7 +105,7 @@ class Subscription extends Model
             'subscription_affiliates' => [],
         ];
 
-        foreach($this->affiliates as $affiliate) {
+        foreach ($this->affiliates as $affiliate) {
             $data['subscription_affiliates'][] = $affiliate->normalize(true);
         }
 

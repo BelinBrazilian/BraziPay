@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('bill_id')->constrained()->onDelete('cascade');
             $table->foreignId('affiliate_id')->constrained()->onDelete('cascade');
             $table->decimal('amount', 10, 2)->nullable();
-            $table->integer('amount_type')->nullable(); 
+            $table->integer('amount_type')->nullable();
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ class CustomerDTO extends DTO
         private readonly ?string $notes,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('address_id', null),

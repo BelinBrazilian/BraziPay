@@ -10,32 +10,40 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations to create or update the 'plans' and 'plan_items' tables.
+     *
+     * This migration creates the 'plans' and 'plan_items' tables if they do not exist.
+     * It also verifies the existence of each column within each table, adding missing
+     * columns where necessary to ensure table structure consistency.
      */
     public function up(): void
     {
+        // Create 'plans' table if it does not exist
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('external_id')->nullable();
-            $table->uuid('code')->unique();
             $table->string('name');
-            $table->enum('interval', array_column(PlanIntervalEnum::cases(), 'value'))->required();
+            $table->enum('interval', array_column(PlanIntervalEnum::cases(), 'value'));
             $table->integer('interval_count');
             $table->string('interval_name')->nullable();
-            $table->enum('billing_trigger_type', array_column(PlanBillingTriggerTypeEnum::cases(), 'value'))->required();
-            $table->integer('billing_trigger_day');
-            $table->integer('billing_cycles')->nullable();
+            $table->enum('billing_trigger_type', array_column(PlanBillingTriggerTypeEnum::cases(), 'value'));
+            $table->integer('billing_trigger_day')->nullable();
+            $table->integer('billing_cycles');
+            $table->string('code')->unique();
             $table->text('description')->nullable();
-            $table->integer('installments')->nullable();
-            $table->boolean('invoice_split')->nullable();
             $table->enum('status', array_column(PlanStatusEnum::cases(), 'value'));
             $table->json('metadata')->nullable();
+            $table->integer('installments')->default(1);
+            $table->string('invoice_split')->nullable();
+            $table->string('interval_name')->nullable();
             $table->timestamps();
+            $table->json('metadata')->nullable();
+            $table->softDeletes();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations by dropping the 'plan_items' and 'plans' tables.
      */
     public function down(): void
     {

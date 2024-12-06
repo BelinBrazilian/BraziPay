@@ -24,7 +24,7 @@ class CustomerDeleteJob implements ShouldQueue
 
             Log::debug('Customer deleted succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on deleting Vindi Customer: ' . $e->getMessage());
+            Log::error('Error on deleting Vindi Customer: '.$e->getMessage());
         }
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\DTOs;
 
-use App\Http\DTOs\DTO;
 use App\Http\Enums\PlanBillingTriggerTypeEnum as EnumsPlanBillingTriggerTypeEnum;
 use App\Http\Enums\PlanIntervalEnum as EnumsPlanIntervalEnum;
 use App\Http\Enums\PlanStatusEnum as EnumsPlanStatusEnum;
@@ -26,7 +25,7 @@ class PlanDTO extends DTO
         private readonly ?string $metadata,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('name'),
@@ -44,7 +43,7 @@ class PlanDTO extends DTO
         );
     }
 
-    public static function fromArray(array $data) : self
+    public static function fromArray(array $data): self
     {
         return new self(
             $data['name'],

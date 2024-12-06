@@ -21,7 +21,7 @@ class PartnerDTO extends DTO
         private readonly ?string $templateCode,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('address_id'),

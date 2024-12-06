@@ -1,44 +1,44 @@
 
 <div class="modal fade" id="kt_modal_update_details" tabindex="-1" aria-hidden="true">
-    <!--begin::Modal dialog-->
+    {{-- begin::Modal dialog --}}
     <div class="modal-dialog modal-dialog-centered mw-650px">
-        <!--begin::Modal content-->
+        {{-- begin::Modal content --}}
         <div class="modal-content">
-            <!--begin::Form-->
+            {{-- begin::Form --}}
             <form class="form" action="#" id="kt_modal_update_user_form">
-                <!--begin::Modal header-->
+                {{-- begin::Modal header --}}
                 <div class="modal-header" id="kt_modal_update_user_header">
-                    <!--begin::Modal title-->
+                    {{-- begin::Modal title --}}
                     <h2 class="fw-bold">Update User Details</h2>
-                    <!--end::Modal title-->
-                    <!--begin::Close-->
+                    {{-- end::Modal title --}}
+                    {{-- begin::Close --}}
                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-users-modal-action="close">
                         <i class="ki-duotone ki-cross fs-1">
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </i>
                     </div>
-                    <!--end::Close-->
+                    {{-- end::Close --}}
                 </div>
-                <!--end::Modal header-->
-                <!--begin::Modal body-->
+                {{-- end::Modal header --}}
+                {{-- begin::Modal body --}}
                 <div class="modal-body px-5 my-7">
-                    <!--begin::Scroll-->
+                    {{-- begin::Scroll --}}
                     <div class="d-flex flex-column scroll-y px-5 px-lg-10" id="kt_modal_update_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto"
                         data-kt-scroll-dependencies="#kt_modal_update_user_header" data-kt-scroll-wrappers="#kt_modal_update_user_scroll" data-kt-scroll-offset="300px">
-                        <!--begin::User toggle-->
+                        {{-- begin::User toggle --}}
                         <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#kt_modal_update_user_user_info" role="button" aria-expanded="false"
                             aria-controls="kt_modal_update_user_user_info">User Information
                             <span class="ms-2 rotate-180">
                                 <i class="ki-duotone ki-down fs-3"></i>
                             </span>
                         </div>
-                        <!--end::User toggle-->
-                        <!--begin::User form-->
+                        {{-- end::User toggle --}}
+                        {{-- begin::User form --}}
                         <div id="kt_modal_update_user_user_info" class="collapse show">
-                            <!--begin::Input group-->
+                            {{-- begin::Input group --}}
                             <div class="mb-7">
-                                <!--begin::Label-->
+                                {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">
                                     <span>Update Avatar</span>
                                     <span class="ms-1" data-bs-toggle="tooltip" title="Allowed file types: png, jpg, jpeg.">
@@ -49,72 +49,72 @@
                                         </i>
                                     </span>
                                 </label>
-                                <!--end::Label-->
-                                <!--begin::Image input wrapper-->
+                                {{-- end::Label --}}
+                                {{-- begin::Image input wrapper --}}
                                 <div class="mt-1">
-                                    <!--begin::Image placeholder-->
+                                    {{-- begin::Image placeholder --}}
                                     <style>
                                         .image-input-placeholder {
                                             background-image: url('{{ image('svg/files/blank-image.svg') }}');
                                         }
-        
+
                                         [data-bs-theme="dark"] .image-input-placeholder {
                                             background-image: url('{{ image('svg/files/blank-image-dark.svg') }}');
                                         }
                                     </style>
-                                    <!--end::Image placeholder-->
-                                    <!--begin::Image input-->
+                                    {{-- end::Image placeholder --}}
+                                    {{-- begin::Image input --}}
                                     <div class="image-input image-input-outline image-input-placeholder" data-kt-image-input="true">
-                                        <!--begin::Preview existing avatar-->
+                                        {{-- begin::Preview existing avatar --}}
                                         <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $user->profile_photo_url }});"></div>
-                                        <!--end::Preview existing avatar-->
-                                        <!--begin::Edit-->
+                                        {{-- end::Preview existing avatar --}}
+                                        {{-- begin::Edit --}}
                                         <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                             <i class="ki-duotone ki-pencil fs-7">
                                                 <span class="path1"></span>
                                                 <span class="path2"></span>
                                             </i>
-                                            <!--begin::Inputs-->
+                                            {{-- begin::Inputs --}}
                                             <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
                                             <input type="hidden" name="avatar_remove" />
-                                            <!--end::Inputs-->
+                                            {{-- end::Inputs --}}
                                         </label>
-                                        <!--end::Edit-->
-                                        <!--begin::Cancel-->
+                                        {{-- end::Edit --}}
+                                        {{-- begin::Cancel --}}
                                         <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
                                             <i class="ki-duotone ki-cross fs-2">
                                                 <span class="path1"></span>
                                                 <span class="path2"></span>
                                             </i>
                                         </span>
-                                        <!--end::Cancel-->
-                                        <!--begin::Remove-->
+                                        {{-- end::Cancel --}}
+                                        {{-- begin::Remove --}}
                                         <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
                                             <i class="ki-duotone ki-cross fs-2">
                                                 <span class="path1"></span>
                                                 <span class="path2"></span>
                                             </i>
                                         </span>
-                                        <!--end::Remove-->
+                                        {{-- end::Remove --}}
                                     </div>
-                                    <!--end::Image input-->
+                                    {{-- end::Image input --}}
                                 </div>
-                                <!--end::Image input wrapper-->
+                                {{-- end::Image input wrapper --}}
                             </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
+                            {{-- end::Input group --}}
+                            {{-- begin::Input group --}}
                             <div class="fv-row mb-7">
-                                <!--begin::Label-->
+                                {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">Name</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
+                                {{-- end::Label --}}
+                                {{-- begin::Input --}}
                                 <input type="text" class="form-control form-control-solid" placeholder="" name="name" value="Emma Smith" />
-                                <!--end::Input-->
+                                {{-- end::Input --}}
                             </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
+                            {{-- end::Input group --}}
+                            {{-- begin::Input group --}}
                             <div class="fv-row mb-7">
-                                <!--begin::Label-->
+                                {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">
                                     <span>Email</span>
                                     <span class="ms-1" data-bs-toggle="tooltip" title="Email address must be active">
@@ -125,28 +125,28 @@
                                         </i>
                                     </span>
                                 </label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
+                                {{-- end::Label --}}
+                                {{-- begin::Input --}}
                                 <input type="email" class="form-control form-control-solid" placeholder="" name="email" value="smith@kpmg.com" />
-                                <!--end::Input-->
+                                {{-- end::Input --}}
                             </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
+                            {{-- end::Input group --}}
+                            {{-- begin::Input group --}}
                             <div class="fv-row mb-7">
-                                <!--begin::Label-->
+                                {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">Description</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
+                                {{-- end::Label --}}
+                                {{-- begin::Input --}}
                                 <input type="text" class="form-control form-control-solid" placeholder="" name="description" />
-                                <!--end::Input-->
+                                {{-- end::Input --}}
                             </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
+                            {{-- end::Input group --}}
+                            {{-- begin::Input group --}}
                             <div class="fv-row mb-15">
-                                <!--begin::Label-->
+                                {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">Language</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
+                                {{-- end::Label --}}
+                                {{-- begin::Input --}}
                                 <select name="language" aria-label="Select a Language" data-control="select2" data-placeholder="Select a Language..." class="form-select form-select-solid"
                                     data-dropdown-parent="#kt_modal_update_details">
                                     <option></option>
@@ -197,78 +197,78 @@
                                     <option value="zh-cn">简体中文 - Simplified Chinese</option>
                                     <option value="zh-tw">繁體中文 - Traditional Chinese</option>
                                 </select>
-                                <!--end::Input-->
+                                {{-- end::Input --}}
                             </div>
-                            <!--end::Input group-->
+                            {{-- end::Input group --}}
                         </div>
-                        <!--end::User form-->
-                        <!--begin::Address toggle-->
+                        {{-- end::User form --}}
+                        {{-- begin::Address toggle --}}
                         <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#kt_modal_update_user_address" role="button" aria-expanded="false" aria-controls="kt_modal_update_user_address">
                             Address Details
                             <span class="ms-2 rotate-180">
                                 <i class="ki-duotone ki-down fs-3"></i>
                             </span>
                         </div>
-                        <!--end::Address toggle-->
-                        <!--begin::Address form-->
+                        {{-- end::Address toggle --}}
+                        {{-- begin::Address form --}}
                         <div id="kt_modal_update_user_address" class="collapse show">
-                            <!--begin::Input group-->
+                            {{-- begin::Input group --}}
                             <div class="d-flex flex-column mb-7 fv-row">
-                                <!--begin::Label-->
+                                {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">Address Line 1</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
+                                {{-- end::Label --}}
+                                {{-- begin::Input --}}
                                 <input class="form-control form-control-solid" placeholder="" name="address1" value="101, Collins Street" />
-                                <!--end::Input-->
+                                {{-- end::Input --}}
                             </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
+                            {{-- end::Input group --}}
+                            {{-- begin::Input group --}}
                             <div class="d-flex flex-column mb-7 fv-row">
-                                <!--begin::Label-->
+                                {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">Address Line 2</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
+                                {{-- end::Label --}}
+                                {{-- begin::Input --}}
                                 <input class="form-control form-control-solid" placeholder="" name="address2" />
-                                <!--end::Input-->
+                                {{-- end::Input --}}
                             </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
+                            {{-- end::Input group --}}
+                            {{-- begin::Input group --}}
                             <div class="d-flex flex-column mb-7 fv-row">
-                                <!--begin::Label-->
+                                {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">Town</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
+                                {{-- end::Label --}}
+                                {{-- begin::Input --}}
                                 <input class="form-control form-control-solid" placeholder="" name="city" value="Melbourne" />
-                                <!--end::Input-->
+                                {{-- end::Input --}}
                             </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
+                            {{-- end::Input group --}}
+                            {{-- begin::Input group --}}
                             <div class="row g-9 mb-7">
-                                <!--begin::Col-->
+                                {{-- begin::Col --}}
                                 <div class="col-md-6 fv-row">
-                                    <!--begin::Label-->
+                                    {{-- begin::Label --}}
                                     <label class="fs-6 fw-semibold mb-2">State / Province</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
+                                    {{-- end::Label --}}
+                                    {{-- begin::Input --}}
                                     <input class="form-control form-control-solid" placeholder="" name="state" value="Victoria" />
-                                    <!--end::Input-->
+                                    {{-- end::Input --}}
                                 </div>
-                                <!--end::Col-->
-                                <!--begin::Col-->
+                                {{-- end::Col --}}
+                                {{-- begin::Col --}}
                                 <div class="col-md-6 fv-row">
-                                    <!--begin::Label-->
+                                    {{-- begin::Label --}}
                                     <label class="fs-6 fw-semibold mb-2">Post Code</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
+                                    {{-- end::Label --}}
+                                    {{-- begin::Input --}}
                                     <input class="form-control form-control-solid" placeholder="" name="postcode" value="3000" />
-                                    <!--end::Input-->
+                                    {{-- end::Input --}}
                                 </div>
-                                <!--end::Col-->
+                                {{-- end::Col --}}
                             </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
+                            {{-- end::Input group --}}
+                            {{-- begin::Input group --}}
                             <div class="d-flex flex-column mb-7 fv-row">
-                                <!--begin::Label-->
+                                {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">
                                     <span>Country</span>
                                     <span class="ms-1" data-bs-toggle="tooltip" title="Country of origination">
@@ -279,8 +279,8 @@
                                         </i>
                                     </span>
                                 </label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
+                                {{-- end::Label --}}
+                                {{-- begin::Input --}}
                                 <select name="country" aria-label="Select a Country" data-control="select2" data-placeholder="Select a Country..." class="form-select form-select-solid"
                                     data-dropdown-parent="#kt_modal_update_details">
                                     <option value="">Select a Country...</option>
@@ -509,31 +509,31 @@
                                     <option value="ZM">Zambia</option>
                                     <option value="ZW">Zimbabwe</option>
                                 </select>
-                                <!--end::Input-->
+                                {{-- end::Input --}}
                             </div>
-                            <!--end::Input group-->
+                            {{-- end::Input group --}}
                         </div>
-                        <!--end::Address form-->
+                        {{-- end::Address form --}}
                     </div>
-                    <!--end::Scroll-->
+                    {{-- end::Scroll --}}
                 </div>
-                <!--end::Modal body-->
-                <!--begin::Modal footer-->
+                {{-- end::Modal body --}}
+                {{-- begin::Modal footer --}}
                 <div class="modal-footer flex-center">
-                    <!--begin::Button-->
+                    {{-- begin::Button --}}
                     <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Discard</button>
-                    <!--end::Button-->
-                    <!--begin::Button-->
+                    {{-- end::Button --}}
+                    {{-- begin::Button --}}
                     <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
                         <span class="indicator-label">Submit</span>
                         <span class="indicator-progress">Please wait...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                     </button>
-                    <!--end::Button-->
+                    {{-- end::Button --}}
                 </div>
-                <!--end::Modal footer-->
+                {{-- end::Modal footer --}}
             </form>
-            <!--end::Form-->
+            {{-- end::Form --}}
         </div>
     </div>
 </div>

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('role_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('action')->nullable(); 
-            $table->timestamps(); 
+            $table->string('action')->nullable();
+            $table->timestamps();
         });
     }
 

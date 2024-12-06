@@ -24,6 +24,7 @@ use App\Http\Controllers\PaymentMethods;
 use App\Http\Controllers\PaymentProfile;
 use App\Http\Controllers\Periods;
 use App\Http\Controllers\Plans;
+use App\Http\Controllers\Products;
 use App\Http\Controllers\Roles;
 use App\Http\Controllers\Subscription;
 use App\Http\Controllers\Transactions;
@@ -43,15 +44,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth', 'verified'])->group(function () {
-
+    // Dashboard
     Route::get('/', [DashboardController::class, 'index']);
-
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::name('user-management.')->group(function () {
-        Route::resource('/user-management/users', UserManagementController::class);
-        Route::resource('/user-management/roles', RoleManagementController::class);
-        Route::resource('/user-management/permissions', PermissionManagementController::class);
+    // User Management
+    Route::prefix('user-management')->name('user-management.')->group(function () {
+        Route::resource('users', UserManagementController::class);
+        Route::resource('roles', RoleManagementController::class);
+        Route::resource('permissions', PermissionManagementController::class);
     });
 
     // Customers
@@ -232,4 +233,4 @@ Route::get('/error', function () {
 
 Route::get('/auth/redirect/{provider}', [SocialiteController::class, 'redirect']);
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

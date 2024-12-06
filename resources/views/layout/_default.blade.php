@@ -2,39 +2,39 @@
 
 @section('content')
 
-    <!--begin::App-->
+    {{-- begin::App --}}
     <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
-        <!--begin::Page-->
+        {{-- begin::Page --}}
         <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
             @include(config('settings.KT_THEME_LAYOUT_DIR').'/partials/sidebar-layout/_header')
-            <!--begin::Wrapper-->
+            {{-- begin::Wrapper --}}
             <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
                 @include(config('settings.KT_THEME_LAYOUT_DIR').'/partials/sidebar-layout/_sidebar')
-                <!--begin::Main-->
+                {{-- begin::Main --}}
                 <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
-                    <!--begin::Content wrapper-->
+                    {{-- begin::Content wrapper --}}
                     <div class="d-flex flex-column flex-column-fluid">
                         @include(config('settings.KT_THEME_LAYOUT_DIR').'/partials/sidebar-layout/_toolbar')
-                        <!--begin::Content-->
+                        {{-- begin::Content --}}
                         <div id="kt_app_content" class="app-content flex-column-fluid">
-                            <!--begin::Content container-->
+                            {{-- begin::Content container --}}
                             <div id="kt_app_content_container" class="app-container container-fluid">
                                 {{ $slot }}
                             </div>
-                            <!--end::Content container-->
+                            {{-- end::Content container --}}
                         </div>
-                        <!--end::Content-->
+                        {{-- end::Content --}}
                     </div>
-                    <!--end::Content wrapper-->
+                    {{-- end::Content wrapper --}}
                     @include(config('settings.KT_THEME_LAYOUT_DIR').'/partials/sidebar-layout/_footer')
                 </div>
-                <!--end:::Main-->
+                {{-- end:::Main --}}
             </div>
-            <!--end::Wrapper-->
+            {{-- end::Wrapper --}}
         </div>
-        <!--end::Page-->
+        {{-- end::Page --}}
     </div>
-    <!--end::App-->
+    {{-- end::App --}}
 
     @include('partials/_drawers')
 

@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('pricing_ranges', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pricing_schema_id')->constrained()->onDelete('cascade');
             $table->integer('start_quantity');
             $table->integer('end_quantity')->nullable();
             $table->decimal('price', 10, 2);

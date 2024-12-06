@@ -1,0 +1,201 @@
+name: Code Quality
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: brazipay
+          POSTGRES_USER: sail
+          POSTGRES_PASSWORD: password
+        options: >-
+          --health-cmd "pg_isready -U sail"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          extensions: mbstring, bcmath, curl, dom, pdo_pgsql, pgsql
+          tools: composer
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-cache
+        id: install-dependencies
+
+      - name: Check for vulnerabilities
+        run: composer audit
+        id: check-vulnerabilities
+        continue-on-error: true
+
+      - name: Setup environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+        id: setup-environment
+
+      - name: Clear configuration cache
+        run: php artisan config:clear
+        id: clear-cache
+
+      - name: Run database migrations
+        run: php artisan migrate --force
+        env:
+          DB_CONNECTION: pgsql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 5432
+          DB_DATABASE: brazipay
+          DB_USERNAME: sail
+          DB_PASSWORD: password
+        id: run-migrations
+
+      - name: Run Laravel Pint
+        run: vendor/bin/pint --test
+        id: run-pint
+        continue-on-error: true
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse app bootstrap config database lang resources routes tests --memory-limit=1G
+        id: run-phpstan
+        continue-on-error: true
+
+      - name: Run tests
+        env:
+          DB_CONNECTION: pgsql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 5432
+          DB_DATABASE: brazipay
+          DB_USERNAME: sail
+          DB_PASSWORD: password
+        run: vendor/bin/phpunit
+        id: run-tests
+
+      - name: Run Snyk Dependency Scan
+        uses: snyk/actions/php@master
+        env:
+          SNYK_TOKEN: '58d74067-9602-4238-9654-3584df5d67c3'
+        id: run-snyk
+        continue-on-error: true
+
+      - name: Run Trivy Vulnerability Scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+        id: run-trivy
+        continue-on-error: true
+
+      - name: Aggregate Step Results
+        id: aggregate-results
+        run: |
+          FAILED=false
+          REPORT="Steps Status Report:\n"
+
+          if [ "success" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Install dependencies: Failed\n"
+          else
+            REPORT+="✅ Install dependencies: Succeeded\n"
+          fi
+
+          if [ "failure" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Check vulnerabilities: Failed\n"
+          else
+            REPORT+="✅ Check vulnerabilities: Succeeded\n"
+          fi
+
+          if [ "success" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Clear configuration cache: Failed\n"
+          else
+            REPORT+="✅ Clear configuration cache: Succeeded\n"
+          fi
+
+          if [ "success" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Run migrations: Failed\n"
+          else
+            REPORT+="✅ Run migrations: Succeeded\n"
+          fi
+
+          if [ "success" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Run Laravel Pint: Failed\n"
+          else
+            REPORT+="✅ Run Laravel Pint: Succeeded\n"
+          fi
+
+          if [ "success" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Run PHPStan: Failed\n"
+          else
+            REPORT+="✅ Run PHPStan: Succeeded\n"
+          fi
+
+          if [ "success" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Run tests: Failed\n"
+          else
+            REPORT+="✅ Run tests: Succeeded\n"
+          fi
+
+          if [ "failure" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Run Snyk: Failed\n"
+          else
+            REPORT+="✅ Run Snyk: Succeeded\n"
+          fi
+
+          if [ "success" == "failure" ]; then
+            FAILED=true
+            REPORT+="❌ Run Trivy: Failed\n"
+          else
+            REPORT+="✅ Run Trivy: Succeeded\n"
+          fi
+
+          echo -e "$REPORT" > report.txt
+          echo "FAILED=$FAILED" >> $GITHUB_ENV
+
+      - name: Set Step Results
+        if: failure()
+        run: |
+          echo "Reporting Results:"
+          cat report.txt
+
+
+  notify-failure:
+    runs-on: ubuntu-latest
+    needs: code-quality
+    if: failure()
+    steps:
+      - name: Send Discord Notification
+        run: |
+          REPORT=$(cat report.txt)
+          curl -X POST -H "Content-Type: application/json" \
+          -d "{\"content\": \"⚠️ Workflow Failed: \`Code Quality\`\n- Steps Status:\n${REPORT}\n- Branch: \`${{ github.ref_name }}\`\n- Commit: \`${{ github.sha }}\`\nCheck the logs: \`${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\`\"}" \
+          https://discord.com/api/webhooks/1311038258129403944/0HIIXxAm0tdNgRVrVh38w9_abuw9fezJwrkx7-W5Tn_dkftgaKGTxjCYDq6yojWGPj9E
+

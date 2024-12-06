@@ -2,38 +2,58 @@
 
 namespace App\Http\DTOs;
 
-use App\Http\Interfaces\StoreRequestInterface;
-use App\Http\Interfaces\UpdateRequestInterface;
-
+/**
+ * Data Transfer Object for Pricing Range.
+ *
+ * This DTO encapsulates the details of a pricing range, providing
+ * convenient methods to create instances from arrays or request data.
+ */
 class PricingRangeDTO extends DTO
 {
+    /**
+     * PricingRangeDTO constructor.
+     *
+     * @param  string  $id  The unique identifier for the pricing range.
+     * @param  float  $start_quantity  The starting quantity for the range.
+     * @param  float  $end_quantity  The ending quantity for the range.
+     * @param  float  $price  The price associated with the range.
+     * @param  float  $overage_price  The overage price for quantities beyond the range.
+     */
     public function __construct(
-        private readonly int $pricingSchemaId,
-        private readonly int $startQuantity,
-        private readonly ?int $endQuantity,
-        private readonly float $price,
-        private readonly ?float $overagePrice,
+        public readonly string $id,
+        public readonly float $start_quantity,
+        public readonly float $end_quantity,
+        public readonly float $price,
+        public readonly float $overage_price,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    /**
+     * Create a new PricingRangeDTO instance from request data.
+     *
+     * @param  array<string, mixed>  $data  The request data containing pricing range attributes.
+     */
+    public static function fromRequest(array $data): self
     {
-        return new self(
-            $request->get('pricing_schema_id'),
-            $request->get('start_quantity'),
-            $request->get('end_quantity', null),
-            $request->get('price'),
-            $request->get('overage_price', null),
-        );
+        return self::fromArray($data);
     }
 
+    /**
+     * Create a new PricingRangeDTO instance from an array.
+     *
+     * This method is primarily used for instantiating the DTO from
+     * a structured data array, typically sourced from a database or
+     * external service.
+     *
+     * @param  array<string, mixed>  $data  The array containing pricing range attributes.
+     */
     public static function fromArray(array $data): self
     {
         return new self(
-            $data['pricing_schema_id'],
+            $data['id'],
             $data['start_quantity'],
-            $data['end_quantity'] ?? null,
+            $data['end_quantity'],
             $data['price'],
-            $data['overage_price'] ?? null,
+            $data['overage_price']
         );
     }
 }

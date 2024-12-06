@@ -2,17 +2,15 @@
 
 namespace App\Http\Requests\Discount;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Enums\DiscountTypeEnum;
 use App\Http\Interfaces\StoreRequestInterface;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 class DiscountStoreRequest extends FormRequest implements StoreRequestInterface
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
     public function authorize(): bool
     {

@@ -3,7 +3,6 @@
 namespace App\Http\Traits;
 
 use Exception;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -37,7 +36,7 @@ trait ApiShowTrait
             }
 
             if (empty($res->id)) {
-                throw new Exception('Record not found on ' . $this::class . ' class', 1);
+                throw new Exception('Record not found on '.$this::class.' class', 1);
             }
         } else {
             $res = ($this->_getModelClass())::search($this->search)->findOrFail($id);

@@ -23,12 +23,12 @@ class CustomerStoreRequest extends FormRequest implements StoreRequestInterface
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:50', 
-            'email' => 'required|string|email|max:50|unique:customers,email', 
-            'registry_code' => 'nullable|string|max:20', 
-            'code' => 'required|uuid', 
-            'notes' => 'nullable|string', 
-            'metadata' => 'nullable|string', 
+            'name' => 'required|string|max:50',
+            'email' => 'required|string|email|max:50|unique:customers,email',
+            'registry_code' => 'nullable|string|max:20',
+            'code' => 'required|uuid',
+            'notes' => 'nullable|string',
+            'metadata' => 'nullable|string',
         ];
     }
 

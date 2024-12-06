@@ -12,7 +12,7 @@ class ExportBatchDTO extends DTO
         private readonly ?int $paymentCompanyId,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('payment_method_id'),

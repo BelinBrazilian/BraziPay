@@ -24,7 +24,7 @@ class PlanUpdateJob implements ShouldQueue
 
             Log::debug('Plan updated succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on updating Vindi Plan: ' . $e->getMessage());
+            Log::error('Error on updating Vindi Plan: '.$e->getMessage());
         }
     }
 }

@@ -61,6 +61,7 @@ final class SubscriptionService
             DB::beginTransaction();
 
             $subscription = Subscription::create((SubscriptionDTO::fromRequest($request))->toArray());
+            $subscription = Subscription::create((SubscriptionDTO::fromRequest($request))->toArray());
 
             DB::commit();
 
@@ -74,6 +75,7 @@ final class SubscriptionService
         }
     }
 
+    public function update(SubscriptionUpdateRequest $request, mixed $id): JsonResponse
     public function update(SubscriptionUpdateRequest $request, mixed $id): JsonResponse
     {
         try {
@@ -94,6 +96,7 @@ final class SubscriptionService
         }
     }
 
+    public function destroy(mixed $id): JsonResponse
     public function destroy(mixed $id): JsonResponse
     {
         try {
@@ -116,6 +119,7 @@ final class SubscriptionService
         }
     }
 
+    public function reactivate(mixed $id): JsonResponse
     public function reactivate(mixed $id): JsonResponse
     {
         try {
@@ -154,6 +158,7 @@ final class SubscriptionService
     public function product_items(mixed $id): Collection
     {
         $subscription = $this->repository->find($id);
+
         return $subscription->productItems();
     }
 }

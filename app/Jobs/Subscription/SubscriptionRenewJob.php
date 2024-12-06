@@ -23,7 +23,7 @@ class SubscriptionRenewJob implements ShouldQueue
 
             Log::debug('Subscription reactivated succesfully!');
         } catch (Exception $e) {
-            Log::error('Error on reactivating Vindi Subscription: ' . $e->getMessage());
+            Log::error('Error on reactivating Vindi Subscription: '.$e->getMessage());
         }
     }
 }

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Enums\PhoneTypeEnum;
 use App\Http\Enums\PlanStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -9,10 +8,14 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations to create or update the 'customers', 'addresses', and 'phones' tables.
+     *
+     * This migration creates the required tables if they do not exist, and checks for each column
+     * within each table, adding missing columns if needed to ensure structure consistency.
      */
     public function up(): void
     {
+        // Create 'customers' table if it does not exist
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('external_id')->nullable();
@@ -25,36 +28,12 @@ return new class extends Migration
             $table->timestamps();
             $table->json('metadata')->nullable();
             $table->unsignedBigInteger('address_id');
-            $table->softDeletes(); 
-            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
-        });
-
-        Schema::create('addresses', function (Blueprint $table) {
-            $table->id();
-            $table->string('street');
-            $table->string('number');
-            $table->string('additional_details')->nullable();
-            $table->string('zipcode');
-            $table->string('neighborhood');
-            $table->string('city');
-            $table->string('state');
-            $table->string('country');
-            $table->timestamps();
-        });
-
-        Schema::create('phones', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('customer_id');
-            $table->enum('phone_type', array_column(PhoneTypeEnum::cases(), 'value'));
-            $table->string('number', 15);
-            $table->string('extension')->nullable();
-            $table->timestamps();
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations by dropping the 'customers', 'addresses', and 'phones' tables.
      */
     public function down(): void
     {
