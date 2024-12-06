@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs\Customer;
+namespace App\Jobs\Plan;
 
 use App\Helpers\VindiApi;
 use App\Models\Plan;

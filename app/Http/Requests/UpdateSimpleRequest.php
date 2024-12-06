@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Interfaces\UpdateRequestInterface;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddressUpdateRequest extends FormRequest implements UpdateRequestInterface
+class UpdateSimpleRequest extends FormRequest implements UpdateRequestInterface
 {
     /**
      * Determine if the user is authorized to make this request.

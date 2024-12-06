@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Interfaces\StoreRequestInterface;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddressStoreRequest extends FormRequest implements StoreRequestInterface
+class StoreSimpleRequest extends FormRequest implements StoreRequestInterface
 {
     /**
      * Determine if the user is authorized to make this request.
