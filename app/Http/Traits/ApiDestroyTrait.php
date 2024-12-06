@@ -9,18 +9,18 @@ trait ApiDestroyTrait
 {
     use HasMRRS;
 
-    public function destroy(int $id) : JsonResponse
+    public function destroy(int $id, mixed $queryParams = null): JsonResponse
     {
         try {
-            return $this->_hasService() && $this->_hasDestroyFunction()
-                ? $this->_service_destroy($id) 
+            return $this->_hasService() && ($this->_hasDestroyFunction() || $this->_hasVindiDestroyFunction())
+                ? $this->_service_destroy($id, $queryParams)
                 : $this->_destroy($id);
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
 
-    private function _destroy(int $id) : JsonResponse
+    private function _destroy(int $id): JsonResponse
     {
         if (! $this->_getModelClass()) {
             throw new Exception('Model not found on ' . $this::class . ' class', 1);
@@ -41,9 +41,13 @@ trait ApiDestroyTrait
         return response()->json([], 200);
     }
 
-    private function _service_destroy(int $id) : JsonResponse
+    private function _service_destroy(int $id, mixed $queryParams = null): JsonResponse
     {
-        $this->service->destroy($id);
+        if ($this->_hasDestroyFunction()) {
+            $this->service->destroy($id, $queryParams);
+        } else {
+            $this->service->_destroy($id, $queryParams);
+        }
 
         return response()->json([], 200);
     }

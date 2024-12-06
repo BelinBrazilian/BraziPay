@@ -7,7 +7,7 @@ use App\Http\Requests\Affiliates\AffiliateStoreRequest;
 use App\Http\Requests\Affiliates\AffiliateUpdateRequest;
 use Illuminate\Contracts\View\View;
 
-class Affiliates extends Controller 
+final class Affiliates extends Controller
 {
     public function __construct(private readonly APIAffiliates $api) {}
 
@@ -45,7 +45,7 @@ class Affiliates extends Controller
         /** @todo consenso sobre exibição de erros */
     }
 
-    public function verify(mixed $code) : void
+    public function verify(mixed $code): void
     {
         $this->api->verify($code);
     }

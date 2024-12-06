@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Affiliate;
 
+use App\Helpers\VindiApi;
 use App\Http\DTOs\AffiliateDTO;
 use App\Integrators\Vindi\Affiliates;
 use App\Models\Affiliate;
@@ -19,7 +20,7 @@ class AffiliateVerifyJob implements ShouldQueue
     public function handle(): void
     {
         try {
-            $vindiAffiliateService = new Affiliates(config('app.vindi_args'));
+            $vindiAffiliateService = new Affiliates(VindiApi::config());
             $vindiAffiliate = $vindiAffiliateService->verify($this->affiliate->external_id);
 
             $this->affiliate->update((AffiliateDTO::fromArray((array) $vindiAffiliate))->toArray());

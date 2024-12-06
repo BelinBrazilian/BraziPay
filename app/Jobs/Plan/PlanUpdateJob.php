@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Customer;
 
+use App\Helpers\VindiApi;
 use App\Models\Plan;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -18,7 +19,7 @@ class PlanUpdateJob implements ShouldQueue
     public function handle(): void
     {
         try {
-            $vindiPlanService = new VindiPlan(config('app.vindi_args'));
+            $vindiPlanService = new VindiPlan(VindiApi::config());
             $vindiPlanService->update($this->plan->external_id, $this->plan->normalize());
 
             Log::debug('Plan updated succesfully!');

@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Discount;
 
+use App\Helpers\VindiApi;
 use App\Models\Discount;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -18,7 +19,7 @@ class DiscountStoreJob implements ShouldQueue
     public function handle(): void
     {
         try {
-            $vindiDiscountService = new VindiDiscount(config('app.vindi_args'));
+            $vindiDiscountService = new VindiDiscount(VindiApi::config());
             $vindiDiscount = $vindiDiscountService->create($this->discount->normalize());
 
             $this->discount->update(['external_id' => $vindiDiscount->id]);

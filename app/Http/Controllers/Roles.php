@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\API\Affiliates as APIAffiliates;
 use Illuminate\Contracts\View\View;
 
-class Roles extends Controller 
+final class Roles extends Controller
 {
     public function __construct(private readonly APIAffiliates $api) {}
 

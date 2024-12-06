@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Discount;
 
+use App\Helpers\VindiApi;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -17,7 +18,7 @@ class DiscountDeleteJob implements ShouldQueue
     public function handle(): void
     {
         try {
-            $vindiDiscountService = new VindiDiscount(config('app.vindi_args'));
+            $vindiDiscountService = new VindiDiscount(VindiApi::config());
             $vindiDiscountService->delete($this->external_id);
 
             Log::debug('Discount deleted succesfully!');

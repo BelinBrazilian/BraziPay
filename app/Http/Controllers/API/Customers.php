@@ -5,8 +5,6 @@ namespace App\Http\Controllers\API;
 use App\Http\Services\CustomerService;
 use App\Http\Traits\ApiTraits;
 use App\Models\Customer;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class Customers extends ApiController
@@ -21,7 +19,7 @@ class Customers extends ApiController
         parent::__construct();
     }
 
-    public function unarchive(mixed $id) : Customer
+    public function unarchive(mixed $id): Customer
     {
         return $this->service->unarchive($id);
     }

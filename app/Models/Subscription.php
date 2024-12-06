@@ -82,6 +82,14 @@ class Subscription extends Model
                     ->withPivot('ammount', 'amount_type', 'status', 'remove');
     }
 
+    /**
+     * Get the periods for the subscription.
+     */
+    public function periods(): HasMany
+    {
+        return $this->hasMany(Period::class);
+    }
+
     public function normalize() : array
     {
         $data = [

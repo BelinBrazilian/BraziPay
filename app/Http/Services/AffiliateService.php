@@ -2,11 +2,14 @@
 
 namespace App\Http\Services;
 
+use App\Helpers\VindiApi;
 use App\Http\DTOs\AffiliateDTO;
+use App\Http\Interfaces\StoreRequestInterface;
+use App\Http\Interfaces\UpdateRequestInterface;
 use App\Http\Repositories\AffiliateRepository;
 use App\Http\Requests\Affiliates\AffiliateStoreRequest;
 use App\Http\Requests\Affiliates\AffiliateUpdateRequest;
-use App\Integrators\Vindi\Affiliates;
+use App\Integrators\Vindi\Affiliates as VindiAffiliates;
 use App\Jobs\Affiliate\AffiliateStoreJob;
 use App\Jobs\Affiliate\AffiliateUpdateJob;
 use App\Jobs\Affiliate\AffiliateVerifyJob;
@@ -15,11 +18,33 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 
-class AffiliateService
+final class AffiliateService
 {
-    public function __construct(private readonly AffiliateRepository $repository) {}
+    private readonly VindiAffiliates $vindiService;
 
-    public function store(AffiliateStoreRequest $request) : Affiliate
+    public function __construct(private readonly AffiliateRepository $repository)
+    {
+        $this->vindiService = new VindiAffiliates(VindiApi::config());
+    }
+
+    // direct functions
+    public function _store(StoreRequestInterface $request): JsonResponse
+    {
+        return $this->vindiService->create($request->all());
+    }
+
+    public function _update(UpdateRequestInterface $request, int $id): JsonResponse
+    {
+        return $this->vindiService->update($id, $request->all());
+    }
+
+    public function _verify(int $id): JsonResponse
+    {
+        return $this->vindiService->verify($id);
+    }
+
+    // stored info functions
+    public function store(AffiliateStoreRequest $request): Affiliate
     {
         try {
             DB::beginTransaction();
@@ -38,7 +63,7 @@ class AffiliateService
         }
     }
 
-    public function update(AffiliateUpdateRequest $request, mixed $id) : Affiliate
+    public function update(AffiliateUpdateRequest $request, mixed $id): Affiliate
     {
         try {
             DB::beginTransaction();
@@ -58,17 +83,10 @@ class AffiliateService
         }
     }
 
-    public function verify(mixed $id) : void
+    public function verify(mixed $id): void
     {
         $affiliate = $this->repository->find($id);
-        (new AffiliateVerifyJob($affiliate))->handle();
-    }
 
-    public function _verify(mixed $id) : JsonResponse
-    {
-        $affiliate = $this->repository->find($id);
-        $vindiAffiliateService = new Affiliates(config('app.vindi_args'));
-        
-        return $vindiAffiliateService->verify($affiliate->external_id);
+        (new AffiliateVerifyJob($affiliate))->handle();
     }
 }

@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('discounts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('external_id')->nullable();
             $table->foreignId('product_item_id')->constrained()->onDelete('cascade');
-            $table->string('discount_type'); // Ex: percentage, fixed_amount
+            $table->string('discount_type');
             $table->decimal('percentage', 10, 2)->nullable();
             $table->decimal('amount', 10, 2)->nullable();
             $table->integer('quantity')->nullable();

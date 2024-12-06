@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('status'); 
             $table->text('description')->nullable();
             $table->string('invoice')->nullable(); 
+            $table->json('metadata')->nullable();
             $table->timestamps();
         });
     }

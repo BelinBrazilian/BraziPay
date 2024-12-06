@@ -25,6 +25,11 @@ class Product extends Model
         'status',
         'description',
         'invoice',
+        'metadata',
+    ];
+
+    protected $casts = [
+        'metadata' => 'array',
     ];
 
     /**

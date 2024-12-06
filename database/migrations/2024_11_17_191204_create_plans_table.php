@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('name');
             $table->enum('interval', array_column(PlanIntervalEnum::cases(), 'value'))->required();
             $table->integer('interval_count');
+            $table->string('interval_name')->nullable();
             $table->enum('billing_trigger_type', array_column(PlanBillingTriggerTypeEnum::cases(), 'value'))->required();
             $table->integer('billing_trigger_day');
             $table->integer('billing_cycles')->nullable();
@@ -28,6 +29,7 @@ return new class extends Migration
             $table->integer('installments')->nullable();
             $table->boolean('invoice_split')->nullable();
             $table->enum('status', array_column(PlanStatusEnum::cases(), 'value'));
+            $table->json('metadata')->nullable();
             $table->timestamps();
         });
     }

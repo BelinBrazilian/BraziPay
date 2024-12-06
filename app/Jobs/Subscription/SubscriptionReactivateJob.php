@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Subscription;
 
+use App\Helpers\VindiApi;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -17,7 +18,7 @@ class SubscriptionReactivateJob implements ShouldQueue
     public function handle(): void
     {
         try {
-            $vindiSubscriptionService = new Subscription(config('app.vindi_args'));
+            $vindiSubscriptionService = new Subscription(VindiApi::config());
             $vindiSubscriptionService->reactivate($this->externalId);
 
             Log::debug('Subscription reactivated succesfully!');

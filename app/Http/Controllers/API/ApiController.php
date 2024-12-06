@@ -20,5 +20,5 @@ class ApiController extends Component
     public ?string $fields;
     public ?string $select;
 
-    public function __constuct() {} 
+    public function __constuct() {}
 }

@@ -8,7 +8,7 @@ use App\Http\Requests\SubscriptionStoreRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 
-class Subscription extends Controller 
+final class Subscription extends Controller
 {
     public function __construct(private readonly APISubscription $api) {}
 
@@ -36,14 +36,14 @@ class Subscription extends Controller
         /** @todo consenso sobre exibição de erros */
     }
 
-    public function update(UpdateRequestInterface $request, mixed $code): View 
+    public function update(UpdateRequestInterface $request, mixed $code): View
     {
         $data = $this->api->update($request, $code);
 
         return View('subscription.show', compact('data'));
     }
 
-    public function destroy(mixed $code): View 
+    public function destroy(mixed $code): View
     {
         $this->api->destroy($code);
 
@@ -60,7 +60,7 @@ class Subscription extends Controller
         return $this->api->renew($code);
     }
 
-    public function product_items(mixed $code): View
+    public function productItems(mixed $code): View
     {
         $data = $this->api->product_items($code);
 

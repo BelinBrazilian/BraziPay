@@ -16,6 +16,7 @@ class ProductDTO extends DTO
         private readonly string $status,
         private readonly ?string $description,
         private readonly ?string $invoice,
+        private readonly ?string $metadata,
     ) {}
 
     public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
@@ -29,6 +30,7 @@ class ProductDTO extends DTO
             $request->get('status'),
             $request->get('description', null),
             $request->get('invoice', null),
+            $request->get('metadata', null),
         );
     }
 
@@ -43,6 +45,7 @@ class ProductDTO extends DTO
             $data['status'],
             $data['description'] ?? null,
             $data['invoice'] ?? null,
+            $data['metadata'] ?? null,
         );
     }
 }

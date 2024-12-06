@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use App\Helpers\VindiApi;
 use App\Http\DTOs\SubscriptionDTO;
 use App\Http\Repositories\SubscriptionRepository;
 use App\Http\Requests\SubscriptionStoreRequest;
@@ -18,37 +19,48 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Vindi\Subscription as VindiSubscription;
 
-class SubscriptionService
+final class SubscriptionService
 {
-    public function __construct(private readonly SubscriptionRepository $repository) {}
+    private readonly VindiSubscription $vindiService;
 
-    public function _index($page = 1, $per_page = 25, $query = '', $sort_by = 'id', $sort_order = 'desc') : JsonResponse
+    public function __construct(private readonly SubscriptionRepository $repository)
     {
-        $vindiSubscriptionService = new VindiSubscription(config('app.vindi_args'));
-
-        return $vindiSubscriptionService->all([
-            'page' => $page,
-            'per_page' => $per_page,
-            'query' => $query,
-            'sort_by' => $sort_by,
-            'sort_order' => $sort_order,
-        ]);
+        $this->vindiService = new VindiSubscription(VindiApi::config());
     }
 
-    public function _show(mixed $id) : JsonResponse
+    // direct functions
+    public function _index(array $queryParams = []): JsonResponse
     {
-        $subscription = $this->repository->find($id);
-        $vindiSubscriptionService = new VindiSubscription(config('app.vindi_args'));
-
-        return $vindiSubscriptionService->get($subscription->external_id);
+        return $this->vindiService->all($queryParams);
     }
 
-    public function store(SubscriptionStoreRequest $request) : Subscription
+    public function _show(int $id): JsonResponse
+    {
+        return $this->vindiService->retrieve($id);
+    }
+    
+    public function _reactivate(int $id): JsonResponse
+    {
+        return $this->vindiService->reactivate($id);
+    }
+
+    public function _renew(int $id): JsonResponse
+    {
+        return $this->vindiService->renew($id);
+    }
+
+    public function _product_items(int $id): Collection
+    {
+        return $this->vindiService->product_items($id);
+    }
+
+    // stored info functions
+    public function store(SubscriptionStoreRequest $request): Subscription
     {
         try {
             DB::beginTransaction();
 
-            $subscription = Subscription::create((SubscriptionDTO::fromRequest($request))->toArray()); 
+            $subscription = Subscription::create((SubscriptionDTO::fromRequest($request))->toArray());
 
             DB::commit();
 
@@ -62,7 +74,7 @@ class SubscriptionService
         }
     }
 
-    public function update(SubscriptionUpdateRequest $request, mixed $id) : JsonResponse
+    public function update(SubscriptionUpdateRequest $request, mixed $id): JsonResponse
     {
         try {
             DB::beginTransaction();
@@ -82,7 +94,7 @@ class SubscriptionService
         }
     }
 
-    public function destroy(mixed $id) : JsonResponse
+    public function destroy(mixed $id): JsonResponse
     {
         try {
             DB::beginTransaction();
@@ -104,7 +116,7 @@ class SubscriptionService
         }
     }
 
-    public function reactivate(mixed $id) : JsonResponse
+    public function reactivate(mixed $id): JsonResponse
     {
         try {
             DB::beginTransaction();
@@ -124,15 +136,7 @@ class SubscriptionService
         }
     }
 
-    public function _reactivate(mixed $id) : JsonResponse
-    {
-        $subscription = $this->repository->find($id);
-        $vindiSubscriptionService = new VindiSubscription(config('app.vindi_args'));
-
-        return $vindiSubscriptionService->reactivate($subscription->external_id);
-    }
-
-    public function renew(mixed $id) : JsonResponse
+    public function renew(mixed $id): JsonResponse
     {
         try {
             $subscription = $this->repository->find($id);
@@ -147,25 +151,9 @@ class SubscriptionService
         }
     }
 
-    public function _renew(mixed $id) : JsonResponse
-    {
-        $subscription = $this->repository->find($id);
-        $vindiSubscriptionService = new VindiSubscription(config('app.vindi_args'));
-
-        return $vindiSubscriptionService->renew($subscription->externalId);
-    }
-
     public function product_items(mixed $id): Collection
     {
         $subscription = $this->repository->find($id);
         return $subscription->productItems();
-    }
-
-    public function _product_items(mixed $id): Collection
-    {
-        $subscription = $this->repository->find($id);
-        $vindiSubscriptionService = new VindiSubscription(config('app.vindi_args'));
-
-        return $vindiSubscriptionService->product_items($subscription->externalId);
     }
 }

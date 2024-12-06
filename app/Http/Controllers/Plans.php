@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\API\Plans as APIPlans;
-use App\Http\Requests\Customer\PlanstoreRequest;
-use App\Http\Requests\Customer\CustomerUpdateRequest;
-use App\Http\Requests\Plan\PlanStoreRequest as PlanPlanStoreRequest;
+use App\Http\Requests\Plan\PlanStoreRequest;
 use App\Http\Requests\Plan\PlanUpdateRequest;
 use App\Models\Customer;
 use Illuminate\View\View;
 
-class Plans extends Controller
+final class Plans extends Controller
 {
     public function __construct(private readonly APIPlans $api) {}
 
@@ -28,7 +26,7 @@ class Plans extends Controller
         return View('customets.index', compact('data'));
     }
 
-    public function store(PlanPlanStoreRequest $request): View
+    public function store(PlanStoreRequest $request): View
     {
         if ($data = $this->api->store($request)) {
             /** @var Customer $data */
@@ -48,7 +46,7 @@ class Plans extends Controller
         /** @todo consenso sobre exibição de erros */
     }
 
-    public function plan_items(string $code): View
+    public function planItems(string $code): View
     {
         if ($this->api->plan_items($code)) {
             return $this->show($code);

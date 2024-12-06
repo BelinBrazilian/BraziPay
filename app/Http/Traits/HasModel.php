@@ -27,7 +27,7 @@ trait HasModel
         return null;
     }
 
-    public function _hasUuid(): bool 
+    public function _hasUuid(): bool
     {
         return ! empty($this->model::uuidField) ? true : false;
     }
@@ -39,7 +39,7 @@ trait HasModel
             $this->dto = $dtoName;
         }
 
-        return false; 
+        return false;
     }
 
     public function _getAllowedFilters(): array
