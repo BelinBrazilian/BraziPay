@@ -21,6 +21,7 @@ class Plan extends Model
         'name',
         'interval',
         'interval_count',
+        'interval_name',    
         'billing_trigger_type',
         'billing_trigger_day',
         'billing_cycles',
@@ -28,6 +29,11 @@ class Plan extends Model
         'installments',
         'invoice_split',
         'status',
+        'metadata',
+    ];
+
+    protected $casts = [
+        'metadata' => 'array',
     ];
 
     /**

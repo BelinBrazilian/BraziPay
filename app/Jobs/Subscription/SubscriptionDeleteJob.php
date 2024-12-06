@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Subscription;
 
+use App\Helpers\VindiApi;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -17,7 +18,7 @@ class SubscriptionDeleteJob implements ShouldQueue
     public function handle(): void
     {
         try {
-            $vindiSubscriptionService = new VindiSubscription(config('app.vindi_args'));
+            $vindiSubscriptionService = new VindiSubscription(VindiApi::config());
             $vindiSubscriptionService->delete($this->external_id);
 
             Log::debug('Subscription deleted succesfully!');

@@ -17,7 +17,7 @@ use Illuminate\View\View;
  * updating, and managing plan items. It ensures a clear separation
  * between API logic and view rendering.
  */
-class Plans extends Controller
+final class Plans extends Controller
 {
     /**
      * The APIPlans service instance.
@@ -60,6 +60,7 @@ class Plans extends Controller
         return View('customers.index', compact('data'));
     }
 
+    public function store(PlanStoreRequest $request): View
     /**
      * Store a newly created plan.
      *
@@ -109,7 +110,7 @@ class Plans extends Controller
      * @param  string  $code  The unique code of the plan whose items need to be managed.
      * @return View The view displaying the plan items or a generic error page.
      */
-    public function plan_items(string $code): View
+    public function planItems(string $code): View
     {
         if ($this->api->plan_items($code)) {
             return $this->show($code);

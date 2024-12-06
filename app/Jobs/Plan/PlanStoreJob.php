@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Jobs\Customer;
+namespace App\Jobs\Plan;
 
+use App\Helpers\VindiApi;
 use App\Models\Plan;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -18,7 +19,7 @@ class PlanStoreJob implements ShouldQueue
     public function handle(): void
     {
         try {
-            $vindiPlanService = new VindiPlan(config('app.vindi_args'));
+            $vindiPlanService = new VindiPlan(VindiApi::config());
             $vindiPlan = $vindiPlanService->create($this->plan->normalize());
 
             $this->plan->update(['external_id' => $vindiPlan->id]);

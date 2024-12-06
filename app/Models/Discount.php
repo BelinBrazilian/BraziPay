@@ -16,6 +16,7 @@ class Discount extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'external_id',
         'product_item_id',
         'discount_type',
         'percentage',

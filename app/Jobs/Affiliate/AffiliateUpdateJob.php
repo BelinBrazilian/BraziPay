@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Affiliate;
 
+use App\Helpers\VindiApi;
 use App\Integrators\Vindi\Affiliates;
 use App\Models\Affiliate;
 use Exception;
@@ -18,7 +19,7 @@ class AffiliateUpdateJob implements ShouldQueue
     public function handle(): void
     {
         try {
-            $vindiAffiliateService = new Affiliates(config('app.vindi_args'));
+            $vindiAffiliateService = new Affiliates(VindiApi::config());
             $vindiAffiliateService->update($this->affiliate->external_id, $this->affiliate->normalize(true));
 
             Log::debug('Affiliate updated succesfully!');

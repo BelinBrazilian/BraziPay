@@ -10,18 +10,22 @@ trait ApiIndexTrait
 {
     use HasMRRS;
 
-    public function index(?string $queryParams): JsonResponse
+    public function index(mixed $queryParams = []): JsonResponse
     {
-        return $this->_hasService() && $this->_hasIndexFunction() ?
+        return $this->_hasService() && ($this->_hasIndexFunction() || $this->_hasVindiIndexFunction()) ?
             $this->_service_index($queryParams) :
             $this->_index();
     }
 
     private function _index(): JsonResponse
+    private function _index(): JsonResponse
     {
         if (empty($this->search)) {
             $res = QueryBuilder::for($this->_getModelClass())
                 ->allowedFilters($this->_getAllowedFilters())
+                ->allowedSorts($this->_getAllowedSorts())
+                ->allowedIncludes($this->_getAllowedIncludes())
+                ->allowedFields($this->_getAllowedFields())
                 ->allowedSorts($this->_getAllowedSorts())
                 ->allowedIncludes($this->_getAllowedIncludes())
                 ->allowedFields($this->_getAllowedFields())
@@ -31,16 +35,20 @@ trait ApiIndexTrait
         }
 
         return $this->_hasResource() ?
-                $this->resource::collection($res) :
-                JsonResource::collection($res);
+            $this->resource::collection($res) :
+            JsonResource::collection($res);
     }
 
-    private function _service_index(?string $queryParams): JsonResponse
+    private function _service_index(mixed $queryParams): JsonResponse
     {
-        $res = $this->service->index($queryParams);
+        if ($this->_hasIndexFunction()) {
+            $res = $this->service->index($queryParams);
+        } else {
+            $res = $this->service->_index($queryParams);
+        }
 
         return $this->_hasResource() ?
-                $this->resource::collection($res) :
-                JsonResource::collection($res);
+            $this->resource::collection($res) :
+            JsonResource::collection($res);
     }
 }

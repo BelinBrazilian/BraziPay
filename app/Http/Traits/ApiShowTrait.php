@@ -14,7 +14,7 @@ trait ApiShowTrait
     public function show(mixed $id): JsonResponse
     {
         try {
-            return $this->_hasService() && $this->_hasShowFunction() ?
+            return $this->_hasService() && ($this->_hasShowFunction() || $this->_hasVindiShowFunction()) ?
                 $this->_service_show($id) :
                 $this->_show($id);
         } catch (Exception $e) {
@@ -49,8 +49,14 @@ trait ApiShowTrait
 
     private function _service_show(mixed $id): JsonResponse
     {
+        if ($this->_hasShowFunction()) {
+            $data = $this->service->show($id);
+        } else {
+            $data = $this->service->_show($id);
+        }
+
         return $this->_hasResource() ?
-            new ($this->resource::class)($this->service->show($id)) :
-            new JsonResource($this->service->show($id));
+            new ($this->resource::class)($data) :
+            new JsonResource($data);
     }
 }

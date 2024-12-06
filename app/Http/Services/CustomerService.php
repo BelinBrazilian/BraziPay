@@ -2,9 +2,12 @@
 
 namespace App\Http\Services;
 
+use App\Helpers\VindiApi;
 use App\Http\DTOs\AddressDTO;
 use App\Http\DTOs\CustomerDTO;
 use App\Http\DTOs\PhoneDTO;
+use App\Http\Interfaces\StoreRequestInterface;
+use App\Http\Interfaces\UpdateRequestInterface;
 use App\Http\Repositories\CustomerRepository;
 use App\Http\Requests\Customer\CustomerStoreRequest;
 use App\Http\Requests\Customer\CustomerUpdateRequest;
@@ -18,31 +21,39 @@ use App\Models\Phone;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
+use Vindi\Customer as VindiCustomer;
 
-class CustomerService
+final class CustomerService
 {
-    public function __construct(private readonly CustomerRepository $repository) {}
+    private readonly VindiCustomer $vindiService;
 
-    public function unarchive(mixed $id): Customer
+    public function __construct(private readonly CustomerRepository $repository)
     {
-        try {
-            DB::beginTransaction();
-
-            $customer = $this->repository->find($id);
-            $customer->restore();
-
-            DB::commit();
-
-            (new CustomerUnarchiveJob($customer))->handle();
-
-            return $customer;
-        } catch (Exception $e) {
-            DB::rollback();
-
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
+        $this->vindiService = new VindiCustomer(VindiApi::config());
     }
 
+    // direct functions
+    public function _store(StoreRequestInterface $request): JsonResponse
+    {
+        return $this->vindiService->create($request->all());
+    }
+
+    public function _update(UpdateRequestInterface $request, int $id): JsonResponse
+    {
+        return $this->vindiService->update($id, $request->all());
+    }
+
+    public function _destroy($id, ?array $queryParams = []): JsonResponse
+    {
+        return $this->vindiService->delete($id, $queryParams);
+    }
+
+    public function _unarchive($id): JsonResponse
+    {
+        return $this->vindiService->unarchive($id);
+    }
+
+    // stored info functions
     public function store(CustomerStoreRequest $request): Customer
     {
         try {
@@ -121,6 +132,26 @@ class CustomerService
             (new CustomerDeleteJob($external_id))->handle();
 
             return response()->json([], 200);
+        } catch (Exception $e) {
+            DB::rollback();
+
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function unarchive(mixed $id): Customer
+    {
+        try {
+            DB::beginTransaction();
+
+            $customer = $this->repository->find($id);
+            $customer->restore();
+
+            DB::commit();
+
+            (new CustomerUnarchiveJob($customer))->handle();
+
+            return $customer;
         } catch (Exception $e) {
             DB::rollback();
 

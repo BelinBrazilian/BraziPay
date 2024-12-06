@@ -72,4 +72,29 @@ trait HasService
     {
         return $this->_hasService() && method_exists($this->service, 'destroy');
     }
+
+    public function _hasVindiIndexFunction(): bool
+    {
+        return method_exists($this->service::class, '_index');
+    }
+
+    public function _hasVindiShowFunction(): bool
+    {
+        return method_exists($this->service::class, '_show');
+    }
+
+    public function _hasVindiStoreFunction(): bool
+    {
+        return method_exists($this->service::class, '_store');
+    }
+
+    public function _hasVindiUpdateFunction(): bool
+    {
+        return method_exists($this->service::class, '_update');
+    }
+
+    public function _hasVindiDestroyFunction(): bool
+    {
+        return method_exists($this->service::class, '_destroy');
+    }
 }

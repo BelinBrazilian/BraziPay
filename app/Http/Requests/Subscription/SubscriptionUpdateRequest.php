@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Subscription;
 
 use App\Http\Interfaces\UpdateRequestInterface;
 use Illuminate\Foundation\Http\FormRequest;

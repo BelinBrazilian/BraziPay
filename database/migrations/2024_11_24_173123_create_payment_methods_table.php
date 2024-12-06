@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('code')->unique();
             $table->string('type');
             $table->string('status')->default('active');
-            $table->json('settings')->nullable(); // Usando json para armazenar o hash
+            $table->json('settings')->nullable();
             $table->string('set_subscription_on_success')->default('do_not_set');
-            $table->boolean('allow_as_alternative')->default(true);
+            $table->string('allow_as_alternative')->nullable();
             $table->integer('maximum_attempts')->default(0);
             $table->timestamps();
         });
