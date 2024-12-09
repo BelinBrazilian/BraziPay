@@ -11,7 +11,7 @@ use Illuminate\Http\JsonResponse;
 
 final class Charges extends Controller
 {
-    use IndexTrait, ShowTrait, UpdateTrait, DestroyTrait;
+    use DestroyTrait, IndexTrait, ShowTrait, UpdateTrait;
 
     public function __construct(private readonly APICharges $api) {}
 

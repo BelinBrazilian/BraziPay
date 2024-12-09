@@ -12,7 +12,7 @@ use Illuminate\Contracts\View\View;
 
 final class MerchantUsers extends Controller
 {
-    use IndexTrait, ShowTrait, StoreTrait, UpdateTrait, DestroyTrait;
+    use DestroyTrait, IndexTrait, ShowTrait, StoreTrait, UpdateTrait;
 
     public function __construct(private readonly APIMerchantUsers $api) {}
 

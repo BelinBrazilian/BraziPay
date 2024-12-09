@@ -3,7 +3,6 @@
 namespace App\Jobs\Customer;
 
 use App\Helpers\VindiApi;
-use App\Models\Customer;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;

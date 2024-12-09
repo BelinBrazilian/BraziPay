@@ -11,7 +11,8 @@ final class MerchantService
 {
     private readonly VindiMerchant $vindiService;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->vindiService = new VindiMerchant(VindiApi::config());
     }
 

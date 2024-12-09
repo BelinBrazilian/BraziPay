@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('cycle');
             $table->timestamp('start_at');
             $table->timestamp('end_at');
-            $table->integer('duration'); 
+            $table->integer('duration');
             $table->timestamps();
         });
     }

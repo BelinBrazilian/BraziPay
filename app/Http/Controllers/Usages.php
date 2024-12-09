@@ -8,7 +8,7 @@ use App\Http\Traits\StoreTrait;
 
 final class Usages extends Controller
 {
-    use StoreTrait, DestroyTrait;
+    use DestroyTrait, StoreTrait;
 
     public function __construct(private readonly APIUsages $api) {}
 }

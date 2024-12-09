@@ -10,7 +10,8 @@ final class UserService
 {
     private readonly VindiUsers $vindiService;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->vindiService = new VindiUsers(VindiApi::config());
     }
 

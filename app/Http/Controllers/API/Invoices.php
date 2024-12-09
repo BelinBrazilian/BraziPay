@@ -20,6 +20,6 @@ class Invoices extends ApiController
 
     public function retry(int $id): JsonResponse
     {
-        return $this->service->_retry($id); 
+        return $this->service->_retry($id);
     }
 }

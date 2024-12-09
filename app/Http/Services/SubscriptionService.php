@@ -5,8 +5,8 @@ namespace App\Http\Services;
 use App\Helpers\VindiApi;
 use App\Http\DTOs\SubscriptionDTO;
 use App\Http\Repositories\SubscriptionRepository;
-use App\Http\Requests\SubscriptionStoreRequest;
-use App\Http\Requests\SubscriptionUpdateRequest;
+use App\Http\Requests\Subscription\SubscriptionStoreRequest;
+use App\Http\Requests\Subscription\SubscriptionUpdateRequest;
 use App\Jobs\Subscription\SubscriptionDeleteJob;
 use App\Jobs\Subscription\SubscriptionReactivateJob;
 use App\Jobs\Subscription\SubscriptionRenewJob;
@@ -38,7 +38,7 @@ final class SubscriptionService
     {
         return $this->vindiService->retrieve($id);
     }
-    
+
     public function _reactivate(int $id): JsonResponse
     {
         return $this->vindiService->reactivate($id);
@@ -61,7 +61,6 @@ final class SubscriptionService
             DB::beginTransaction();
 
             $subscription = Subscription::create((SubscriptionDTO::fromRequest($request))->toArray());
-            $subscription = Subscription::create((SubscriptionDTO::fromRequest($request))->toArray());
 
             DB::commit();
 
@@ -75,7 +74,6 @@ final class SubscriptionService
         }
     }
 
-    public function update(SubscriptionUpdateRequest $request, mixed $id): JsonResponse
     public function update(SubscriptionUpdateRequest $request, mixed $id): JsonResponse
     {
         try {
@@ -96,7 +94,6 @@ final class SubscriptionService
         }
     }
 
-    public function destroy(mixed $id): JsonResponse
     public function destroy(mixed $id): JsonResponse
     {
         try {
@@ -119,7 +116,6 @@ final class SubscriptionService
         }
     }
 
-    public function reactivate(mixed $id): JsonResponse
     public function reactivate(mixed $id): JsonResponse
     {
         try {

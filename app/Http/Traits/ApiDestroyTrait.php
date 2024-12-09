@@ -21,7 +21,6 @@ trait ApiDestroyTrait
     }
 
     private function _destroy(int $id): JsonResponse
-    private function _destroy(int $id): JsonResponse
     {
         if (! $this->_getModelClass()) {
             throw new Exception('Model not found on '.$this::class.' class', 1);

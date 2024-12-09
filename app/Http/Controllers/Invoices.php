@@ -12,12 +12,12 @@ use Illuminate\Http\JsonResponse;
 
 final class Invoices extends Controller
 {
-    use IndexTrait, ShowTrait, StoreTrait, UpdateTrait, DestroyTrait;
+    use DestroyTrait, IndexTrait, ShowTrait, StoreTrait, UpdateTrait;
 
     public function __construct(private readonly APIInvoices $api) {}
 
     public function retry(int $id): JsonResponse
     {
-        return $this->api->retry($id); 
+        return $this->api->retry($id);
     }
 }

@@ -283,7 +283,7 @@ if (! function_exists('image')) {
      */
     function image($path): string
     {
-        return asset('assets/media/' . $path);
+        return asset('assets/media/'.$path);
     }
 }
 
@@ -297,7 +297,7 @@ if (! function_exists('getIcon')) {
     }
 }
 
-if (!function_exists('camelToSnakeCase')) {
+if (! function_exists('camelToSnakeCase')) {
     function camelToSnakeCase($input)
     {
         preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $input, $matches);
@@ -305,12 +305,12 @@ if (!function_exists('camelToSnakeCase')) {
         foreach ($ret as &$match) {
             $match = $match == strtoupper($match) ? strtolower($match) : lcfirst($match);
         }
-        
+
         return implode('_', $ret);
     }
 }
 
-if (!function_exists('getViewName')) {
+if (! function_exists('getViewName')) {
     function getViewName($className, $viewName)
     {
         return sprintf(

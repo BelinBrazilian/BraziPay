@@ -5,14 +5,15 @@ namespace App\Http\Services;
 use App\Helpers\VindiApi;
 use App\Http\Interfaces\StoreRequestInterface;
 use App\Http\Interfaces\UpdateRequestInterface;
-use Illuminate\Http\JsonResponse;
 use App\Integrators\Vindi\Transaction as VindiTransaction;
+use Illuminate\Http\JsonResponse;
 
 final class TransactionService
 {
     private readonly VindiTransaction $vindiService;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->vindiService = new VindiTransaction(VindiApi::config());
     }
 

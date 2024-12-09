@@ -6,8 +6,6 @@ use Vindi\Bill as VindiBill;
 
 /**
  * Class Plan
- *
- * @package Vindi
  */
 class Bill extends VindiBill
 {

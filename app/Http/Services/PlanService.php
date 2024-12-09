@@ -10,19 +10,20 @@ use App\Http\Interfaces\UpdateRequestInterface;
 use App\Http\Repositories\PlanRepository;
 use App\Http\Requests\Plan\PlanStoreRequest;
 use App\Http\Requests\Plan\PlanUpdateRequest;
-use App\Jobs\Customer\PlanStoreJob;
-use App\Jobs\Customer\PlanUpdateJob;
+use App\Integrators\Vindi\PlanItems as VindiPlanItems;
+use App\Jobs\Plan\PlanStoreJob;
+use App\Jobs\Plan\PlanUpdateJob;
 use App\Models\Plan;
 use App\Models\PlanItem;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Vindi\Plan as VindiPlan;
-use App\Integrators\Vindi\PlanItems as VindiPlanItems;
 
 final class PlanService
 {
     private readonly VindiPlan $vindiPlanService;
+
     private readonly VindiPlanItems $vindiPlanItemsService;
 
     public function __construct(private readonly PlanRepository $repository)
@@ -55,7 +56,6 @@ final class PlanService
 
             $new = Plan::create((PlanDTO::fromRequest($request)));
             foreach ($request->getPlanItemFields() as $planItem) {
-            foreach ($request->getPlanItemFields() as $planItem) {
                 $planItem['plan_id'] = $new->id;
                 PlanItem::create((PlanItemDTO::fromArray($planItem))->toArray());
             }
@@ -72,7 +72,6 @@ final class PlanService
         }
     }
 
-    public function update(PlanUpdateRequest $request, mixed $id): Plan
     public function update(PlanUpdateRequest $request, mixed $id): Plan
     {
         try {

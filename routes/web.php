@@ -227,6 +227,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/partner', [Partners::class, 'store'])->name('partner.store');
 });
 
+Route::get('/customers', [Customers::class, 'index'])->name('customers.index');
+
+Route::get('/', function () {
+    echo 'OK';
+});
+
 Route::get('/error', function () {
     abort(500);
 });

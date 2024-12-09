@@ -6,8 +6,8 @@ use App\Helpers\VindiApi;
 use App\Http\Interfaces\StoreRequestInterface;
 use App\Http\Interfaces\UpdateRequestInterface;
 use App\Http\Repositories\PeriodRepository;
-use Illuminate\Http\JsonResponse;
 use App\Integrators\Vindi\Bill as VindiBill;
+use Illuminate\Http\JsonResponse;
 
 final class BillService
 {

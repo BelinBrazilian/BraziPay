@@ -18,7 +18,6 @@ trait ApiIndexTrait
     }
 
     private function _index(): JsonResponse
-    private function _index(): JsonResponse
     {
         if (empty($this->search)) {
             $res = QueryBuilder::for($this->_getModelClass())

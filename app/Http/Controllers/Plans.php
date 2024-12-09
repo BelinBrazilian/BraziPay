@@ -60,7 +60,6 @@ final class Plans extends Controller
         return View('customers.index', compact('data'));
     }
 
-    public function store(PlanStoreRequest $request): View
     /**
      * Store a newly created plan.
      *

@@ -21,7 +21,7 @@ class Plan extends Model
         'name',
         'interval',
         'interval_count',
-        'interval_name',    
+        'interval_name',
         'billing_trigger_type',
         'billing_trigger_day',
         'billing_cycles',

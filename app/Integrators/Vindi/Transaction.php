@@ -6,8 +6,6 @@ use Vindi\Transaction as VindiTransaction;
 
 /**
  * Class Plan
- *
- * @package Vindi
  */
 class Transaction extends VindiTransaction
 {

@@ -5,14 +5,15 @@ namespace App\Http\Services;
 use App\Helpers\VindiApi;
 use App\Http\Interfaces\StoreRequestInterface;
 use App\Http\Interfaces\UpdateRequestInterface;
-use Illuminate\Http\JsonResponse;
 use App\Integrators\Vindi\MerchantUsers as VindiMerchantUsers;
+use Illuminate\Http\JsonResponse;
 
 final class MerchantUserService
 {
     private readonly VindiMerchantUsers $vindiService;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->vindiService = new VindiMerchantUsers(VindiApi::config());
     }
 

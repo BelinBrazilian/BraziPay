@@ -12,6 +12,7 @@ use Vindi\Notification as VindiNotification;
 final class NotificationService
 {
     private readonly VindiNotification $vindiNotificationService;
+
     private readonly VindiNotificationItem $vindiNotificationItemService;
 
     public function __construct()

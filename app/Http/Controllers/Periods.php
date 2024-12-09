@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\API\Periods as APIPeriods;
-use App\Http\Requests\Period\PeriodUpdateRequest;
 use App\Http\Traits\IndexTrait;
 use App\Http\Traits\ShowTrait;
 use App\Http\Traits\UpdateTrait;

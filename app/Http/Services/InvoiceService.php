@@ -45,7 +45,7 @@ final class InvoiceService
 
     public function _retry(int $id): JsonResponse
     {
-        return $this->vindiService->retry($id); 
+        return $this->vindiService->retry($id);
     }
 
     // stored info functions

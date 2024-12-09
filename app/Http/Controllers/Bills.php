@@ -12,7 +12,7 @@ use Illuminate\Http\JsonResponse;
 
 final class Bills extends Controller
 {
-    use IndexTrait, ShowTrait, StoreTrait, UpdateTrait, DestroyTrait;
+    use DestroyTrait, IndexTrait, ShowTrait, StoreTrait, UpdateTrait;
 
     public function __construct(private readonly APIBills $api) {}
 

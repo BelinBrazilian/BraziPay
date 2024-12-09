@@ -4,7 +4,6 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Services\MessageService;
 use App\Http\Traits\ApiTraits;
-use Illuminate\Http\JsonResponse;
 use Psr\Http\Message\RequestInterface;
 
 class Messages extends ApiController

@@ -31,6 +31,6 @@ class Notifications extends ApiController
 
     public function notificationItemDestroy(int $notificationId, $notificationItemId): JsonResponse
     {
-        return $this->service->_notification_item_destroy($notificationId, $notificationItemId); 
+        return $this->service->_notification_item_destroy($notificationId, $notificationItemId);
     }
 }

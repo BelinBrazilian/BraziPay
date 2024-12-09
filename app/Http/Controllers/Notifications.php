@@ -13,7 +13,7 @@ use Illuminate\Http\JsonResponse;
 
 final class Notifications extends Controller
 {
-    use IndexTrait, ShowTrait, StoreTrait, UpdateTrait, DestroyTrait;
+    use DestroyTrait, IndexTrait, ShowTrait, StoreTrait, UpdateTrait;
 
     public function __construct(private readonly APINotifications $api) {}
 
@@ -29,6 +29,6 @@ final class Notifications extends Controller
 
     public function notificationItemDestroy(int $notificationId, $notificationItemId): JsonResponse
     {
-        return $this->api->notificationItemDestroy($notificationId, $notificationItemId); 
+        return $this->api->notificationItemDestroy($notificationId, $notificationItemId);
     }
 }

@@ -67,4 +67,3 @@ final class Subscription extends Controller
         return View('subscription.product_items', compact($data));
     }
 }
-

@@ -17,7 +17,7 @@ class PeriodDTO extends DTO
         private readonly int $duration,
     ) {}
 
-    public static function fromRequest(StoreRequestInterface | UpdateRequestInterface $request): self
+    public static function fromRequest(StoreRequestInterface|UpdateRequestInterface $request): self
     {
         return new self(
             $request->get('external_id', null),

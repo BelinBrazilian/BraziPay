@@ -3,7 +3,6 @@
 namespace App\Jobs\Subscription;
 
 use App\Helpers\VindiApi;
-use App\Http\DTOs\PeriodDTO;
 use App\Models\Period;
 use App\Models\Subscription;
 use Exception;

@@ -23,11 +23,11 @@ use App\Http\Controllers\API\PaymentProfile;
 use App\Http\Controllers\API\Periods;
 use App\Http\Controllers\API\Plans;
 use App\Http\Controllers\API\Roles;
-use App\Http\Controllers\Products;
 use App\Http\Controllers\API\Subscription;
 use App\Http\Controllers\API\Transactions;
 use App\Http\Controllers\API\Usages;
 use App\Http\Controllers\API\Users;
+use App\Http\Controllers\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -42,7 +42,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', fn(Request $request) => $request->user());
+Route::middleware('auth:sanctum')->get('/user', fn (Request $request) => $request->user());
 
 // Prefixo da API v1
 Route::prefix('v1')->group(function () {

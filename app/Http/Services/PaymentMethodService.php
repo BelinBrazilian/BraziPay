@@ -10,7 +10,8 @@ final class PaymentMethodService
 {
     private readonly VindiPaymentMethod $vindiService;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->vindiService = new VindiPaymentMethod(VindiApi::config());
     }
 

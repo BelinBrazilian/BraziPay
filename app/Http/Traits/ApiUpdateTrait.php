@@ -11,7 +11,6 @@ trait ApiUpdateTrait
     use HasMRRS;
 
     public function update(UpdateRequestInterface $request, mixed $id): JsonResponse
-    public function update(UpdateRequestInterface $request, mixed $id): JsonResponse
     {
         try {
             return $this->_hasService() && ($this->_hasUpdateFunction() || $this->_hasVindiUpdateFunction()) ?
@@ -22,7 +21,6 @@ trait ApiUpdateTrait
         }
     }
 
-    private function _update(UpdateRequestInterface $request, mixed $id): JsonResponse
     private function _update(UpdateRequestInterface $request, mixed $id): JsonResponse
     {
         if (! $this->_getModelClass()) {
@@ -47,7 +45,6 @@ trait ApiUpdateTrait
         throw new Exception('Error on "update": '.$this::class.' class', 1);
     }
 
-    private function _service_update(UpdateRequestInterface $request, mixed $id): JsonResponse
     private function _service_update(UpdateRequestInterface $request, mixed $id): JsonResponse
     {
         if ($this->_hasUpdateFunction()) {

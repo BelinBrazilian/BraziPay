@@ -11,7 +11,8 @@ final class PartnerService
 {
     private readonly VindiPartners $vindiService;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->vindiService = new VindiPartners(VindiApi::config());
     }
 
