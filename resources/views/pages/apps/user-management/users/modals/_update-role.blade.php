@@ -45,20 +45,20 @@
                     </div>
                     {{-- end::Notice --}}
                     {{-- end::Notice --}}
-                    {{-- begin::Input group --}}
+                    {{-- begin::InputText group --}}
                     <div class="fv-row mb-7">
                         {{-- begin::Label --}}
                         <label class="fs-6 fw-semibold form-label mb-5">
                             <span class="required">Select a user role</span>
                         </label>
                         {{-- end::Label --}}
-                        {{-- begin::Input row --}}
+                        {{-- begin::InputText row --}}
                         <div class="d-flex">
                             {{-- begin::Radio --}}
                             <div class="form-check form-check-custom form-check-solid">
-                                {{-- begin::Input --}}
+                                {{-- begin::InputText --}}
                                 <input class="form-check-input me-3" name="user_role" type="radio" value="0" id="kt_modal_update_role_option_0" checked='checked' />
-                                {{-- end::Input --}}
+                                {{-- end::InputText --}}
                                 {{-- begin::Label --}}
                                 <label class="form-check-label" for="kt_modal_update_role_option_0">
                                     <div class="fw-bold text-gray-800">Administrator</div>
@@ -68,15 +68,15 @@
                             </div>
                             {{-- end::Radio --}}
                         </div>
-                        {{-- end::Input row --}}
+                        {{-- end::InputText row --}}
                         <div class='separator separator-dashed my-5'></div>
-                        {{-- begin::Input row --}}
+                        {{-- begin::InputText row --}}
                         <div class="d-flex">
                             {{-- begin::Radio --}}
                             <div class="form-check form-check-custom form-check-solid">
-                                {{-- begin::Input --}}
+                                {{-- begin::InputText --}}
                                 <input class="form-check-input me-3" name="user_role" type="radio" value="1" id="kt_modal_update_role_option_1" />
-                                {{-- end::Input --}}
+                                {{-- end::InputText --}}
                                 {{-- begin::Label --}}
                                 <label class="form-check-label" for="kt_modal_update_role_option_1">
                                     <div class="fw-bold text-gray-800">Developer</div>
@@ -86,15 +86,15 @@
                             </div>
                             {{-- end::Radio --}}
                         </div>
-                        {{-- end::Input row --}}
+                        {{-- end::InputText row --}}
                         <div class='separator separator-dashed my-5'></div>
-                        {{-- begin::Input row --}}
+                        {{-- begin::InputText row --}}
                         <div class="d-flex">
                             {{-- begin::Radio --}}
                             <div class="form-check form-check-custom form-check-solid">
-                                {{-- begin::Input --}}
+                                {{-- begin::InputText --}}
                                 <input class="form-check-input me-3" name="user_role" type="radio" value="2" id="kt_modal_update_role_option_2" />
-                                {{-- end::Input --}}
+                                {{-- end::InputText --}}
                                 {{-- begin::Label --}}
                                 <label class="form-check-label" for="kt_modal_update_role_option_2">
                                     <div class="fw-bold text-gray-800">Analyst</div>
@@ -104,15 +104,15 @@
                             </div>
                             {{-- end::Radio --}}
                         </div>
-                        {{-- end::Input row --}}
+                        {{-- end::InputText row --}}
                         <div class='separator separator-dashed my-5'></div>
-                        {{-- begin::Input row --}}
+                        {{-- begin::InputText row --}}
                         <div class="d-flex">
                             {{-- begin::Radio --}}
                             <div class="form-check form-check-custom form-check-solid">
-                                {{-- begin::Input --}}
+                                {{-- begin::InputText --}}
                                 <input class="form-check-input me-3" name="user_role" type="radio" value="3" id="kt_modal_update_role_option_3" />
-                                {{-- end::Input --}}
+                                {{-- end::InputText --}}
                                 {{-- begin::Label --}}
                                 <label class="form-check-label" for="kt_modal_update_role_option_3">
                                     <div class="fw-bold text-gray-800">Support</div>
@@ -122,15 +122,15 @@
                             </div>
                             {{-- end::Radio --}}
                         </div>
-                        {{-- end::Input row --}}
+                        {{-- end::InputText row --}}
                         <div class='separator separator-dashed my-5'></div>
-                        {{-- begin::Input row --}}
+                        {{-- begin::InputText row --}}
                         <div class="d-flex">
                             {{-- begin::Radio --}}
                             <div class="form-check form-check-custom form-check-solid">
-                                {{-- begin::Input --}}
+                                {{-- begin::InputText --}}
                                 <input class="form-check-input me-3" name="user_role" type="radio" value="4" id="kt_modal_update_role_option_4" />
-                                {{-- end::Input --}}
+                                {{-- end::InputText --}}
                                 {{-- begin::Label --}}
                                 <label class="form-check-label" for="kt_modal_update_role_option_4">
                                     <div class="fw-bold text-gray-800">Trial</div>
@@ -140,9 +140,9 @@
                             </div>
                             {{-- end::Radio --}}
                         </div>
-                        {{-- end::Input row --}}
+                        {{-- end::InputText row --}}
                     </div>
-                    {{-- end::Input group --}}
+                    {{-- end::InputText group --}}
                     {{-- begin::Actions --}}
                     <div class="text-center pt-15">
                         <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Discard</button>

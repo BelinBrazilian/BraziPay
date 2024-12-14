@@ -25,7 +25,7 @@
                     {{-- begin::Label --}}
                     <div class="fw-bold mb-9">Enter the new phone number to receive an SMS to when you log in.</div>
                     {{-- end::Label --}}
-                    {{-- begin::Input group --}}
+                    {{-- begin::InputText group --}}
                     <div class="fv-row mb-7">
                         {{-- begin::Label --}}
                         <label class="fs-6 fw-semibold form-label mb-2">
@@ -39,38 +39,38 @@
                             </span>
                         </label>
                         {{-- end::Label --}}
-                        {{-- begin::Input --}}
+                        {{-- begin::InputText --}}
                         <input type="text" class="form-control form-control-solid" name="otp_mobile_number" placeholder="+6123 456 789" value="" />
-                        {{-- end::Input --}}
+                        {{-- end::InputText --}}
                     </div>
-                    {{-- end::Input group --}}
+                    {{-- end::InputText group --}}
                     {{-- begin::Separator --}}
                     <div class="separator saperator-dashed my-5"></div>
                     {{-- end::Separator --}}
-                    {{-- begin::Input group --}}
+                    {{-- begin::InputText group --}}
                     <div class="fv-row mb-7">
                         {{-- begin::Label --}}
                         <label class="fs-6 fw-semibold form-label mb-2">
                             <span class="required">Email</span>
                         </label>
                         {{-- end::Label --}}
-                        {{-- begin::Input --}}
+                        {{-- begin::InputText --}}
                         <input type="email" class="form-control form-control-solid" name="otp_email" value="smith@kpmg.com" readonly="readonly" />
-                        {{-- end::Input --}}
+                        {{-- end::InputText --}}
                     </div>
-                    {{-- end::Input group --}}
-                    {{-- begin::Input group --}}
+                    {{-- end::InputText group --}}
+                    {{-- begin::InputText group --}}
                     <div class="fv-row mb-7">
                         {{-- begin::Label --}}
                         <label class="fs-6 fw-semibold form-label mb-2">
                             <span class="required">Confirm password</span>
                         </label>
                         {{-- end::Label --}}
-                        {{-- begin::Input --}}
+                        {{-- begin::InputText --}}
                         <input type="password" class="form-control form-control-solid" name="otp_confirm_password" value="" />
-                        {{-- end::Input --}}
+                        {{-- end::InputText --}}
                     </div>
-                    {{-- end::Input group --}}
+                    {{-- end::InputText group --}}
                     {{-- begin::Actions --}}
                     <div class="text-center pt-15">
                         <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Cancel</button>

@@ -1,4 +1,4 @@
-{{-- begin::Input group --}}
+{{-- begin::InputText group --}}
 <div class="d-flex flex-column mb-7 fv-row">
 	{{-- begin::Label --}}
 	<label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
@@ -8,17 +8,17 @@
 	{{-- end::Label --}}
 	<input type="text" class="form-control form-control-solid" placeholder="" name="card_name" value="Max Doe" />
 </div>
-{{-- end::Input group --}}
-{{-- begin::Input group --}}
+{{-- end::InputText group --}}
+{{-- begin::InputText group --}}
 <div class="d-flex flex-column mb-7 fv-row">
 	{{-- begin::Label --}}
 	<label class="required fs-6 fw-semibold form-label mb-2">Card Number</label>
 	{{-- end::Label --}}
-	{{-- begin::Input wrapper --}}
+	{{-- begin::InputText wrapper --}}
 	<div class="position-relative">
-		{{-- begin::Input --}}
+		{{-- begin::InputText --}}
 		<input type="text" class="form-control form-control-solid" placeholder="Enter card number" name="card_number" value="4111 1111 1111 1111" />
-		{{-- end::Input --}}
+		{{-- end::InputText --}}
 		{{-- begin::Card logos --}}
 		<div class="position-absolute translate-middle-y top-50 end-0 me-5">
 			<img src="{{ image('svg/card-logos/visa.svg') }}" alt="" class="h-25px" />
@@ -27,10 +27,10 @@
 		</div>
 		{{-- end::Card logos --}}
 	</div>
-	{{-- end::Input wrapper --}}
+	{{-- end::InputText wrapper --}}
 </div>
-{{-- end::Input group --}}
-{{-- begin::Input group --}}
+{{-- end::InputText group --}}
+{{-- begin::InputText group --}}
 <div class="row mb-10">
 	{{-- begin::Col --}}
 	<div class="col-md-8 fv-row">
@@ -88,21 +88,21 @@
 			<span class="ms-1" data-bs-toggle="tooltip" title="Enter a card CVV code"></span>
 		</label>
 		{{-- end::Label --}}
-		{{-- begin::Input wrapper --}}
+		{{-- begin::InputText wrapper --}}
 		<div class="position-relative">
-			{{-- begin::Input --}}
+			{{-- begin::InputText --}}
 			<input type="text" class="form-control form-control-solid" minlength="3" maxlength="4" placeholder="CVV" name="card_cvv" />
-			{{-- end::Input --}}
+			{{-- end::InputText --}}
 			{{-- begin::CVV icon --}}
 			<div class="position-absolute translate-middle-y top-50 end-0 me-3">{!! getIcon('credit-cart', 'fs-2hx') !!}</div>
 			{{-- end::CVV icon --}}
 		</div>
-		{{-- end::Input wrapper --}}
+		{{-- end::InputText wrapper --}}
 	</div>
 	{{-- end::Col --}}
 </div>
-{{-- end::Input group --}}
-{{-- begin::Input group --}}
+{{-- end::InputText group --}}
+{{-- begin::InputText group --}}
 <div class="d-flex flex-stack">
 	{{-- begin::Label --}}
 	<div class="me-5">
@@ -117,4 +117,4 @@
 	</label>
 	{{-- end::Switch --}}
 </div>
-{{-- end::Input group --}}
+{{-- end::InputText group --}}

@@ -34,14 +34,15 @@ class SocialiteController extends Controller
         return Socialite::driver($provider)->redirect();
     }
 
-    public function createUser($user)
+
+    function createUser($user)
     {
         $user = User::updateOrCreate([
             'email' => $user->getEmail(),
         ], [
-            'name' => $user->getName(),
+            'name'     => $user->getName(),
             'password' => '',
-            'avatar' => $user->getAvatar(),
+            'avatar'   => $user->getAvatar(),
         ]);
 
         if ($user->markEmailAsVerified()) {

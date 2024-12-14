@@ -14,7 +14,7 @@ var KTSearch = function(element, options) {
     // Default Options
     var defaultOptions = {
         minLength: 2,  // Miniam text lenght to query search
-        keypress: true,  // Enable search on keypress 
+        keypress: true,  // Enable search on keypress
         enter: true,  // Enable search on enter key press
         layout: 'menu',  // Use 'menu' or 'inline' layout options to display search results
         responsive: null, // Pass integer value or bootstrap compatible breakpoint key(sm,md,lg,xl,xxl) to enable reponsive form mode for device width below the breakpoint value
@@ -41,27 +41,27 @@ var KTSearch = function(element, options) {
         the.processing = false;
 
         // Elements
-        the.element = element;               
-        the.contentElement = _getElement('content');     
-        the.formElement = _getElement('form');         
+        the.element = element;
+        the.contentElement = _getElement('content');
+        the.formElement = _getElement('form');
         the.inputElement = _getElement('input');
         the.spinnerElement = _getElement('spinner');
         the.clearElement = _getElement('clear');
-        the.toggleElement = _getElement('toggle');   
+        the.toggleElement = _getElement('toggle');
         the.submitElement = _getElement('submit');
-        the.toolbarElement = _getElement('toolbar');   
+        the.toolbarElement = _getElement('toolbar');
         the.minLength = parseInt(_getOption('min-length'));
 
         the.resultsElement = _getElement('results');
-        the.suggestionElement = _getElement('suggestion'); 
-        the.emptyElement = _getElement('empty'); 
+        the.suggestionElement = _getElement('suggestion');
+        the.emptyElement = _getElement('empty');
 
         // Set initialized
         the.element.setAttribute('data-kt-search', 'true');
-        
+
         // Layout
         the.layout = _getOption('layout');
-        
+
         // Menu
         if ( the.layout === 'menu' ) {
             the.menuObject = new KTMenu(the.contentElement);
@@ -102,7 +102,7 @@ var KTSearch = function(element, options) {
             the.inputElement.addEventListener('keypress', _enter);
         }
 
-        // Clear 
+        // Clear
         if ( the.clearElement ) {
             the.clearElement.addEventListener('click', _clear);
         }
@@ -117,21 +117,21 @@ var KTSearch = function(element, options) {
                     if (KTUtil.visible(the.toggleElement)) {
                         the.toggleElement.classList.add('active');
                         the.toggleElement.classList.add('show');
-                    } 
+                    }
                 });
-    
+
                 the.menuObject.on('kt.menu.dropdown.hide', function(item) {
                     if (KTUtil.visible(the.toggleElement)) {
                         the.toggleElement.classList.remove('active');
                         the.toggleElement.classList.remove('show');
                     }
                 });
-            }            
+            }
 
             the.menuObject.on('kt.menu.dropdown.shown', function() {
                 the.inputElement.focus();
             });
-        } 
+        }
 
         // Window resize handling
         window.addEventListener('resize', function() {
@@ -149,15 +149,15 @@ var KTSearch = function(element, options) {
 
         if ( _getOption('show-on-focus') === true || the.inputElement.value.length >= the.minLength ) {
             _show();
-        }        
+        }
     }
 
     // Blur
-    var _blur = function() {        
+    var _blur = function() {
         the.element.classList.remove('focus');
     }
 
-    // Enter 
+    // Enter
     var _enter = function(e) {
         var key = e.charCode || e.keyCode || 0;
 
@@ -168,7 +168,7 @@ var KTSearch = function(element, options) {
         }
     }
 
-    // Input
+    // InputText
     var _input = function() {
         if ( _getOption('min-length') )  {
             if ( the.inputElement.value.length >= the.minLength ) {
@@ -186,7 +186,7 @@ var KTSearch = function(element, options) {
             if (the.spinnerElement) {
                 the.spinnerElement.classList.remove("d-none");
             }
-            
+
             // Hide search clear button
             if (the.clearElement) {
                 the.clearElement.classList.add("d-none");
@@ -264,7 +264,7 @@ var KTSearch = function(element, options) {
 
             if ( responsiveFormMode === 'on' && the.contentElement.contains(the.formElement) === false ) {
                 the.contentElement.prepend(the.formElement);
-                the.formElement.classList.remove('d-none');                
+                the.formElement.classList.remove('d-none');
             } else if ( responsiveFormMode === 'off' && the.contentElement.contains(the.formElement) === true ) {
                 the.element.prepend(the.formElement);
                 the.formElement.classList.add('d-none');
@@ -343,7 +343,7 @@ var KTSearch = function(element, options) {
 
     var _destroy = function() {
         KTUtil.data(the.element).remove('search');
-    }    
+    }
 
     // Construct class
     _construct();
@@ -383,7 +383,7 @@ var KTSearch = function(element, options) {
 
     the.getQuery = function() {
         return the.inputElement.value;
-    }    
+    }
 
     the.getMenu = function() {
         return the.menuObject;
