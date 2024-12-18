@@ -14,17 +14,17 @@
 			{{-- end::Notice --}}
 		</div>
 		{{-- end::Heading --}}
-		{{-- begin::Input group --}}
+		{{-- begin::InputText group --}}
 		<div class="mb-10 fv-row">
 			{{-- begin::Label --}}
 			<label class="required form-label mb-3">Campaign Name</label>
 			{{-- end::Label --}}
-			{{-- begin::Input --}}
+			{{-- begin::InputText --}}
 			<input type="text" class="form-control form-control-lg form-control-solid" name="campaign_name" placeholder="" value="" />
-			{{-- end::Input --}}
+			{{-- end::InputText --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-10">
 			{{-- begin::Label --}}
 			<label class="d-block fw-semibold fs-6 mb-5">
@@ -65,20 +65,20 @@
 			<div class="form-text">Allowed file types: png, jpg, jpeg.</div>
 			{{-- end::Hint --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="mb-10">
 			{{-- begin::Label --}}
 			<label class="required fw-semibold fs-6 mb-5">Campaign Goal</label>
 			{{-- end::Label --}}
 			{{-- begin::Roles --}}
-			{{-- begin::Input row --}}
+			{{-- begin::InputText row --}}
 			<div class="d-flex fv-row">
 				{{-- begin::Radio --}}
 				<div class="form-check form-check-custom form-check-solid">
-					{{-- begin::Input --}}
+					{{-- begin::InputText --}}
 					<input class="form-check-input me-3" name="user_role" type="radio" value="0" id="kt_modal_update_role_option_0" checked='checked' />
-					{{-- end::Input --}}
+					{{-- end::InputText --}}
 					{{-- begin::Label --}}
 					<label class="form-check-label" for="kt_modal_update_role_option_0">
 						<div class="fw-bold text-gray-800">Get more visitors</div>
@@ -88,15 +88,15 @@
 				</div>
 				{{-- end::Radio --}}
 			</div>
-			{{-- end::Input row --}}
+			{{-- end::InputText row --}}
 			<div class='separator separator-dashed my-5'></div>
-			{{-- begin::Input row --}}
+			{{-- begin::InputText row --}}
 			<div class="d-flex fv-row">
 				{{-- begin::Radio --}}
 				<div class="form-check form-check-custom form-check-solid">
-					{{-- begin::Input --}}
+					{{-- begin::InputText --}}
 					<input class="form-check-input me-3" name="user_role" type="radio" value="1" id="kt_modal_update_role_option_1" />
-					{{-- end::Input --}}
+					{{-- end::InputText --}}
 					{{-- begin::Label --}}
 					<label class="form-check-label" for="kt_modal_update_role_option_1">
 						<div class="fw-bold text-gray-800">Get more messages on chat</div>
@@ -106,15 +106,15 @@
 				</div>
 				{{-- end::Radio --}}
 			</div>
-			{{-- end::Input row --}}
+			{{-- end::InputText row --}}
 			<div class='separator separator-dashed my-5'></div>
-			{{-- begin::Input row --}}
+			{{-- begin::InputText row --}}
 			<div class="d-flex fv-row">
 				{{-- begin::Radio --}}
 				<div class="form-check form-check-custom form-check-solid">
-					{{-- begin::Input --}}
+					{{-- begin::InputText --}}
 					<input class="form-check-input me-3" name="user_role" type="radio" value="2" id="kt_modal_update_role_option_2" />
-					{{-- end::Input --}}
+					{{-- end::InputText --}}
 					{{-- begin::Label --}}
 					<label class="form-check-label" for="kt_modal_update_role_option_2">
 						<div class="fw-bold text-gray-800">Get more calls</div>
@@ -124,15 +124,15 @@
 				</div>
 				{{-- end::Radio --}}
 			</div>
-			{{-- end::Input row --}}
+			{{-- end::InputText row --}}
 			<div class='separator separator-dashed my-5'></div>
-			{{-- begin::Input row --}}
+			{{-- begin::InputText row --}}
 			<div class="d-flex fv-row">
 				{{-- begin::Radio --}}
 				<div class="form-check form-check-custom form-check-solid">
-					{{-- begin::Input --}}
+					{{-- begin::InputText --}}
 					<input class="form-check-input me-3" name="user_role" type="radio" value="3" id="kt_modal_update_role_option_3" />
-					{{-- end::Input --}}
+					{{-- end::InputText --}}
 					{{-- begin::Label --}}
 					<label class="form-check-label" for="kt_modal_update_role_option_3">
 						<div class="fw-bold text-gray-800">Get more likes</div>
@@ -142,15 +142,15 @@
 				</div>
 				{{-- end::Radio --}}
 			</div>
-			{{-- end::Input row --}}
+			{{-- end::InputText row --}}
 			<div class='separator separator-dashed my-5'></div>
-			{{-- begin::Input row --}}
+			{{-- begin::InputText row --}}
 			<div class="d-flex fv-row">
 				{{-- begin::Radio --}}
 				<div class="form-check form-check-custom form-check-solid">
-					{{-- begin::Input --}}
+					{{-- begin::InputText --}}
 					<input class="form-check-input me-3" name="user_role" type="radio" value="4" id="kt_modal_update_role_option_4" />
-					{{-- end::Input --}}
+					{{-- end::InputText --}}
 					{{-- begin::Label --}}
 					<label class="form-check-label" for="kt_modal_update_role_option_4">
 						<div class="fw-bold text-gray-800">Lead generation</div>
@@ -160,10 +160,10 @@
 				</div>
 				{{-- end::Radio --}}
 			</div>
-			{{-- end::Input row --}}
+			{{-- end::InputText row --}}
 			{{-- end::Roles --}}
 		</div>
-		{{-- end::Input group --}}
+		{{-- end::InputText group --}}
 	</div>
 	{{-- end::Wrapper --}}
 </div>

@@ -1,7 +1,7 @@
 {{-- begin::Step 1 --}}
 <div class="current" data-kt-stepper-element="content">
 	<div class="w-100">
-		{{-- begin::Input group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-10">
 			{{-- begin::Label --}}
 			<label class="d-flex align-items-center fs-5 fw-semibold mb-2">
@@ -9,12 +9,12 @@
 				<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify your unique app name"></i>
 			</label>
 			{{-- end::Label --}}
-			{{-- begin::Input --}}
+			{{-- begin::InputText --}}
 			<input type="text" class="form-control form-control-lg form-control-solid" name="name" placeholder="" value="" />
-			{{-- end::Input --}}
+			{{-- end::InputText --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row">
 			{{-- begin::Label --}}
 			<label class="d-flex align-items-center fs-5 fw-semibold mb-4">
@@ -41,11 +41,11 @@
 						{{-- end:Info --}}
 					</span>
 					{{-- end:Label --}}
-					{{-- begin:Input --}}
+					{{-- begin:InputText --}}
 					<span class="form-check form-check-custom form-check-solid">
 						<input class="form-check-input" type="radio" name="category" value="1" />
 					</span>
-					{{-- end:Input --}}
+					{{-- end:InputText --}}
 				</label>
 				{{-- end::Option --}}
 				{{-- begin:Option --}}
@@ -65,11 +65,11 @@
 						{{-- end:Info --}}
 					</span>
 					{{-- end:Label --}}
-					{{-- begin:Input --}}
+					{{-- begin:InputText --}}
 					<span class="form-check form-check-custom form-check-solid">
 						<input class="form-check-input" type="radio" name="category" value="2" />
 					</span>
-					{{-- end:Input --}}
+					{{-- end:InputText --}}
 				</label>
 				{{-- end::Option --}}
 				{{-- begin:Option --}}
@@ -89,17 +89,17 @@
 						{{-- end:Info --}}
 					</span>
 					{{-- end:Label --}}
-					{{-- begin:Input --}}
+					{{-- begin:InputText --}}
 					<span class="form-check form-check-custom form-check-solid">
 						<input class="form-check-input" type="radio" name="category" value="3" />
 					</span>
-					{{-- end:Input --}}
+					{{-- end:InputText --}}
 				</label>
 				{{-- end::Option --}}
 			</div>
 			{{-- end:Options --}}
 		</div>
-		{{-- end::Input group --}}
+		{{-- end::InputText group --}}
 	</div>
 </div>
 {{-- end::Step 1 --}}

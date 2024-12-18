@@ -11,13 +11,10 @@ use Spatie\Permission\Models\Role;
 class RoleModal extends Component
 {
     public $name;
-
     public $checked_permissions;
-
     public $check_all;
 
     public Role $role;
-
     public Collection $permissions;
 
     protected $rules = [
@@ -34,15 +31,13 @@ class RoleModal extends Component
             // Create new
             $this->role = new Role;
             $this->name = '';
-
             return;
         }
 
         // Get the role by name.
         $role = Role::where('name', $role_name)->first();
         if (is_null($role)) {
-            $this->dispatch('error', 'The selected role ['.$role_name.'] is not found');
-
+            $this->dispatch('error', 'The selected role [' . $role_name . '] is not found');
             return;
         }
 
@@ -92,7 +87,7 @@ class RoleModal extends Component
         $this->role->syncPermissions($this->checked_permissions);
 
         // Emit a success event with a message indicating that the permissions have been updated.
-        $this->dispatch('success', 'Permissions for '.ucwords($this->role->name).' role updated');
+        $this->dispatch('success', 'Permissions for ' . ucwords($this->role->name) . ' role updated');
     }
 
     // This function checks all of the permissions.

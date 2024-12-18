@@ -1,7 +1,7 @@
 {{-- begin::Step 2 --}}
 <div data-kt-stepper-element="content">
 	<div class="w-100">
-		{{-- begin::Input group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row">
 			{{-- begin::Label --}}
 			<label class="d-flex align-items-center fs-5 fw-semibold mb-4">
@@ -28,11 +28,11 @@
 					{{-- end:Info --}}
 				</span>
 				{{-- end:Label --}}
-				{{-- begin:Input --}}
+				{{-- begin:InputText --}}
 				<span class="form-check form-check-custom form-check-solid">
 					<input class="form-check-input" type="radio" checked="checked" name="framework" value="1" />
 				</span>
-				{{-- end:Input --}}
+				{{-- end:InputText --}}
 			</label>
 			{{-- end::Option --}}
 			{{-- begin:Option --}}
@@ -54,11 +54,11 @@
 					{{-- end:Info --}}
 				</span>
 				{{-- end:Label --}}
-				{{-- begin:Input --}}
+				{{-- begin:InputText --}}
 				<span class="form-check form-check-custom form-check-solid">
 					<input class="form-check-input" type="radio" name="framework" value="2" />
 				</span>
-				{{-- end:Input --}}
+				{{-- end:InputText --}}
 			</label>
 			{{-- end::Option --}}
 			{{-- begin:Option --}}
@@ -80,11 +80,11 @@
 					{{-- end:Info --}}
 				</span>
 				{{-- end:Label --}}
-				{{-- begin:Input --}}
+				{{-- begin:InputText --}}
 				<span class="form-check form-check-custom form-check-solid">
 					<input class="form-check-input" type="radio" name="framework" value="3" />
 				</span>
-				{{-- end:Input --}}
+				{{-- end:InputText --}}
 			</label>
 			{{-- end::Option --}}
 			{{-- begin:Option --}}
@@ -106,15 +106,15 @@
 					{{-- end:Info --}}
 				</span>
 				{{-- end:Label --}}
-				{{-- begin:Input --}}
+				{{-- begin:InputText --}}
 				<span class="form-check form-check-custom form-check-solid">
 					<input class="form-check-input" type="radio" name="framework" value="4" />
 				</span>
-				{{-- end:Input --}}
+				{{-- end:InputText --}}
 			</label>
 			{{-- end::Option --}}
 		</div>
-		{{-- end::Input group --}}
+		{{-- end::InputText group --}}
 	</div>
 </div>
 {{-- end::Step 2 --}}

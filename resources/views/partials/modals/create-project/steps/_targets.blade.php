@@ -13,13 +13,13 @@
 			{{-- end::Title --}}
 		</div>
 		{{-- end::Heading --}}
-		{{-- begin::Input group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-8">
 			<label class="fs-6 fw-semibold mb-2">Target Title</label>
 			<input type="text" class="form-control form-control-solid" placeholder="Enter Target Title" name="Project Launch" />
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="row g-9 mb-8">
 			{{-- begin::Col --}}
 			<div class="col-md-6 fv-row">
@@ -47,20 +47,20 @@
 			</div>
 			{{-- end::Col --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-8">
 			<label class="fs-6 fw-semibold mb-2">Target Details</label>
 			<textarea class="form-control form-control-solid" rows="2" name="target_details" placeholder="Type Target Details">Experience share market at your fingertips with TICK PRO stock investment mobile trading app</textarea>
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-8">
 			<label class="required fs-6 fw-semibold mb-2">Tags</label>
 			<input class="form-control form-control-solid" value="Important, Urgent" name="target_tags" />
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-8">
 			{{-- begin::Wrapper --}}
 			<div class="d-flex flex-stack">
@@ -79,8 +79,8 @@
 			</div>
 			{{-- end::Wrapper --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-15">
 			{{-- begin::Wrapper --}}
 			<div class="d-flex flex-stack">
@@ -94,9 +94,9 @@
 				<div class="d-flex">
 					{{-- begin::Checkbox --}}
 					<label class="form-check form-check-custom form-check-solid me-10">
-						{{-- begin::Input --}}
+						{{-- begin::InputText --}}
 						<input class="form-check-input h-20px w-20px" type="checkbox" value="email" name="target_notifications[]" />
-						{{-- end::Input --}}
+						{{-- end::InputText --}}
 						{{-- begin::Label --}}
 						<span class="form-check-label fw-semibold">Email</span>
 						{{-- end::Label --}}
@@ -104,9 +104,9 @@
 					{{-- end::Checkbox --}}
 					{{-- begin::Checkbox --}}
 					<label class="form-check form-check-custom form-check-solid">
-						{{-- begin::Input --}}
+						{{-- begin::InputText --}}
 						<input class="form-check-input h-20px w-20px" type="checkbox" value="phone" checked="checked" name="target_notifications[]" />
-						{{-- end::Input --}}
+						{{-- end::InputText --}}
 						{{-- begin::Label --}}
 						<span class="form-check-label fw-semibold">Phone</span>
 						{{-- end::Label --}}
@@ -117,7 +117,7 @@
 			</div>
 			{{-- end::Wrapper --}}
 		</div>
-		{{-- end::Input group --}}
+		{{-- end::InputText group --}}
 		{{-- begin::Actions --}}
 		<div class="d-flex flex-stack">
 			<button type="button" class="btn btn-lg btn-light me-3" data-kt-element="targets-previous">Build a Team</button>

@@ -3,12 +3,12 @@
 	{{-- begin::Heading --}}
 	<h3 class="fw-semibold text-gray-900 mb-7">Advanced Search</h3>
 	{{-- end::Heading --}}
-	{{-- begin::Input group --}}
+	{{-- begin::InputText group --}}
 	<div class="mb-5">
 		<input type="text" class="form-control form-control-sm form-control-solid" placeholder="Contains the word" name="query" />
 	</div>
-	{{-- end::Input group --}}
-	{{-- begin::Input group --}}
+	{{-- end::InputText group --}}
+	{{-- begin::InputText group --}}
 	<div class="mb-5">
 		{{-- begin::Radio group --}}
 		<div class="nav-group nav-group-fluid">
@@ -39,18 +39,18 @@
 		</div>
 		{{-- end::Radio group --}}
 	</div>
-	{{-- end::Input group --}}
-	{{-- begin::Input group --}}
+	{{-- end::InputText group --}}
+	{{-- begin::InputText group --}}
 	<div class="mb-5">
 		<input type="text" name="assignedto" class="form-control form-control-sm form-control-solid" placeholder="Assigned to" value="" />
 	</div>
-	{{-- end::Input group --}}
-	{{-- begin::Input group --}}
+	{{-- end::InputText group --}}
+	{{-- begin::InputText group --}}
 	<div class="mb-5">
 		<input type="text" name="collaborators" class="form-control form-control-sm form-control-solid" placeholder="Collaborators" value="" />
 	</div>
-	{{-- end::Input group --}}
-	{{-- begin::Input group --}}
+	{{-- end::InputText group --}}
+	{{-- begin::InputText group --}}
 	<div class="mb-5">
 		{{-- begin::Radio group --}}
 		<div class="nav-group nav-group-fluid">
@@ -69,8 +69,8 @@
 		</div>
 		{{-- end::Radio group --}}
 	</div>
-	{{-- end::Input group --}}
-	{{-- begin::Input group --}}
+	{{-- end::InputText group --}}
+	{{-- begin::InputText group --}}
 	<div class="mb-5">
 		<select name="timezone" aria-label="Select a Timezone" data-control="select2" data-placeholder="date_period" class="form-select form-select-sm form-select-solid">
 			<option value="next">Within the next</option>
@@ -79,8 +79,8 @@
 			<option value="on">On</option>
 		</select>
 	</div>
-	{{-- end::Input group --}}
-	{{-- begin::Input group --}}
+	{{-- end::InputText group --}}
+	{{-- begin::InputText group --}}
 	<div class="row mb-8">
 		{{-- begin::Col --}}
 		<div class="col-6">
@@ -98,7 +98,7 @@
 		</div>
 		{{-- end::Col --}}
 	</div>
-	{{-- end::Input group --}}
+	{{-- end::InputText group --}}
 	{{-- begin::Actions --}}
 	<div class="d-flex justify-content-end">
 		<button type="reset" class="btn btn-sm btn-light fw-bold btn-active-light-primary me-2" data-kt-search-element="advanced-options-form-cancel">Cancel</button>

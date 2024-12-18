@@ -4,400 +4,441 @@
 var KTAuthI18nDemo = function() {
     // Elements
     var menu;
-	
+
 	var menuObj;
 
 	var translationStrings = {
 		// General
 		"general-progress" : {
-			"English" : "Please wait...",
-			"Spanish" : "Iniciar Sesión",
-			"German" : "Registrarse",
-			"Japanese" : "ログイン",
-			"French" : "S'identifier",
+			"en" : "Please wait...",
+			"es" : "Iniciar Sesión",
+			"de" : "Registrarse",
+			"ja" : "ログイン",
+			"fr" : "S'identifier",
+            'pt-BR' : 'Por favor, espere...',
 		},
 		"general-desc" : {
-			"English" : "Get unlimited access & earn money",
-			"Spanish" : "Obtenga acceso ilimitado y gane dinero",
-			"German" : "Erhalten Sie unbegrenzten Zugriff und verdienen Sie Geld",
-			"Japanese" : "無制限のアクセスを取得してお金を稼ぐ",
-			"French" : "Obtenez un accès illimité et gagnez de l'argent",
+			"en" : "Get unlimited access & earn money",
+			"es" : "Obtenga acceso ilimitado y gane dinero",
+			"de" : "Erhalten Sie unbegrenzten Zugriff und verdienen Sie Geld",
+			"ja" : "無制限のアクセスを取得してお金を稼ぐ",
+			"fr" : "Obtenez un accès illimité et gagnez de l'argent",
+            'pt-BR' : 'Obtenha acesso ilimitado e ganhe dinheiro',
 		},
 
 		"general-or" : {
-			"English" : "Or",
-			"Spanish" : "O",
-			"German" : "Oder",
-			"Japanese" : "または",
-			"French" : "Ou",
-		},
+			"en" : "Or",
+			"es" : "O",
+			"de" : "Oder",
+			"ja" : "または",
+			"fr" : "Ou",
+            'pt-BR' : 'Ou',
+        },
 
-		// Sign in	
+		// Sign in
 		"sign-in-head-desc" : {
-			"English" : "Not a Member yet?",
-			"Spanish" : "¿No eres miembro todavía?",
-			"German" : "Noch kein Mitglied?",
-			"Japanese" : "まだメンバーではありませんか？",
-			"French" : "Pas encore membre?",
-		},	
-		 
+			"en" : "Not a Member yet?",
+			"es" : "¿No eres miembro todavía?",
+			"de" : "Noch kein Mitglied?",
+			"ja" : "まだメンバーではありませんか？",
+			"fr" : "Pas encore membre?",
+            'pt-BR' : 'Ainda não é um membro?',
+        },
+
 		"sign-in-head-link" : {
-			"English" : "Sign Up",
-			"Spanish" : "Inscribirse",
-			"German" : "Anmeldung",
-			"Japanese" : "サインアップ",
-			"French" : "S'S'inscrire",
-		},	 
+			"en" : "Sign Up",
+			"es" : "Inscribirse",
+			"de" : "Anmeldung",
+			"ja" : "サインアップ",
+			"fr" : "S'S'inscrire",
+            'pt-BR' : 'Inscrever-se',
+        },
 
 		"sign-in-title" : {
-			"English" : "Sign In",
-			"Spanish" : "Iniciar Sesión",
-			"German" : "Registrarse",
-			"Japanese" : "ログイン",
-			"French" : "S'identifier",
-		},
+			"en" : "Sign In",
+			"es" : "Iniciar Sesión",
+			"de" : "Registrarse",
+			"ja" : "ログイン",
+			"fr" : "S'identifier",
+            'pt-BR' : 'Entrar',
+        },
 
 		"sign-in-input-email" : {
-			"English" : "Email",
-			"Spanish" : "Correo electrónico",
-			"German" : "Email",
-			"Japanese" : "Eメール",
-			"French" : "E-mail",
-		},
+			"en" : "Email",
+			"es" : "Correo electrónico",
+			"de" : "Email",
+			"ja" : "Eメール",
+			"fr" : "E-mail",
+            'pt-BR' : 'Email',
+        },
 
 		"sign-in-input-password" : {
-			"English" : "Password",
-			"Spanish" : "Clave",
-			"German" : "Passwort",
-			"Japanese" : "パスワード",
-			"French" : "Mot de passe",
-		},
+			"en" : "Password",
+			"es" : "Clave",
+			"de" : "Passwort",
+			"ja" : "パスワード",
+			"fr" : "Mot de passe",
+            'pt-BR' : 'Senha',
+        },
 
 		"sign-in-forgot-password" : {
-			"English" : "Forgot Password ?",
-			"Spanish" : "Has olvidado tu contraseña ?",
-			"German" : "Passwort vergessen ?",
-			"Japanese" : "パスワードをお忘れですか ？",
-			"French" : "Mot de passe oublié ?",
-		},
+			"en" : "Forgot Password ?",
+			"es" : "Has olvidado tu contraseña ?",
+			"de" : "Passwort vergessen ?",
+			"ja" : "パスワードをお忘れですか ？",
+			"fr" : "Mot de passe oublié ?",
+            'pt-BR' : 'Esqueceu a senha?',
+        },
 
 		"sign-in-submit" : {
-			"English" : "Sign In",
-			"Spanish" : "Iniciar Sesión",
-			"German" : "Registrarse",
-			"Japanese" : "ログイン",
-			"French" : "S'identifier",
-		},
+			"en" : "Sign In",
+			"es" : "Iniciar Sesión",
+			"de" : "Registrarse",
+			"ja" : "ログイン",
+			"fr" : "S'identifier",
+            'pt-BR' : 'Entrar',
+        },
 
 		// Sing up
 		"sign-up-head-desc" : {
-			"English" : "Already a member ?",
-			"Spanish" : "Ya eres usuario ?",
-			"German" : "Schon ein Mitglied ?",
-			"Japanese" : "すでにメンバーですか？",
-			"French" : "Déjà membre ?",
-		},	
+			"en" : "Already a member ?",
+			"es" : "Ya eres usuario ?",
+			"de" : "Schon ein Mitglied ?",
+			"ja" : "すでにメンバーですか？",
+			"fr" : "Déjà membre ?",
+            'pt-BR' : 'Já é membro?',
+        },
 
 		"sign-up-head-link" : {
-			"English" : "Sign In",
-			"Spanish" : "Iniciar Sesión",
-			"German" : "Registrarse",
-			"Japanese" : "ログイン",
-			"French" : "S'identifier",
-		},
-		
+			"en" : "Sign In",
+			"es" : "Iniciar Sesión",
+			"de" : "Registrarse",
+			"ja" : "ログイン",
+			"fr" : "S'identifier",
+            'pt-BR' : 'Entrar',
+        },
+
 		"sign-up-title" : {
-			"English" : "Sign Up",
-			"Spanish" : "Inscribirse",
-			"German" : "Anmeldung",
-			"Japanese" : "サインアップ",
-			"French" : "S'S'inscrire",
-		},	
+			"en" : "Sign Up",
+			"es" : "Inscribirse",
+			"de" : "Anmeldung",
+			"ja" : "サインアップ",
+			"fr" : "S'S'inscrire",
+            'pt-BR' : 'Inscrever-se',
+        },
 
 		"sign-up-input-first-name" : {
-			"English" : "First Name",
-			"Spanish" : "Primer nombre",
-			"German" : "Vorname",
-			"Japanese" : "ファーストネーム",
-			"French" : "Prénom",
-		},
+			"en" : "First Name",
+			"es" : "Primer nombre",
+			"de" : "Vorname",
+			"ja" : "ファーストネーム",
+			"fr" : "Prénom",
+            'pt-BR' : 'Nome',
+        },
 
 		"sign-up-input-last-name" : {
-			"English" : "Last Name",
-			"Spanish" : "Apellido",
-			"German" : "Nachname",
-			"Japanese" : "苗字",
-			"French" : "Nom de famille",
-		},
+			"en" : "Last Name",
+			"es" : "Apellido",
+			"de" : "Nachname",
+			"ja" : "苗字",
+			"fr" : "Nom de famille",
+            'pt-BR' : 'Sobrenome',
+        },
 
 		"sign-up-input-email" : {
-			"English" : "Email",
-			"Spanish" : "Correo electrónico",
-			"German" : "Email",
-			"Japanese" : "Eメール",
-			"French" : "E-mail",
-		},
+			"en" : "Email",
+			"es" : "Correo electrónico",
+			"de" : "Email",
+			"ja" : "Eメール",
+			"fr" : "E-mail",
+            'pt-BR' : 'Email',
+        },
 
 		"sign-up-input-password" : {
-			"English" : "Password",
-			"Spanish" : "Clave",
-			"German" : "Passwort",
-			"Japanese" : "パスワード",
-			"French" : "Mot de passe",
-		},
+			"en" : "Password",
+			"es" : "Clave",
+			"de" : "Passwort",
+			"ja" : "パスワード",
+			"fr" : "Mot de passe",
+            'pt-BR' : 'Senha',
+        },
 
 		"sign-up-input-confirm-password" : {
-			"English" : "Password",
-			"Spanish" : "Clave",
-			"German" : "Passwort",
-			"Japanese" : "パスワード",
-			"French" : "Mot de passe",
-		},
+			"en" : "Password",
+			"es" : "Clave",
+			"de" : "Passwort",
+			"ja" : "パスワード",
+			"fr" : "Mot de passe",
+            'pt-BR' : 'Confirmar Senha',
+        },
 
 		"sign-up-submit" : {
-			"English" : "Submit",
-			"Spanish" : "Iniciar Sesión",
-			"German" : "Registrarse",
-			"Japanese" : "ログイン",
-			"French" : "S'identifier",
-		},
+			"en" : "Submit",
+			"es" : "Iniciar Sesión",
+			"de" : "Registrarse",
+			"ja" : "ログイン",
+			"fr" : "S'identifier",
+            'pt-BR' : 'Enviar',
+        },
 
 		"sign-up-hint" : {
-			"English" : "Use 8 or more characters with a mix of letters, numbers & symbols.",
-			"Spanish" : "Utilice 8 o más caracteres con una combinación de letras, números y símbolos.",
-			"German" : "Verwenden Sie 8 oder mehr Zeichen mit einer Mischung aus Buchstaben, Zahlen und Symbolen.",
-			"Japanese" : "文字、数字、記号を組み合わせた8文字以上を使用してください。",
-			"French" : "Utilisez 8 caractères ou plus avec un mélange de lettres, de chiffres et de symboles.",
-		},
+			"en" : "Use 8 or more characters with a mix of letters, numbers & symbols.",
+			"es" : "Utilice 8 o más caracteres con una combinación de letras, números y símbolos.",
+			"de" : "Verwenden Sie 8 oder mehr Zeichen mit einer Mischung aus Buchstaben, Zahlen und Symbolen.",
+			"ja" : "文字、数字、記号を組み合わせた8文字以上を使用してください。",
+			"fr" : "Utilisez 8 caractères ou plus avec un mélange de lettres, de chiffres et de symboles.",
+            'pt-BR' : 'Use 8 ou mais caracteres com uma combinação de letras, números e símbolos.',
+        },
 
 		// New password
 		"new-password-head-desc" : {
-			"English" : "Already a member ?",
-			"Spanish" : "Ya eres usuario ?",
-			"German" : "Schon ein Mitglied ?",
-			"Japanese" : "すでにメンバーですか？",
-			"French" : "Déjà membre ?",
-		},
+			"en" : "Already a member ?",
+			"es" : "Ya eres usuario ?",
+			"de" : "Schon ein Mitglied ?",
+			"ja" : "すでにメンバーですか？",
+			"fr" : "Déjà membre ?",
+            'pt-BR' : 'Já é membro?',
+        },
 
 		"new-password-head-link" : {
-			"English" : "Sign In",
-			"Spanish" : "Iniciar Sesión",
-			"German" : "Registrarse",
-			"Japanese" : "ログイン",
-			"French" : "S'identifier",
-		},
+			"en" : "Sign In",
+			"es" : "Iniciar Sesión",
+			"de" : "Registrarse",
+			"ja" : "ログイン",
+			"fr" : "S'identifier",
+            'pt-BR' : 'Entrar',
+        },
 
 		"new-password-title" : {
-			"English" : "Setup New Password",
-			"Spanish" : "Configurar nueva contraseña",
-			"German" : "Neues Passwort einrichten",
-			"Japanese" : "新しいパスワードを設定する",
-			"French" : "Configurer un nouveau mot de passe",
-		},
+			"en" : "Setup New Password",
+			"es" : "Configurar nueva contraseña",
+			"de" : "Neues Passwort einrichten",
+			"ja" : "新しいパスワードを設定する",
+			"fr" : "Configurer un nouveau mot de passe",
+            'pt-BR' : 'Configurar nova senha',
+        },
 
 		"new-password-desc" : {
-			"English" : "Have you already reset the password ?",
-			"Spanish" : "¿Ya has restablecido la contraseña?",
-			"German" : "Hast du das Passwort schon zurückgesetzt?",
-			"Japanese" : "すでにパスワードをリセットしましたか？",
-			"French" : "Avez-vous déjà réinitialisé le mot de passe ?",
-		},
+			"en" : "Have you already reset the password ?",
+			"es" : "¿Ya has restablecido la contraseña?",
+			"de" : "Hast du das Passwort schon zurückgesetzt?",
+			"ja" : "すでにパスワードをリセットしましたか？",
+			"fr" : "Avez-vous déjà réinitialisé le mot de passe ?",
+            'pt-BR' : 'Já redefiniu sua senha?',
+        },
 
 		"new-password-input-password" : {
-			"English" : "Password",
-			"Spanish" : "Clave",
-			"German" : "Passwort",
-			"Japanese" : "パスワード",
-			"French" : "Mot de passe",
-		},
+			"en" : "Password",
+			"es" : "Clave",
+			"de" : "Passwort",
+			"ja" : "パスワード",
+			"fr" : "Mot de passe",
+            'pt-BR' : 'Senha',
+        },
 
 		"new-password-hint" : {
-			"English" : "Use 8 or more characters with a mix of letters, numbers & symbols.",
-			"Spanish" : "Utilice 8 o más caracteres con una combinación de letras, números y símbolos.",
-			"German" : "Verwenden Sie 8 oder mehr Zeichen mit einer Mischung aus Buchstaben, Zahlen und Symbolen.",
-			"Japanese" : "文字、数字、記号を組み合わせた8文字以上を使用してください。",
-			"French" : "Utilisez 8 caractères ou plus avec un mélange de lettres, de chiffres et de symboles.",
-		},
+			"en" : "Use 8 or more characters with a mix of letters, numbers & symbols.",
+			"es" : "Utilice 8 o más caracteres con una combinación de letras, números y símbolos.",
+			"de" : "Verwenden Sie 8 oder mehr Zeichen mit einer Mischung aus Buchstaben, Zahlen und Symbolen.",
+			"ja" : "文字、数字、記号を組み合わせた8文字以上を使用してください。",
+			"fr" : "Utilisez 8 caractères ou plus avec un mélange de lettres, de chiffres et de symboles.",
+            'pt-BR' : 'Use 8 ou mais caracteres com uma combinação de letras, números e símbolos.',
+        },
 
 		"new-password-confirm-password" : {
-			"English" : "Confirm Password",
-			"Spanish" : "Confirmar contraseña",
-			"German" : "Passwort bestätigen",
-			"Japanese" : "パスワードを認証する",
-			"French" : "Confirmez le mot de passe",
-		},
+			"en" : "Confirm Password",
+			"es" : "Confirmar contraseña",
+			"de" : "Passwort bestätigen",
+			"ja" : "パスワードを認証する",
+			"fr" : "Confirmez le mot de passe",
+            'pt-BR' : 'Confirmar Senha',
+        },
 
 		"new-password-submit" : {
-			"English" : "Submit",
-			"Spanish" : "Iniciar Sesión",
-			"German" : "Registrarse",
-			"Japanese" : "ログイン",
-			"French" : "S'identifier",
-		},
+			"en" : "Submit",
+			"es" : "Iniciar Sesión",
+			"de" : "Registrarse",
+			"ja" : "ログイン",
+			"fr" : "S'identifier",
+            'pt-BR' : 'Enviar',
+        },
 
 		// Password reset
 		"password-reset-head-desc" : {
-			"English" : "Already a member ?",
-			"Spanish" : "Ya eres usuario ?",
-			"German" : "Schon ein Mitglied ?",
-			"Japanese" : "すでにメンバーですか？",
-			"French" : "Déjà membre ?",
-		},
+			"en" : "Already a member ?",
+			"es" : "Ya eres usuario ?",
+			"de" : "Schon ein Mitglied ?",
+			"ja" : "すでにメンバーですか？",
+			"fr" : "Déjà membre ?",
+            'pt-BR' : 'Já é membro?',
+        },
 
 		"password-reset-head-link" : {
-			"English" : "Sign In",
-			"Spanish" : "Iniciar Sesión",
-			"German" : "Registrarse",
-			"Japanese" : "ログイン",
-			"French" : "S'identifier",
-		},
+			"en" : "Sign In",
+			"es" : "Iniciar Sesión",
+			"de" : "Registrarse",
+			"ja" : "ログイン",
+			"fr" : "S'identifier",
+            'pt-BR' : 'Entrar',
+        },
 
 		"password-reset-title" : {
-			"English" : "Forgot Password ?",
-			"Spanish" : "Has olvidado tu contraseña ?",
-			"German" : "Passwort vergessen ?",
-			"Japanese" : "パスワードをお忘れですか ？",
-			"French" : "Mot de passe oublié ?",
-		},
+			"en" : "Forgot Password ?",
+			"es" : "Has olvidado tu contraseña ?",
+			"de" : "Passwort vergessen ?",
+			"ja" : "パスワードをお忘れですか ？",
+			"fr" : "Mot de passe oublié ?",
+            'pt-BR' : 'Esqueceu a senha?',
+        },
 
 		"password-reset-desc" : {
-			"English" : "Enter your email to reset your password.",
-			"Spanish" : "Ingrese su correo electrónico para restablecer su contraseña.",
-			"German" : "Geben Sie Ihre E-Mail-Adresse ein, um Ihr Passwort zurückzusetzen.",
-			"Japanese" : "メールアドレスを入力してパスワードをリセットしてください。",
-			"French" : "Entrez votre e-mail pour réinitialiser votre mot de passe.",
-		},
+			"en" : "Enter your email to reset your password.",
+			"es" : "Ingrese su correo electrónico para restablecer su contraseña.",
+			"de" : "Geben Sie Ihre E-Mail-Adresse ein, um Ihr Passwort zurückzusetzen.",
+			"ja" : "メールアドレスを入力してパスワードをリセットしてください。",
+			"fr" : "Entrez votre e-mail pour réinitialiser votre mot de passe.",
+            'pt-BR' : 'Insira seu email para redefinir sua senha.',
+        },
 
 		"password-reset-input-email" : {
-			"English" : "Email",
-			"Spanish" : "Correo electrónico",
-			"German" : "Email",
-			"Japanese" : "Eメール",
-			"French" : "E-mail",
-		},
+			"en" : "Email",
+			"es" : "Correo electrónico",
+			"de" : "Email",
+			"ja" : "Eメール",
+			"fr" : "E-mail",
+            'pt-BR' : 'Email',
+        },
 
 		"password-reset-submit" : {
-			"English" : "Submit",
-			"Spanish" : "Iniciar Sesión",
-			"German" : "Registrarse",
-			"Japanese" : "ログイン",
-			"French" : "S'identifier",
-		},
+			"en" : "Submit",
+			"es" : "Iniciar Sesión",
+			"de" : "Registrarse",
+			"ja" : "ログイン",
+			"fr" : "S'identifier",
+            'pt-BR' : 'Enviar',
+        },
 
 		"password-reset-cancel" : {
-			"English" : "Cancel",
-			"Spanish" : "Cancelar",
-			"German" : "Absagen",
-			"Japanese" : "キャンセル",
-			"French" : "Annuler",
-		},
+			"en" : "Cancel",
+			"es" : "Cancelar",
+			"de" : "Absagen",
+			"ja" : "キャンセル",
+			"fr" : "Annuler",
+            'pt-BR' : 'Cancelar',
+        },
 
-		// Two steps	
+		// Two steps
 		"two-step-head-desc" : {
-			"English" : "Didn’t get the code ?",
-			"Spanish" : "¿No recibiste el código?",
-			"German" : "Code nicht erhalten?",
-			"Japanese" : "コードを取得できませんでしたか？",
-			"French" : "Vous n'avez pas reçu le code ?",
-		},	
+			"en" : "Didn’t get the code ?",
+			"es" : "¿No recibiste el código?",
+			"de" : "Code nicht erhalten?",
+			"ja" : "コードを取得できませんでしたか？",
+			"fr" : "Vous n'avez pas reçu le code ?",
+            'pt-BR' : 'Não recebeu o código?',
+        },
 
 		"two-step-head-resend" : {
-			"English" : "Resend",
-			"Spanish" : "Reenviar",
-			"German" : "Erneut senden",
-			"Japanese" : "再送",
-			"French" : "Renvoyer",
-		},
+			"en" : "Resend",
+			"es" : "Reenviar",
+			"de" : "Erneut senden",
+			"ja" : "再送",
+			"fr" : "Renvoyer",
+            'pt-BR' : 'Reenviar',
+        },
 
 		"two-step-head-or" : {
-			"English" : "Or",
-			"Spanish" : "O",
-			"German" : "Oder",
-			"Japanese" : "または",
-			"French" : "Ou",
-		},
+			"en" : "Or",
+			"es" : "O",
+			"de" : "Oder",
+			"ja" : "または",
+			"fr" : "Ou",
+            'pt-BR' : 'Ou',
+        },
 
 		"two-step-head-call-us" : {
-			"English" : "Call Us",
-			"Spanish" : "Llámenos",
-			"German" : "Rufen Sie uns an",
-			"Japanese" : "お電話ください",
-			"French" : "Appelez-nous",
-		},
+			"en" : "Call Us",
+			"es" : "Llámenos",
+			"de" : "Rufen Sie uns an",
+			"ja" : "お電話ください",
+			"fr" : "Appelez-nous",
+            'pt-BR' : 'Ligue para nós',
+        },
 
 		"two-step-submit" : {
-			"English" : "Submit",
-			"Spanish" : "Iniciar Sesión",
-			"German" : "Registrarse",
-			"Japanese" : "ログイン",
-			"French" : "S'identifier",
-		},
+			"en" : "Submit",
+			"es" : "Iniciar Sesión",
+			"de" : "Registrarse",
+			"ja" : "ログイン",
+			"fr" : "S'identifier",
+            'pt-BR' : 'Enviar',
+        },
 
 		"two-step-title" : {
-			"English" : "Two Step Verification",
-			"Spanish" : "Verificación de dos pasos",
-			"German" : "Verifizierung in zwei Schritten",
-			"Japanese" : "2段階認証",
-			"French" : "Vérification en deux étapes",
-		},
+			"en" : "Two Step Verification",
+			"es" : "Verificación de dos pasos",
+			"de" : "Verifizierung in zwei Schritten",
+			"ja" : "2段階認証",
+			"fr" : "Vérification en deux étapes",
+            'pt-BR' : 'Verificação em duas etapas',
+        },
 
 		"two-step-deck" : {
-			"English" : "Enter the verification code we sent to",
-			"Spanish" : "Ingresa el código de verificación que enviamos a",
-			"German" : "Geben Sie den von uns gesendeten Bestätigungscode ein",
-			"Japanese" : "送信した確認コードを入力してください",
-			"French" : "Entrez le code de vérification que nous avons envoyé à",
-		},
+			"en" : "Enter the verification code we sent to",
+			"es" : "Ingresa el código de verificación que enviamos a",
+			"de" : "Geben Sie den von uns gesendeten Bestätigungscode ein",
+			"ja" : "送信した確認コードを入力してください",
+			"fr" : "Entrez le code de vérification que nous avons envoyé à",
+            'pt-BR' : 'Insira o código de verificação que enviamos para',
+        },
 
 		"two-step-label" : {
-			"English" : "Type your 6 digit security code",
-			"Spanish" : "Escriba su código de seguridad de 6 dígitos",
-			"German" : "Geben Sie Ihren 6-stelligen Sicherheitscode ein",
-			"Japanese" : "6桁のセキュリティコードを入力します",
-			"French" : "Tapez votre code de sécurité à 6 chiffres",
-		}
+			"en" : "Type your 6 digit security code",
+			"es" : "Escriba su código de seguridad de 6 dígitos",
+			"de" : "Geben Sie Ihren 6-stelligen Sicherheitscode ein",
+			"ja" : "6桁のセキュリティコードを入力します",
+			"fr" : "Tapez votre code de sécurité à 6 chiffres",
+            'pt-BR' : 'Digite seu código de segurança de 6 dígitos',
+        }
 	}
 
     // Handle form
-    var translate = function(lang) {
+    var translate = function(langCode) {
         for (var label in translationStrings) {
-			if (translationStrings.hasOwnProperty(label)) {
-				if (translationStrings[label][lang]) {
-					let labelElement = document.querySelector('[data-kt-translate=' + label + ']');
-
-					if (labelElement !== null) {
-						if (labelElement.tagName === "INPUT") {
-							labelElement.setAttribute("placeholder", translationStrings[label][lang]);
-						} else {
-							labelElement.innerHTML = translationStrings[label][lang];
-						}						
-					}
-				}
-			}
-		}
+            if (translationStrings.hasOwnProperty(label)) {
+                if (translationStrings[label][langCode]) {
+                    let labelElement = document.querySelector('[data-kt-translate=' + label + ']');
+                    if (labelElement !== null) {
+                        if (labelElement.tagName === "INPUT") {
+                            labelElement.setAttribute("placeholder", translationStrings[label][langCode]);
+                        } else {
+                            labelElement.innerHTML = translationStrings[label][langCode];
+                        }
+                    }
+                }
+            }
+        }
     }
 
-	var setLanguage = function(lang) {
-		const selectedLang = menu.querySelector('[data-kt-lang="' + lang + '"]');
+    var setLanguage = function(langCode) {
+        const selectedLang = menu.querySelector('[data-kt-lang="' + langCode + '"]');
+        if (selectedLang !== null) {
+            const currentLangName = document.querySelector('[data-kt-element="current-lang-name"]');
+            const currentLangFlag = document.querySelector('[data-kt-element="current-lang-flag"]');
 
-		if (selectedLang !== null) {
-			const currentLangName = document.querySelector('[data-kt-element="current-lang-name"]'); 
-			const currentLangFlag = document.querySelector('[data-kt-element="current-lang-flag"]'); 
+            const selectedLangName = selectedLang.querySelector('[data-kt-element="lang-name"]');
+            const selectedLangFlag = selectedLang.querySelector('[data-kt-element="lang-flag"]');
 
-			const selectedLangName = selectedLang.querySelector('[data-kt-element="lang-name"]');
-			const selectedLangFlag = selectedLang.querySelector('[data-kt-element="lang-flag"]');
+            currentLangName.innerText = selectedLangName.innerText;
+            currentLangFlag.setAttribute("src", selectedLangFlag.getAttribute("src"));
 
-			currentLangName.innerText = selectedLangName.innerText;
-			currentLangFlag.setAttribute("src", selectedLangFlag.getAttribute("src"));
+            localStorage.setItem("kt_auth_lang", langCode);
+        }
+    };
 
-			localStorage.setItem("kt_auth_lang", lang);
-		}
-	}
-
-	var init = function() {
+    var init = function() {
 		if ( localStorage.getItem("kt_auth_lang") !== null ) {
 			let lang = localStorage.getItem("kt_auth_lang");
-			
+
 			setLanguage(lang);
 			translate(lang);
 		}
@@ -418,10 +459,10 @@ var KTAuthI18nDemo = function() {
 
 			if (menu === null) {
 				return;
-			} 
+			}
 
 			menuObj = KTMenu.getInstance(menu);
-            
+
             init();
         }
     };

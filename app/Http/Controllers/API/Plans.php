@@ -5,18 +5,18 @@ namespace App\Http\Controllers\API;
 use App\Http\Services\PlanService;
 use App\Http\Traits\ApiTraits;
 use App\Models\Plan;
-use Psr\Http\Message\RequestInterface;
+use Illuminate\Http\Request;
 
 class Plans extends ApiController
 {
     use ApiTraits;
 
     public function __construct(
-        private readonly RequestInterface $request,
+        private readonly Request $request,
         private readonly PlanService $service,
         private readonly Plan $model,
     ) {
-        parent::__construct();
+//        parent::__construct();
     }
 
     public function plan_items(mixed $id)

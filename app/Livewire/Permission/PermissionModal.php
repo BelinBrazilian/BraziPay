@@ -18,7 +18,7 @@ class PermissionModal extends Component
     // This is the list of listeners that this component listens to.
     protected $listeners = [
         'modal.show.permission_name' => 'mountPermission',
-        'delete_permission' => 'delete',
+        'delete_permission' => 'delete'
     ];
 
     public function render()
@@ -32,15 +32,13 @@ class PermissionModal extends Component
             // Create new
             $this->permission = new Permission;
             $this->name = '';
-
             return;
         }
 
         // Get the role by name.
         $permission = Permission::where('name', $permission_name)->first();
         if (is_null($permission)) {
-            $this->dispatch('error', 'The selected permission ['.$permission_name.'] is not found');
-
+            $this->dispatch('error', 'The selected permission [' . $permission_name . '] is not found');
             return;
         }
 
@@ -67,7 +65,7 @@ class PermissionModal extends Component
     {
         $permission = Permission::where('name', $name)->first();
 
-        if (! is_null($permission)) {
+        if (!is_null($permission)) {
             $permission->delete();
         }
 

@@ -16,7 +16,7 @@ class ApiController extends Component
 
     public ?int $page;
 
-    public ?int $per_page;
+    public ?int $per_page = 15;
 
     public ?string $include;
 

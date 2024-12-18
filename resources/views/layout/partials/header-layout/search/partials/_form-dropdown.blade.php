@@ -5,9 +5,9 @@
 	{{-- begin::Icon --}}
 	{!! getSvgIcon('duotune/general/gen021.svg', 'svg-icon svg-icon-2 svg-icon-lg-1 svg-icon-gray-500 position-absolute top-50 translate-middle-y ms-0') !!}
 	{{-- end::Icon --}}
-	{{-- begin::Input --}}
+	{{-- begin::InputText --}}
 	<input type="text" class="search-input form-control form-control-flush ps-10" name="search" value="" placeholder="Search..." data-kt-search-element="input" />
-	{{-- end::Input --}}
+	{{-- end::InputText --}}
 	{{-- begin::Spinner --}}
 	<span class="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-1" data-kt-search-element="spinner">
 		<span class="spinner-border h-15px w-15px align-middle text-gray-500"></span>

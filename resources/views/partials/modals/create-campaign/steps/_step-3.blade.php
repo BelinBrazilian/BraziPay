@@ -13,7 +13,7 @@
 			{{-- end::Description --}}
 		</div>
 		{{-- end::Heading --}}
-		{{-- begin::Input group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-10">
 			{{-- begin::Label --}}
 			<label class="fs-6 fw-semibold mb-2">Gender
@@ -78,8 +78,8 @@
 			</div>
 			{{-- end::Row --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-10">
 			{{-- begin::Label --}}
 			<label class="fs-6 fw-semibold mb-2">Age
@@ -93,8 +93,8 @@
 			</div>
 			{{-- end::Slider --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-10">
 			{{-- begin::Label --}}
 			<label class="fs-6 fw-semibold mb-2">Location
@@ -104,7 +104,7 @@
 			<input class="form-control d-flex align-items-center" value="" id="kt_modal_create_campaign_location" data-kt-flags-path="media/flags/"/>
 			{{-- end::Tagify --}}
 		</div>
-		{{-- end::Input group --}}
+		{{-- end::InputText group --}}
 	</div>
 	{{-- end::Wrapper --}}
 </div>

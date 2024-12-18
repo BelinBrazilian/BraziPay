@@ -45,18 +45,18 @@
                     </div>
                     {{-- end::Notice --}}
                     {{-- end::Notice --}}
-                    {{-- begin::Input group --}}
+                    {{-- begin::InputText group --}}
                     <div class="fv-row mb-7">
                         {{-- begin::Label --}}
                         <label class="fs-6 fw-semibold form-label mb-2">
                             <span class="required">Email Address</span>
                         </label>
                         {{-- end::Label --}}
-                        {{-- begin::Input --}}
+                        {{-- begin::InputText --}}
                         <input class="form-control form-control-solid" placeholder="" name="profile_email" value="smith@kpmg.com" />
-                        {{-- end::Input --}}
+                        {{-- end::InputText --}}
                     </div>
-                    {{-- end::Input group --}}
+                    {{-- end::InputText group --}}
                     {{-- begin::Actions --}}
                     <div class="text-center pt-15">
                         <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Discard</button>

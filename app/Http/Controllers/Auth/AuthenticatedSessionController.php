@@ -26,6 +26,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      *
+     * @param  \App\Http\Requests\Auth\LoginRequest  $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -37,7 +38,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->user()->update([
             'last_login_at' => Carbon::now()->toDateTimeString(),
-            'last_login_ip' => $request->getClientIp(),
+            'last_login_ip' => $request->getClientIp()
         ]);
 
         return redirect()->intended(RouteServiceProvider::HOME);
@@ -46,6 +47,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Destroy an authenticated session.
      *
+     * @param  \Illuminate\Http\Request  $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */

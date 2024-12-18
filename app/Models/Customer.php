@@ -80,17 +80,19 @@ class Customer extends Model
             'phones' => [],
         ];
 
+        // Proteção contra address nulo
         $data['address'] = [
-            'street' => $this->address->street,
-            'number' => $this->address->number,
-            'additional_details' => $this->address->additional_details ?? null,
-            'zipcode' => $this->address->zipcode,
-            'neighborhood' => $this->address->neighborhood,
-            'city' => $this->address->city,
-            'state' => $this->address->state,
-            'country' => $this->address->country,
+            'street' => optional($this->address)->street,
+            'number' => optional($this->address)->number,
+            'additional_details' => optional($this->address)->additional_details,
+            'zipcode' => optional($this->address)->zipcode,
+            'neighborhood' => optional($this->address)->neighborhood,
+            'city' => optional($this->address)->city,
+            'state' => optional($this->address)->state,
+            'country' => optional($this->address)->country,
         ];
 
+        // Proteção para phones vazio
         foreach ($this->phones as $phone) {
             $data['phones'][] = [
                 'phone_type' => $phone->phone_type,
@@ -101,4 +103,5 @@ class Customer extends Model
 
         return $data;
     }
+
 }

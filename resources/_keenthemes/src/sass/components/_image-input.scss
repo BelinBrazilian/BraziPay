@@ -57,7 +57,7 @@
 		display: none;
 	}
 
-	// Input Changed State
+	// InputText Changed State
 	&.image-input-changed {
 		[data-kt-image-input-action="cancel"] {
 			display: flex;
@@ -68,7 +68,7 @@
 		}
 	}
 
-	// Input Empty State
+	// InputText Empty State
 	&.image-input-empty {
 		[data-kt-image-input-action="remove"],
 		[data-kt-image-input-action="cancel"] {

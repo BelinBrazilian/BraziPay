@@ -13,13 +13,13 @@
 			{{-- end::Description --}}
 		</div>
 		{{-- end::Heading --}}
-		{{-- begin::Input group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-15" data-kt-buttons="true">
 			{{-- begin::Option --}}
 			<label class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex text-start p-6 mb-6 active">
-				{{-- begin::Input --}}
+				{{-- begin::InputText --}}
 				<input class="btn-check" type="radio" checked="checked" name="project_type" value="1" />
-				{{-- end::Input --}}
+				{{-- end::InputText --}}
 				{{-- begin::Label --}}
 				<span class="d-flex">
 				{{-- begin::Icon --}}
@@ -36,9 +36,9 @@
 			{{-- end::Option --}}
 			{{-- begin::Option --}}
 			<label class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex text-start p-6">
-				{{-- begin::Input --}}
+				{{-- begin::InputText --}}
 				<input class="btn-check" type="radio" name="project_type" value="2" />
-				{{-- end::Input --}}
+				{{-- end::InputText --}}
 				{{-- begin::Label --}}
 				<span class="d-flex">
 				{{-- begin::Icon --}}
@@ -54,7 +54,7 @@
 			</label>
 			{{-- end::Option --}}
 		</div>
-		{{-- end::Input group --}}
+		{{-- end::InputText group --}}
 		{{-- begin::Actions --}}
 		<div class="d-flex justify-content-end">
 			<button type="button" class="btn btn-lg btn-primary" data-kt-element="type-next">

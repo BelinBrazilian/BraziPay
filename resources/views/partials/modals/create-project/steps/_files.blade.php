@@ -13,7 +13,7 @@
 			{{-- end::Description --}}
 		</div>
 		{{-- end::Heading --}}
-		{{-- begin::Input group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-8">
 			{{-- begin::Dropzone --}}
 			<div class="dropzone" id="kt_modal_create_project_files_upload">
@@ -31,8 +31,8 @@
 			</div>
 			{{-- end::Dropzone --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="mb-8">
 			{{-- begin::Label --}}
 			<label class="fs-6 fw-semibold mb-2">Uploaded File</label>
@@ -177,8 +177,8 @@
 			</div>
 			{{-- end::Files --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-8">
 			{{-- begin::Wrapper --}}
 			<div class="d-flex flex-stack">
@@ -197,7 +197,7 @@
 			</div>
 			{{-- end::Wrapper --}}
 		</div>
-		{{-- end::Input group --}}
+		{{-- end::InputText group --}}
 		{{-- begin::Actions --}}
 		<div class="d-flex flex-stack">
 			<button type="button" class="btn btn-lg btn-light me-3" data-kt-element="files-previous">Set First Target</button>

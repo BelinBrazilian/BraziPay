@@ -23,20 +23,20 @@ trait ApiIndexTrait
             $res = QueryBuilder::for($this->_getModelClass())
                 ->allowedFilters($this->_getAllowedFilters())
                 ->allowedSorts($this->_getAllowedSorts())
-                ->allowedIncludes($this->_getAllowedIncludes())
                 ->allowedFields($this->_getAllowedFields())
-                ->allowedSorts($this->_getAllowedSorts())
                 ->allowedIncludes($this->_getAllowedIncludes())
-                ->allowedFields($this->_getAllowedFields())
                 ->paginate($this->per_page);
         } else {
             $res = ($this->_getModelClass())::search($this->search)->get();
         }
 
-        return $this->_hasResource() ?
-            $this->resource::collection($res) :
-            JsonResource::collection($res);
+        $resourceCollection = $this->_hasResource()
+            ? $this->resource::collection($res)
+            : JsonResource::collection($res);
+
+        return $resourceCollection->response();
     }
+
 
     private function _service_index(mixed $queryParams): JsonResponse
     {

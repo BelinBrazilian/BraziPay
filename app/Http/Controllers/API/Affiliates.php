@@ -5,14 +5,15 @@ namespace App\Http\Controllers\API;
 use App\Http\Services\AffiliateService;
 use App\Http\Traits\ApiTraits;
 use App\Models\Affiliate;
-use Psr\Http\Message\RequestInterface;
+use Illuminate\Http\Request;
+
 
 class Affiliates extends ApiController
 {
     use ApiTraits;
 
     public function __construct(
-        private readonly RequestInterface $request,
+        private readonly Request $request,
         private readonly AffiliateService $service,
         private readonly Affiliate $model,
     ) {}

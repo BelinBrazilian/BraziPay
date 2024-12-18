@@ -6,186 +6,186 @@
 // Prefix for :root CSS variables
 $prefix: bs- !default; // Deprecated in v5.2.0 for the shorter `$prefix`
 
-// Custom coal colors
-$coal-100:  #15171C !default;
-$coal-200:  #13141A !default;
-$coal-300:  #111217 !default;
-$coal-400:  #0F1014 !default;
-$coal-500:  #0D0E12 !default;
-$coal-600:  #0B0C10 !default;
-$coal-black: #000000 !default;
-$coal-clarity:  rgba(#18191F, 50) !default;
+// Custom coal colors (atualizado para harmonizar com o azul principal)
+$coal-100:  #102A38 !default; // Azul bem escuro, mais claro.
+$coal-200:  #0E2532 !default; // Um pouco mais profundo.
+$coal-300:  #0C202C !default; // Meio termo entre escuro e neutro.
+$coal-400:  #0A1A25 !default; // Escuro para áreas de fundo.
+$coal-500:  #08141E !default; // Ainda mais profundo.
+$coal-600:  #051018 !default; // Quase preto.
+$coal-black: #000000 !default; // Preto puro.
+$coal-clarity: rgba(#102A38, 0.5) !default; // Transparência ajustada.
 
+// Bootstrap color system ajustado
+$white: #ffffff !default; // Mantemos o branco puro.
+$white-soft: #f8f9fa !default; // Um tom de branco mais suave (ideal para fundos).
+$black: #0a0d12 !default; // Um preto suave que complementa os tons "coal".
 
-// Bootstrap color system
-$white: #ffffff !default;
-$black:#000000 !default;
+// Bootstrap grey colors ajustados
+$gray-100: #f7f9fa !default; // Cinza muito claro, quase branco.
+$gray-200: #edf0f2 !default; // Ideal para fundos suaves.
+$gray-300: #d6dae0 !default; // Neutro claro.
+$gray-400: #bfc4cc !default; // Transição para tons médios.
+$gray-500: #9aa1ad !default; // Cinza neutro, usado para texto muted.
+$gray-600: #7a8291 !default; // Cinza médio, perfeito para bordas.
+$gray-700: #505a70 !default; // Cinza escuro com toque azulado.
+$gray-800: #2e3a50 !default; // Fundo escuro ou texto principal.
+$gray-900: #152236 !default; // Cinza quase preto com base azulada.
 
-// Bootstrap grey colors
-$gray-100: #F9F9F9 !default;
-$gray-200: #F1F1F4 !default;
-$gray-300: #DBDFE9 !default;
-$gray-400: #C4CADA !default;
-$gray-500: #99A1B7 !default;
-$gray-600: #78829D !default;
-$gray-700: #4B5675 !default;
-$gray-800: #252F4A !default;
-$gray-900: #071437 !default;
+// Bootstrap muted color ajustado
+$text-muted: $gray-500 !default; // Permanece no tom cinza neutro, ideal para contraste.
 
-// Bootstrap muted color
-$text-muted: $gray-500 !default;
-
-// Bootstrap gray colors map
+// Bootstrap gray colors map ajustado
 $grays: (
-	"100": $gray-100,
-	"200": $gray-200,
-	"300": $gray-300,
-	"400": $gray-400,
-	"500": $gray-500,
-	"600": $gray-600,
-	"700": $gray-700,
-	"800": $gray-800,
-	"900": $gray-900
+    "100": $gray-100,  // #f7f9fa (cinza muito claro, quase branco)
+    "200": $gray-200,  // #edf0f2 (fundo suave)
+    "300": $gray-300,  // #d6dae0 (bordas claras ou fundo neutro)
+    "400": $gray-400,  // #bfc4cc (cinza médio claro)
+    "500": $gray-500,  // #9aa1ad (texto muted)
+    "600": $gray-600,  // #7a8291 (bordas escuras)
+    "700": $gray-700,  // #505a70 (texto principal escuro)
+    "800": $gray-800,  // #2e3a50 (fundo escuro ou texto destaque)
+    "900": $gray-900   // #152236 (cinza quase preto com tom azulado)
 ) !default;
 
 // Bootstrap contextual colors
 // Primary colors
-$primary:						#53bf61 !default;
-$primary-active:				#40954B !default;
-$primary-light: 				#E9F3FF !default;
-$primary-clarity: 				rgba(#53bf61, 0.2) !default;
-$primary-inverse: 				$white !default;
+$primary: #008bcd !default; // Azul vibrante.
+$primary-active: darken($primary, 10%) !default; // Azul mais escuro para estados ativos.
+$primary-light: lighten($primary, 40%) !default; // Azul bem claro.
+$primary-clarity: rgba($primary, 0.2) !default; // Azul translúcido.
+$primary-inverse: $white !default; // Texto branco para contraste.
 
 // Secondary colors
-$secondary: 						$gray-200 !default;
-$secondary-active: 				$gray-400 !default;
-$secondary-light: 				#F9F9F9 !default;
-$secondary-clarity:				rgba(#F9F9F9, 0.2) !default;
-$secondary-inverse:				$gray-800 !default;
+$secondary: $gray-300 !default; // Cinza médio claro.
+$secondary-active: $gray-600 !default; // Cinza médio escuro.
+$secondary-light: $gray-100 !default; // Cinza claro.
+$secondary-clarity: rgba($gray-200, 0.2) !default; // Cinza translúcido.
+$secondary-inverse: $gray-800 !default; // Texto em cinza escuro.
 
 // Light colors
-$light: 						$gray-100 !default;
-$light-active: 					$gray-200 !default;
-$light-light: 					#ffffff !default;
-$light-clarity: 				rgba($white, 0.2) !default;
-$light-inverse:					$gray-800 !default;
+$light: $gray-100 !default; // Cinza muito claro.
+$light-active: $gray-200 !default; // Cinza claro.
+$light-light: $white !default; // Branco puro.
+$light-clarity: rgba($white, 0.2) !default; // Branco translúcido.
+$light-inverse: $gray-800 !default; // Texto em cinza escuro.
 
 // Success colors
-$success: 						#53bf61 !default;
-$success-active: 				#40954B !default;
-$success-light: 				#DFFFEA !default;
-$success-clarity: 				rgba(#17C653, 0.2) !default;
-$success-inverse: 				$white !default;
+$success: #54b470 !default; // Verde médio.
+$success-active: darken($success, 10%) !default; // Verde mais escuro para ações.
+$success-light: lighten($success, 40%) !default; // Verde bem claro.
+$success-clarity: rgba($success, 0.2) !default; // Verde translúcido.
+$success-inverse: $white !default; // Texto branco.
 
 // Info colors
-$info: 							#526BBF !default;
-$info-active: 					#528EBF !default;
-$info-light: 					#F8F5FF !default;
-$info-clarity: 					rgba(#526BBF, 0.2) !default;
-$info-inverse: 					$white !default;
+$info: lighten($primary, 20%) !default; // Azul suave.
+$info-active: darken($info, 10%) !default; // Azul mais escuro.
+$info-light: lighten($primary, 50%) !default; // Azul bem claro.
+$info-clarity: rgba($info, 0.2) !default; // Azul translúcido.
+$info-inverse: $white !default; // Texto branco.
 
 // Warning colors
-$warning: 						#FFCC48 !default;
-$warning-active: 				#FFB547 !default;
-$warning-light: 				#FFF8DD !default;
-$warning-clarity: 				rgba(#FFCC48, 0.2) !default;
-$warning-inverse: 				$white !default;
+$warning: #f5a623 !default; // Laranja vivo.
+$warning-active: darken($warning, 10%) !default; // Laranja mais escuro.
+$warning-light: lighten($warning, 40%) !default; // Laranja claro.
+$warning-clarity: rgba($warning, 0.2) !default; // Laranja translúcido.
+$warning-inverse: $white !default; // Texto branco.
 
 // Danger colors
-$danger: 						#BF526F !default;
-$danger-active: 				#BF5D52 !default;
-$danger-light: 					#FFEEF3 !default;
-$danger-clarity: 				rgba(#BF526F, 0.2) !default;
-$danger-inverse: 				$white !default;
+$danger: #e74c3c !default; // Vermelho clássico.
+$danger-active: darken($danger, 10%) !default; // Vermelho mais escuro.
+$danger-light: lighten($danger, 40%) !default; // Vermelho claro.
+$danger-clarity: rgba($danger, 0.2) !default; // Vermelho translúcido.
+$danger-inverse: $white !default; // Texto branco.
 
 // Dark colors
-$dark: 							#1E2129 !default;
-$dark-active: 					#111318 !default;
-$dark-light: 					#F9F9F9 !default;
-$dark-clarity: 					rgba(#1E2129, 0.2) !default;
-$dark-inverse: 					$white !default;
+$dark: $gray-900 !default; // Cinza profundo com tom azulado.
+$dark-active: darken($dark, 10%) !default; // Ainda mais escuro.
+$dark-light: $gray-700 !default; // Tom cinza escuro mais leve.
+$dark-clarity: rgba($dark, 0.2) !default; // Escuro translúcido.
+$dark-inverse: $white !default; // Texto branco.
 
-// Contextual colors
+// Contextual colors ajustado
 $theme-colors: (
-	"light": $light,
-	"primary": $primary,
-	"secondary": $secondary,
-	"success": $success,
-	"info": $info,
-	"warning": $warning,
-	"danger": $danger,
-	"dark": $dark
+    "light": $light,        // Tons muito claros (cinzas).
+    "primary": $primary,    // Azul vibrante.
+    "secondary": $secondary,// Tons neutros de cinza.
+    "success": $success,    // Verde médio.
+    "info": $info,          // Azul claro complementar.
+    "warning": $warning,    // Laranja vibrante.
+    "danger": $danger,      // Vermelho clássico.
+    "dark": $dark           // Cinza profundo com tom azulado.
 ) !default;
 
 // Contextual active state colors
 $theme-active-colors: (
-	"primary": $primary-active,
-	"secondary":  $secondary-active,
-	"light":   $light-active,
-	"success": $success-active,
-	"info":    $info-active,
-	"warning": $warning-active,
-	"danger":  $danger-active,
-	"dark":    $dark-active
+    "primary": $primary-active,     // Azul mais escuro.
+    "secondary": $secondary-active, // Cinza médio-escuro.
+    "light": $light-active,         // Cinza claro.
+    "success": $success-active,     // Verde mais escuro.
+    "info": $info-active,           // Azul claro escurecido.
+    "warning": $warning-active,     // Laranja mais escuro.
+    "danger": $danger-active,       // Vermelho escurecido.
+    "dark": $dark-active            // Cinza profundo.
 ) !default;
 
 // Contextual inverse state colors
 $theme-inverse-colors: (
-	"primary": $primary-inverse,
-	"secondary":  $secondary-inverse,
-	"light":   $light-inverse,
-	"success": $success-inverse,
-	"info":    $info-inverse,
-	"warning": $warning-inverse,
-	"danger":  $danger-inverse,
-	"dark":    $dark-inverse
+    "primary": $primary-inverse,     // Branco para azul vibrante.
+    "secondary": $secondary-inverse, // Cinza escuro para tons neutros.
+    "light": $light-inverse,         // Cinza escuro para fundos claros.
+    "success": $success-inverse,     // Branco para verde médio.
+    "info": $info-inverse,           // Branco para azul claro.
+    "warning": $warning-inverse,     // Branco para laranja vibrante.
+    "danger": $danger-inverse,       // Branco para vermelho clássico.
+    "dark": $dark-inverse            // Branco para fundos escuros.
 ) !default;
 
 // Contextual light state colors
 $theme-light-colors: (
-	"primary": $primary-light,
-	"secondary": $secondary-light,
-	"success": $success-light,
-	"info":    $info-light,
-	"warning": $warning-light,
-	"danger":  $danger-light,
-	"dark":    $dark-light,
-	"light":   $light-light
+    "primary": $primary-light,       // Azul claro.
+    "secondary": $secondary-light,   // Cinza muito claro.
+    "success": $success-light,       // Verde claro.
+    "info": $info-light,             // Azul claro suave.
+    "warning": $warning-light,       // Laranja claro.
+    "danger": $danger-light,         // Vermelho claro.
+    "dark": $dark-light,             // Cinza escuro médio.
+    "light": $light-light            // Branco puro.
 ) !default;
 
 // Contextual light state colors
 $theme-clarity-colors: (
-	"primary": $primary-clarity,
-	"secondary": $secondary-clarity,
-	"success": $success-clarity,
-	"info":    $info-clarity,
-	"warning": $warning-clarity,
-	"danger":  $danger-clarity,
-	"dark":    $dark-clarity,
-	"light":   $light-clarity,
+    "primary": $primary-clarity,     // Azul translúcido.
+    "secondary": $secondary-clarity, // Cinza translúcido.
+    "success": $success-clarity,     // Verde translúcido.
+    "info": $info-clarity,           // Azul claro translúcido.
+    "warning": $warning-clarity,     // Laranja translúcido.
+    "danger": $danger-clarity,       // Vermelho translúcido.
+    "dark": $dark-clarity,           // Cinza escuro translúcido.
+    "light": $light-clarity          // Branco translúcido.
 ) !default;
 
 // Text colors
 $theme-text-colors: (
-	"white":   $white,
-	"primary": $primary,
-	"secondary":  $secondary,
-	"light":   $light,
-	"success": $success,
-	"info":    $info,
-	"warning": $warning,
-	"danger":  $danger,
-	"dark":    $dark,
-	"muted":   $text-muted,
-	"gray-100":   $gray-100,
-	"gray-200":   $gray-200,
-	"gray-300":   $gray-300,
-	"gray-400":   $gray-400,
-	"gray-500":   $gray-500,
-	"gray-600":   $gray-600,
-	"gray-700":   $gray-700,
-	"gray-800":   $gray-800,
-	"gray-900":   $gray-900
+    "white": $white,                 // Branco puro.
+    "primary": $primary,             // Azul vibrante.
+    "secondary": $secondary,         // Cinza neutro.
+    "light": $light,                 // Cinza muito claro.
+    "success": $success,             // Verde médio.
+    "info": $info,                   // Azul claro.
+    "warning": $warning,             // Laranja vibrante.
+    "danger": $danger,               // Vermelho clássico.
+    "dark": $dark,                   // Cinza profundo.
+    "muted": $text-muted,            // Cinza médio para textos de menor destaque.
+    "gray-100": $gray-100,
+    "gray-200": $gray-200,
+    "gray-300": $gray-300,
+    "gray-400": $gray-400,
+    "gray-500": $gray-500,
+    "gray-600": $gray-600,
+    "gray-700": $gray-700,
+    "gray-800": $gray-800,
+    "gray-900": $gray-900
 ) !default;
 
 // Options
@@ -673,7 +673,7 @@ $form-switch-checked-bg-image:                      url("data:image/svg+xml,<svg
 $form-switch-checked-bg-position:                   right center !default;
 
 
-// Input groups
+// InputText groups
 $input-group-addon-bg:                              var(--#{$prefix}gray-100) !default;
 $input-group-addon-color:                           var(--#{$prefix}gray-700) !default;
 $input-group-addon-border-color:                    $input-border-color !default;
@@ -971,10 +971,10 @@ $btn-close-bg:               				url("data:image/svg+xml,<svg xmlns='http://www.
 $btn-close-focus-shadow:					none !default;
 
 // Code
-$code-bg:                   #f1f3f8 !default;
-$code-shadow:				0px 3px 9px rgba(0,0,0,.08);
-$code-color:                #b93993 !default;
-$code-border-color:         transparent !default;
+$code-bg:                   lighten($primary, 40%) !default; // Fundo azul muito claro derivado de $primary.
+$code-shadow:               0px 3px 9px rgba($primary, 0.15) !default; // Sombra com transparência azul.
+$code-color:                darken($primary, 20%) !default; // Azul mais escuro para texto.
+$code-border-color:         lighten($primary, 20%) !default; // Borda clara em azul.
 $code-padding:              0.1rem 0.4rem !default;
 $code-margin:               0 0.5rem !default;
 $code-font-size: 			1rem !default;
@@ -1211,9 +1211,9 @@ $blockui-overlay-bg: rgba($black, 0.05) !default;
 $blockui-message-bg: $tooltip-bg !default;
 $blockui-message-box-shadow: $tooltip-box-shadow !default;
 
-// Keenthemes rating component
-$rating-color-default: $gray-400 !default;
-$rating-color-active: #FFAD0F !default;
+// Keenthemes rating component ajustado
+$rating-color-default: lighten($primary, 40%) !default; // Azul claro derivado do $primary.
+$rating-color-active: $success !default; // Verde médio como cor ativa.
 
 // Keenthemes ribbon component
 $ribbon-label-box-shadow: 0px -1px 5px 0px rgba($dark, 0.1) !default;
@@ -1233,42 +1233,43 @@ $engage-btn-icon-color: $gray-600;
 $engage-btn-color-active: $gray-800;
 $engage-z-index: 5;
 
-// Social Network Colors Used With Boostrap Buttons(see: https://brandcolors.net)
+// Social Network Colors Ajustados
 $social-colors: (
-	facebook: (
-		base: #3b5998,
-		inverse: #ffffff,
-		light: rgba(#3b5998, 0.1),
-		active: darken(#3b5998, 7.5%)
-	),
-	google: (
-		base: #dd4b39,
-		inverse: #ffffff,
-		light: rgba(#dd4b39, 0.1),
-		active: darken(#dd4b39, 7.5%)
-	),
-	twitter: (
-		base: #1da1f2,
-		inverse: #ffffff,
-		light: rgba(#1da1f2, 0.1),
-		active: darken(#1da1f2, 7.5%)
-	),
-	instagram: (
-		base: #e1306c,
-		inverse: #ffffff,
-		light: rgba(#e1306c, 0.1),
-		active: darken(#e1306c, 7.5%)
-	),
-	youtube: (
-		base: #ff0000,
-		inverse: #ffffff,
-		light: rgba(#ff0000, 0.1),
-		active: darken(#ff0000, 7.5%)
-	),
-	linkedin: (
-		base: #0077b5,
-		inverse: #ffffff,
-		light: rgba(#0077b5, 0.1),
-		active: darken(#0077b5, 7.5%)
-	)
+    facebook: (
+        base: #3b5998, // Azul oficial do Facebook.
+        inverse: $white, // Contraste para texto.
+        light: lighten(#3b5998, 20%), // Azul claro translúcido.
+        active: darken(#3b5998, 10%) // Azul mais escuro para interatividade.
+    ),
+    google: (
+        base: #dd4b39, // Vermelho oficial do Google.
+        inverse: $white,
+        light: lighten(#dd4b39, 20%), // Vermelho claro translúcido.
+        active: darken(#dd4b39, 10%) // Vermelho mais escuro.
+    ),
+    twitter: (
+        base: #1da1f2, // Azul oficial do Twitter.
+        inverse: $white,
+        light: lighten(#1da1f2, 20%), // Azul claro translúcido.
+        active: darken(#1da1f2, 10%) // Azul mais escuro.
+    ),
+    instagram: (
+        base: #e1306c, // Rosa oficial do Instagram.
+        inverse: $white,
+        light: lighten(#e1306c, 20%), // Rosa claro translúcido.
+        active: darken(#e1306c, 10%) // Rosa mais escuro.
+    ),
+    youtube: (
+        base: #ff0000, // Vermelho oficial do YouTube.
+        inverse: $white,
+        light: lighten(#ff0000, 20%), // Vermelho claro translúcido.
+        active: darken(#ff0000, 10%) // Vermelho mais escuro.
+    ),
+    linkedin: (
+        base: #0077b5, // Azul oficial do LinkedIn.
+        inverse: $white,
+        light: lighten(#0077b5, 20%), // Azul claro translúcido.
+        active: darken(#0077b5, 10%) // Azul mais escuro.
+    )
 ) !default;
+

@@ -13,7 +13,7 @@
 			{{-- end::Description --}}
 		</div>
 		{{-- end::Heading --}}
-		{{-- begin::Input group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-8">
 			{{-- begin::Label --}}
 			<label class="d-flex align-items-center fs-6 fw-semibold mb-2">
@@ -26,17 +26,17 @@
 				{{-- begin::Decrease control --}}
 				<button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 start-0" data-kt-dialer-control="decrease">{!! getSvgIcon('duotune/general/gen042.svg', 'svg-icon svg-icon-1') !!}</button>
 				{{-- end::Decrease control --}}
-				{{-- begin::Input control --}}
+				{{-- begin::InputText control --}}
 				<input type="text" class="form-control form-control-solid border-0 ps-12" data-kt-dialer-control="input" placeholder="Amount" name="budget_setup" readonly="readonly" value="$50" />
-				{{-- end::Input control --}}
+				{{-- end::InputText control --}}
 				{{-- begin::Increase control --}}
 				<button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 end-0" data-kt-dialer-control="increase">{!! getSvgIcon('duotune/general/gen041.svg', 'svg-icon svg-icon-1') !!}</button>
 				{{-- end::Increase control --}}
 			</div>
 			{{-- end::Dialer --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-8">
 			{{-- begin::Label --}}
 			<label class="fs-6 fw-semibold mb-2">Budget Usage</label>
@@ -84,8 +84,8 @@
 			</div>
 			{{-- end::Row --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-15">
 			{{-- begin::Wrapper --}}
 			<div class="d-flex flex-stack">
@@ -104,7 +104,7 @@
 			</div>
 			{{-- end::Wrapper --}}
 		</div>
-		{{-- end::Input group --}}
+		{{-- end::InputText group --}}
 		{{-- begin::Actions --}}
 		<div class="d-flex flex-stack">
 			<button type="button" class="btn btn-lg btn-light me-3" data-kt-element="budget-previous">Project Settings</button>

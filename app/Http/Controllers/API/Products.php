@@ -40,6 +40,6 @@ class Products extends ApiController
         private readonly ProductService $service,
         private readonly Product $model,
     ) {
-        parent::__construct();
+//        parent::__construct();
     }
 }

@@ -2,11 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Address;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Provider\pt_BR\Address as BrazilianAddress;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Address>
+ * @extends Factory<Address>
  */
 class AddressFactory extends Factory
 {
@@ -17,17 +19,24 @@ class AddressFactory extends Factory
      */
     public function definition(): array
     {
-        $user = User::inRandomOrder()->first(); // Retrieve a random user
+        $this->faker->addProvider(new BrazilianAddress($this->faker));
+
+        $user = User::with('addresses')
+            ->where('id', '>', 1)
+            ->doesntHave('addresses')
+            ->inRandomOrder()
+            ->first(); // Retrieve a random user
 
         return [
-            'user_id' => $user->id,
-            'address_line_1' => $this->faker->address(),
-            'address_line_2' => null,
+            'user_id' => $user ? $user->id : null, // Garante que não seja nulo
+            'street' => $this->faker->streetName(),
+            'number' => $this->faker->buildingNumber(),
+            'additional_details' => $this->faker->optional()->secondaryAddress(),
+            'zipcode' => $this->faker->postcode(), // Formato brasileiro de CEP
+            'neighborhood' => $this->faker->streetSuffix(), // Bairro em português
             'city' => $this->faker->city(),
-            'postal_code' => $this->faker->postcode(),
-            'state' => $this->faker->state(),
-            'country' => $this->faker->country(),
-            'type' => 1,
+            'state' => $this->faker->stateAbbr(), // Sigla do estado
+            'country' => 'BR', // Código do país fixado como Brasil
         ];
     }
 }

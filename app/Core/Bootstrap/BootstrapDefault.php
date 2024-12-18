@@ -4,13 +4,13 @@ namespace App\Core\Bootstrap;
 
 class BootstrapDefault
 {
-    public function init(): void
+    public function init()
     {
         // 1) Light sidebar layout (default.html)
-        $this->initLightSidebarLayout();
+        // $this->initLightSidebarLayout();
 
         // 2) Dark sidebar layout (default.html)
-        //$this->initDarkSidebarLayout();
+        $this->initDarkSidebarLayout();
 
         // 3) Dark header layout (default_header_layout.html)
         // $this->initDarkHeaderLayout();
@@ -18,16 +18,16 @@ class BootstrapDefault
         // 4) Light header layout (default_header_layout.html)
         // $this->initLightHeaderLayout();
 
-        // Init global assets for default layout
+        # Init global assets for default layout
         $this->initAssets();
     }
 
-    public function initAssets(): void
+    public function initAssets()
     {
-        // Include global vendors
+        # Include global vendors
         addVendors(['datatables']);
 
-        // Include global javascript files
+        # Include global javascript files
         addJavascriptFile('assets/js/custom/widgets.js');
         addJavascriptFile('assets/js/custom/apps/chat/chat.js');
         addJavascriptFile('assets/js/custom/utilities/modals/upgrade-plan.js');
@@ -36,7 +36,7 @@ class BootstrapDefault
         addJavascriptFile('assets/js/custom/utilities/modals/new-target.js');
     }
 
-    public function initDarkSidebarLayout(): void
+    public function initDarkSidebarLayout()
     {
         addHtmlAttribute('body', 'data-kt-app-layout', 'dark-sidebar');
         addHtmlAttribute('body', 'data-kt-app-header-fixed', 'true');
@@ -51,7 +51,7 @@ class BootstrapDefault
         addHtmlClass('body', 'app-default');
     }
 
-    public function initLightSidebarLayout(): void
+    public function initLightSidebarLayout()
     {
         addHtmlAttribute('body', 'data-kt-app-layout', 'light-sidebar');
         addHtmlAttribute('body', 'data-kt-app-header-fixed', 'false');
@@ -66,7 +66,7 @@ class BootstrapDefault
         addHtmlClass('body', 'app-default');
     }
 
-    public function initDarkHeaderLayout(): void
+    public function initDarkHeaderLayout()
     {
         addHtmlAttribute('body', 'data-kt-app-layout', 'dark-header');
         addHtmlAttribute('body', 'data-kt-app-header-fixed', 'true');
@@ -75,7 +75,7 @@ class BootstrapDefault
         addHtmlClass('body', 'app-default');
     }
 
-    public function initLightHeaderLayout(): void
+    public function initLightHeaderLayout()
     {
         addHtmlAttribute('body', 'data-kt-app-layout', 'light-header');
         addHtmlAttribute('body', 'data-kt-app-header-fixed', 'true');
@@ -83,4 +83,5 @@ class BootstrapDefault
 
         addHtmlClass('body', 'app-default');
     }
+
 }

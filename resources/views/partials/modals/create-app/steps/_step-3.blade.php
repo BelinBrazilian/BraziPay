@@ -1,17 +1,17 @@
 {{-- begin::Step 3 --}}
 <div data-kt-stepper-element="content">
 	<div class="w-100">
-		{{-- begin::Input group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-10">
 			{{-- begin::Label --}}
 			<label class="required fs-5 fw-semibold mb-2">Database Name</label>
 			{{-- end::Label --}}
-			{{-- begin::Input --}}
+			{{-- begin::InputText --}}
 			<input type="text" class="form-control form-control-lg form-control-solid" name="dbname" placeholder="" value="master_db" />
-			{{-- end::Input --}}
+			{{-- end::InputText --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row">
 			{{-- begin::Label --}}
 			<label class="d-flex align-items-center fs-5 fw-semibold mb-4">
@@ -38,11 +38,11 @@
 					{{-- end::Info --}}
 				</span>
 				{{-- end::Label --}}
-				{{-- begin::Input --}}
+				{{-- begin::InputText --}}
 				<span class="form-check form-check-custom form-check-solid">
 					<input class="form-check-input" type="radio" name="dbengine" checked="checked" value="1" />
 				</span>
-				{{-- end::Input --}}
+				{{-- end::InputText --}}
 			</label>
 			{{-- end::Option --}}
 			{{-- begin:Option --}}
@@ -64,11 +64,11 @@
 					{{-- end::Info --}}
 				</span>
 				{{-- end::Label --}}
-				{{-- begin::Input --}}
+				{{-- begin::InputText --}}
 				<span class="form-check form-check-custom form-check-solid">
 					<input class="form-check-input" type="radio" name="dbengine" value="2" />
 				</span>
-				{{-- end::Input --}}
+				{{-- end::InputText --}}
 			</label>
 			{{-- end::Option --}}
 			{{-- begin:Option --}}
@@ -90,15 +90,15 @@
 					{{-- end::Info --}}
 				</span>
 				{{-- end::Label --}}
-				{{-- begin::Input --}}
+				{{-- begin::InputText --}}
 				<span class="form-check form-check-custom form-check-solid">
 					<input class="form-check-input" type="radio" name="dbengine" value="3" />
 				</span>
-				{{-- end::Input --}}
+				{{-- end::InputText --}}
 			</label>
 			{{-- end::Option --}}
 		</div>
-		{{-- end::Input group --}}
+		{{-- end::InputText group --}}
 	</div>
 </div>
 {{-- end::Step 3 --}}

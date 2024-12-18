@@ -13,7 +13,7 @@
 			{{-- end::Description --}}
 		</div>
 		{{-- end::Heading --}}
-		{{-- begin::Input group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-10">
 			{{-- begin::Dropzone --}}
 			<div class="dropzone" id="kt_modal_create_campaign_files_upload">
@@ -31,8 +31,8 @@
 			</div>
 			{{-- end::Dropzone --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="mb-10">
 			{{-- begin::Label --}}
 			<label class="fs-6 fw-semibold mb-2">Uploaded File</label>
@@ -204,7 +204,7 @@
 			</div>
 			{{-- end::Files --}}
 		</div>
-		{{-- end::Input group --}}
+		{{-- end::InputText group --}}
 	</div>
 	{{-- end::Wrapper --}}
 </div>

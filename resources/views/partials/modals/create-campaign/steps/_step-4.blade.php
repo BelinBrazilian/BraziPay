@@ -13,7 +13,7 @@
 			{{-- end::Description --}}
 		</div>
 		{{-- end::Heading --}}
-		{{-- begin::Input group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-10">
 			{{-- begin::Label --}}
 			<label class="fs-6 fw-semibold mb-2">Campaign Duration
@@ -37,8 +37,8 @@
 			<input class="form-control form-control-solid d-none" placeholder="Pick date &amp; time" id="kt_modal_create_campaign_datepicker" />
 			{{-- end::Datepicker --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-10">
 			{{-- begin::Label --}}
 			<label class="fs-6 fw-semibold mb-2">Daily Budget
@@ -55,7 +55,7 @@
 			</div>
 			{{-- end::Slider --}}
 		</div>
-		{{-- end::Input group --}}
+		{{-- end::InputText group --}}
 	</div>
 	{{-- end::Wrapper --}}
 </div>

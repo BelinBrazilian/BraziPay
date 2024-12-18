@@ -24,11 +24,11 @@
         </div>
         {{-- begin::Heading --}}
 
-        {{-- begin::Input group --}}
+        {{-- begin::InputText group --}}
         <div class="fv-row mb-8" data-kt-password-meter="true">
             {{-- begin::Wrapper --}}
             <div class="mb-1">
-                {{-- begin::Input wrapper --}}
+                {{-- begin::InputText wrapper --}}
                 <div class="position-relative mb-3">
                     <input class="form-control bg-transparent" type="password" placeholder="Password" name="password" autocomplete="off"/>
 
@@ -37,7 +37,7 @@
                         <i class="bi bi-eye fs-2 d-none"></i>
                     </span>
                 </div>
-                {{-- end::Input wrapper --}}
+                {{-- end::InputText wrapper --}}
 
                 {{-- begin::Meter --}}
                 <div class="d-flex align-items-center mb-3" data-kt-password-meter-control="highlight">
@@ -56,17 +56,17 @@
             </div>
             {{-- end::Hint --}}
         </div>
-        {{-- end::Input group- --}}
+        {{-- end::InputText group- --}}
 
-        {{-- end::Input group- --}}
+        {{-- end::InputText group- --}}
         <div class="fv-row mb-8">
             {{-- begin::Repeat Password --}}
             <input placeholder="Repeat Password" name="password_confirmation" type="password" autocomplete="off" class="form-control bg-transparent"/>
             {{-- end::Repeat Password --}}
         </div>
-        {{-- end::Input group- --}}
+        {{-- end::InputText group- --}}
 
-        {{-- begin::Input group- --}}
+        {{-- begin::InputText group- --}}
         <div class="fv-row mb-10">
             <div class="form-check form-check-custom form-check-solid form-check-inline">
                 <input class="form-check-input" type="checkbox" name="toc" value="1"/>
@@ -78,7 +78,7 @@
                 </label>
             </div>
         </div>
-        {{-- end::Input group- --}}
+        {{-- end::InputText group- --}}
 
         {{-- begin::Actions --}}
         <div class="d-flex flex-wrap justify-content-center pb-lg-0">
