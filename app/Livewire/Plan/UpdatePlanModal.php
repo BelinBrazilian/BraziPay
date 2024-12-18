@@ -41,7 +41,7 @@ class UpdatePlanModal extends Component
 
     public function render()
     {
-        return view('livewire.plan.update-plan-modal');
+        return view('livewire.plans.update-plan-modal');
     }
 
     public function resetFields()

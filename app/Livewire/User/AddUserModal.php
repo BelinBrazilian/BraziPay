@@ -53,7 +53,7 @@ class AddUserModal extends Component
             $roles[$i]->description = $roles_description[$role->name] ?? '';
         }
 
-        return view('livewire.user.add-user-modal', compact('roles'));
+        return view('livewire.users.add-user-modal', compact('roles'));
     }
 
     public function submit()

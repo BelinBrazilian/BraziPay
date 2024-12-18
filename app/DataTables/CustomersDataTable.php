@@ -66,12 +66,21 @@ class CustomersDataTable extends DataTable
         return $this->builder()
             ->setTableId('customers-table')
             ->columns($this->getColumns())
-            ->minifiedAjax()
+            ->minifiedAjax(route('customers.index'))
             ->dom('rt'."<'row'<'col-sm-12'tr>><'d-flex justify-content-between'<'col-sm-12 col-md-5'i><'d-flex justify-content-between'p>>")
             ->addTableClass('table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer text-gray-600 fw-semibold')
             ->setTableHeadClass('text-start text-muted fw-bold fs-7 text-uppercase gs-0')
             ->orderBy(1)
-            ->drawCallback('function() { /* Custom draw scripts here */ }');
+            ->drawCallback('function() { /* Custom draw scripts here */ }')
+            ->parameters([
+                'ajax' => [
+                    'url' => route('customers.index'),
+                    'type' => 'GET',
+                    'headers' => [
+                        'X-CSRF-TOKEN' => csrf_token(),
+                    ],
+                ],
+            ]);
     }
 
     /**

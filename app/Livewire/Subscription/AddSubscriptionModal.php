@@ -32,7 +32,7 @@ class AddSubscriptionModal extends Component
 
     public function render()
     {
-        return view('livewire.subscription.add-subscription-modal');
+        return view('livewire.subscriptions.add-subscription-modal');
     }
 
     public function resetFields()

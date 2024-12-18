@@ -38,7 +38,7 @@ class AddDiscountModal extends Component
 
     public function render(): View|Factory|Application
     {
-        return view('livewire.discount.add-discount-modal');
+        return view('livewire.discounts.add-discount-modal');
     }
 
     public function resetFields(): void

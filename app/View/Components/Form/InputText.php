@@ -17,6 +17,7 @@ class InputText extends Component
      * @param string|null $type The input type (default: text).
      * @param string|null $placeholder The placeholder text for the input.
      * @param bool $required Whether the field is required (default: false).
+     * @param string|null $tooltip The tooltip for the input field.
      */
     public function __construct(
         public string $label,
@@ -24,7 +25,8 @@ class InputText extends Component
         public string $name,
         public ?string $type = 'text',
         public ?string $placeholder = null,
-        public bool $required = false
+        public bool $required = false,
+        public ?string $tooltip = null
     ) {}
 
     /**

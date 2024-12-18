@@ -24,7 +24,7 @@ class AddTransactionModal extends Component
 
     public function render()
     {
-        return view('livewire.transaction.add-transaction-modal');
+        return view('livewire.transactions.add-transaction-modal');
     }
 
     public function resetFields()

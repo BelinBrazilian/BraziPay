@@ -32,7 +32,7 @@ class AddPlanModal extends Component
 
     public function render()
     {
-        return view('livewire.plan.add-plan-modal');
+        return view('livewire.plans.add-plan-modal');
     }
 
     public function resetFields()

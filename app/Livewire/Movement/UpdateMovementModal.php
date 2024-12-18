@@ -36,7 +36,7 @@ class UpdateMovementModal extends Component
 
     public function render()
     {
-        return view('livewire.movement.update-movement-modal');
+        return view('livewire.movements.update-movement-modal');
     }
 
     public function resetFields()

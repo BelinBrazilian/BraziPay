@@ -46,7 +46,7 @@ class UpdateBillModal extends Component
 
     public function render(): View|Factory|Application
     {
-        return view('livewire.bill.update-bill-modal');
+        return view('livewire.bills.update-bill-modal');
     }
 
     public function resetFields(): void

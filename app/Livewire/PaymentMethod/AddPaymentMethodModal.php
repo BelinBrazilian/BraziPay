@@ -28,7 +28,7 @@ class AddPaymentMethodModal extends Component
 
     public function render()
     {
-        return view('livewire.payment-method.add-payment-method-modal');
+        return view('livewire.payment-methods.add-payment-method-modal');
     }
 
     public function resetFields()

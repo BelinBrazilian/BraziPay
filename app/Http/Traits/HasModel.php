@@ -8,7 +8,7 @@ trait HasModel
 
     public function _hasModel(): bool
     {
-        return empty($this->model) ? false : true;
+        return !empty($this->model);
     }
 
     public function _getModelClass(): ?string
@@ -29,7 +29,7 @@ trait HasModel
 
     public function _hasUuid(): bool
     {
-        return ! empty($this->model::uuidField) ? true : false;
+        return ! empty($this->model::uuidField);
     }
 
     public function _hasDto(): bool
@@ -44,12 +44,12 @@ trait HasModel
 
     public function _getAllowedFilters(): array
     {
-        return $this->model->allowedFilters ?? $this->model->fillable;
+        return $this->model->allowedFilters ?? $this->model->fillable ?? [];
     }
 
     public function _getAllowedSorts(): array
     {
-        return $this->model->allowedSorts ?? $this->model->fillable;
+        return $this->model->allowedSorts ?? $this->model->fillable ?? [];
     }
 
     public function _getAllowedIncludes(): array
@@ -59,6 +59,6 @@ trait HasModel
 
     public function _getAllowedFields(): array
     {
-        return $this->model->allowedFields ?? $this->model->fillable;
+        return $this->model->allowedFields ?? $this->model->fillable ?? [];
     }
 }

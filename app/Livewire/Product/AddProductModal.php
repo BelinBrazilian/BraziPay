@@ -37,7 +37,7 @@ class AddProductModal extends Component
 
     public function render()
     {
-        return view('livewire.product.add-product-modal');
+        return view('livewire.products.add-product-modal');
     }
 
     public function resetFields()

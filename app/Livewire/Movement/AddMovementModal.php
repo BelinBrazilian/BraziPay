@@ -33,7 +33,7 @@ class AddMovementModal extends Component
 
     public function render()
     {
-        return view('livewire.movement.add-movement-modal');
+        return view('livewire.movements.add-movement-modal');
     }
 
     public function resetFields()

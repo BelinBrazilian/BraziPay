@@ -33,7 +33,7 @@ class UpdateNotificationModal extends Component
 
     public function render()
     {
-        return view('livewire.notification.update-notification-modal');
+        return view('livewire.notifications.update-notification-modal');
     }
 
     public function resetFields()

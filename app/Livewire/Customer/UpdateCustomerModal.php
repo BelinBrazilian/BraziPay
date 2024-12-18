@@ -37,7 +37,7 @@ class UpdateCustomerModal extends Component
 
     public function render(): View|Factory|Application
     {
-        return view('livewire.customer.update-customer-modal');
+        return view('livewire.customers.update-customer-modal');
     }
 
     public function loadCustomer($customer_id): void

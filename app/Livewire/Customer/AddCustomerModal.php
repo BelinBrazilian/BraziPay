@@ -36,7 +36,7 @@ class AddCustomerModal extends Component
 
     public function render(): View|Factory|Application
     {
-        return view('livewire.customer.add-customer-modal');
+        return view('livewire.customers.add-customer-modal');
     }
 
     public function resetFields(): void

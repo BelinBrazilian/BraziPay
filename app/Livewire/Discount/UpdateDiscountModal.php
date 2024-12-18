@@ -41,7 +41,7 @@ class UpdateDiscountModal extends Component
 
     public function render(): View|Factory|Application
     {
-        return view('livewire.discount.update-discount-modal');
+        return view('livewire.discounts.update-discount-modal');
     }
 
     public function resetFields(): void

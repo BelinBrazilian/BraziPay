@@ -8,103 +8,103 @@ return [
             'route' => 'dashboard',
             'children' => [
                 ['key' => 'init', 'route' => 'dashboard'],
-                ['key' => 'admin', 'route' => 'dashboard'],
-                ['key' => 'auditor', 'route' => 'dashboard'],
-                ['key' => 'billingOperator', 'route' => 'dashboard'],
-                ['key' => 'customerManager', 'route' => 'dashboard'],
-                ['key' => 'dataManager', 'route' => 'dashboard'],
-                ['key' => 'developer', 'route' => 'dashboard'],
-                ['key' => 'financialManager', 'route' => 'dashboard'],
-                ['key' => 'productManager', 'route' => 'dashboard'],
-                ['key' => 'superAdmin', 'route' => 'dashboard'],
-                ['key' => 'support', 'route' => 'dashboard'],
+                ['key' => 'admin', 'route' => 'dashboard'], // TODO: Ajustar rota específica se necessário
+                ['key' => 'auditor', 'route' => 'dashboard'], // TODO: Ajustar rota específica se necessário
+                ['key' => 'billingOperator', 'route' => 'dashboard'], // TODO: Ajustar rota específica se necessário
+                ['key' => 'customerManager', 'route' => 'dashboard'], // TODO: Ajustar rota específica se necessário
+                ['key' => 'dataManager', 'route' => 'dashboard'], // TODO: Ajustar rota específica se necessário
+                ['key' => 'developer', 'route' => 'dashboard'], // TODO: Ajustar rota específica se necessário
+                ['key' => 'financialManager', 'route' => 'dashboard'], // TODO: Ajustar rota específica se necessário
+                ['key' => 'productManager', 'route' => 'dashboard'], // TODO: Ajustar rota específica se necessário
+                ['key' => 'superAdmin', 'route' => 'dashboard'], // TODO: Ajustar rota específica se necessário
+                ['key' => 'support', 'route' => 'dashboard'], // TODO: Ajustar rota específica se necessário
             ],
         ],
         [
             'key' => 'customers',
             'icon' => 'users',
-            'route' => 'dashboard',
+            'route' => 'customers.index',
             'children' => [
-                ['key' => 'list', 'route' => 'dashboard'],
-                ['key' => 'add', 'route' => 'dashboard'],
-                ['key' => 'manage', 'route' => 'dashboard'],
+                ['key' => 'list', 'route' => 'customers.index'],
+                ['key' => 'add', 'route' => 'dashboard'], // TODO: Adicionar rota para criar cliente
+//                ['key' => 'manage', 'route' => 'customers.unarchive'], // Restaurar clientes arquivados
             ],
         ],
         [
             'key' => 'invoicesAndCharges',
             'icon' => 'receipt',
-            'route' => 'dashboard',
+            'route' => 'invoices.index',
             'children' => [
-                ['key' => 'listInvoices', 'route' => 'dashboard'],
-                ['key' => 'issueInvoice', 'route' => 'dashboard'],
-                ['key' => 'pendingInvoices', 'route' => 'dashboard'],
-                ['key' => 'canceledInvoices', 'route' => 'dashboard'],
-                ['key' => 'manualCharges', 'route' => 'dashboard'],
+                ['key' => 'listInvoices', 'route' => 'invoices.index'],
+                ['key' => 'issueInvoice', 'route' => 'dashboard'], // TODO: Adicionar rota para emissão de fatura
+                ['key' => 'pendingInvoices', 'route' => 'dashboard'], // TODO: Adicionar rota para faturas pendentes
+                ['key' => 'canceledInvoices', 'route' => 'dashboard'], // TODO: Adicionar rota para faturas canceladas
+//                ['key' => 'manualCharges', 'route' => 'charges.capture'], // Captura de cobrança manual
             ],
         ],
         [
             'key' => 'productsAndPlans',
             'icon' => 'box',
-            'route' => 'dashboard',
+            'route' => 'plans.index',
             'children' => [
-                ['key' => 'listProducts', 'route' => 'dashboard'],
-                ['key' => 'addProduct', 'route' => 'dashboard'],
-                ['key' => 'managePlans', 'route' => 'dashboard'],
-                ['key' => 'addPlan', 'route' => 'dashboard'],
+                ['key' => 'listProducts', 'route' => 'dashboard'], // TODO: Adicionar rota de listagem de produtos
+                ['key' => 'addProduct', 'route' => 'dashboard'], // TODO: Adicionar rota para criar produto
+                ['key' => 'managePlans', 'route' => 'plans.index'],
+                ['key' => 'addPlan', 'route' => 'dashboard'], // TODO: Adicionar rota para criar plano
             ],
         ],
         [
             'key' => 'reports',
             'icon' => 'chart-line',
-            'route' => 'dashboard',
+            'route' => 'export_batches.index',
             'children' => [
-                ['key' => 'financial', 'route' => 'dashboard'],
-                ['key' => 'customers', 'route' => 'dashboard'],
-                ['key' => 'subscriptions', 'route' => 'dashboard'],
-                ['key' => 'export', 'route' => 'dashboard'],
+                ['key' => 'financial', 'route' => 'dashboard'], // TODO: Adicionar rota para relatórios financeiros
+                ['key' => 'customers', 'route' => 'dashboard'], // TODO: Adicionar rota para relatórios de clientes
+                ['key' => 'subscriptions', 'route' => 'dashboard'], // TODO: Adicionar rota para relatórios de assinaturas
+                ['key' => 'export', 'route' => 'export_batches.index'], // Exportação de relatórios
             ],
         ],
         [
             'key' => 'integrations',
             'icon' => 'plug',
-            'route' => 'dashboard',
+            'route' => 'dashboard', // TODO: Adicionar rota base para integrações
             'children' => [
-                ['key' => 'manageWebhooks', 'route' => 'dashboard'],
-                ['key' => 'webhookLogs', 'route' => 'dashboard'],
-                ['key' => 'configureApiKeys', 'route' => 'dashboard'],
-                ['key' => 'viewApiDocs', 'route' => 'dashboard'],
+                ['key' => 'manageWebhooks', 'route' => 'dashboard'], // TODO: Adicionar rota para gerenciar webhooks
+                ['key' => 'webhookLogs', 'route' => 'dashboard'], // TODO: Adicionar rota para logs de webhooks
+                ['key' => 'configureApiKeys', 'route' => 'dashboard'], // TODO: Adicionar rota para configurar chaves API
+                ['key' => 'viewApiDocs', 'route' => 'dashboard'], // TODO: Adicionar rota para documentação da API
             ],
         ],
         [
             'key' => 'settings',
             'icon' => 'settings',
-            'route' => 'dashboard',
+            'route' => 'roles.index',
             'children' => [
-                ['key' => 'general', 'route' => 'dashboard'],
-                ['key' => 'customization', 'route' => 'dashboard'],
-                ['key' => 'regional', 'route' => 'dashboard'],
-                ['key' => 'systemLogs', 'route' => 'dashboard'],
-                ['key' => 'notifications', 'route' => 'dashboard'],
+                ['key' => 'general', 'route' => 'dashboard'], // TODO: Adicionar rota para configurações gerais
+                ['key' => 'customization', 'route' => 'dashboard'], // TODO: Adicionar rota para customizações
+                ['key' => 'regional', 'route' => 'dashboard'], // TODO: Adicionar rota para configurações regionais
+                ['key' => 'systemLogs', 'route' => 'dashboard'], // TODO: Adicionar rota para logs do sistema
+                ['key' => 'notifications', 'route' => 'notifications.index'], // Gerenciamento de notificações
             ],
         ],
         [
             'key' => 'usersAndPermissions',
             'icon' => 'users-cog',
-            'route' => 'dashboard',
+            'route' => 'user-management.users.index',
             'children' => [
-                ['key' => 'listUsers', 'route' => 'dashboard'],
-                ['key' => 'addUser', 'route' => 'dashboard'],
-                ['key' => 'managePermissions', 'route' => 'dashboard'],
+                ['key' => 'listUsers', 'route' => 'user-management.users.index'],
+                ['key' => 'addUser', 'route' => 'dashboard'], // TODO: Adicionar rota para adicionar usuário
+                ['key' => 'managePermissions', 'route' => 'user-management.permissions.index'], // Gerenciamento de permissões
             ],
         ],
         [
             'key' => 'support',
             'icon' => 'headset',
-            'route' => 'dashboard',
+            'route' => 'issues.index',
             'children' => [
-                ['key' => 'openTicket', 'route' => 'dashboard'],
-                ['key' => 'viewTickets', 'route' => 'dashboard'],
-                ['key' => 'documentation', 'route' => 'dashboard'],
+                ['key' => 'openTicket', 'route' => 'dashboard'], // TODO: Adicionar rota para abrir ticket
+                ['key' => 'viewTickets', 'route' => 'issues.index'], // Visualizar tickets
+                ['key' => 'documentation', 'route' => 'dashboard'], // TODO: Adicionar rota para documentação
             ],
         ],
     ],

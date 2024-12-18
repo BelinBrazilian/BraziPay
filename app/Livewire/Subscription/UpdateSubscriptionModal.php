@@ -41,7 +41,7 @@ class UpdateSubscriptionModal extends Component
 
     public function render()
     {
-        return view('livewire.subscription.update-subscription-modal');
+        return view('livewire.subscriptions.update-subscription-modal');
     }
 
     public function resetFields()

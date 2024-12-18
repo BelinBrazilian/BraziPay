@@ -30,7 +30,7 @@ class AddNotificationModal extends Component
 
     public function render()
     {
-        return view('livewire.notification.add-notification-modal');
+        return view('livewire.notifications.add-notification-modal');
     }
 
     public function resetFields()

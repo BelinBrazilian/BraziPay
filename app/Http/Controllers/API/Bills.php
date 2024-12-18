@@ -5,17 +5,17 @@ namespace App\Http\Controllers\API;
 use App\Http\Services\BillService;
 use App\Http\Traits\ApiTraits;
 use Illuminate\Http\JsonResponse;
-use Psr\Http\Message\RequestInterface;
+use Illuminate\Http\Request;
 
 class Bills extends ApiController
 {
     use ApiTraits;
 
     public function __construct(
-        private readonly RequestInterface $request,
+        private readonly Request $request,
         private readonly BillService $service,
     ) {
-        parent::__construct();
+//        parent::__construct();
     }
 
     public function invoice(int $id): JsonResponse

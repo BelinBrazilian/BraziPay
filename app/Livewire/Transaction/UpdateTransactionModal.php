@@ -27,7 +27,7 @@ class UpdateTransactionModal extends Component
 
     public function render()
     {
-        return view('livewire.transaction.update-transaction-modal');
+        return view('livewire.transactions.update-transaction-modal');
     }
 
     public function resetFields()

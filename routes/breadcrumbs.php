@@ -52,22 +52,22 @@ Breadcrumbs::for('user-management.permissions.index', function (BreadcrumbTrail 
     $trail->push('Permissions', route('user-management.permissions.index'));
 });
 
-Breadcrumbs::for('customers.index', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('customer-management.customers.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
     $trail->push('Customers', route('customers.index'));
 });
 
-Breadcrumbs::for('customers.create', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('customer-management.customers.create', function (BreadcrumbTrail $trail) {
     $trail->parent('customers.index');
     $trail->push('Create Customer', route('customers.create'));
 });
 
-Breadcrumbs::for('customers.edit', function (BreadcrumbTrail $trail, $customer) {
+Breadcrumbs::for('customer-management.customers.edit', function (BreadcrumbTrail $trail, $customer) {
     $trail->parent('customers.index');
     $trail->push('Edit Customer', route('customers.edit', $customer));
 });
 
-Breadcrumbs::for('customers.show', function (BreadcrumbTrail $trail, $customer) {
+Breadcrumbs::for('customer-management.customers.show', function (BreadcrumbTrail $trail, $customer) {
     $trail->parent('customers.index');
     $trail->push('Customer Details', route('customers.show', $customer));
 });

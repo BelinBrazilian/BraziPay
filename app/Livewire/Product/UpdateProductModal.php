@@ -39,7 +39,7 @@ class UpdateProductModal extends Component
 
     public function render()
     {
-        return view('livewire.product.update-product-modal');
+        return view('livewire.products.update-product-modal');
     }
 
     public function resetFields()
