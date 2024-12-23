@@ -6,6 +6,7 @@ use App\Http\Services\CustomerService;
 use App\Http\Traits\ApiTraits;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Customers extends ApiController
 {
@@ -15,9 +16,7 @@ class Customers extends ApiController
         private readonly Request $request,
         private readonly CustomerService $service,
         private readonly Customer $model,
-    ) {
-//        parent::__construct();
-    }
+    ) {}
 
     public function unarchive(mixed $id): Customer
     {
@@ -61,5 +60,10 @@ class Customers extends ApiController
             'data' => $records,
             'orderColumnName' => $orderColumnName,
         ];
+    }
+    
+    public function _index(array $queryParams = [])
+    {
+        return $this->service->_index($queryParams);
     }
 }

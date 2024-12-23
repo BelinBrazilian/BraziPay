@@ -7,6 +7,7 @@ use App\Http\Controllers\API\Customers as APICustomers;
 use App\Http\Requests\Customer\CustomerStoreRequest;
 use App\Http\Requests\Customer\CustomerUpdateRequest;
 use App\Models\Customer;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\View\View;
 use Illuminate\Http\JsonResponse;
 
@@ -14,12 +15,11 @@ final class Customers extends Controller
 {
     public function __construct(private readonly APICustomers $api) {}
 
-//    public function index(mixed $queryParams = null): View
-//    {
-//        $data = $this->api->index($queryParams);
-//
-//        return View('customers.index', compact('data'));
-//    }
+    // public function index(mixed $queryParams = null): View | AnonymousResourceCollection 
+    // {
+    //     $data = $this->api->index([]);
+
+    //     return $data;
 
     public function index(CustomersDataTable $dataTable): View|JsonResponse
     {
@@ -53,10 +53,10 @@ final class Customers extends Controller
         /** @todo consenso sobre exibição de erros */
     }
 
-    public function destroy(?string $code): View
+    public function destroy(?string $code)
     {
         if ($this->api->destroy($code)) {
-            return $this->index();
+            // return $this->index();
         }
 
         /** @todo consenso sobre exibição de erros */

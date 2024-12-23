@@ -33,6 +33,13 @@ final class CustomerService
     }
 
     // direct functions
+    public function _index(array $queryParams = []): JsonResponse
+    {
+        // dd($this->vindiService);
+
+        return $this->vindiService->all();
+    }
+    
     public function _store(StoreRequestInterface $request): JsonResponse
     {
         return $this->vindiService->create($request->all());

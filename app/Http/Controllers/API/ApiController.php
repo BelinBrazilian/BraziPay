@@ -14,7 +14,7 @@ class ApiController extends Component
 
     public ?string $sort;
 
-    public ?int $page;
+    public ?int $page = 1;
 
     public ?int $per_page = 15;
 
