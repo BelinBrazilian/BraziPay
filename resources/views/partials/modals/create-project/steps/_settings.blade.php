@@ -13,7 +13,7 @@
 			{{-- end::Description --}}
 		</div>
 		{{-- end::Heading --}}
-		{{-- begin::Input group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-8">
 			{{-- begin::Dropzone --}}
 			<div class="dropzone" id="kt_modal_create_project_settings_logo">
@@ -31,22 +31,22 @@
 			</div>
 			{{-- end::Dropzone --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-8">
 			{{-- begin::Label --}}
 			<label class="required fs-6 fw-semibold mb-2">Customer</label>
 			{{-- end::Label --}}
-			{{-- begin::Input --}}
+			{{-- begin::InputText --}}
 			<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Select..." name="settings_customer">
 				<option></option>
 				<option value="1">Keenthemes</option>
 				<option value="2">CRM App</option>
 			</select>
-			{{-- end::Input --}}
+			{{-- end::InputText --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-8">
 			{{-- begin::Label --}}
 			<label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
@@ -54,22 +54,22 @@
 				<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify project name"></i>
 			</label>
 			{{-- end::Label --}}
-			{{-- begin::Input --}}
+			{{-- begin::InputText --}}
 			<input type="text" class="form-control form-control-solid" placeholder="Enter Project Name" value="StockPro Mobile App" name="settings_name" />
-			{{-- end::Input --}}
+			{{-- end::InputText --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-8">
 			{{-- begin::Label --}}
 			<label class="required fs-6 fw-semibold mb-2">Project Description</label>
 			{{-- end::Label --}}
-			{{-- begin::Input --}}
+			{{-- begin::InputText --}}
 			<textarea class="form-control form-control-solid" rows="3" placeholder="Enter Project Description" name="settings_description">Experience share market at your fingertips with TICK PRO stock investment mobile trading app</textarea>
-			{{-- end::Input --}}
+			{{-- end::InputText --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-8">
 			{{-- begin::Label --}}
 			<label class="required fs-6 fw-semibold mb-2">Release Date</label>
@@ -79,13 +79,13 @@
 			{{-- begin::Icon --}}
 			{!! getSvgIcon('duotune/general/gen014.svg', 'svg-icon svg-icon-2 position-absolute mx-4') !!}
 			{{-- end::Icon --}}
-			{{-- begin::Input --}}
+			{{-- begin::InputText --}}
 			<input class="form-control form-control-solid ps-12" placeholder="Pick date range" name="settings_release_date" />
-			{{-- end::Input --}}</div>
+			{{-- end::InputText --}}</div>
 			{{-- end::Wrapper --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="fv-row mb-15">
 			{{-- begin::Wrapper --}}
 			<div class="d-flex flex-stack">
@@ -99,9 +99,9 @@
 				<div class="d-flex">
 					{{-- begin::Checkbox --}}
 					<label class="form-check form-check-custom form-check-solid me-10">
-						{{-- begin::Input --}}
+						{{-- begin::InputText --}}
 						<input class="form-check-input h-20px w-20px" type="checkbox" value="email" name="settings_notifications[]" />
-						{{-- end::Input --}}
+						{{-- end::InputText --}}
 						{{-- begin::Label --}}
 						<span class="form-check-label fw-semibold">Email</span>
 						{{-- end::Label --}}
@@ -109,9 +109,9 @@
 					{{-- end::Checkbox --}}
 					{{-- begin::Checkbox --}}
 					<label class="form-check form-check-custom form-check-solid">
-						{{-- begin::Input --}}
+						{{-- begin::InputText --}}
 						<input class="form-check-input h-20px w-20px" type="checkbox" value="phone" checked="checked" name="settings_notifications[]" />
-						{{-- end::Input --}}
+						{{-- end::InputText --}}
 						{{-- begin::Label --}}
 						<span class="form-check-label fw-semibold">Phone</span>
 						{{-- end::Label --}}
@@ -122,7 +122,7 @@
 			</div>
 			{{-- begin::Wrapper --}}
 		</div>
-		{{-- end::Input group --}}
+		{{-- end::InputText group --}}
 		{{-- begin::Actions --}}
 		<div class="d-flex flex-stack">
 			<button type="button" class="btn btn-lg btn-light me-3" data-kt-element="settings-previous">Project Type</button>

@@ -188,9 +188,9 @@
                             <div class="d-flex justify-content-end">
                                 {{-- begin::Switch --}}
                                 <label class="form-check form-switch form-switch-sm form-check-custom form-check-solid">
-                                    {{-- begin::Input --}}
+                                    {{-- begin::InputText --}}
                                     <input class="form-check-input" name="google" type="checkbox" value="1" id="kt_modal_connected_accounts_google" checked="checked" />
-                                    {{-- end::Input --}}
+                                    {{-- end::InputText --}}
                                     {{-- begin::Label --}}
                                     <span class="form-check-label fw-semibold text-muted" for="kt_modal_connected_accounts_google"></span>
                                     {{-- end::Label --}}
@@ -212,9 +212,9 @@
                             <div class="d-flex justify-content-end">
                                 {{-- begin::Switch --}}
                                 <label class="form-check form-switch form-switch-sm form-check-custom form-check-solid">
-                                    {{-- begin::Input --}}
+                                    {{-- begin::InputText --}}
                                     <input class="form-check-input" name="github" type="checkbox" value="1" id="kt_modal_connected_accounts_github" checked="checked" />
-                                    {{-- end::Input --}}
+                                    {{-- end::InputText --}}
                                     {{-- begin::Label --}}
                                     <span class="form-check-label fw-semibold text-muted" for="kt_modal_connected_accounts_github"></span>
                                     {{-- end::Label --}}
@@ -236,9 +236,9 @@
                             <div class="d-flex justify-content-end">
                                 {{-- begin::Switch --}}
                                 <label class="form-check form-switch form-switch-sm form-check-custom form-check-solid">
-                                    {{-- begin::Input --}}
+                                    {{-- begin::InputText --}}
                                     <input class="form-check-input" name="slack" type="checkbox" value="1" id="kt_modal_connected_accounts_slack" />
-                                    {{-- end::Input --}}
+                                    {{-- end::InputText --}}
                                     {{-- begin::Label --}}
                                     <span class="form-check-label fw-semibold text-muted" for="kt_modal_connected_accounts_slack"></span>
                                     {{-- end::Label --}}
@@ -1800,12 +1800,12 @@
                                     {{-- end::Menu separator --}}
                                     {{-- begin::Form --}}
                                     <form class="form px-7 py-5" data-kt-menu-id="kt-users-tasks-form">
-                                        {{-- begin::Input group --}}
+                                        {{-- begin::InputText group --}}
                                         <div class="fv-row mb-10">
                                             {{-- begin::Label --}}
                                             <label class="form-label fs-6 fw-semibold">Status:</label>
                                             {{-- end::Label --}}
-                                            {{-- begin::Input --}}
+                                            {{-- begin::InputText --}}
                                             <select class="form-select form-select-solid" name="task_status" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-hide-search="true">
                                                 <option></option>
                                                 <option value="1">Approved</option>
@@ -1813,9 +1813,9 @@
                                                 <option value="3">In Process</option>
                                                 <option value="4">Rejected</option>
                                             </select>
-                                            {{-- end::Input --}}
+                                            {{-- end::InputText --}}
                                         </div>
-                                        {{-- end::Input group --}}
+                                        {{-- end::InputText group --}}
                                         {{-- begin::Actions --}}
                                         <div class="d-flex justify-content-end">
                                             <button type="button" class="btn btn-sm btn-light btn-active-light-primary me-2" data-kt-users-update-task-status="reset">Reset</button>
@@ -1870,12 +1870,12 @@
                                     {{-- end::Menu separator --}}
                                     {{-- begin::Form --}}
                                     <form class="form px-7 py-5" data-kt-menu-id="kt-users-tasks-form">
-                                        {{-- begin::Input group --}}
+                                        {{-- begin::InputText group --}}
                                         <div class="fv-row mb-10">
                                             {{-- begin::Label --}}
                                             <label class="form-label fs-6 fw-semibold">Status:</label>
                                             {{-- end::Label --}}
-                                            {{-- begin::Input --}}
+                                            {{-- begin::InputText --}}
                                             <select class="form-select form-select-solid" name="task_status" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-hide-search="true">
                                                 <option></option>
                                                 <option value="1">Approved</option>
@@ -1883,9 +1883,9 @@
                                                 <option value="3">In Process</option>
                                                 <option value="4">Rejected</option>
                                             </select>
-                                            {{-- end::Input --}}
+                                            {{-- end::InputText --}}
                                         </div>
-                                        {{-- end::Input group --}}
+                                        {{-- end::InputText group --}}
                                         {{-- begin::Actions --}}
                                         <div class="d-flex justify-content-end">
                                             <button type="button" class="btn btn-sm btn-light btn-active-light-primary me-2" data-kt-users-update-task-status="reset">Reset</button>
@@ -1940,12 +1940,12 @@
                                     {{-- end::Menu separator --}}
                                     {{-- begin::Form --}}
                                     <form class="form px-7 py-5" data-kt-menu-id="kt-users-tasks-form">
-                                        {{-- begin::Input group --}}
+                                        {{-- begin::InputText group --}}
                                         <div class="fv-row mb-10">
                                             {{-- begin::Label --}}
                                             <label class="form-label fs-6 fw-semibold">Status:</label>
                                             {{-- end::Label --}}
-                                            {{-- begin::Input --}}
+                                            {{-- begin::InputText --}}
                                             <select class="form-select form-select-solid" name="task_status" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-hide-search="true">
                                                 <option></option>
                                                 <option value="1">Approved</option>
@@ -1953,9 +1953,9 @@
                                                 <option value="3">In Process</option>
                                                 <option value="4">Rejected</option>
                                             </select>
-                                            {{-- end::Input --}}
+                                            {{-- end::InputText --}}
                                         </div>
-                                        {{-- end::Input group --}}
+                                        {{-- end::InputText group --}}
                                         {{-- begin::Actions --}}
                                         <div class="d-flex justify-content-end">
                                             <button type="button" class="btn btn-sm btn-light btn-active-light-primary me-2" data-kt-users-update-task-status="reset">Reset</button>
@@ -2010,12 +2010,12 @@
                                     {{-- end::Menu separator --}}
                                     {{-- begin::Form --}}
                                     <form class="form px-7 py-5" data-kt-menu-id="kt-users-tasks-form">
-                                        {{-- begin::Input group --}}
+                                        {{-- begin::InputText group --}}
                                         <div class="fv-row mb-10">
                                             {{-- begin::Label --}}
                                             <label class="form-label fs-6 fw-semibold">Status:</label>
                                             {{-- end::Label --}}
-                                            {{-- begin::Input --}}
+                                            {{-- begin::InputText --}}
                                             <select class="form-select form-select-solid" name="task_status" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-hide-search="true">
                                                 <option></option>
                                                 <option value="1">Approved</option>
@@ -2023,9 +2023,9 @@
                                                 <option value="3">In Process</option>
                                                 <option value="4">Rejected</option>
                                             </select>
-                                            {{-- end::Input --}}
+                                            {{-- end::InputText --}}
                                         </div>
-                                        {{-- end::Input group --}}
+                                        {{-- end::InputText group --}}
                                         {{-- begin::Actions --}}
                                         <div class="d-flex justify-content-end">
                                             <button type="button" class="btn btn-sm btn-light btn-active-light-primary me-2" data-kt-users-update-task-status="reset">Reset</button>
@@ -2080,12 +2080,12 @@
                                     {{-- end::Menu separator --}}
                                     {{-- begin::Form --}}
                                     <form class="form px-7 py-5" data-kt-menu-id="kt-users-tasks-form">
-                                        {{-- begin::Input group --}}
+                                        {{-- begin::InputText group --}}
                                         <div class="fv-row mb-10">
                                             {{-- begin::Label --}}
                                             <label class="form-label fs-6 fw-semibold">Status:</label>
                                             {{-- end::Label --}}
-                                            {{-- begin::Input --}}
+                                            {{-- begin::InputText --}}
                                             <select class="form-select form-select-solid" name="task_status" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-hide-search="true">
                                                 <option></option>
                                                 <option value="1">Approved</option>
@@ -2093,9 +2093,9 @@
                                                 <option value="3">In Process</option>
                                                 <option value="4">Rejected</option>
                                             </select>
-                                            {{-- end::Input --}}
+                                            {{-- end::InputText --}}
                                         </div>
-                                        {{-- end::Input group --}}
+                                        {{-- end::InputText group --}}
                                         {{-- begin::Actions --}}
                                         <div class="d-flex justify-content-end">
                                             <button type="button" class="btn btn-sm btn-light btn-active-light-primary me-2" data-kt-users-update-task-status="reset">Reset</button>
@@ -2291,9 +2291,9 @@
                                 <div class="d-flex">
                                     {{-- begin::Checkbox --}}
                                     <div class="form-check form-check-custom form-check-solid">
-                                        {{-- begin::Input --}}
+                                        {{-- begin::InputText --}}
                                         <input class="form-check-input me-3" name="email_notification_0" type="checkbox" value="0" id="kt_modal_update_email_notification_0" checked='checked' />
-                                        {{-- end::Input --}}
+                                        {{-- end::InputText --}}
                                         {{-- begin::Label --}}
                                         <label class="form-check-label" for="kt_modal_update_email_notification_0">
                                             <div class="fw-bold">Successful Payments</div>
@@ -2309,9 +2309,9 @@
                                 <div class="d-flex">
                                     {{-- begin::Checkbox --}}
                                     <div class="form-check form-check-custom form-check-solid">
-                                        {{-- begin::Input --}}
+                                        {{-- begin::InputText --}}
                                         <input class="form-check-input me-3" name="email_notification_1" type="checkbox" value="1" id="kt_modal_update_email_notification_1" />
-                                        {{-- end::Input --}}
+                                        {{-- end::InputText --}}
                                         {{-- begin::Label --}}
                                         <label class="form-check-label" for="kt_modal_update_email_notification_1">
                                             <div class="fw-bold">Payouts</div>
@@ -2327,9 +2327,9 @@
                                 <div class="d-flex">
                                     {{-- begin::Checkbox --}}
                                     <div class="form-check form-check-custom form-check-solid">
-                                        {{-- begin::Input --}}
+                                        {{-- begin::InputText --}}
                                         <input class="form-check-input me-3" name="email_notification_2" type="checkbox" value="2" id="kt_modal_update_email_notification_2" />
-                                        {{-- end::Input --}}
+                                        {{-- end::InputText --}}
                                         {{-- begin::Label --}}
                                         <label class="form-check-label" for="kt_modal_update_email_notification_2">
                                             <div class="fw-bold">Application fees</div>
@@ -2345,9 +2345,9 @@
                                 <div class="d-flex">
                                     {{-- begin::Checkbox --}}
                                     <div class="form-check form-check-custom form-check-solid">
-                                        {{-- begin::Input --}}
+                                        {{-- begin::InputText --}}
                                         <input class="form-check-input me-3" name="email_notification_3" type="checkbox" value="3" id="kt_modal_update_email_notification_3" checked='checked' />
-                                        {{-- end::Input --}}
+                                        {{-- end::InputText --}}
                                         {{-- begin::Label --}}
                                         <label class="form-check-label" for="kt_modal_update_email_notification_3">
                                             <div class="fw-bold">Disputes</div>
@@ -2363,9 +2363,9 @@
                                 <div class="d-flex">
                                     {{-- begin::Checkbox --}}
                                     <div class="form-check form-check-custom form-check-solid">
-                                        {{-- begin::Input --}}
+                                        {{-- begin::InputText --}}
                                         <input class="form-check-input me-3" name="email_notification_4" type="checkbox" value="4" id="kt_modal_update_email_notification_4" checked='checked' />
-                                        {{-- end::Input --}}
+                                        {{-- end::InputText --}}
                                         {{-- begin::Label --}}
                                         <label class="form-check-label" for="kt_modal_update_email_notification_4">
                                             <div class="fw-bold">Payment reviews</div>
@@ -2381,9 +2381,9 @@
                                 <div class="d-flex">
                                     {{-- begin::Checkbox --}}
                                     <div class="form-check form-check-custom form-check-solid">
-                                        {{-- begin::Input --}}
+                                        {{-- begin::InputText --}}
                                         <input class="form-check-input me-3" name="email_notification_5" type="checkbox" value="5" id="kt_modal_update_email_notification_5" />
-                                        {{-- end::Input --}}
+                                        {{-- end::InputText --}}
                                         {{-- begin::Label --}}
                                         <label class="form-check-label" for="kt_modal_update_email_notification_5">
                                             <div class="fw-bold">Mentions</div>
@@ -2399,9 +2399,9 @@
                                 <div class="d-flex">
                                     {{-- begin::Checkbox --}}
                                     <div class="form-check form-check-custom form-check-solid">
-                                        {{-- begin::Input --}}
+                                        {{-- begin::InputText --}}
                                         <input class="form-check-input me-3" name="email_notification_6" type="checkbox" value="6" id="kt_modal_update_email_notification_6" />
-                                        {{-- end::Input --}}
+                                        {{-- end::InputText --}}
                                         {{-- begin::Label --}}
                                         <label class="form-check-label" for="kt_modal_update_email_notification_6">
                                             <div class="fw-bold">Invoice Mispayments</div>
@@ -2417,9 +2417,9 @@
                                 <div class="d-flex">
                                     {{-- begin::Checkbox --}}
                                     <div class="form-check form-check-custom form-check-solid">
-                                        {{-- begin::Input --}}
+                                        {{-- begin::InputText --}}
                                         <input class="form-check-input me-3" name="email_notification_7" type="checkbox" value="7" id="kt_modal_update_email_notification_7" />
-                                        {{-- end::Input --}}
+                                        {{-- end::InputText --}}
                                         {{-- begin::Label --}}
                                         <label class="form-check-label" for="kt_modal_update_email_notification_7">
                                             <div class="fw-bold">Webhooks</div>
@@ -2435,9 +2435,9 @@
                                 <div class="d-flex">
                                     {{-- begin::Checkbox --}}
                                     <div class="form-check form-check-custom form-check-solid">
-                                        {{-- begin::Input --}}
+                                        {{-- begin::InputText --}}
                                         <input class="form-check-input me-3" name="email_notification_8" type="checkbox" value="8" id="kt_modal_update_email_notification_8" />
-                                        {{-- end::Input --}}
+                                        {{-- end::InputText --}}
                                         {{-- begin::Label --}}
                                         <label class="form-check-label" for="kt_modal_update_email_notification_8">
                                             <div class="fw-bold">Trial</div>

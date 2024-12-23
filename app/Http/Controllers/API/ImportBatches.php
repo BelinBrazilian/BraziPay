@@ -4,16 +4,16 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Services\ImportBatchService;
 use App\Http\Traits\ApiTraits;
-use Psr\Http\Message\RequestInterface;
+use Illuminate\Http\Request;
 
 class ImportBatches extends ApiController
 {
     use ApiTraits;
 
     public function __construct(
-        private readonly RequestInterface $request,
+        private readonly Request $request,
         private readonly ImportBatchService $service,
     ) {
-        parent::__construct();
+//        parent::__construct();
     }
 }

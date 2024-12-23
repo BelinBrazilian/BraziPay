@@ -36,7 +36,7 @@
                         {{-- end::User toggle --}}
                         {{-- begin::User form --}}
                         <div id="kt_modal_update_user_user_info" class="collapse show">
-                            {{-- begin::Input group --}}
+                            {{-- begin::InputText group --}}
                             <div class="mb-7">
                                 {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">
@@ -101,18 +101,18 @@
                                 </div>
                                 {{-- end::Image input wrapper --}}
                             </div>
-                            {{-- end::Input group --}}
-                            {{-- begin::Input group --}}
+                            {{-- end::InputText group --}}
+                            {{-- begin::InputText group --}}
                             <div class="fv-row mb-7">
                                 {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">Name</label>
                                 {{-- end::Label --}}
-                                {{-- begin::Input --}}
+                                {{-- begin::InputText --}}
                                 <input type="text" class="form-control form-control-solid" placeholder="" name="name" value="Emma Smith" />
-                                {{-- end::Input --}}
+                                {{-- end::InputText --}}
                             </div>
-                            {{-- end::Input group --}}
-                            {{-- begin::Input group --}}
+                            {{-- end::InputText group --}}
+                            {{-- begin::InputText group --}}
                             <div class="fv-row mb-7">
                                 {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">
@@ -126,27 +126,27 @@
                                     </span>
                                 </label>
                                 {{-- end::Label --}}
-                                {{-- begin::Input --}}
+                                {{-- begin::InputText --}}
                                 <input type="email" class="form-control form-control-solid" placeholder="" name="email" value="smith@kpmg.com" />
-                                {{-- end::Input --}}
+                                {{-- end::InputText --}}
                             </div>
-                            {{-- end::Input group --}}
-                            {{-- begin::Input group --}}
+                            {{-- end::InputText group --}}
+                            {{-- begin::InputText group --}}
                             <div class="fv-row mb-7">
                                 {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">Description</label>
                                 {{-- end::Label --}}
-                                {{-- begin::Input --}}
+                                {{-- begin::InputText --}}
                                 <input type="text" class="form-control form-control-solid" placeholder="" name="description" />
-                                {{-- end::Input --}}
+                                {{-- end::InputText --}}
                             </div>
-                            {{-- end::Input group --}}
-                            {{-- begin::Input group --}}
+                            {{-- end::InputText group --}}
+                            {{-- begin::InputText group --}}
                             <div class="fv-row mb-15">
                                 {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">Language</label>
                                 {{-- end::Label --}}
-                                {{-- begin::Input --}}
+                                {{-- begin::InputText --}}
                                 <select name="language" aria-label="Select a Language" data-control="select2" data-placeholder="Select a Language..." class="form-select form-select-solid"
                                     data-dropdown-parent="#kt_modal_update_details">
                                     <option></option>
@@ -197,9 +197,9 @@
                                     <option value="zh-cn">简体中文 - Simplified Chinese</option>
                                     <option value="zh-tw">繁體中文 - Traditional Chinese</option>
                                 </select>
-                                {{-- end::Input --}}
+                                {{-- end::InputText --}}
                             </div>
-                            {{-- end::Input group --}}
+                            {{-- end::InputText group --}}
                         </div>
                         {{-- end::User form --}}
                         {{-- begin::Address toggle --}}
@@ -212,46 +212,46 @@
                         {{-- end::Address toggle --}}
                         {{-- begin::Address form --}}
                         <div id="kt_modal_update_user_address" class="collapse show">
-                            {{-- begin::Input group --}}
+                            {{-- begin::InputText group --}}
                             <div class="d-flex flex-column mb-7 fv-row">
                                 {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">Address Line 1</label>
                                 {{-- end::Label --}}
-                                {{-- begin::Input --}}
+                                {{-- begin::InputText --}}
                                 <input class="form-control form-control-solid" placeholder="" name="address1" value="101, Collins Street" />
-                                {{-- end::Input --}}
+                                {{-- end::InputText --}}
                             </div>
-                            {{-- end::Input group --}}
-                            {{-- begin::Input group --}}
+                            {{-- end::InputText group --}}
+                            {{-- begin::InputText group --}}
                             <div class="d-flex flex-column mb-7 fv-row">
                                 {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">Address Line 2</label>
                                 {{-- end::Label --}}
-                                {{-- begin::Input --}}
+                                {{-- begin::InputText --}}
                                 <input class="form-control form-control-solid" placeholder="" name="address2" />
-                                {{-- end::Input --}}
+                                {{-- end::InputText --}}
                             </div>
-                            {{-- end::Input group --}}
-                            {{-- begin::Input group --}}
+                            {{-- end::InputText group --}}
+                            {{-- begin::InputText group --}}
                             <div class="d-flex flex-column mb-7 fv-row">
                                 {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">Town</label>
                                 {{-- end::Label --}}
-                                {{-- begin::Input --}}
+                                {{-- begin::InputText --}}
                                 <input class="form-control form-control-solid" placeholder="" name="city" value="Melbourne" />
-                                {{-- end::Input --}}
+                                {{-- end::InputText --}}
                             </div>
-                            {{-- end::Input group --}}
-                            {{-- begin::Input group --}}
+                            {{-- end::InputText group --}}
+                            {{-- begin::InputText group --}}
                             <div class="row g-9 mb-7">
                                 {{-- begin::Col --}}
                                 <div class="col-md-6 fv-row">
                                     {{-- begin::Label --}}
                                     <label class="fs-6 fw-semibold mb-2">State / Province</label>
                                     {{-- end::Label --}}
-                                    {{-- begin::Input --}}
+                                    {{-- begin::InputText --}}
                                     <input class="form-control form-control-solid" placeholder="" name="state" value="Victoria" />
-                                    {{-- end::Input --}}
+                                    {{-- end::InputText --}}
                                 </div>
                                 {{-- end::Col --}}
                                 {{-- begin::Col --}}
@@ -259,14 +259,14 @@
                                     {{-- begin::Label --}}
                                     <label class="fs-6 fw-semibold mb-2">Post Code</label>
                                     {{-- end::Label --}}
-                                    {{-- begin::Input --}}
+                                    {{-- begin::InputText --}}
                                     <input class="form-control form-control-solid" placeholder="" name="postcode" value="3000" />
-                                    {{-- end::Input --}}
+                                    {{-- end::InputText --}}
                                 </div>
                                 {{-- end::Col --}}
                             </div>
-                            {{-- end::Input group --}}
-                            {{-- begin::Input group --}}
+                            {{-- end::InputText group --}}
+                            {{-- begin::InputText group --}}
                             <div class="d-flex flex-column mb-7 fv-row">
                                 {{-- begin::Label --}}
                                 <label class="fs-6 fw-semibold mb-2">
@@ -280,7 +280,7 @@
                                     </span>
                                 </label>
                                 {{-- end::Label --}}
-                                {{-- begin::Input --}}
+                                {{-- begin::InputText --}}
                                 <select name="country" aria-label="Select a Country" data-control="select2" data-placeholder="Select a Country..." class="form-select form-select-solid"
                                     data-dropdown-parent="#kt_modal_update_details">
                                     <option value="">Select a Country...</option>
@@ -509,9 +509,9 @@
                                     <option value="ZM">Zambia</option>
                                     <option value="ZW">Zimbabwe</option>
                                 </select>
-                                {{-- end::Input --}}
+                                {{-- end::InputText --}}
                             </div>
-                            {{-- end::Input group --}}
+                            {{-- end::InputText group --}}
                         </div>
                         {{-- end::Address form --}}
                     </div>

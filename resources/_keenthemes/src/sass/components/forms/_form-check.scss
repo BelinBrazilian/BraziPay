@@ -4,7 +4,7 @@
 
 // Customization
 .form-check {
-    // Input 
+    // InputText
     &:not(.form-switch) {
         .form-check-input {
             &[type="checkbox"] {
@@ -12,7 +12,7 @@
             }
         }
     }
-    
+
     // Sizing
     &.form-check-sm {
         .form-check-input {
@@ -41,7 +41,7 @@
 
             &:not(:checked) {
                 background-color: $form-check-input-bg-solid;
-            }            
+            }
 
             &[type=checkbox]:indeterminate {
                 background-color: $form-check-input-checked-bg-color;
@@ -85,7 +85,7 @@
     padding-left: 0;
     margin: 0;
 
-    // Input
+    // InputText
     .form-check-input {
         margin: 0;
         float: none;
@@ -99,7 +99,7 @@
 }
 
 // Switch
-.form-switch {   
+.form-switch {
     &.form-check-custom {
         .form-check-input {
             height: $form-switch-height;
@@ -127,9 +127,9 @@
 
             &:not(:checked) {
                 background-color: $form-check-input-bg-solid;
-            } 
+            }
         }
-    }    
+    }
 }
 
 @if $enable-dark-mode {
@@ -142,18 +142,18 @@
     }
 }
 
-// Image 
+// Image
 .form-check-image {
     position: relative;
     overflow: hidden;
 
     img {
-        max-width: 100%;    
+        max-width: 100%;
     }
 
-    .form-check-wrapper {        
-        @include border-radius($border-radius-lg);        
-        border: 2px solid transparent;    
+    .form-check-wrapper {
+        @include border-radius($border-radius-lg);
+        border: 2px solid transparent;
         transition: $transition-base;
         cursor: pointer;
         overflow: hidden;
@@ -161,30 +161,30 @@
     }
 
     .form-check-rounded {
-        @include border-radius($border-radius-lg);        
-    }        
+        @include border-radius($border-radius-lg);
+    }
 
     .form-check-label {
-        font-weight: $font-weight-bold;    
+        font-weight: $font-weight-bold;
         margin-left: 0.5rem;
     }
 
     &.active:not(.form-check-success):not(.form-check-danger) {
         .form-check-wrapper {
             border-color: var(--#{$prefix}primary) !important;
-        }    
+        }
     }
 
     &.form-check-success.active {
         .form-check-wrapper {
             border-color: var(--#{$prefix}success) !important;
-        } 
+        }
     }
 
     &.form-check-danger.active {
         .form-check-wrapper {
             border-color: var(--#{$prefix}danger) !important;
-        } 
+        }
     }
 
     &.disabled {

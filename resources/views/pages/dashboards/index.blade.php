@@ -1,3 +1,13 @@
+<?php
+/*
+ 10. Visualizador
+    - Gráficos de receita e crescimento de clientes.
+    - Resumo de assinaturas (ativas, novas e canceladas).
+    - Indicadores de inadimplência e faturas pendentes.
+    - Links rápidos para relatórios e gráficos detalhados (somente leitura).
+ */
+?>
+
 <x-default-layout>
 
     @section('title')

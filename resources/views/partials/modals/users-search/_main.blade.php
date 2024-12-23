@@ -29,9 +29,9 @@
 					{{-- begin::Icon --}}
 					{!! getIcon('magnifier', 'fs-2 fs-lg-1 text-gray-500 position-absolute top-50 ms-5 translate-middle-y') !!}
 					{{-- end::Icon --}}
-					{{-- begin::Input --}}
+					{{-- begin::InputText --}}
 					<input type="text" class="form-control form-control-lg form-control-solid px-15" name="search" value="" placeholder="Search by username, full name or email..." data-kt-search-element="input" />
-					{{-- end::Input --}}
+					{{-- end::InputText --}}
 					{{-- begin::Spinner --}}
 					<span class="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-5" data-kt-search-element="spinner">
 						<span class="spinner-border h-15px w-15px align-middle text-muted"></span>

@@ -13,7 +13,7 @@
             {{-- end::Link --}}
         </div>
         {{-- begin::Heading --}}
-        {{-- begin::Input group= --}}
+        {{-- begin::InputText group= --}}
         <div class="fv-row mb-8 fv-plugins-icon-container">
             {{-- begin::Email --}}
             <input placeholder="Password" type="password" name="password" autocomplete="current-password" class="form-control bg-transparent">

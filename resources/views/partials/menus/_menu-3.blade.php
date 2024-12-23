@@ -52,9 +52,9 @@
 				<div class="menu-content px-3">
 					{{-- begin::Switch --}}
 					<label class="form-check form-switch form-check-custom form-check-solid">
-						{{-- begin::Input --}}
+						{{-- begin::InputText --}}
 						<input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications" />
-						{{-- end::Input --}}
+						{{-- end::InputText --}}
 						{{-- end::Label --}}
 						<span class="form-check-label text-muted fs-6">Recuring</span>
 						{{-- end::Label --}}

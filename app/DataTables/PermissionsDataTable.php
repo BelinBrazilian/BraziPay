@@ -14,7 +14,7 @@ class PermissionsDataTable extends DataTable
     /**
      * Build the DataTable class.
      *
-     * @param  QueryBuilder  $query  Results from query() method.
+     * @param QueryBuilder $query Results from query() method.
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
@@ -24,7 +24,6 @@ class PermissionsDataTable extends DataTable
             })
             ->addColumn('assigned_to', function (Permission $permission) {
                 $roles = $permission->roles;
-
                 return view('pages/apps.user-management.permissions.columns._assign-to', compact('roles'));
             })
             ->editColumn('created_at', function (Permission $permission) {
@@ -53,11 +52,11 @@ class PermissionsDataTable extends DataTable
             ->setTableId('permissions-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('rt'."<'row'<'col-sm-12'tr>><'d-flex justify-content-between'<'col-sm-12 col-md-5'i><'d-flex justify-content-between'p>>")
+            ->dom('rt' . "<'row'<'col-sm-12'tr>><'d-flex justify-content-between'<'col-sm-12 col-md-5'i><'d-flex justify-content-between'p>>",)
             ->addTableClass('table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer text-gray-600 fw-semibold')
             ->setTableHeadClass('text-start text-muted fw-bold fs-7 text-uppercase gs-0')
             ->orderBy(0)
-            ->drawCallback('function() {'.file_get_contents(resource_path('views/pages/apps/user-management/permissions/columns/_draw-scripts.js')).'}');
+            ->drawCallback("function() {" . file_get_contents(resource_path('views/pages/apps/user-management/permissions/columns/_draw-scripts.js')) . "}");
     }
 
     /**
@@ -81,6 +80,6 @@ class PermissionsDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Permissions_'.date('YmdHis');
+        return 'Permissions_' . date('YmdHis');
     }
 }

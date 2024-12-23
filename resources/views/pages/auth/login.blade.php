@@ -52,20 +52,20 @@
         </div>
         {{-- end::Separator --}}
 
-        {{-- begin::Input group- --}}
+        {{-- begin::InputText group- --}}
         <div class="fv-row mb-8">
             {{-- begin::Email --}}
             <input type="text" placeholder="Email" name="email" autocomplete="off" class="form-control bg-transparent" value="demo@demo.com"/>
             {{-- end::Email --}}
         </div>
 
-        {{-- end::Input group- --}}
+        {{-- end::InputText group- --}}
         <div class="fv-row mb-3">
             {{-- begin::Password --}}
             <input type="password" placeholder="Password" name="password" autocomplete="off" class="form-control bg-transparent" value="demo"/>
             {{-- end::Password --}}
         </div>
-        {{-- end::Input group- --}}
+        {{-- end::InputText group- --}}
 
         {{-- begin::Wrapper --}}
         <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">

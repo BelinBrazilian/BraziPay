@@ -6,17 +6,17 @@ use App\Http\Interfaces\StoreRequestInterface;
 use App\Http\Services\NotificationService;
 use App\Http\Traits\ApiTraits;
 use Illuminate\Http\JsonResponse;
-use Psr\Http\Message\RequestInterface;
+use Illuminate\Http\Request;
 
 class Notifications extends ApiController
 {
     use ApiTraits;
 
     public function __construct(
-        private readonly RequestInterface $request,
+        private readonly Request $request,
         private readonly NotificationService $service,
     ) {
-        parent::__construct();
+//        parent::__construct();
     }
 
     public function notificationItemIndex(int $id, array $queryParams = []): JsonResponse
