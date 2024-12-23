@@ -1420,7 +1420,7 @@ var KTUtil = function() {
             return color = `#${subtractLight(color.substring(0,2), amount)}${subtractLight(color.substring(2,4), amount)}${subtractLight(color.substring(4,6), amount)}`;
         },
 
-        // Throttle function: Input as function which needs to be throttled and delay is the time interval in milliseconds
+        // Throttle function: InputText as function which needs to be throttled and delay is the time interval in milliseconds
         throttle:  function (timer, func, delay) {
         	// If setTimeout is already scheduled, no need to do anything
         	if (timer) {
@@ -1437,7 +1437,7 @@ var KTUtil = function() {
         	}, delay);
         },
 
-        // Debounce function: Input as function which needs to be debounced and delay is the debounced time in milliseconds
+        // Debounce function: InputText as function which needs to be debounced and delay is the debounced time in milliseconds
         debounce: function (timer, func, delay) {
         	// Cancels the setTimeout method execution
         	clearTimeout(timer)

@@ -2,28 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\CustomersDataTable;
 use App\Http\Controllers\API\Customers as APICustomers;
 use App\Http\Requests\Customer\CustomerStoreRequest;
 use App\Http\Requests\Customer\CustomerUpdateRequest;
 use App\Models\Customer;
 use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
 
 final class Customers extends Controller
 {
     public function __construct(private readonly APICustomers $api) {}
 
-    public function index(mixed $queryParams = null): View
-    {
-        $data = $this->api->index($queryParams);
+//    public function index(mixed $queryParams = null): View
+//    {
+//        $data = $this->api->index($queryParams);
+//
+//        return View('customers.index', compact('data'));
+//    }
 
-        return View('customets.index', compact('data'));
+    public function index(CustomersDataTable $dataTable): View|JsonResponse
+    {
+        return $dataTable->render('pages/customers/index');
     }
 
     public function show(string $code): View
     {
         $data = $this->api->show($code);
 
-        return View('customets.index', compact('data'));
+        return View('customers.index', compact('data'));
     }
 
     public function store(CustomerStoreRequest $request): View

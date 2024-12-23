@@ -23,17 +23,17 @@
             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                 {{-- begin::Form --}}
                 <form id="kt_modal_add_schedule_form" class="form" action="#">
-                    {{-- begin::Input group --}}
+                    {{-- begin::InputText group --}}
                     <div class="fv-row mb-7">
                         {{-- begin::Label --}}
                         <label class="required fs-6 fw-semibold form-label mb-2">Event Name</label>
                         {{-- end::Label --}}
-                        {{-- begin::Input --}}
+                        {{-- begin::InputText --}}
                         <input type="text" class="form-control form-control-solid" name="event_name" value="" />
-                        {{-- end::Input --}}
+                        {{-- end::InputText --}}
                     </div>
-                    {{-- end::Input group --}}
-                    {{-- begin::Input group --}}
+                    {{-- end::InputText group --}}
+                    {{-- begin::InputText group --}}
                     <div class="fv-row mb-7">
                         {{-- begin::Label --}}
                         <label class="fs-6 fw-semibold form-label mb-2">
@@ -47,31 +47,31 @@
                             </span>
                         </label>
                         {{-- end::Label --}}
-                        {{-- begin::Input --}}
+                        {{-- begin::InputText --}}
                         <input class="form-control form-control-solid" placeholder="Pick date & time" name="event_datetime" id="kt_modal_add_schedule_datepicker" />
-                        {{-- end::Input --}}
+                        {{-- end::InputText --}}
                     </div>
-                    {{-- end::Input group --}}
-                    {{-- begin::Input group --}}
+                    {{-- end::InputText group --}}
+                    {{-- begin::InputText group --}}
                     <div class="fv-row mb-7">
                         {{-- begin::Label --}}
                         <label class="required fs-6 fw-semibold form-label mb-2">Event Organiser</label>
                         {{-- end::Label --}}
-                        {{-- begin::Input --}}
+                        {{-- begin::InputText --}}
                         <input type="text" class="form-control form-control-solid" name="event_org" value="" />
-                        {{-- end::Input --}}
+                        {{-- end::InputText --}}
                     </div>
-                    {{-- end::Input group --}}
-                    {{-- begin::Input group --}}
+                    {{-- end::InputText group --}}
+                    {{-- begin::InputText group --}}
                     <div class="fv-row mb-7">
                         {{-- begin::Label --}}
                         <label class="required fs-6 fw-semibold form-label mb-2">Send Event Details To</label>
                         {{-- end::Label --}}
-                        {{-- begin::Input --}}
+                        {{-- begin::InputText --}}
                         <input id="kt_modal_add_schedule_tagify" type="text" class="form-control form-control-solid" name="event_invitees" value="smith@kpmg.com, melody@altbox.com" />
-                        {{-- end::Input --}}
+                        {{-- end::InputText --}}
                     </div>
-                    {{-- end::Input group --}}
+                    {{-- end::InputText group --}}
                     {{-- begin::Actions --}}
                     <div class="text-center pt-15">
                         <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Discard</button>

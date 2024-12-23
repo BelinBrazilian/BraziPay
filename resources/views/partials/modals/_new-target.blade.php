@@ -26,7 +26,7 @@
 						{{-- end::Description --}}
 					</div>
 					{{-- end::Heading --}}
-					{{-- begin::Input group --}}
+					{{-- begin::InputText group --}}
 					<div class="d-flex flex-column mb-8 fv-row">
 						{{-- begin::Label --}}
 						<label class="d-flex align-items-center fs-6 fw-semibold mb-2">
@@ -36,8 +36,8 @@
 						{{-- end::Label --}}
 						<input type="text" class="form-control form-control-solid" placeholder="Enter Target Title" name="target_title" />
 					</div>
-					{{-- end::Input group --}}
-					{{-- begin::Input group --}}
+					{{-- end::InputText group --}}
+					{{-- begin::InputText group --}}
 					<div class="row g-9 mb-8">
 						{{-- begin::Col --}}
 						<div class="col-md-6 fv-row">
@@ -55,7 +55,7 @@
 						{{-- begin::Col --}}
 						<div class="col-md-6 fv-row">
 							<label class="required fs-6 fw-semibold mb-2">Due Date</label>
-							{{-- begin::Input --}}
+							{{-- begin::InputText --}}
 							<div class="position-relative d-flex align-items-center">
 							{{-- begin::Icon --}}
 							{!! getIcon('calendar-8', 'fs-2 position-absolute mx-4') !!}
@@ -63,18 +63,18 @@
 							{{-- begin::Datepicker --}}
 							<input class="form-control form-control-solid ps-12" placeholder="Select a date" name="due_date" />
 							{{-- end::Datepicker --}}</div>
-							{{-- end::Input --}}
+							{{-- end::InputText --}}
 						</div>
 						{{-- end::Col --}}
 					</div>
-					{{-- end::Input group --}}
-					{{-- begin::Input group --}}
+					{{-- end::InputText group --}}
+					{{-- begin::InputText group --}}
 					<div class="d-flex flex-column mb-8">
 						<label class="fs-6 fw-semibold mb-2">Target Details</label>
 						<textarea class="form-control form-control-solid" rows="3" name="target_details" placeholder="Type Target Details"></textarea>
 					</div>
-					{{-- end::Input group --}}
-					{{-- begin::Input group --}}
+					{{-- end::InputText group --}}
+					{{-- begin::InputText group --}}
 					<div class="d-flex flex-column mb-8 fv-row">
 						{{-- begin::Label --}}
 						<label class="d-flex align-items-center fs-6 fw-semibold mb-2">
@@ -84,8 +84,8 @@
 						{{-- end::Label --}}
 						<input class="form-control form-control-solid" value="Important, Urgent" name="tags" />
 					</div>
-					{{-- end::Input group --}}
-					{{-- begin::Input group --}}
+					{{-- end::InputText group --}}
+					{{-- begin::InputText group --}}
 					<div class="d-flex flex-stack mb-8">
 						{{-- begin::Label --}}
 						<div class="me-5">
@@ -100,8 +100,8 @@
 						</label>
 						{{-- end::Switch --}}
 					</div>
-					{{-- end::Input group --}}
-					{{-- begin::Input group --}}
+					{{-- end::InputText group --}}
+					{{-- begin::InputText group --}}
 					<div class="mb-15 fv-row">
 						{{-- begin::Wrapper --}}
 						<div class="d-flex flex-stack">
@@ -130,7 +130,7 @@
 						</div>
 						{{-- end::Wrapper --}}
 					</div>
-					{{-- end::Input group --}}
+					{{-- end::InputText group --}}
 					{{-- begin::Actions --}}
 					<div class="text-center">
 						<button type="reset" id="kt_modal_new_target_cancel" class="btn btn-light me-3">Cancel</button>

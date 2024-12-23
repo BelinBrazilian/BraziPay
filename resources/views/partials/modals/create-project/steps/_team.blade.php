@@ -13,17 +13,17 @@
 			{{-- end::Description --}}
 		</div>
 		{{-- end::Heading --}}
-		{{-- begin::Input group --}}
+		{{-- begin::InputText group --}}
 		<div class="mb-8">
 			{{-- begin::Label --}}
 			<label class="fs-6 fw-semibold mb-2">Invite Teammates</label>
 			{{-- end::Label --}}
-			{{-- begin::Input --}}
+			{{-- begin::InputText --}}
 			<input type="text" class="form-control form-control-solid" placeholder="Add project memnbers by name or email.." name="invite_teammates" />
-			{{-- end::Input --}}
+			{{-- end::InputText --}}
 		</div>
-		{{-- end::Input group --}}
-		{{-- begin::Input group --}}
+		{{-- end::InputText group --}}
+		{{-- begin::InputText group --}}
 		<div class="mb-8">
 			{{-- begin::Label --}}
 			<div class="fs-6 fw-semibold mb-2">Team Members</div>
@@ -509,7 +509,7 @@
 			</div>
 			{{-- end::Users --}}
 		</div>
-		{{-- end::Input group --}}
+		{{-- end::InputText group --}}
 		{{-- begin::Notice --}}
 		<div class="d-flex flex-stack mb-15">
 			{{-- begin::Label --}}

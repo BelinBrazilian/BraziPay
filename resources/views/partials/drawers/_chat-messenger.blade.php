@@ -330,9 +330,9 @@
 		{{-- end::Card body --}}
 		{{-- begin::Card footer --}}
 		<div class="card-footer pt-4" id="kt_drawer_chat_messenger_footer">
-			{{-- begin::Input --}}
+			{{-- begin::InputText --}}
 			<textarea class="form-control form-control-flush mb-3" rows="1" data-kt-element="input" placeholder="Type a message"></textarea>
-			{{-- end::Input --}}
+			{{-- end::InputText --}}
 			{{-- begin:Toolbar --}}
 			<div class="d-flex flex-stack">
 				{{-- begin::Actions --}}

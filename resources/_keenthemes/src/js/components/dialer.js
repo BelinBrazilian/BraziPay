@@ -44,8 +44,8 @@ var KTDialer = function(element, options) {
         the.element = element;
         the.incElement = the.element.querySelector('[data-kt-dialer-control="increase"]');
         the.decElement = the.element.querySelector('[data-kt-dialer-control="decrease"]');
-        the.inputElement = the.element.querySelector('input[type]'); 
-        
+        the.inputElement = the.element.querySelector('input[type]');
+
         // Set Values
         if (_getOption('currency') === 'true') {
             the.options.currency = true;
@@ -54,15 +54,15 @@ var KTDialer = function(element, options) {
         if (_getOption('decimals')) {
             the.options.decimals = parseInt(_getOption('decimals'));
         }
-        
+
         if (_getOption('prefix')) {
             the.options.prefix = _getOption('prefix');
         }
-        
+
         if (_getOption('suffix')) {
             the.options.suffix = _getOption('suffix');
         }
-        
+
         if (_getOption('step')) {
             the.options.step = parseFloat(_getOption('step'));
         }
@@ -75,7 +75,7 @@ var KTDialer = function(element, options) {
             the.options.max = parseFloat(_getOption('max'));
         }
 
-        the.value = parseFloat(the.inputElement.value.replace(/[^\d.]/g, ''));  
+        the.value = parseFloat(the.inputElement.value.replace(/[^\d.]/g, ''));
 
         _setValue();
 
@@ -90,7 +90,7 @@ var KTDialer = function(element, options) {
     var _handlers = function() {
         KTUtil.addEvent(the.incElement, 'click', function(e) {
             e.preventDefault();
-        
+
             _increase();
         });
 
@@ -125,7 +125,7 @@ var KTDialer = function(element, options) {
         // Trigger "after.dialer" event
         KTEventHandler.trigger(the.element, 'kt.dialer.decrease', the);
 
-        the.inputElement.value = the.value - the.options.step;      
+        the.inputElement.value = the.value - the.options.step;
 
         _setValue();
 
@@ -135,7 +135,7 @@ var KTDialer = function(element, options) {
         return the;
     }
 
-    // Set Input Value
+    // Set InputText Value
     var _setValue = function(value) {
         // Trigger "after.dialer" event
         KTEventHandler.trigger(the.element, 'kt.dialer.change', the);
@@ -143,9 +143,9 @@ var KTDialer = function(element, options) {
         if (value !== undefined) {
             the.value = value;
         } else {
-            the.value = _parse(the.inputElement.value); 
-        }        
-        
+            the.value = _parse(the.inputElement.value);
+        }
+
         if (the.options.min !== null && the.value < the.options.min) {
             the.value = the.options.min;
         }
@@ -165,7 +165,7 @@ var KTDialer = function(element, options) {
 
     var _parse = function(val) {
         val = val
-            .replace(/[^0-9.-]/g, '')       // remove chars except number, hyphen, point. 
+            .replace(/[^0-9.-]/g, '')       // remove chars except number, hyphen, point.
             .replace(/(\..*)\./g, '$1')     // remove multiple points.
             .replace(/(?!^)-/g, '')         // remove middle hyphen.
             .replace(/^0+(\d)/gm, '$1');    // remove multiple leading zeros. <-- I added this.
@@ -174,7 +174,7 @@ var KTDialer = function(element, options) {
 
         if (isNaN(val)) {
             val = 0;
-        } 
+        }
 
         return val;
     }
@@ -185,16 +185,16 @@ var KTDialer = function(element, options) {
 
         if (the.options.currency) {
             val = val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }        
+        }
 
-        return the.options.prefix + val + the.options.suffix;              
+        return the.options.prefix + val + the.options.suffix;
     }
 
     // Get option
     var _getOption = function(name) {
         if ( the.element.hasAttribute('data-kt-dialer-' + name) === true ) {
             var attr = the.element.getAttribute('data-kt-dialer-' + name);
-            var value = attr;            
+            var value = attr;
 
             return value;
         } else {
@@ -228,7 +228,7 @@ var KTDialer = function(element, options) {
 
     the.getValue = function() {
         return the.inputElement.value;
-    }    
+    }
 
     the.update = function() {
         _setValue();

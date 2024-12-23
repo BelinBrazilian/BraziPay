@@ -19,7 +19,7 @@
         </div>
         {{-- begin::Heading --}}
 
-        {{-- begin::Input group- --}}
+        {{-- begin::InputText group- --}}
         <div class="fv-row mb-8">
             {{-- begin::Email --}}
             <input type="text" placeholder="Email" name="email" autocomplete="off" class="form-control bg-transparent" value="demo@demo.com"/>

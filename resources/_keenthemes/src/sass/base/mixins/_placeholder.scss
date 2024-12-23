@@ -1,13 +1,13 @@
 //
-// Input placeholder color
+// InputText placeholder color
 //
 
 @mixin placeholder($color) {
     // Chrome, Firefox, Opera, Safari 10.1+
-    &::placeholder { 
+    &::placeholder {
         color: $color;
     }
-    
+
     // Firefox
     &::-moz-placeholder {
         color: $color;
