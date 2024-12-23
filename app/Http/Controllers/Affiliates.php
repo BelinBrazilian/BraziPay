@@ -7,7 +7,7 @@ use App\Http\Requests\Affiliates\AffiliateStoreRequest;
 use App\Http\Requests\Affiliates\AffiliateUpdateRequest;
 use Illuminate\Contracts\View\View;
 
-class Affiliates extends Controller
+final class Affiliates extends Controller
 {
     public function __construct(private readonly APIAffiliates $api) {}
 

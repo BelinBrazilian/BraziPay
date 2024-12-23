@@ -2,7 +2,9 @@
 
 namespace App\Http\Services;
 
+use App\Helpers\VindiApi;
 use App\Http\DTOs\DiscountDTO;
+use App\Http\Interfaces\StoreRequestInterface;
 use App\Http\Repositories\DiscountRepository;
 use App\Http\Requests\Discount\DiscountStoreRequest;
 use App\Jobs\Discount\DiscountDeleteJob;
@@ -13,21 +15,35 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Vindi\Discount as VindiDiscount;
 
-class DiscountService
+final class DiscountService
 {
-    public function __construct(private readonly DiscountRepository $repository) {}
+    private readonly VindiDiscount $vindiService;
 
+    public function __construct(private readonly DiscountRepository $repository)
+    {
+        $this->vindiService = new VindiDiscount(VindiApi::config());
+    }
+
+    // direct functions
+    public function _show(int $id): JsonResponse
+    {
+        return $this->vindiService->retrieve($id);
+    }
+
+    public function _store(StoreRequestInterface $request): JsonResponse
+    {
+        return $this->vindiService->create($request->all());
+    }
+
+    public function _destroy($id): JsonResponse
+    {
+        return $this->vindiService->delete($id);
+    }
+
+    // stored info functions
     public function show(int $id): Discount
     {
         return $this->repository->find($id);
-    }
-
-    public function _show(int $id): JsonResponse
-    {
-        $discount = $this->repository->find($id);
-        $vindiDiscountService = new VindiDiscount(config('app.vindi_args'));
-
-        return $vindiDiscountService->get($discount->external_id);
     }
 
     public function store(DiscountStoreRequest $request): Discount
@@ -54,9 +70,9 @@ class DiscountService
         try {
             DB::beginTransaction();
 
-            $customer = $this->repository->find($id);
-            $external_id = $customer->external_id;
-            $customer->delete();
+            $discount = $this->repository->find($id);
+            $external_id = $discount->external_id;
+            $discount->delete();
 
             DB::commit();
 

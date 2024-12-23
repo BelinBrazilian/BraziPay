@@ -8,7 +8,7 @@ use App\Http\Requests\SubscriptionStoreRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 
-class Subscription extends Controller
+final class Subscription extends Controller
 {
     public function __construct(private readonly APISubscription $api) {}
 
@@ -60,7 +60,7 @@ class Subscription extends Controller
         return $this->api->renew($code);
     }
 
-    public function product_items(mixed $code): View
+    public function productItems(mixed $code): View
     {
         $data = $this->api->product_items($code);
 

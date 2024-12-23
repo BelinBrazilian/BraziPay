@@ -13,9 +13,9 @@ class PaymentMethodDTO extends DTO
         private readonly string $code,
         private readonly string $type,
         private readonly string $status,
-        private readonly mixed $settings, // Mantendo o tipo misto para o hash
+        private readonly mixed $settings,
         private readonly string $setSubscriptionOnSuccess,
-        private readonly bool $allowAsAlternative,
+        private readonly string $allowAsAlternative,
         private readonly int $maximumAttempts,
     ) {}
 

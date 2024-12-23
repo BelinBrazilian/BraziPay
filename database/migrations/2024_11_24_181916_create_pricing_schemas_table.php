@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->decimal('price', 10, 2);
             $table->decimal('minimum_price', 10, 2)->nullable();
-            $table->string('schema_type'); // Ex: flat, tiered
+            $table->string('schema_type');
             $table->timestamps();
         });
     }

@@ -6,7 +6,7 @@ use App\Http\Controllers\API\Discounts as APIDiscounts;
 use App\Http\Requests\Discount\DiscountStoreRequest;
 use Illuminate\View\View;
 
-class Discounts extends Controller
+final class Discounts extends Controller
 {
     public function __construct(private readonly APIDiscounts $api) {}
 

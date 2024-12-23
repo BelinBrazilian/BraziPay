@@ -13,9 +13,9 @@ trait ApiUpdateTrait
     public function update(UpdateRequestInterface $request, mixed $id): JsonResponse
     {
         try {
-            return $this->_hasService() && $this->_hasUpdateFunction() ?
-                    $this->_service_update($request, $id) :
-                    $this->_update($request, $id);
+            return $this->_hasService() && ($this->_hasUpdateFunction() || $this->_hasVindiUpdateFunction()) ?
+                $this->_service_update($request, $id) :
+                $this->_update($request, $id);
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
@@ -47,7 +47,11 @@ trait ApiUpdateTrait
 
     private function _service_update(UpdateRequestInterface $request, mixed $id): JsonResponse
     {
-        $this->service->update($request, $id);
+        if ($this->_hasUpdateFunction()) {
+            $this->service->update($request, $id);
+        } else {
+            $this->service->_update($request, $id);
+        }
 
         return response()->json([], 200);
     }
