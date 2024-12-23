@@ -7,7 +7,6 @@ use App\Http\Traits\ApiTraits;
 use App\Models\Affiliate;
 use Illuminate\Http\Request;
 
-
 class Affiliates extends ApiController
 {
     use ApiTraits;

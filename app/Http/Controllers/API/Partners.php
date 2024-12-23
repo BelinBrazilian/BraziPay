@@ -14,6 +14,6 @@ class Partners extends ApiController
         private readonly Request $request,
         private readonly PartnerService $service,
     ) {
-//        parent::__construct();
+        //        parent::__construct();
     }
 }

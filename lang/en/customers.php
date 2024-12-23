@@ -6,5 +6,5 @@ return [
         'create' => 'New Customer',
         'edit' => 'Edit Customer',
         'delete' => 'Delete Customer',
-    ]
+    ],
 ];

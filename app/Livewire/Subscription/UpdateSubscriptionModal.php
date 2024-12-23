@@ -2,24 +2,36 @@
 
 namespace App\Livewire\Subscription;
 
-use Livewire\Component;
 use App\Models\Subscription;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class UpdateSubscriptionModal extends Component
 {
     public $subscription_id;
+
     public $plan_id;
+
     public $customer_id;
+
     public $payment_method_id;
+
     public $payment_profile_id;
+
     public $code;
+
     public $start_at;
+
     public $installments;
+
     public $billing_trigger_type;
+
     public $billing_trigger_day;
+
     public $billing_cycles;
+
     public $invoice_split;
+
     public $metadata;
 
     protected $rules = [
@@ -65,8 +77,9 @@ class UpdateSubscriptionModal extends Component
     {
         $subscription = Subscription::find($subscription_id);
 
-        if (!$subscription) {
+        if (! $subscription) {
             $this->dispatch('error', 'Subscription not found.');
+
             return;
         }
 
@@ -92,8 +105,9 @@ class UpdateSubscriptionModal extends Component
         DB::transaction(function () {
             $subscription = Subscription::find($this->subscription_id);
 
-            if (!$subscription) {
+            if (! $subscription) {
                 $this->dispatch('error', 'Subscription not found.');
+
                 return;
             }
 

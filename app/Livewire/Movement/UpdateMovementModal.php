@@ -2,18 +2,23 @@
 
 namespace App\Livewire\Movement;
 
-use Livewire\Component;
-use App\Models\Movement;
 use App\Models\Bill;
+use App\Models\Movement;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class UpdateMovementModal extends Component
 {
     public $movement_id;
+
     public $bill_id;
+
     public $amount;
+
     public $movement_type;
+
     public $origin;
+
     public $description;
 
     public $bills;
@@ -53,8 +58,9 @@ class UpdateMovementModal extends Component
     {
         $movement = Movement::find($movement_id);
 
-        if (!$movement) {
+        if (! $movement) {
             $this->dispatch('error', 'Movement not found.');
+
             return;
         }
 
@@ -73,8 +79,9 @@ class UpdateMovementModal extends Component
         DB::transaction(function () {
             $movement = Movement::find($this->movement_id);
 
-            if (!$movement) {
+            if (! $movement) {
                 $this->dispatch('error', 'Movement not found.');
+
                 return;
             }
 

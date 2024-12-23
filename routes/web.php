@@ -1,38 +1,36 @@
 <?php
 
+use App\Http\Controllers\Affiliates;
+use App\Http\Controllers\Apps\PermissionManagementController;
+use App\Http\Controllers\Apps\RoleManagementController;
+use App\Http\Controllers\Apps\UserManagementController;
+use App\Http\Controllers\Auth\SocialiteController;
+use App\Http\Controllers\Bills;
+use App\Http\Controllers\Charges;
+use App\Http\Controllers\Customers;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Discounts;
+use App\Http\Controllers\ExportBatches;
+use App\Http\Controllers\ImportBatches;
+use App\Http\Controllers\Invoices;
+use App\Http\Controllers\Issues;
+use App\Http\Controllers\Merchants;
+use App\Http\Controllers\MerchantUsers;
+use App\Http\Controllers\Messages;
+use App\Http\Controllers\Movements;
+use App\Http\Controllers\Notifications;
+use App\Http\Controllers\Partners;
+use App\Http\Controllers\PaymentMethods;
+use App\Http\Controllers\PaymentProfile;
+use App\Http\Controllers\Periods;
+use App\Http\Controllers\Plans;
+use App\Http\Controllers\Products;
+use App\Http\Controllers\Roles;
+use App\Http\Controllers\Subscription;
+use App\Http\Controllers\Transactions;
+use App\Http\Controllers\Usages;
+use App\Http\Controllers\Users;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{
-    Affiliates,
-    Apps\PermissionManagementController,
-    Apps\RoleManagementController,
-    Apps\UserManagementController,
-    Auth\SocialiteController,
-    Bills,
-    Charges,
-    Customers,
-    DashboardController,
-    Discounts,
-    ExportBatches,
-    ImportBatches,
-    Invoices,
-    Issues,
-    Merchants,
-    MerchantUsers,
-    Messages,
-    Movements,
-    Notifications,
-    Partners,
-    PaymentMethods,
-    PaymentProfile,
-    Periods,
-    Plans,
-    Products,
-    Roles,
-    Subscription,
-    Transactions,
-    Usages,
-    Users
-};
 
 /*
 |--------------------------------------------------------------------------
@@ -158,9 +156,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Rotas públicas
 Route::get('/customers', [Customers::class, 'index'])->name('customers.index');
 //Route::get('/', fn() => 'OK');
-Route::get('/', fn() => redirect()->route(auth()->check() ? 'home': 'login'));
-Route::get('/error', fn() => abort(500));
+Route::get('/', fn () => redirect()->route(auth()->check() ? 'home' : 'login'));
+Route::get('/error', fn () => abort(500));
 Route::get('/auth/redirect/{provider}', [SocialiteController::class, 'redirect']);
 
 // Rotas de autenticação
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

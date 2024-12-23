@@ -15,7 +15,7 @@ class Merchants extends ApiController
         private readonly Request $request,
         private readonly MerchantService $service,
     ) {
-//        parent::__construct();
+        //        parent::__construct();
     }
 
     public function current(): JsonResponse

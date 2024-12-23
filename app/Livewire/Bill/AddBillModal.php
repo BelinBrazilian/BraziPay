@@ -2,28 +2,34 @@
 
 namespace App\Livewire\Bill;
 
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Foundation\Application;
-use Livewire\Component;
-use Livewire\WithFileUploads;
 use App\Models\Bill;
 use App\Models\Customer;
 use App\Models\PaymentMethod;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class AddBillModal extends Component
 {
     use WithFileUploads;
 
     public $customer_id;
+
     public $payment_method_id;
+
     public $code;
+
     public $billing_at;
+
     public $due_at;
+
     public $brand_tid;
 
     public $customers;
+
     public $payment_methods;
 
     protected $rules = [

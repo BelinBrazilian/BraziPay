@@ -2,17 +2,21 @@
 
 namespace App\Livewire\Movement;
 
-use Livewire\Component;
-use App\Models\Movement;
 use App\Models\Bill;
+use App\Models\Movement;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class AddMovementModal extends Component
 {
     public $bill_id;
+
     public $amount;
+
     public $movement_type;
+
     public $origin;
+
     public $description;
 
     public $bills;

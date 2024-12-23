@@ -27,6 +27,7 @@ class PlansDataTable extends DataTable
             })
             ->editColumn('status', function (Plan $plan) {
                 $badgeClass = $plan->status === 'active' ? 'badge-success' : 'badge-danger';
+
                 return sprintf('<span class="badge %s">%s</span>', $badgeClass, ucfirst($plan->status));
             })
             ->addColumn('actions', function (Plan $plan) {

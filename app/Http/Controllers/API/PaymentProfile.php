@@ -15,7 +15,7 @@ class PaymentProfile extends ApiController
         private readonly Request $request,
         private readonly PaymentProfileService $service,
     ) {
-//        parent::__construct();
+        //        parent::__construct();
     }
 
     public function verify(int $id): JsonResponse

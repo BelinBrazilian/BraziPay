@@ -39,7 +39,7 @@ final class CustomerService
 
         return $this->vindiService->all();
     }
-    
+
     public function _store(StoreRequestInterface $request): JsonResponse
     {
         return $this->vindiService->create($request->all());

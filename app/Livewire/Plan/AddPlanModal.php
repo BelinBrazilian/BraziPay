@@ -2,20 +2,28 @@
 
 namespace App\Livewire\Plan;
 
-use Livewire\Component;
 use App\Models\Plan;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class AddPlanModal extends Component
 {
     public $code;
+
     public $name;
+
     public $interval;
+
     public $interval_count;
+
     public $description;
+
     public $installments;
+
     public $invoice_split;
+
     public $status;
+
     public $metadata;
 
     protected $rules = [

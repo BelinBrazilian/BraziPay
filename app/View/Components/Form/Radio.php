@@ -11,11 +11,11 @@ class Radio extends Component
     /**
      * Create a new component instance.
      *
-     * @param string $label The label for the radio group.
-     * @param string $model The Livewire model binding.
-     * @param string $name The name attribute for the radio inputs.
-     * @param array $options The options for the radio buttons (key-value pairs).
-     * @param array|null $descriptions Additional descriptions for the radio buttons (optional).
+     * @param  string  $label  The label for the radio group.
+     * @param  string  $model  The Livewire model binding.
+     * @param  string  $name  The name attribute for the radio inputs.
+     * @param  array  $options  The options for the radio buttons (key-value pairs).
+     * @param  array|null  $descriptions  Additional descriptions for the radio buttons (optional).
      */
     public function __construct(
         public string $label,

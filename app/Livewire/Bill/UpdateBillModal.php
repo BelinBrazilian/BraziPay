@@ -2,26 +2,33 @@
 
 namespace App\Livewire\Bill;
 
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Foundation\Application;
-use Livewire\Component;
 use App\Models\Bill;
 use App\Models\Customer;
 use App\Models\PaymentMethod;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class UpdateBillModal extends Component
 {
     public $bill_id;
+
     public $customer_id;
+
     public $payment_method_id;
+
     public $code;
+
     public $billing_at;
+
     public $due_at;
+
     public $brand_tid;
 
     public $customers;
+
     public $payment_methods;
 
     protected $rules = [
@@ -64,8 +71,9 @@ class UpdateBillModal extends Component
     {
         $bill = Bill::find($bill_id);
 
-        if (!$bill) {
+        if (! $bill) {
             $this->dispatch('error', 'Bill not found.');
+
             return;
         }
 
@@ -85,8 +93,9 @@ class UpdateBillModal extends Component
         DB::transaction(function () {
             $bill = Bill::find($this->bill_id);
 
-            if (!$bill) {
+            if (! $bill) {
                 $this->dispatch('error', 'Bill not found.');
+
                 return;
             }
 

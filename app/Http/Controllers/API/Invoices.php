@@ -15,7 +15,7 @@ class Invoices extends ApiController
         private readonly Request $request,
         private readonly InvoiceService $service,
     ) {
-//        parent::__construct();
+        //        parent::__construct();
     }
 
     public function retry(int $id): JsonResponse

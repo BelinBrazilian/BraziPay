@@ -24,6 +24,7 @@ class ProductsDataTable extends DataTable
             })
             ->editColumn('status', function (Product $product) {
                 $badgeClass = $product->status === 'active' ? 'badge-success' : 'badge-danger';
+
                 return sprintf('<span class="badge %s">%s</span>', $badgeClass, ucfirst($product->status->label()));
             })
             ->editColumn('invoice', function (Product $product) {

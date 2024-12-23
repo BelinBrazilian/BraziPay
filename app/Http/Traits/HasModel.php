@@ -8,7 +8,7 @@ trait HasModel
 
     public function _hasModel(): bool
     {
-        return !empty($this->model);
+        return ! empty($this->model);
     }
 
     public function _getModelClass(): ?string

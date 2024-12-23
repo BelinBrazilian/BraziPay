@@ -4,8 +4,8 @@ namespace Database\Factories;
 
 use App\Models\Address;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Provider\pt_BR\Address as BrazilianAddress;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends Factory<Address>

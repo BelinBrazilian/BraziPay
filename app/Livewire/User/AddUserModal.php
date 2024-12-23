@@ -3,23 +3,28 @@
 namespace App\Livewire\User;
 
 use App\Models\User;
-use Livewire\Component;
-use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
+use Livewire\Component;
+use Livewire\WithFileUploads;
+use Spatie\Permission\Models\Role;
 
 class AddUserModal extends Component
 {
     use WithFileUploads;
 
     public $user_id;
+
     public $name;
+
     public $email;
+
     public $role;
+
     public $avatar;
+
     public $saved_avatar;
 
     public $edit_mode = false;
@@ -73,7 +78,7 @@ class AddUserModal extends Component
                 $data['profile_photo_path'] = null;
             }
 
-            if (!$this->edit_mode) {
+            if (! $this->edit_mode) {
                 $data['password'] = Hash::make($this->email);
             }
 
@@ -115,6 +120,7 @@ class AddUserModal extends Component
         // Prevent deletion of current user
         if ($id == Auth::id()) {
             $this->dispatch('error', 'User cannot be deleted');
+
             return;
         }
 

@@ -2,22 +2,28 @@
 
 namespace App\Livewire\Discount;
 
+use App\Models\Discount;
+use App\Models\ProductItem;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
-use Livewire\Component;
-use App\Models\Discount;
-use App\Models\ProductItem;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class UpdateDiscountModal extends Component
 {
     public $discount_id;
+
     public $product_item_id;
+
     public $discount_type;
+
     public $percentage;
+
     public $amount;
+
     public $quantity;
+
     public $cycles;
 
     public $product_items;
@@ -59,8 +65,9 @@ class UpdateDiscountModal extends Component
     {
         $discount = Discount::find($discount_id);
 
-        if (!$discount) {
+        if (! $discount) {
             $this->dispatch('error', 'Discount not found.');
+
             return;
         }
 
@@ -80,8 +87,9 @@ class UpdateDiscountModal extends Component
         DB::transaction(function () {
             $discount = Discount::find($this->discount_id);
 
-            if (!$discount) {
+            if (! $discount) {
                 $this->dispatch('error', 'Discount not found.');
+
                 return;
             }
 

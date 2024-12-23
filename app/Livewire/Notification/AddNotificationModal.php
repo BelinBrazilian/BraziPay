@@ -2,19 +2,26 @@
 
 namespace App\Livewire\Notification;
 
-use Livewire\Component;
 use App\Models\Notification;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class AddNotificationModal extends Component
 {
     public $status;
+
     public $notification_type;
+
     public $name;
+
     public $subject;
+
     public $content;
+
     public $trigger_type;
+
     public $trigger_day;
+
     public $bcc;
 
     protected $rules = [

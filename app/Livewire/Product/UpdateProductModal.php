@@ -2,20 +2,28 @@
 
 namespace App\Livewire\Product;
 
-use Livewire\Component;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class UpdateProductModal extends Component
 {
     public $product_id;
+
     public $name;
+
     public $code;
+
     public $unit;
+
     public $status;
+
     public $description;
+
     public $invoice;
+
     public $metadata;
+
     public $pricingSchema = [
         'price' => null,
         'minimum_price' => null,
@@ -63,8 +71,9 @@ class UpdateProductModal extends Component
     {
         $product = Product::with('pricingSchema')->find($product_id);
 
-        if (!$product) {
+        if (! $product) {
             $this->dispatch('error', 'Product not found.');
+
             return;
         }
 
@@ -90,8 +99,9 @@ class UpdateProductModal extends Component
         DB::transaction(function () {
             $product = Product::find($this->product_id);
 
-            if (!$product) {
+            if (! $product) {
                 $this->dispatch('error', 'Product not found.');
+
                 return;
             }
 

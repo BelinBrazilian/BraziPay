@@ -28,7 +28,7 @@ final class VindiApi
         //        self::$config = DB::query('SELECT api_key AS VINDI_API_KEY, api_uri AS VINDI_API_URI FROM vindi_config')->first();
         self::$config = VindiConfig::select([
             'api_key as VINDI_API_KEY',
-            'api_uri as VINDI_API_URI'
+            'api_uri as VINDI_API_URI',
         ])->first()->toArray();
     }
 }

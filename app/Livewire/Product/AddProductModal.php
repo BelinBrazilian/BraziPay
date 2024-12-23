@@ -2,20 +2,26 @@
 
 namespace App\Livewire\Product;
 
-use Livewire\Component;
 use App\Models\Product;
-use App\Models\PricingSchema;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class AddProductModal extends Component
 {
     public $name;
+
     public $code;
+
     public $unit;
+
     public $status;
+
     public $description;
+
     public $invoice;
+
     public $metadata;
+
     public $pricingSchema = [
         'price' => null,
         'minimum_price' => null,

@@ -10,17 +10,27 @@ use Illuminate\View\ComponentAttributeBag;
 class MenuItem extends Component
 {
     public bool $hasLink;
+
     public string $padding;
+
     public string $link;
+
     public string $linkPadding;
+
     public string $icon;
 
     public string $htmlAttributes;
+
     public string $htmlLinkAttributes;
+
     public ComponentAttributeBag $linkAttributes;
+
     public ComponentAttributeBag $badgeAttributes;
+
     public string $badgeColor = 'light-danger';
+
     public string $badgeText = '0';
+
     public string $badgeFormat = 'circle';
 
     /**
@@ -44,14 +54,14 @@ class MenuItem extends Component
             ->toHtml() ?? '';
 
         $this->htmlLinkAttributes = '';
-        $this->linkAttributes = new ComponentAttributeBag();
-        $this->badgeAttributes = new ComponentAttributeBag();
+        $this->linkAttributes = new ComponentAttributeBag;
+        $this->badgeAttributes = new ComponentAttributeBag;
 
         if ($this->attributes?->get('data-link-attributes')) {
             $this->linkAttributes = new ComponentAttributeBag($this->attributes->get('data-link-attributes'));
             $this->htmlLinkAttributes = $this->linkAttributes->toHtml();
 
-            if (!is_null($this->linkAttributes->get('badge'))) {
+            if (! is_null($this->linkAttributes->get('badge'))) {
                 $this->badgeAttributes = new ComponentAttributeBag($this->linkAttributes->get('badge'));
                 $this->badgeColor = $this->badgeAttributes->get('color', 'light-danger');
                 $this->badgeText = $this->badgeAttributes->get('text', '0');

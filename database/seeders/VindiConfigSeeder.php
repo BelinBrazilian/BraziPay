@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\VindiConfig;
 use Illuminate\Database\Seeder;
+
 class VindiConfigSeeder extends Seeder
 {
     /**

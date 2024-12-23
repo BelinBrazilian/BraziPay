@@ -27,8 +27,6 @@ class Warning extends Component
 
     /**
      * Get the view or content that represents the component.
-     *
-     * @return View|Closure|string
      */
     public function render(): View|Closure|string
     {

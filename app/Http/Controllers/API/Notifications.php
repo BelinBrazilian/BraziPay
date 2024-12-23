@@ -16,7 +16,7 @@ class Notifications extends ApiController
         private readonly Request $request,
         private readonly NotificationService $service,
     ) {
-//        parent::__construct();
+        //        parent::__construct();
     }
 
     public function notificationItemIndex(int $id, array $queryParams = []): JsonResponse

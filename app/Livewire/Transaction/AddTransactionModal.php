@@ -2,16 +2,20 @@
 
 namespace App\Livewire\Transaction;
 
-use Livewire\Component;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class AddTransactionModal extends Component
 {
     public $charge_id;
+
     public $payment_method_id;
+
     public $amount;
+
     public $paid_at;
+
     public $comments;
 
     protected $rules = [

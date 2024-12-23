@@ -2,20 +2,28 @@
 
 namespace App\Livewire\Subscription;
 
-use Livewire\Component;
 use App\Models\Subscription;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class AddSubscriptionModal extends Component
 {
     public $plan_id;
+
     public $customer_id;
+
     public $payment_method_id;
+
     public $code;
+
     public $start_at;
+
     public $installments;
+
     public $billing_trigger_type;
+
     public $invoice_split;
+
     public $metadata;
 
     protected $rules = [

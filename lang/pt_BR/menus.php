@@ -85,6 +85,6 @@ return [
                 'title' => 'Statements',
                 'info' => 'View your statements',
             ],
-        ]
-    ]
+        ],
+    ],
 ];

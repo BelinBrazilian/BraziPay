@@ -11,13 +11,13 @@ class DefaultModal extends Component
     /**
      * Create a new component instance.
      *
-     * @param string $id The ID of the modal.
-     * @param string|null $title The title of the modal (optional, if no custom header slot is used).
-     * @param string|null $size The size of the modal dialog (e.g., 'mw-650px', 'mw-750px').
-     * @param string|null $cancelText Text for the cancel button (default: 'Discard').
-     * @param string|null $submitText Text for the submit button (default: 'Submit').
-     * @param bool $showFooter Whether to show the footer (default: true).
-     * @param bool $showCancel Whether to show the cancel button in the footer (default: true).
+     * @param  string  $id  The ID of the modal.
+     * @param  string|null  $title  The title of the modal (optional, if no custom header slot is used).
+     * @param  string|null  $size  The size of the modal dialog (e.g., 'mw-650px', 'mw-750px').
+     * @param  string|null  $cancelText  Text for the cancel button (default: 'Discard').
+     * @param  string|null  $submitText  Text for the submit button (default: 'Submit').
+     * @param  bool  $showFooter  Whether to show the footer (default: true).
+     * @param  bool  $showCancel  Whether to show the cancel button in the footer (default: true).
      */
     public function __construct(
         public string $id,

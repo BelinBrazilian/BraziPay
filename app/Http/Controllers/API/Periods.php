@@ -15,7 +15,7 @@ class Periods extends ApiController
         private readonly Request $request,
         private readonly PeriodService $service,
     ) {
-//        parent::__construct();
+        //        parent::__construct();
     }
 
     public function bill(mixed $id): JsonResponse

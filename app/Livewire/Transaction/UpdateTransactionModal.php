@@ -2,17 +2,22 @@
 
 namespace App\Livewire\Transaction;
 
-use Livewire\Component;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class UpdateTransactionModal extends Component
 {
     public $transaction_id;
+
     public $charge_id;
+
     public $payment_method_id;
+
     public $amount;
+
     public $paid_at;
+
     public $comments;
 
     protected $rules = [
@@ -44,8 +49,9 @@ class UpdateTransactionModal extends Component
     {
         $transaction = Transaction::find($transaction_id);
 
-        if (!$transaction) {
+        if (! $transaction) {
             $this->dispatch('error', 'Transaction not found.');
+
             return;
         }
 
@@ -64,8 +70,9 @@ class UpdateTransactionModal extends Component
         DB::transaction(function () {
             $transaction = Transaction::find($this->transaction_id);
 
-            if (!$transaction) {
+            if (! $transaction) {
                 $this->dispatch('error', 'Transaction not found.');
+
                 return;
             }
 

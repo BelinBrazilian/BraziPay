@@ -16,7 +16,7 @@ class Subscription extends ApiController
         private readonly Request $request,
         private readonly SubscriptionService $service,
     ) {
-//        parent::__construct();
+        //        parent::__construct();
     }
 
     public function reactivate(mixed $id): JsonResponse

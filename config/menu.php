@@ -27,7 +27,7 @@ return [
             'children' => [
                 ['key' => 'list', 'route' => 'customers.index'],
                 ['key' => 'add', 'route' => 'dashboard'], // TODO: Adicionar rota para criar cliente
-//                ['key' => 'manage', 'route' => 'customers.unarchive'], // Restaurar clientes arquivados
+                //                ['key' => 'manage', 'route' => 'customers.unarchive'], // Restaurar clientes arquivados
             ],
         ],
         [
@@ -39,7 +39,7 @@ return [
                 ['key' => 'issueInvoice', 'route' => 'dashboard'], // TODO: Adicionar rota para emissão de fatura
                 ['key' => 'pendingInvoices', 'route' => 'dashboard'], // TODO: Adicionar rota para faturas pendentes
                 ['key' => 'canceledInvoices', 'route' => 'dashboard'], // TODO: Adicionar rota para faturas canceladas
-//                ['key' => 'manualCharges', 'route' => 'charges.capture'], // Captura de cobrança manual
+                //                ['key' => 'manualCharges', 'route' => 'charges.capture'], // Captura de cobrança manual
             ],
         ],
         [

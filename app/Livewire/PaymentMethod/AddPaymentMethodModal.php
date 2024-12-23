@@ -2,18 +2,24 @@
 
 namespace App\Livewire\PaymentMethod;
 
-use Livewire\Component;
 use App\Models\PaymentMethod;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class AddPaymentMethodModal extends Component
 {
     public $public_name;
+
     public $name;
+
     public $code;
+
     public $type;
+
     public $status;
+
     public $settings;
+
     public $maximum_attempts;
 
     protected $rules = [

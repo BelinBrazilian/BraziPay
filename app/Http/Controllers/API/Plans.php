@@ -16,7 +16,7 @@ class Plans extends ApiController
         private readonly PlanService $service,
         private readonly Plan $model,
     ) {
-//        parent::__construct();
+        //        parent::__construct();
     }
 
     public function plan_items(mixed $id)

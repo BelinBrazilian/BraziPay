@@ -16,6 +16,6 @@ class Discounts extends ApiController
         private readonly DiscountService $service,
         private readonly Discount $model,
     ) {
-//        parent::__construct();
+        //        parent::__construct();
     }
 }

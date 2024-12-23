@@ -15,7 +15,7 @@ class Bills extends ApiController
         private readonly Request $request,
         private readonly BillService $service,
     ) {
-//        parent::__construct();
+        //        parent::__construct();
     }
 
     public function invoice(int $id): JsonResponse

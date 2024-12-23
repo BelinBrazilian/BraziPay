@@ -24,6 +24,7 @@ class PaymentMethodsDataTable extends DataTable
             })
             ->editColumn('status', function (PaymentMethod $paymentMethod) {
                 $badgeClass = $paymentMethod->status === 'active' ? 'badge-success' : 'badge-danger';
+
                 return sprintf('<span class="badge %s">%s</span>', $badgeClass, ucfirst($paymentMethod->status));
             })
             ->editColumn('type', function (PaymentMethod $paymentMethod) {

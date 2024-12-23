@@ -2,21 +2,26 @@
 
 namespace App\Livewire\Discount;
 
+use App\Models\Discount;
+use App\Models\ProductItem;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
-use Livewire\Component;
-use App\Models\Discount;
-use App\Models\ProductItem;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class AddDiscountModal extends Component
 {
     public $product_item_id;
+
     public $discount_type;
+
     public $percentage;
+
     public $amount;
+
     public $quantity;
+
     public $cycles;
 
     public $product_items;

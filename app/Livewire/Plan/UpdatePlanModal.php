@@ -2,24 +2,36 @@
 
 namespace App\Livewire\Plan;
 
-use Livewire\Component;
 use App\Models\Plan;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class UpdatePlanModal extends Component
 {
     public $plan_id;
+
     public $code;
+
     public $name;
+
     public $interval;
+
     public $interval_count;
+
     public $billing_trigger_type;
+
     public $billing_trigger_day;
+
     public $billing_cycles;
+
     public $description;
+
     public $installments;
+
     public $invoice_split;
+
     public $status;
+
     public $metadata;
 
     protected $rules = [
@@ -65,8 +77,9 @@ class UpdatePlanModal extends Component
     {
         $plan = Plan::find($plan_id);
 
-        if (!$plan) {
+        if (! $plan) {
             $this->dispatch('error', 'Plan not found.');
+
             return;
         }
 
@@ -92,8 +105,9 @@ class UpdatePlanModal extends Component
         DB::transaction(function () {
             $plan = Plan::find($this->plan_id);
 
-            if (!$plan) {
+            if (! $plan) {
                 $this->dispatch('error', 'Plan not found.');
+
                 return;
             }
 

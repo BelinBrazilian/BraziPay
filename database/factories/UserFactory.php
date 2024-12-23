@@ -3,11 +3,11 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use Faker\Provider\pt_BR\Internet as BrazilianInternet;
+use Faker\Provider\pt_BR\Person as BrazilianPerson;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Faker\Provider\pt_BR\Person as BrazilianPerson;
-use Faker\Provider\pt_BR\Internet as BrazilianInternet;
 
 /**
  * @extends Factory<User>
@@ -35,8 +35,6 @@ class UserFactory extends Factory
 
     /**
      * Indicate that the model's email address should be unverified.
-     *
-     * @return static
      */
     public function unverified(): static
     {

@@ -2,22 +2,29 @@
 
 namespace App\Livewire\Customer;
 
+use App\Models\Customer;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
-use Livewire\Component;
-use App\Models\Customer;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class UpdateCustomerModal extends Component
 {
     public $customer_id;
+
     public $name;
+
     public $email;
+
     public $registry_code;
+
     public $code;
+
     public $notes;
+
     public $address = [];
+
     public $phones = [];
 
     protected array $rules = [
@@ -44,8 +51,9 @@ class UpdateCustomerModal extends Component
     {
         $customer = Customer::with(['address', 'phones'])->find($customer_id);
 
-        if (!$customer) {
+        if (! $customer) {
             $this->dispatch('error', 'Customer not found.');
+
             return;
         }
 
@@ -66,8 +74,9 @@ class UpdateCustomerModal extends Component
         DB::transaction(function () {
             $customer = Customer::find($this->customer_id);
 
-            if (!$customer) {
+            if (! $customer) {
                 $this->dispatch('error', 'Customer not found.');
+
                 return;
             }
 
@@ -79,7 +88,7 @@ class UpdateCustomerModal extends Component
                 'notes' => $this->notes,
             ]);
 
-            if (!empty($this->address)) {
+            if (! empty($this->address)) {
                 $customer->address()->updateOrCreate([], $this->address);
             }
 

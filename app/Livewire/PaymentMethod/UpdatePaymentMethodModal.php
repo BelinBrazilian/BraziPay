@@ -2,21 +2,30 @@
 
 namespace App\Livewire\PaymentMethod;
 
-use Livewire\Component;
 use App\Models\PaymentMethod;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class UpdatePaymentMethodModal extends Component
 {
     public $payment_method_id;
+
     public $public_name;
+
     public $name;
+
     public $code;
+
     public $type;
+
     public $status;
+
     public $settings;
+
     public $set_subscription_on_success;
+
     public $allow_as_alternative;
+
     public $maximum_attempts;
 
     protected $rules = [
@@ -56,8 +65,9 @@ class UpdatePaymentMethodModal extends Component
     {
         $paymentMethod = PaymentMethod::find($payment_method_id);
 
-        if (!$paymentMethod) {
+        if (! $paymentMethod) {
             $this->dispatch('error', 'Payment Method not found.');
+
             return;
         }
 
@@ -80,8 +90,9 @@ class UpdatePaymentMethodModal extends Component
         DB::transaction(function () {
             $paymentMethod = PaymentMethod::find($this->payment_method_id);
 
-            if (!$paymentMethod) {
+            if (! $paymentMethod) {
                 $this->dispatch('error', 'Payment Method not found.');
+
                 return;
             }
 

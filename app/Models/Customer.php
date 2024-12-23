@@ -103,5 +103,4 @@ class Customer extends Model
 
         return $data;
     }
-
 }

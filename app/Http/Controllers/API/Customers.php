@@ -41,7 +41,7 @@ class Customers extends ApiController
             $searchColumns = ['name', 'email'];
             $query->where(function ($query) use ($searchValue, $searchColumns) {
                 foreach ($searchColumns as $column) {
-                    $query->orWhere(DB::raw("LOWER($column)"), 'LIKE', '%' . strtolower($searchValue) . '%');
+                    $query->orWhere(DB::raw("LOWER($column)"), 'LIKE', '%'.strtolower($searchValue).'%');
                 }
             });
         }
@@ -61,7 +61,7 @@ class Customers extends ApiController
             'orderColumnName' => $orderColumnName,
         ];
     }
-    
+
     public function _index(array $queryParams = [])
     {
         return $this->service->_index($queryParams);

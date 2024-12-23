@@ -15,7 +15,7 @@ class MerchantUsers extends ApiController
         private readonly Request $request,
         private readonly MerchantUserService $service,
     ) {
-//        parent::__construct();
+        //        parent::__construct();
     }
 
     public function reactivate(int $id): JsonResponse

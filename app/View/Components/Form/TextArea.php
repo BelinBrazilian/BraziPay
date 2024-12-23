@@ -11,11 +11,11 @@ class TextArea extends Component
     /**
      * Create a new component instance.
      *
-     * @param string $label The label for the textarea.
-     * @param string $model The Livewire model binding.
-     * @param string $name The name attribute for the textarea.
-     * @param string|null $placeholder The placeholder text for the textarea.
-     * @param bool $required Whether the field is required (default: false).
+     * @param  string  $label  The label for the textarea.
+     * @param  string  $model  The Livewire model binding.
+     * @param  string  $name  The name attribute for the textarea.
+     * @param  string|null  $placeholder  The placeholder text for the textarea.
+     * @param  bool  $required  Whether the field is required (default: false).
      */
     public function __construct(
         public string $label,

@@ -7,15 +7,15 @@ use App\Http\Controllers\API\Customers as APICustomers;
 use App\Http\Requests\Customer\CustomerStoreRequest;
 use App\Http\Requests\Customer\CustomerUpdateRequest;
 use App\Models\Customer;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\View\View;
-use Illuminate\Http\JsonResponse;
 
 final class Customers extends Controller
 {
     public function __construct(private readonly APICustomers $api) {}
 
-    // public function index(mixed $queryParams = null): View | AnonymousResourceCollection 
+    // public function index(mixed $queryParams = null): View | AnonymousResourceCollection
     // {
     //     $data = $this->api->index([]);
 

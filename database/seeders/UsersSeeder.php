@@ -12,9 +12,6 @@ class UsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @param Generator $faker
-     * @return void
      */
     public function run(Generator $faker): void
     {
@@ -36,7 +33,7 @@ class UsersSeeder extends Seeder
 
         $quant = User::where('id', '>', 1)->count();
 
-        for($i = 0; $i < $quant; $i++){
+        for ($i = 0; $i < $quant; $i++) {
             Address::factory()->create();
         }
     }

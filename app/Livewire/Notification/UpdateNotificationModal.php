@@ -2,20 +2,28 @@
 
 namespace App\Livewire\Notification;
 
-use Livewire\Component;
 use App\Models\Notification;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class UpdateNotificationModal extends Component
 {
     public $notification_id;
+
     public $status;
+
     public $notification_type;
+
     public $name;
+
     public $subject;
+
     public $content;
+
     public $trigger_type;
+
     public $trigger_day;
+
     public $bcc;
 
     protected $rules = [
@@ -53,8 +61,9 @@ class UpdateNotificationModal extends Component
     {
         $notification = Notification::find($notification_id);
 
-        if (!$notification) {
+        if (! $notification) {
             $this->dispatch('error', 'Notification not found.');
+
             return;
         }
 
@@ -76,8 +85,9 @@ class UpdateNotificationModal extends Component
         DB::transaction(function () {
             $notification = Notification::find($this->notification_id);
 
-            if (!$notification) {
+            if (! $notification) {
                 $this->dispatch('error', 'Notification not found.');
+
                 return;
             }
 

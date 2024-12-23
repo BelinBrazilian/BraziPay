@@ -9,7 +9,9 @@ use Illuminate\View\Component;
 class MenuAccordion extends Component
 {
     public bool $isActive;
+
     public string $title;
+
     public string $icon;
 
     /**

@@ -11,14 +11,14 @@ trait ApiIndexTrait
 {
     use HasMRRS;
 
-    public function index(array $queryParams = []): JsonResponse | AnonymousResourceCollection
+    public function index(array $queryParams = []): JsonResponse|AnonymousResourceCollection
     {
         return $this->_hasService() && ($this->_hasIndexFunction() || $this->_hasVindiIndexFunction()) ?
             $this->_service_index($queryParams) :
             $this->_index();
     }
 
-    private function _index(): JsonResponse | AnonymousResourceCollection
+    private function _index(): JsonResponse|AnonymousResourceCollection
     {
         if (empty($this->search)) {
             $res = QueryBuilder::for($this->_getModelClass())
@@ -41,8 +41,7 @@ trait ApiIndexTrait
         return $resourceCollection->response();
     }
 
-
-    private function _service_index(array $queryParams = []): JsonResponse   | AnonymousResourceCollection
+    private function _service_index(array $queryParams = []): JsonResponse|AnonymousResourceCollection
     {
         if ($this->_hasIndexFunction()) {
             $res = $this->service->index($queryParams);

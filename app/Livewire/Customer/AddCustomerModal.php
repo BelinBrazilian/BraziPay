@@ -2,23 +2,27 @@
 
 namespace App\Livewire\Customer;
 
+use App\Models\Customer;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
-use Livewire\Component;
-use App\Models\Customer;
-use App\Models\Address;
-use App\Models\Phone;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class AddCustomerModal extends Component
 {
     public $name;
+
     public $email;
+
     public $registry_code;
+
     public $code;
+
     public $notes;
+
     public $address = [];
+
     public $phones = [];
 
     protected $rules = [
@@ -63,7 +67,7 @@ class AddCustomerModal extends Component
                 'notes' => $this->notes,
             ]);
 
-            if (!empty($this->address)) {
+            if (! empty($this->address)) {
                 $customer->address()->create($this->address);
             }
 

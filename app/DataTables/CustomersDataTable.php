@@ -36,6 +36,7 @@ class CustomersDataTable extends DataTable
                         $customer->address->state
                     );
                 }
+
                 return 'N/A';
             })
             ->addColumn('phones', function (Customer $customer) {

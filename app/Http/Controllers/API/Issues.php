@@ -14,6 +14,6 @@ class Issues extends ApiController
         private readonly Request $request,
         private readonly IssueService $service,
     ) {
-//        parent::__construct();
+        //        parent::__construct();
     }
 }

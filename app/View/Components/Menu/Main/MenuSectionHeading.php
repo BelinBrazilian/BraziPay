@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class MenuSectionHeading extends Component
 {
     public string $title;
+
     /**
      * Create a new component instance.
      */

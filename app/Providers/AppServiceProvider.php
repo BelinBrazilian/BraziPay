@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use Livewire\Livewire;
 use App\Core\KTBootstrap;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Database\Schema\Builder;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,8 +32,8 @@ class AppServiceProvider extends ServiceProvider
 
         KTBootstrap::init();
 
-		Livewire::setUpdateRoute(function ($handle) {
-			return Route::post('/starterkit/metronic/laravel/livewire/update', $handle);
-		});
+        Livewire::setUpdateRoute(function ($handle) {
+            return Route::post('/starterkit/metronic/laravel/livewire/update', $handle);
+        });
     }
 }

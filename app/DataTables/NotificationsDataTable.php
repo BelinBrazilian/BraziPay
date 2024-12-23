@@ -21,6 +21,7 @@ class NotificationsDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->editColumn('status', function (Notification $notification) {
                 $badgeClass = $notification->status === 'active' ? 'badge-success' : 'badge-danger';
+
                 return sprintf('<span class="badge %s">%s</span>', $badgeClass, ucfirst($notification->status));
             })
             ->editColumn('notification_type', function (Notification $notification) {

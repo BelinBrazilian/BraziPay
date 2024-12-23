@@ -11,10 +11,10 @@ class CheckBox extends Component
     /**
      * Create a new component instance.
      *
-     * @param string $label The label for the checkbox group.
-     * @param string $model The Livewire model binding.
-     * @param string $name The name attribute for the checkboxes.
-     * @param array $options The options for the checkboxes (key-value pairs).
+     * @param  string  $label  The label for the checkbox group.
+     * @param  string  $model  The Livewire model binding.
+     * @param  string  $name  The name attribute for the checkboxes.
+     * @param  array  $options  The options for the checkboxes (key-value pairs).
      */
     public function __construct(
         public string $label,

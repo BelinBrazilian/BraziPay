@@ -9,8 +9,11 @@ use Illuminate\View\Component;
 class MenuItem extends Component
 {
     public bool $isActive;
+
     public string $route;
+
     public string $title;
+
     public string $icon;
 
     /**
