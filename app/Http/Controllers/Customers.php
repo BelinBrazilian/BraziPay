@@ -8,7 +8,7 @@ use App\Http\Requests\Customer\CustomerUpdateRequest;
 use App\Models\Customer;
 use Illuminate\View\View;
 
-class Customers extends Controller
+final class Customers extends Controller
 {
     public function __construct(private readonly APICustomers $api) {}
 

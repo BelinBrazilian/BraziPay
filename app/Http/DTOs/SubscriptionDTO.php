@@ -2,8 +2,8 @@
 
 namespace App\Http\DTOs;
 
-use App\Http\Requests\SubscriptionStoreRequest;
-use App\Http\Requests\SubscriptionUpdateRequest;
+use App\Http\Requests\Subscription\SubscriptionStoreRequest;
+use App\Http\Requests\Subscription\SubscriptionUpdateRequest;
 
 class SubscriptionDTO extends DTO
 {

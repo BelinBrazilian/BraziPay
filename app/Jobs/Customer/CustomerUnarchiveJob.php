@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Customer;
 
+use App\Helpers\VindiApi;
 use App\Models\Customer;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -18,7 +19,7 @@ class CustomerUnarchiveJob implements ShouldQueue
     public function handle(): void
     {
         try {
-            $vindiCustomerService = new VindiCustomer(config('app.vindi_args'));
+            $vindiCustomerService = new VindiCustomer(VindiApi::config());
             $vindiCustomerService->unarchive($this->customer->external_id);
 
             Log::debug('Customer unarchived succesfully!');

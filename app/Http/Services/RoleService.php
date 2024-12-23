@@ -2,16 +2,25 @@
 
 namespace App\Http\Services;
 
-use App\Integrators\Vindi\Roles;
+use App\Helpers\VindiApi;
+use App\Integrators\Vindi\Roles as VindiRoles;
+use Illuminate\Http\JsonResponse;
 
-class RoleService
+final class RoleService
 {
-    public function __construct() {}
+    private readonly VindiRoles $vindiService;
 
-    public function index(?string $queryParams): array
+    public function __construct()
     {
-        $vindiRoleService = new Roles(config('app.vindi_args'));
-
-        return $vindiRoleService->all();
+        $this->vindiService = new VindiRoles(VindiApi::config());
     }
+
+    // direct functions
+    public function _index(?string $queryParams): JsonResponse
+    {
+        return $this->vindiService->all();
+    }
+
+    // stored info functions
+    /** @todo stored information functions */
 }

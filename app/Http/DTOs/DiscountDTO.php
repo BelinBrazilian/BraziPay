@@ -9,6 +9,7 @@ use InvalidArgumentException;
 class DiscountDTO extends DTO
 {
     public function __construct(
+        private readonly ?int $external_id,
         private readonly int $product_item_id,
         private readonly DiscountTypeEnum $discount_type,
         private readonly ?float $percentage = null,
@@ -32,6 +33,7 @@ class DiscountDTO extends DTO
     public static function fromRequest(DiscountStoreRequest $request): self
     {
         return new self(
+            $request->get('external_id', null),
             $request->get('product_item_id'),
             $request->get('discount_type'),
             $request->get('percentage', null),
@@ -44,6 +46,7 @@ class DiscountDTO extends DTO
     public static function fromArray(array $data): self
     {
         return new self(
+            $data['external_id'] ?? null,
             $data['product_item_id'],
             $data['discount_type'],
             $data['percentage'] ?? null,
