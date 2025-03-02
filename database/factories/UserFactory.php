@@ -2,18 +2,20 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
-use Faker\Provider\pt_BR\Internet as BrazilianInternet;
-use Faker\Provider\pt_BR\Person as BrazilianPerson;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends Factory<User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
 class UserFactory extends Factory
 {
+    /**
+     * The current password being used by the factory.
+     */
+    protected static ?string $password;
+
     /**
      * Define the model's default state.
      *
@@ -21,14 +23,11 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $this->faker->addProvider(new BrazilianPerson($this->faker));
-        $this->faker->addProvider(new BrazilianInternet($this->faker));
-
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => Hash::make('password'), // password
+            'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
     }
