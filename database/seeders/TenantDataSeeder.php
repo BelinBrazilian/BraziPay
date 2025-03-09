@@ -38,39 +38,39 @@ class TenantDataSeeder extends Seeder
      */
     public function run(): void
     {
-        // Generate a random count between 100 and 200 for most records.
-        $count = rand(100, 200);
+        // // Generate a random count between 100 and 200 for most records.
+        // $count = rand(100, 200);
 
-        // 1. Create independent data.
-        Badge::factory()->count($count)->create();
-        GamificationPlan::factory()->count($count)->create();
+        // // 1. Create independent data.
+        // Badge::factory()->count($count)->create();
+        // GamificationPlan::factory()->count($count)->create();
 
-        // 2. Create a pool of customers, needed for models that reference a customer.
-        $customers = Customer::factory()->count(rand(50, 100))->create();
+        // // 2. Create a pool of customers, needed for models that reference a customer.
+        // $customers = Customer::factory()->count(rand(50, 100))->create();
 
-        // 3. Create ClearSale orders (parent record).
-        ClearsaleOrder::factory()->count($count)->create();
+        // // 3. Create ClearSale orders (parent record).
+        // ClearsaleOrder::factory()->count($count)->create();
 
-        // 4. Create dependent ClearSale records (addresses, custom fields, items, order status, payments).
-        ClearsaleAddress::factory()->count($count)->create();
-        ClearsaleCustomField::factory()->count($count)->create();
-        ClearsaleItem::factory()->count($count)->create();
-        ClearsaleOrderStatus::factory()->count($count)->create();
-        ClearsalePayment::factory()->count($count)->create();
+        // // 4. Create dependent ClearSale records (addresses, custom fields, items, order status, payments).
+        // ClearsaleAddress::factory()->count($count)->create();
+        // ClearsaleCustomField::factory()->count($count)->create();
+        // ClearsaleItem::factory()->count($count)->create();
+        // ClearsaleOrderStatus::factory()->count($count)->create();
+        // ClearsalePayment::factory()->count($count)->create();
 
-        // 5. Create Pagarme cards and assign a random customer from the pool.
-        PagarmeCard::factory()->count($count)->make()->each(function ($card) use ($customers) {
-            $card->customer_id = $customers->random()->id;
-            $card->save();
-        });
+        // // 5. Create Pagarme cards and assign a random customer from the pool.
+        // PagarmeCard::factory()->count($count)->make()->each(function ($card) use ($customers) {
+        //     $card->customer_id = $customers->random()->id;
+        //     $card->save();
+        // });
 
-        // 6. Create Pagarme charges.
-        PagarmeCharge::factory()->count($count)->create();
+        // // 6. Create Pagarme charges.
+        // PagarmeCharge::factory()->count($count)->create();
 
-        // 7. Create Pagarme webhook logs.
-        PagarmeWebhookLog::factory()->count($count)->create();
+        // // 7. Create Pagarme webhook logs.
+        // PagarmeWebhookLog::factory()->count($count)->create();
 
-        // 8. Create point transactions (which depend on GamificationPlan, and, se necessário, a relação com User/Customer).
-        PointTransaction::factory()->count($count)->create();
+        // // 8. Create point transactions (which depend on GamificationPlan, and, se necessário, a relação com User/Customer).
+        // PointTransaction::factory()->count($count)->create();
     }
 }

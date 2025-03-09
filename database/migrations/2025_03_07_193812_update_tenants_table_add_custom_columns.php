@@ -34,11 +34,6 @@ class UpdateTenantsTableAddCustomColumns extends Migration
     public function up(): void
     {
         Schema::table('tenants', function (Blueprint $table) {
-            // Add a column for the tenant's name.
-            $table->string('name', 150)
-                  ->after('id')
-                  ->comment('Name of the tenant (store name)');
-
             // Add a column for the tenant's subscription plan.
             $table->string('plan', 50)
                   ->after('name')
@@ -55,16 +50,6 @@ class UpdateTenantsTableAddCustomColumns extends Migration
                   ->after('currency')
                   ->default('default')
                   ->comment('Theme for the Filament admin panel');
-
-            // Add columns for integration API keys.
-            $table->string('pagarme_api_key', 100)
-                  ->nullable()
-                  ->after('filament_theme')
-                  ->comment('API key for Pagar.me integration');
-            $table->string('clearsale_api_key', 100)
-                  ->nullable()
-                  ->after('pagarme_api_key')
-                  ->comment('API key for ClearSale integration');
         });
     }
 

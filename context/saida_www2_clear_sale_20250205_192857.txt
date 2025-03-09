@@ -1,0 +1,1110 @@
+
+
+==================================================
+Elemento #1
+==================================================
+
+API Docs
+Integration Flow
+The diagrams below represent the communication flow between the client and ClearSale systems.
+
+Diagram 1 - Process flow It is important to note that the process defined as Purchase Conclusion refers to the order status within the ecommerce store due to a decision returned by ClearSale. Whether the purchase is deceitful depends on the status according to the Status List.
+
+
+Diagram 2 – Request Sequence
+[IMAGEM]: https://www2.clear.sale/hs-fs/hubfs/Screen%20Shot%202021-09-22%20at%2019.19.01.png?width=939&name=Screen%20Shot%202021-09-22%20at%2019.19.01.png
+[IMAGEM]: https://www2.clear.sale/hs-fs/hubfs/Screen%20Shot%202021-09-22%20at%2019.19.14.png?width=939&name=Screen%20Shot%202021-09-22%20at%2019.19.14.png
+
+==================================================
+Elemento #2
+==================================================
+
+Methods
+
+==================================================
+Elemento #3
+==================================================
+
+Authentication
+All requests submitted to the ClearSale API must be authorized by an authenticated user. You will need an ApiKey, Client ID and Client Secret. If the user approves, ClearSale provides your application with an access token.
+
+==================================================
+Elemento #4
+==================================================
+
+Login
+Signature: ResponseAuth Login(RequestAuth credentials)
+
+EndPoint: https://integration.clear.sale/api/auth/login
+SandBox: https://sandbox.clear.sale/api/auth/login
+Header: analysisLocation
+HTTP Method: POST
+
+==================================================
+Elemento #5
+==================================================
+
+Logout
+Signature: void Logout(RequestAuth credentials)
+
+EndPoint: https://integration.clear.sale/api/auth/logout
+SandBox: https://sandbox.clear.sale/api/auth/logout
+Header: analysisLocation
+HTTP Method: POST
+
+==================================================
+Elemento #6
+==================================================
+
+Order
+
+==================================================
+Elemento #7
+==================================================
+
+Send
+This address will send the orders to be analyzed by ClearSale.
+
+ResponseSend Send(RequestSend responseSend)
+
+EndPoint: https://integration.clear.sale/api/order/send
+SandBox: https://sandbox.clear.sale/api/order/send
+Header: analysisLocation
+HTTP Method: POST
+
+==================================================
+Elemento #8
+==================================================
+
+Get
+ResponseGet Get(RequestGet responseGet)
+
+EndPoint: https://integration.clear.sale/api/order/get
+SandBox: https://sandbox.clear.sale/api/order/get
+Header: analysisLocation
+HTTP Method: POST
+
+==================================================
+Elemento #9
+==================================================
+
+Update
+void Update(RequestUpdate responseUpdate)
+
+EndPoint: https://integration.clear.sale/api/order/updatestatus
+SandBox: https://sandbox.clear.sale/api/order/updatestatus
+Header: analysisLocation
+HTTP Method: PUT
+
+==================================================
+Elemento #10
+==================================================
+
+Status Update Webhook
+The status update webhook is another available option to receive the status orders whose status was AMA, i.e., orders that were not in a final status.
+As soon as a decision is made regarding an order (either approved or denied), the system can be configured to actively send (post) the new status to an endpoint.
+The endpoint should be implemented to receive the object OrderStatus via POST in JSON format (Content type: application/json).
+The API Key is included as clearsale-apikey header in all webhook requests.
+
+==================================================
+Elemento #11
+==================================================
+
+Error Handling
+The ClearSale Integration API uses HTTP response codes to indicate failure of request.
+The responses include a message (ErrorMessage) detailing the nature of the error.
+  Http Code Description
+400 An error that resulted from the provided information.
+403 Invalid or Expired Token
+500 Internal Error
+ 
+
+==================================================
+Elemento #12
+==================================================
+
+Device Fingerprint
+
+==================================================
+Elemento #13
+==================================================
+
+Overview
+Device Fingerprint is JavaScript code that collects and analyzes public information about a user’s device. By using this feature, it is possible to identify whether the device and its transaction history are already known to ClearSale.
+For further information regarding Device Fingerprint or Behavior Analytics Implementation please see https://www2.clear.sale/docs/behavior-analytics#introduction-section
+
+==================================================
+Elemento #14
+==================================================
+
+Mapper
+
+==================================================
+Elemento #15
+==================================================
+
+Mandatory Mapper Implementation
+
+==================================================
+Elemento #16
+==================================================
+
+Objective
+ClearSale's Mapper is a script developed in JavaScript that responsible for monitoring the environment and interactions and recognizing navigation behavior patterns.
+
+==================================================
+Elemento #17
+==================================================
+
+Script Deployment
+  The script must be included on each page where there are visits.
+The script must be included just before </body> tag.
+  
+         <script>
+        (function (a, b, c, d, e, f, g) {
+        a['CsdmObject'] = e; a[e] = a[e] || function () {
+        (a[e].q = a[e].q || []).push(arguments) 
+        }, a[e].l = 1 * new Date(); f = b.createElement(c),
+        g = b.getElementsByTagName(c)[0]; f.async = 1; f.src = d; g.parentNode.insertBefore(f, g)
+        })(window, document, 'script', '//device.clearsale.com.br/m/cs.js', 'csdm');
+        csdm('app', 'APP_ID'); 
+        </script>
+        
+
+==================================================
+Elemento #18
+==================================================
+
+Page Identification
+For better monitoring, navigation and analysis, it is important to be able to identify some pages, as this increases our accuracy. Thus, whenever possible, we strongly recommend using List of page types whenever possible.
+The use of a <meta> tag inserted into the header of your html document is the simplest, and is the recommended way to identify pages. Below is an example of how to implement this homepage identification.
+         <meta name="cs:page" content="home">
+        
+  Below is an example of how to identify a page that allows details (List of page details).
+         <meta name="cs:page" content="product">
+        <meta name="cs:description" content="name=name of my product, sku=123456">
+        
+  Where meta tags cannot be used for some technical reason or asynchronous calls (such as AJAX), we suggest using the manual mode of transmission. To use this mode you need to add one more line to main script. Below is a complete example.
+         <script>
+        (function (a, b, c, d, e, f, g) {
+        a['CsdmObject'] = e; a[e] = a[e] || function () {
+        (a[e].q = a[e].q || []).push(arguments) 
+        }, a[e].l = 1 * new Date(); f = b.createElement(c),
+        g = b.getElementsByTagName(c)[0]; f.async = 1; f.src = d; g.parentNode.insertBefore(f, g)
+        })(window, document, 'script', '//device.clearsale.com.br/m/cs.js', 'csdm');
+        
+        csdm('app', 'APP_ID');
+        csdm('mode', 'manual'); 
+        </script>
+        
+  When the manual mode is enabled, information must be relayed to us using the methods below.
+         <script type="text/javascript">
+        // No identification send. 
+        csdm('send'); 
+        // Page identified send.
+        csdm('send', 'home'); 
+        // Page identified with details send.
+        csdm('send', 'search', 'key-words=Celular 16GB, page-number=2'); 
+        </script>
+        
+ 
+
+==================================================
+Elemento #19
+==================================================
+
+Appendix: Tables and Descriptions
+
+==================================================
+Elemento #20
+==================================================
+
+RequestAuth
+Name Description Type Size Required
+Login   Credentials   Y
+                JSON
+  {
+    "Login":{
+      "ApiKey": "YOUR_API_KEY",
+      "ClientId": "YOUR_CLIENT_ID",
+      "ClientSecret": "YOUR_CLIENT_SECRET"
+    }
+  }          
+    
+
+==================================================
+Elemento #21
+==================================================
+
+ResponseAuth
+Name Description Type Size Required
+Token Access Token AuthToken   Y
+                JSON
+{
+      "Token": {
+        "Value": "VALID_TOKEN",
+        "ExpirationDate": "2022-09-02T01:04:41.4981524+00:00"
+      }
+    } 
+    
+
+==================================================
+Elemento #22
+==================================================
+
+RequestSend
+Name Description Type Size Required
+ApiKey   string   Y
+LoginToken   string   Y
+Orders   Order[]   Y
+AnalysisLocation Location of Analysis ( “BRA” to Brazil and “USA” to United States) string   Y
+                JSON
+{
+    "ApiKey": "YOUR_API_KEY",
+    "LoginToken": "YOUR_TOKEN",
+    "AnalysisLocation": "USA",
+    "Orders": [{
+            "ID": "e421699c-1199-43eb-872a-3ac21268a718",
+            "Date": "2020-06-29T18:23:17+00:00",
+            "Email": "customer@email.com",
+            "TotalItems": 1978.64,
+            "TotalOrder": 1979.64,
+            "TotalShipping": 1.0,
+            "Currency": "USD",
+            "IP": "255.255.255.255",
+            "Origin": "Mobile"
+            "Payments": [{
+                    "Date": "2020-06-29",
+                    "CardType": 2,
+                    "CardExpirationDate": "05/2022",
+                    "Type": 1,
+                    "CardHolderName": "Beatrice Rath",
+                    "CardEndNumber": "1111",
+                    "Amount": 177.12,
+                    "CardBin": "411111"
+                }
+            ],
+            "BillingData": {
+                "ID": "n0kv6qjwgz",
+                "Type": "1",
+                "Name": "Beatrice Rath",
+                "Email": "cardholder@email.com",
+                "LegalDocument": "eq591n0mhb",
+                "Address": {
+                    "AddressLine1": "81344 Laron Islands",
+                    "AddressLine2": "670",
+                    "City": "Gennaroborough",
+                    "State": "Massachusetts",
+                    "ZipCode": "88864-5154",
+                    "Country": "USA"
+                },
+                "Phones": [{
+                        "Type": "0",
+                        "AreaCode": "",
+                        "Number": "550-264-3013 x9985"
+                    }
+                ]
+            },
+            "ShippingData": {
+                "ID": "qz3geap8jh",
+                "Type": "1",
+                "Name": "Beatrice Rath",
+                "Email": "Elnora79@gmail.com",
+                "LegalDocument": "omzpuel6y6",
+                "Address": {
+                    "AddressLine1": "81344 Laron Islands",
+                    "AddressLine2": "670",
+                    "City": "Gennaroborough",
+                    "State": "Massachusetts",
+                    "ZipCode": "88864-5154",
+                    "Country": "USA"
+                },
+                "Phones": [{
+                        "Type": "0",
+                        "AreaCode": "",
+                        "Number": "281-322-2499"
+                    }
+                ]
+            },
+            "Items": [{
+                    "ProductId": "53314260",
+                    "ProductTitle": "Laptop",
+                    "Price": "989.32",
+                    "Quantity": 2,
+                    "Category": "Computers, Books & Music"
+                }
+            ],
+            "CustomFields": [{
+                    "Name": "AVS_RESPONSE",
+                    "Value": "Q",
+                    "Type": 1
+                }, {
+                    "Name": "CVV_RESULT_CODE",
+                    "Value": "M",
+                    "Type": 1
+                }
+            ],
+            "SessionID": "5uzxyqwynx3jrvtpah6lhfyyn2t5y1",
+            "Reanalysis": false,
+        }
+    ]
+}
+
+==================================================
+Elemento #23
+==================================================
+
+ResponseSend
+Name Description Type Size Required
+Orders   OrderStatus[]   Y
+TransactionID   String   Y
+                JSON
+  {
+    "Orders": [ {
+      "ID": "ORDER_ID",
+      "Status": "NVO",
+      "Score": ""
+    } ],
+    "TransactionID": "a9bebb90-b3d3-44ff-9676-595ef2f43773"
+  }
+    
+
+==================================================
+Elemento #24
+==================================================
+
+RequestGet
+Name Description Type Size Required
+ApiKey   String   Y
+LoginToken   String   Y
+Orders   String[]   Y
+AnalysisLocation   String   Y
+                JSON
+  {
+    "ApiKey": "API_KEY",
+    "LoginToken": "TOKEN",
+    "Orders": ["ORDER_ID"],
+    "AnalysisLocation": "USA"
+  }
+    
+
+==================================================
+Elemento #25
+==================================================
+
+ResponseGet
+Name Description Type Size Required
+Orders   OrderStatus[]   Y
+                JSON
+  {
+    "Orders": [{
+      "ID": "ORDER_ID",
+      "Status": "AMA",
+      "Score": "23.9600"
+    }]
+  }
+    
+
+==================================================
+Elemento #26
+==================================================
+
+Credentials
+Name Description Type Size Required
+ApiKey   String   Y
+ClientID   String   Y
+ClientSecret   String   Y
+                JSON
+  {
+    "ApiKey": "YOUR_API_KEY",
+    "ClientId": "YOUR_CLIENT_ID",
+    "ClientSecret": "YOUR_CLIENT_SECRET"
+  }
+    
+
+==================================================
+Elemento #27
+==================================================
+
+RequestUpdate
+Name Description Type Size Required
+ApiKey   String   Y
+LoginToken   String   Y
+ID Order Identification Code; String[]   Y
+STATUS Status to be updated - (Status List) String 3 Y
+                JSON
+  {
+    "ApiKey" : "",
+    "LoginToken” : "",
+    "Id" : "",
+    "Status" : ""
+  }
+    
+    
+
+==================================================
+Elemento #28
+==================================================
+
+AuthToken
+Name Description Type Size Required
+Value Token Value String   Y
+ExpirationDate Token Expiration Date String   Y
+                JSON
+  {
+    "Value": "VALID_TOKEN",
+    "ExpirationDate": "2022-09-02T01:04:41.4981524+00:00"
+  }
+    
+
+==================================================
+Elemento #29
+==================================================
+
+Order
+Name Description Type Size Mandatory
+ID Order Identification Code String 50 Y
+Date Order Date DateTime (yyyy-mm-ddThh:mm:ss)   Y
+Email Order Email String 150 Y
+TotalShipping Shipping Value Decimal (20,4) N
+TotalItems Sum of Items Values Decimal (20,4) Y
+TotalOrder Order Total Value Decimal (20,4) Y
+IP Order Originating IP Address String 50 Y
+Obs Order Comments String 8000 N
+Currency Order Currency String (Currency Codes)    
+Status Order Status (see Incoming Status List*) String 3 N (if not set, default is New)
+Payments Payment Data Payment[]   Y
+ShippingData Shipping Data Person   Y
+BillingData Billing Data Person   Y
+Items Order Items Item[]   Y
+CustomFields Custom Fields CustomFields[]   N
+Reanalysis Indication Whether This Is an Update to an Existing Order Boolean   N
+Origin Order Source String 150 Y
+SessionID Unique session ID generated by the server String 200 Y
+                JSON
+{
+    "ID": "e421699c-1199-43eb-872a-3ac21268a718",
+    "Date": "2020-06-29T18:23:17+00:00",
+    "Email": "customer@email.com",
+    "TotalItems": 1978.64,
+    "TotalOrder": 1979.64,
+    "TotalShipping": 1.0,
+    "Currency": "USD",
+    "IP": "255.255.255.255",
+    "Origin": "Mobile"
+    "Payments": [{
+            "Date": "2020-06-29",
+            "CardType": 2,
+            "CardExpirationDate": "05/2022",
+            "Type": 1,
+            "CardHolderName": "Beatrice Rath",
+            "CardEndNumber": "1111",
+            "Amount": 177.12,
+            "CardBin": "411111"
+        }
+    ],
+    "BillingData": {
+        "ID": "n0kv6qjwgz",
+        "Type": "1",
+        "Name": "Beatrice Rath",
+        "Email": "cardholder@email.com",
+        "LegalDocument": "eq591n0mhb",
+        "Address": {
+            "AddressLine1": "81344 Laron Islands",
+            "AddressLine2": "670",
+            "City": "Gennaroborough",
+            "State": "Massachusetts",
+            "ZipCode": "88864-5154",
+            "Country": "USA"
+        },
+        "Phones": [{
+                "Type": "0",
+                "AreaCode": "",
+                "Number": "550-264-3013 x9985"
+            }
+        ]
+    },
+    "ShippingData": {
+        "ID": "qz3geap8jh",
+        "Type": "1",
+        "Name": "Beatrice Rath",
+        "Email": "Elnora79@gmail.com",
+        "LegalDocument": "omzpuel6y6",
+        "Address": {
+            "AddressLine1": "81344 Laron Islands",
+            "AddressLine2": "670",
+            "City": "Gennaroborough",
+            "State": "Massachusetts",
+            "ZipCode": "88864-5154",
+            "Country": "USA"
+        },
+        "Phones": [{
+                "Type": "0",
+                "AreaCode": "",
+                "Number": "281-322-2499"
+            }
+        ]
+    },
+    "Items": [{
+            "ProductId": "53314260",
+            "ProductTitle": "Laptop",
+            "Price": "989.32",
+            "Quantity": 2,
+            "Category": "Computers, Books & Music"
+        }
+    ],
+    "CustomFields": [{
+            "Name": "AVS_RESPONSE",
+            "Value": "Q",
+            "Type": 1
+        }, {
+            "Name": "CVV_RESULT_CODE",
+            "Value": "M",
+            "Type": 1
+        }
+    ],
+    "SessionID": "5uzxyqwynx3jrvtpah6lhfyyn2t5y1",
+    "Reanalysis": false,
+}
+    
+
+==================================================
+Elemento #30
+==================================================
+
+  OrderStatus
+Name Description Type Size Required
+ID Order ID String   Y
+Status Status of the Order (Status List) String   Y
+Score Order Fraud Score String    
+                JSON
+  {
+    "ID": "ORDER_ID",
+    "Status": "AMA",
+    "Score": "23.9600"
+  }
+    
+
+==================================================
+Elemento #31
+==================================================
+
+Person
+Name Description Type Size Mandatory
+ID Customer ID String 50 Y
+Type Person or Company (See Person or Company) Integer   Y
+Name Customer Name String 500 Y
+BirthDate BirthDate DateTime (yyyy-mm-ddThh:mm:ss)   N
+Email Customer Email String 150 N
+Address   Address   Y
+Phones   Phone[]   Y
+LegalDocument Unique identification number or document of the order's buyer String   N
+                JSON
+  {
+    "ID": "n0kv6qjwgz",
+    "Type": "1",
+    "Name": "Beatrice Rath",
+    "Email": "cardholder@email.com",
+    "LegalDocument": "eq591n0mhb",
+    "Address": {
+      "AddressLine1": "81344 Laron Islands",
+      "AddressLine2": "670",
+      "City": "Gennaroborough",
+      "State": "Massachusetts",
+      "ZipCode": "88864-5154",
+      "Country": "USA"
+    },
+    "Phones": [{
+      "Type": "0",
+      "AreaCode": "",
+      "Number": "550-264-3013"
+    }]
+  }
+    
+
+==================================================
+Elemento #32
+==================================================
+
+Payment
+
+The ClearSale API supports compliance with PCI standards by processing only the necessary credit card data to provide anti-fraud analysis. We will truncate the input if you send more credit card data than we need.
+Name Description Type Size Mandatory
+Date Payment Date DateTime (yyyy-mm-ddThh:mm:ss)   Y
+Amount Payment Value Numeric (20,4) Y
+Type Payment Type (See Payment Method) Integer   Y
+QtyInstallments Number of Installments Integer   N
+CardBin Credit Card BIN (First 6 Digits) String 6 N
+CardEndNumber Last 4 Digits of the Credit Card Number String 4 N
+CardType Credit Card (see Credit Card Type) Integer   N
+CardExpirationDate Expiration Date String 50 N
+CardHolderName Credit Card Holder String 150 N
+Address Credit Card Billing Address Street (No Abbreviations) String 200 N
+Nsu Unique Sequence Number – Credit Card Receipt Number String 50 N
+Currency Currency Code (see Currency Codes) Integer 4 N
+                JSON
+  {
+    "Date": "2020-06-29",
+    "CardType": 2,
+    "CardExpirationDate": "05/2022",
+    "Type": 1,
+    "CardHolderName": "Beatrice Rath",
+    "CardEndNumber": "1111",
+    "Amount": 177.12,
+    "CardBin": "411111"
+  }
+    
+
+==================================================
+Elemento #33
+==================================================
+
+Item
+Name Description Type Size Mandatory
+ID Product ID String 50 Y
+Name Product Name String 150 Y
+ItemValue Unit Price Numeric (20,4) Y
+Qty Quantity Purchased Integer   Y
+Gift Gift Integer   N
+CategoryID Product Category ID Integer   N
+CategoryName Product Category Name String 200 N
+                JSON
+  {
+    "ProductId": "53314260",
+    "ProductTitle": "Laptop",
+    "Price": "989.32",
+    "Quantity": 2,
+    "Category": "Computers, Books & Music"
+  }
+    
+
+==================================================
+Elemento #34
+==================================================
+
+  CustomFields
+Name Description Type Size Mandatory
+Type Custom field type Integer   N
+Name Custom field name String 500 Y
+Value Custom field value String 1000 Y
+                JSON
+  {
+    "Name": "AVS_RESPONSE",
+    "Value": "Q",
+    "Type": 1
+  }
+    
+
+==================================================
+Elemento #35
+==================================================
+
+Address
+Name Description Type Size Mandatory
+AddressLine1 Address Line 1 (No Abbreviations) String 250 N
+AddressLine2 Address Line 2 (No Abbreviations) String 250 N
+City City (No Abbreviations) String 150 Y
+State State String 2 Y
+Country Country (No abbreviations) String 150 N
+ZipCode Zip Code String 10 Y
+                JSON
+  {
+    "AddressLine1": "81344 Laron Islands",
+    "AddressLine2": "670",
+    "City": "Gennaroborough",
+    "State": "Massachusetts",
+    "ZipCode": "88864-5154",
+    "Country": "USA"
+  }
+    
+
+==================================================
+Elemento #36
+==================================================
+
+  Phone
+Name Description Type Size Mandatory
+Type Telephone Type (See Telephone Type) Integer 1 Y
+CountryCode Country Code Numeric 3 N
+AreaCode Area Code Numeric 3 Y
+Number Telephone Number Numeric 10 Y
+                JSON
+  {
+    "Type": "0",
+    "AreaCode": "",
+    "Number": "550-264-3013 x9985"
+  }     
+    
+
+==================================================
+Elemento #37
+==================================================
+
+  ErrorMessage
+Name Description Type Size Mandatory
+Message Overview Message Integer 256 Y
+MoedlState Message Details String[,]   N
+                JSON
+  {
+    "Message": "The request is invalid.",
+    "ModelState": {
+      "request.Orders[0]": ["An error has occurred."],
+      "request.Orders[0].Email": ["The Email field is not a valid e-mail address."]
+    }
+  }
+    
+
+==================================================
+Elemento #38
+==================================================
+
+Telephone Type
+Code Description
+0 Undefined
+1 Home Phone
+2 Work Phone
+3 Message
+4 Billing Phone
+5 Temporary Phone
+6 Mobile Phone
+
+==================================================
+Elemento #39
+==================================================
+
+  Person or Company
+Code Description
+1 Person
+2 Company
+
+==================================================
+Elemento #40
+==================================================
+
+  Gender
+Code Description
+M Male
+F Female
+
+==================================================
+Elemento #41
+==================================================
+
+  Payment Method
+Code Description
+1 CREDIT CARD
+2 PAYMENT SLIP
+3 DIRECT DEBIT
+4 AMAZON PAYMENTS
+5 BITCOIN
+6 BANK TRANSFER
+7 APPLE PAY
+8 CHECK
+9 CASH
+10 FINANCING
+11 INVOICE
+12 COUPOM
+13 PAYPAL
+14 OTHER
+15 ALIPAY
+16 GOOGLE PAY
+17 WALLET
+18 GIFTCARD
+19 VIRTUAL CREDIT CARD
+
+==================================================
+Elemento #42
+==================================================
+
+  Credit Card Type
+Code Description
+1 Diners
+2 MasterCard
+3 Visa
+4 Others
+5 American Express
+6 HiperCard
+7 Aura
+
+==================================================
+Elemento #43
+==================================================
+
+  Identification Document Type
+Code Description
+1 BR = CPF
+2 ARG = DNI
+3 CO = Cedula
+4 CHI = RUT
+5 Passport
+6 CTPS
+7 Voter ID Card
+
+==================================================
+Elemento #44
+==================================================
+
+  Status List
+Code Description
+APA Automatic Approval – The order was automatically approved according to the rules defined.
+APM Manual Approval – The order was manually approved by a risk analyst
+RPM Declined – The order was manually declined due to the inability to establish contact with the customer
+AMA Manual Analysis – the order was sent to a manual analysis queue.
+ERR Error – An error occurred during the integration. It is necessary to analyze the XML and resend after fixing it.
+NVO New Order – The order was imported successfully and was not yet classified.
+SUS Fraud Suspicion – The order was denied due to a suspicion of fraud, usually based on contact with the customer or behavior registered in the ClearSale database.
+CAN Customer Asked for Cancellation– The customer asked an analyst to cancel the purchase
+FRD Confirmed Fraud – The order was analyzed and, following the established contact, the credit card company confirmed fraud or the owner of the credit card denied awareness of the purchase.
+RPA Automatically Declined – The order was declined due to a high risk profile
+RPP Denied by Policy – The order was denied due to a policy defined by ClearSale or the client.
+APG Awaiting Payment – The order was approved by the first step analysis and can be submitted to the payment gateway
+  Incoming Status List*
+
+*Attention: If an order is sent with a status, the order will be saved as history and will not be analyzed by ClearSale. Only orders with a status of 0 (NVO) or with no status will by analyzed
+  Status Description
+NVO New
+APM Approved
+CAN Cancelled by Client
+RPM Denied
+CBN Notify a chargeback
+PGA Payment Approved
+PGR Payment Denied
+
+==================================================
+Elemento #45
+==================================================
+
+  Currency Codes
+Currency Alphabetic Code Numeric Code
+ADB Unit of Account XUA 965
+Afghani AFN 971
+Algerian Dinar DZD 12
+Argentine Peso ARS 32
+Armenian Dram AMD 51
+Aruban Florin AWG 533
+Australian Dollar AUD 36
+Azerbaijanian Manat AZN 944
+Bahamian Dollar BSD 44
+Bahraini Dinar BHD 48
+Baht THB 764
+Balboa PAB 590
+Barbados Dollar BBD 52
+Belarussian Ruble BYR 974
+Belize Dollar BZD 84
+Bermudian Dollar BMD 60
+Bolivar Fuerte VEF 937
+Boliviano BOB 68
+Bond Markets Unit European Composite Unit (EURCO) XBA 955
+Bond Markets Unit European Monetary Unit (E.M.U.-6) XBB 956
+Bond Markets Unit European Unit of Account 17 (E.U.A.-17) XBD 958
+Bond Markets Unit European Unit of Account 9 (E.U.A.-9) XBC 957
+Brazilian Real BRL 986
+Brunei Dollar BND 96
+Bulgarian Lev BGN 975
+Burundi Franc BIF 108
+Canadian Dollar CAD 124
+Cape Verde Escudo CVE 132
+Cayman Islands Dollar KYD 136
+CFA Franc BCEAO XOF 952
+CFA Franc BEAC XAF 950
+CFP Franc XPF 953
+Chilean Peso CLP 152
+Codes Specifically Reserved for Testing Purposes XTS 963
+Colombian Peso COP 170
+Comoro Franc KMF 174
+Congolese Franc CDF 976
+Convertible Mark BAM 977
+Cordoba Oro NIO 558
+Costa Rican Colon CRC 188
+Croatian Kuna HRK 191
+Cuban Peso CUP 192
+Czech Koruna CZK 203
+Dalasi GMD 270
+Danish Krone DKK 208
+Denar MKD 807
+Djibouti Franc DJF 262
+Dobra STD 678
+Dominican Peso DOP 214
+Dong VND 704
+East Caribbean Dollar XCD 951
+Egyptian Pound EGP 818
+El Salvador Colon SVC 222
+Ethiopian Birr ETB 230
+Euro EUR 978
+Falkland Islands Pound FKP 238
+Fiji Dollar FJD 242
+Forint HUF 348
+Ghana Cedi GHS 936
+Gibraltar Pound GIP 292
+Gold XAU 959
+Gourde HTG 332
+Guarani PYG 600
+Guinea Franc GNF 324
+Guyana Dollar GYD 328
+Hong Kong Dollar HKD 344
+Hryvnia UAH 980
+Iceland Krona ISK 352
+Indian Rupee INR 356
+Iranian Rial IRR 364
+Iraqi Dinar IQD 368
+Jamaican Dollar JMD 388
+Jordanian Dinar JOD 400
+Kenyan Shilling KES 404
+Kina PGK 598
+Kip LAK 418
+Kuwaiti Dinar KWD 414
+Kwacha MWK 454
+Kwanza AOA 973
+Kyat MMK 104
+Lari GEL 981
+Latvian Lats LVL 428
+Lebanese Pound LBP 422
+Lek ALL 8
+Lempira HNL 340
+Leone SLL 694
+Liberian Dollar LRD 430
+Libyan Dinar LYD 434
+Lilangeni SZL 748
+Lithuanian Litas LTL 440
+Loti LSL 426
+Malagasy Ariary MGA 969
+Malaysian Ringgit MYR 458
+Mauritius Rupee MUR 480
+Mexican Peso MXN 484
+Mexican Unidad de Inversion (UDI) MXV 979
+Moldovan Leu MDL 498
+Moroccan Dirham MAD 504
+Mozambique Metical MZN 943
+Mvdol BOV 984
+Naira NGN 566
+Nakfa ERN 232
+Namibia Dollar NAD 516
+Nepalese Rupee NPR 524
+Netherlands Antillean Guilder ANG 532
+New Israeli Sheqel ILS 376
+New Romanian Leu RON 946
+New Taiwan Dollar TWD 901
+New Zealand Dollar NZD 554
+Ngultrum BTN 64
+No Universal Currency    
+North Korean Won KPW 408
+Norwegian Krone NOK 578
+Nuevo Sol PEN 604
+Ouguiya MRO 478
+Pa’anga TOP 776
+Pakistan Rupee PKR 586
+Palladium XPD 964
+Pataca MOP 446
+Peso Convertible CUC 931
+Peso Uruguayo UYU 858
+Philippine Peso PHP 608
+Platinum XPT 962
+Pound Sterling GBP 826
+Pula BWP 72
+Qatari Rial QAR 634
+Quetzal GTQ 320
+Rand ZAR 710
+Rial Omani OMR 512
+Riel KHR 116
+Rufiyaa MVR 462
+Rupiah IDR 360
+Russian Ruble RUB 643
+Rwanda Franc RWF 646
+Saint Helena Pound SHP 654
+Saudi Riyal SAR 682
+SDR (Special Drawing Right) XDR 960
+Serbian Dinar RSD 941
+Seychelles Rupee SCR 690
+Silver XAG 961
+Singapore Dollar SGD 702
+Solomon Islands Dollar SBD 90
+Som KGS 417
+Somali Shilling SOS 706
+Somoni TJS 972
+South Sudanese Pound SSP 728
+Sri Lanka Rupee LKR 144
+Sucre XSU 994
+Sudanese Pound SDG 938
+Surinam Dollar SRD 968
+Swedish Krona SEK 752
+Swiss Franc CHF 756
+Syrian Pound SYP 760
+Taka BDT 50
+Tala WST 882
+Tanzanian Shilling TZS 834
+Tenge KZT 398
+The Codes Assigned for Transactions Where No Currency Is Involved XXX 999
+Trinidad and Tobago Dollar TTD 780
+Tugrik MNT 496
+Tunisian Dinar TND 788
+Turkish Lira TRY 949
+Turkmenistan New Manat TMT 934
+UAE Dirham AED 784
+Uganda Shilling UGX 800
+UIC Franc XFU Nil
+Unidad de Valor Real COU 970
+Unidades de fomento CLF 990
+Uruguay Peso en Unidades Indexadas (URUIURUI) UYI 940
+US Dollar USD 840
+US Dollar (Next Day) USN 997
+US Dollar (Same Day) USS 998
+Uzbekistan Sum UZS 860
+Vatu VUV 548
+WIR Euro CHE 947
+WIR Franc CHW 948
+Won KRW 410
+Yemeni Rial YER 886
+Yen JPY 392
+Yuan Renminbi CNY 156
+Zambian Kwacha ZMK 894
+Zimbabwe Dollar ZWL 932
+Zloty PLN 985
+
+==================================================
+Elemento #46
+==================================================
+
+  List Types
+ID Description
+1 Undefined
+2 Baby Shower
+3 Wedding List
+4 Wish list
+5 Anniversary/Birthday List
+6 Bridal Shower
+
+==================================================
+Elemento #47
+==================================================
+
+  List of Page Types
+Code Description
+home The initial or main web page of a website.
+category Page with a list of products in a given category.
+search Search results page.
+product Product description page.
+cart Shopping cart page
+create-account Creating account page
+edit-account Editing account page
+password-reset Password reset page
+login-fail Login failed
+contact-us Contact page
+checkout Checkout page
+purchaseconfirmation Purchase Confirmation
+
+==================================================
+Elemento #48
+==================================================
+
+  List of Page Details
+Code Keyword Description
+product name Product name
+sku Product SKU
+search keywords Search keywords
+page number Search page number
+from The origin of a flight ticket search
+to The destination of a flight ticket search
+departure Departure date for a flight ticket search
+return Return date from a flight ticket search
+purchase confirmation code Purchase ID
+payment type Payment method (credit card, debit card, deposit, bank transfer, PayPal, other)

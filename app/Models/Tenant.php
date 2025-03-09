@@ -25,6 +25,14 @@ class Tenant extends BaseTenant implements TenantWithDatabase
 {
     use HasFactory, HasDatabase, HasDomains;
 
+    // Adicione campos específicos do Tenant aqui
+    protected $fillable = [
+        'id',
+        'name',
+        'domain',
+        'data',
+    ];
+
     /**
      * Get the list of custom columns that should be stored as individual columns.
      *
@@ -38,8 +46,6 @@ class Tenant extends BaseTenant implements TenantWithDatabase
             'plan',
             'currency',
             'filament_theme',
-            'pagarme_api_key',
-            'clearsale_api_key',
         ];
     }
 }

@@ -10,6 +10,7 @@
         "filament/filament": "^3.2",
         "laravel/framework": "^12.0",
         "laravel/horizon": "^5.30",
+        "laravel/passport": "^12.4",
         "laravel/pulse": "^1.4",
         "laravel/sanctum": "^4.0",
         "laravel/socialite": "^5.18",
@@ -18,6 +19,7 @@
         "livewire/flux": "^2.0",
         "livewire/volt": "^1.6.7",
         "pagarme/pagarme-php-sdk": "^6.8",
+        "spatie/laravel-permission": "^6.16",
         "stancl/tenancy": "^3.9"
     },
     "require-dev": {

@@ -26,18 +26,18 @@ class TenantSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create 20 tenants using the factory.
-        Tenant::factory()->count(20)->create()->each(function ($tenant) {
-            // Assign a domain based on the tenant's id.
-            $tenant->domains()->create([
-                                           'domain' => $tenant->id . '.localhost',
-                                       ]);
+//         // Create 20 tenants using the factory.
+//         Tenant::factory()->count(20)->create()->each(function ($tenant) {
+//             // Assign a domain based on the tenant's id.
+//             $tenant->domains()->create([
+//                                            'domain' => $tenant->id . '.localhost',
+//                                        ]);
 
-            // Run tenant-specific seeders within the tenant's database context.
-//            $tenant->run(function () {
-//                // Instantiate and run the TenantDataSeeder.
-//                new TenantDataSeeder()->run();
-//            });
-        });
+//             // Run tenant-specific seeders within the tenant's database context.
+// //            $tenant->run(function () {
+// //                // Instantiate and run the TenantDataSeeder.
+// //                new TenantDataSeeder()->run();
+// //            });
+        // });
     }
 }

@@ -1,0 +1,5403 @@
+
+# Basic Authentication
+
+
+
+Documentation for accessing and setting credentials for httpBasic.
+
+## Auth Credentials
+
+| Name | Type | Description | Setter | Getter |
+|  --- | --- | --- | --- | --- |
+| BasicAuthUserName | `string` | The username to use with basic authentication | `username` | `getBasicAuthUserName()` |
+| BasicAuthPassword | `string` | The password to use with basic authentication | `password` | `getBasicAuthPassword()` |
+
+
+
+**Note:** Auth credentials can be set using `BasicAuthCredentialsBuilder::init()` in `basicAuthCredentials` method in the client builder and accessed through `getBasicAuthCredentials` method in the client instance.
+
+## Usage Example
+
+### Client Initialization
+
+You must provide credentials in the client as shown in the following code snippet.
+
+```php
+$client = PagarmeApiSDKClientBuilder::init()
+    ->basicAuthCredentials(
+        BasicAuthCredentialsBuilder::init(
+            'BasicAuthUserName',
+            'BasicAuthPassword'
+        )
+    )
+    ->build();
+```
+
+# Balance Operations
+
+```php
+$balanceOperationsController = $client->getBalanceOperationsController();
+```
+
+## Class Name
+
+`BalanceOperationsController`
+
+## Methods
+
+* [Get Balance Operation by Id](../../doc/controllers/balance-operations.md#get-balance-operation-by-id)
+* [Get Balance Operations](../../doc/controllers/balance-operations.md#get-balance-operations)
+
+
+# Get Balance Operation by Id
+
+```php
+function getBalanceOperationById(int $id): GetBalanceOperationResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `int` | Template, Required | - |
+
+## Response Type
+
+[`GetBalanceOperationResponse`](../../doc/models/get-balance-operation-response.md)
+
+## Example Usage
+
+```php
+$id = 112;
+
+$result = $balanceOperationsController->getBalanceOperationById($id);
+```
+
+
+# Get Balance Operations
+
+```php
+function getBalanceOperations(
+    ?string $status = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null,
+    ?string $recipientId = null
+): ListBalanceOperationResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `status` | `?string` | Query, Optional | - |
+| `createdSince` | `?DateTime` | Query, Optional | - |
+| `createdUntil` | `?DateTime` | Query, Optional | - |
+| `recipientId` | `?string` | Query, Optional | - |
+
+## Response Type
+
+[`ListBalanceOperationResponse`](../../doc/models/list-balance-operation-response.md)
+
+## Example Usage
+
+```php
+$result = $balanceOperationsController->getBalanceOperations();
+```
+# Charges
+
+```php
+$chargesController = $client->getChargesController();
+```
+
+## Class Name
+
+`ChargesController`
+
+## Methods
+
+* [Update Charge Metadata](../../doc/controllers/charges.md#update-charge-metadata)
+* [Capture Charge](../../doc/controllers/charges.md#capture-charge)
+* [Get Charge](../../doc/controllers/charges.md#get-charge)
+* [Confirm Payment](../../doc/controllers/charges.md#confirm-payment)
+* [Get Charge Transactions](../../doc/controllers/charges.md#get-charge-transactions)
+* [Update Charge Card](../../doc/controllers/charges.md#update-charge-card)
+* [Create Charge](../../doc/controllers/charges.md#create-charge)
+* [Update Charge Payment Method](../../doc/controllers/charges.md#update-charge-payment-method)
+* [Update Charge Due Date](../../doc/controllers/charges.md#update-charge-due-date)
+* [Get Charges Summary](../../doc/controllers/charges.md#get-charges-summary)
+* [Retry Charge](../../doc/controllers/charges.md#retry-charge)
+* [Get Charges](../../doc/controllers/charges.md#get-charges)
+* [Cancel Charge](../../doc/controllers/charges.md#cancel-charge)
+
+
+# Update Charge Metadata
+
+Updates the metadata from a charge
+
+```php
+function updateChargeMetadata(
+    string $chargeId,
+    UpdateMetadataRequest $request,
+    ?string $idempotencyKey = null
+): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | The charge id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the charge metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $chargesController->updateChargeMetadata(
+    $chargeId,
+    $request
+);
+```
+
+
+# Capture Charge
+
+Captures a charge
+
+```php
+function captureCharge(
+    string $chargeId,
+    ?CreateCaptureChargeRequest $request = null,
+    ?string $idempotencyKey = null
+): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `request` | [`?CreateCaptureChargeRequest`](../../doc/models/create-capture-charge-request.md) | Body, Optional | Request for capturing a charge |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$result = $chargesController->captureCharge($chargeId);
+```
+
+
+# Get Charge
+
+Get a charge from its id
+
+```php
+function getCharge(string $chargeId): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$result = $chargesController->getCharge($chargeId);
+```
+
+
+# Confirm Payment
+
+```php
+function confirmPayment(
+    string $chargeId,
+    ?CreateConfirmPaymentRequest $request = null,
+    ?string $idempotencyKey = null
+): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | - |
+| `request` | [`?CreateConfirmPaymentRequest`](../../doc/models/create-confirm-payment-request.md) | Body, Optional | Request for confirm payment |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$result = $chargesController->confirmPayment($chargeId);
+```
+
+
+# Get Charge Transactions
+
+```php
+function getChargeTransactions(
+    string $chargeId,
+    ?int $page = null,
+    ?int $size = null
+): ListChargeTransactionsResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge Id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+
+## Response Type
+
+[`ListChargeTransactionsResponse`](../../doc/models/list-charge-transactions-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$result = $chargesController->getChargeTransactions($chargeId);
+```
+
+
+# Update Charge Card
+
+Updates the card from a charge
+
+```php
+function updateChargeCard(
+    string $chargeId,
+    UpdateChargeCardRequest $request,
+    ?string $idempotencyKey = null
+): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `request` | [`UpdateChargeCardRequest`](../../doc/models/update-charge-card-request.md) | Body, Required | Request for updating a charge's card |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$request = UpdateChargeCardRequestBuilder::init(
+    false,
+    'card_id2',
+    CreateCardRequestBuilder::init()
+        ->type('credit')
+        ->build(),
+    false
+)->build();
+
+$result = $chargesController->updateChargeCard(
+    $chargeId,
+    $request
+);
+```
+
+
+# Create Charge
+
+Creates a new charge
+
+```php
+function createCharge(CreateChargeRequest $request, ?string $idempotencyKey = null): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `request` | [`CreateChargeRequest`](../../doc/models/create-charge-request.md) | Body, Required | Request for creating a charge |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$request = CreateChargeRequestBuilder::init(
+    242,
+    CreatePaymentRequestBuilder::init(
+        'payment_method4'
+    )->build(),
+    'order_id0'
+)->build();
+
+$result = $chargesController->createCharge($request);
+```
+
+
+# Update Charge Payment Method
+
+Updates a charge's payment method
+
+```php
+function updateChargePaymentMethod(
+    string $chargeId,
+    UpdateChargePaymentMethodRequest $request,
+    ?string $idempotencyKey = null
+): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `request` | [`UpdateChargePaymentMethodRequest`](../../doc/models/update-charge-payment-method-request.md) | Body, Required | Request for updating the payment method from a charge |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$request = UpdateChargePaymentMethodRequestBuilder::init(
+    false,
+    'payment_method4',
+    CreateCreditCardPaymentRequestBuilder::init()
+        ->installments(1)
+        ->capture(true)
+        ->recurrencyCycle('"first" or "subsequent"')
+        ->build(),
+    CreateDebitCardPaymentRequestBuilder::init()->build(),
+    CreateBoletoPaymentRequestBuilder::init(
+        226,
+        'instructions2',
+        CreateAddressRequestBuilder::init(
+            'street8',
+            'number4',
+            'zip_code2',
+            'neighborhood4',
+            'city2',
+            'state6',
+            'country2',
+            'complement6',
+            'line_18',
+            'line_26'
+        )->build(),
+        'document_number6',
+        'statement_descriptor0'
+    )->build(),
+    CreateVoucherPaymentRequestBuilder::init()
+        ->recurrencyCycle('"first" or "subsequent"')
+        ->build(),
+    CreateCashPaymentRequestBuilder::init(
+        'description0',
+        false
+    )->build(),
+    CreateBankTransferPaymentRequestBuilder::init(
+        'bank0',
+        236
+    )->build(),
+    CreatePrivateLabelPaymentRequestBuilder::init()
+        ->installments(1)
+        ->capture(true)
+        ->recurrencyCycle('"first" or "subsequent"')
+        ->build()
+)->build();
+
+$result = $chargesController->updateChargePaymentMethod(
+    $chargeId,
+    $request
+);
+```
+
+
+# Update Charge Due Date
+
+Updates the due date from a charge
+
+```php
+function updateChargeDueDate(
+    string $chargeId,
+    UpdateChargeDueDateRequest $request,
+    ?string $idempotencyKey = null
+): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge Id |
+| `request` | [`UpdateChargeDueDateRequest`](../../doc/models/update-charge-due-date-request.md) | Body, Required | Request for updating the due date |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$request = UpdateChargeDueDateRequestBuilder::init()->build();
+
+$result = $chargesController->updateChargeDueDate(
+    $chargeId,
+    $request
+);
+```
+
+
+# Get Charges Summary
+
+```php
+function getChargesSummary(
+    string $status,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null
+): GetChargesSummaryResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `status` | `string` | Query, Required | - |
+| `createdSince` | `?DateTime` | Query, Optional | - |
+| `createdUntil` | `?DateTime` | Query, Optional | - |
+
+## Response Type
+
+[`GetChargesSummaryResponse`](../../doc/models/get-charges-summary-response.md)
+
+## Example Usage
+
+```php
+$status = 'status8';
+
+$result = $chargesController->getChargesSummary($status);
+```
+
+
+# Retry Charge
+
+Retries a charge
+
+```php
+function retryCharge(string $chargeId, ?string $idempotencyKey = null): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$result = $chargesController->retryCharge($chargeId);
+```
+
+
+# Get Charges
+
+Lists all charges
+
+```php
+function getCharges(
+    ?int $page = null,
+    ?int $size = null,
+    ?string $code = null,
+    ?string $status = null,
+    ?string $paymentMethod = null,
+    ?string $customerId = null,
+    ?string $orderId = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null
+): ListChargesResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `code` | `?string` | Query, Optional | Filter for charge's code |
+| `status` | `?string` | Query, Optional | Filter for charge's status |
+| `paymentMethod` | `?string` | Query, Optional | Filter for charge's payment method |
+| `customerId` | `?string` | Query, Optional | Filter for charge's customer id |
+| `orderId` | `?string` | Query, Optional | Filter for charge's order id |
+| `createdSince` | `?DateTime` | Query, Optional | Filter for the beginning of the range for charge's creation |
+| `createdUntil` | `?DateTime` | Query, Optional | Filter for the end of the range for charge's creation |
+
+## Response Type
+
+[`ListChargesResponse`](../../doc/models/list-charges-response.md)
+
+## Example Usage
+
+```php
+$result = $chargesController->getCharges();
+```
+
+
+# Cancel Charge
+
+Cancel a charge
+
+```php
+function cancelCharge(
+    string $chargeId,
+    ?CreateCancelChargeRequest $request = null,
+    ?string $idempotencyKey = null
+): GetChargeResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `chargeId` | `string` | Template, Required | Charge id |
+| `request` | [`?CreateCancelChargeRequest`](../../doc/models/create-cancel-charge-request.md) | Body, Optional | Request for cancelling a charge |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetChargeResponse`](../../doc/models/get-charge-response.md)
+
+## Example Usage
+
+```php
+$chargeId = 'charge_id8';
+
+$result = $chargesController->cancelCharge($chargeId);
+```
+# Customers
+
+```php
+$customersController = $client->getCustomersController();
+```
+
+## Class Name
+
+`CustomersController`
+
+## Methods
+
+* [Create Address](../../doc/controllers/customers.md#create-address)
+* [Update Card](../../doc/controllers/customers.md#update-card)
+* [Delete Access Token](../../doc/controllers/customers.md#delete-access-token)
+* [Create Customer](../../doc/controllers/customers.md#create-customer)
+* [Delete Access Tokens](../../doc/controllers/customers.md#delete-access-tokens)
+* [Update Address](../../doc/controllers/customers.md#update-address)
+* [Get Address](../../doc/controllers/customers.md#get-address)
+* [Delete Address](../../doc/controllers/customers.md#delete-address)
+* [Get Customers](../../doc/controllers/customers.md#get-customers)
+* [Get Access Tokens](../../doc/controllers/customers.md#get-access-tokens)
+* [Delete Card](../../doc/controllers/customers.md#delete-card)
+* [Get Card](../../doc/controllers/customers.md#get-card)
+* [Create Card](../../doc/controllers/customers.md#create-card)
+* [Get Access Token](../../doc/controllers/customers.md#get-access-token)
+* [Get Addresses](../../doc/controllers/customers.md#get-addresses)
+* [Update Customer](../../doc/controllers/customers.md#update-customer)
+* [Create Access Token](../../doc/controllers/customers.md#create-access-token)
+* [Get Cards](../../doc/controllers/customers.md#get-cards)
+* [Renew Card](../../doc/controllers/customers.md#renew-card)
+* [Update Customer Metadata](../../doc/controllers/customers.md#update-customer-metadata)
+* [Get Customer](../../doc/controllers/customers.md#get-customer)
+
+
+# Create Address
+
+Creates a new address for a customer
+
+```php
+function createAddress(
+    string $customerId,
+    CreateAddressRequest $request,
+    ?string $idempotencyKey = null
+): GetAddressResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `request` | [`CreateAddressRequest`](../../doc/models/create-address-request.md) | Body, Required | Request for creating an address |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$request = CreateAddressRequestBuilder::init(
+    'street6',
+    'number4',
+    'zip_code0',
+    'neighborhood2',
+    'city6',
+    'state2',
+    'country0',
+    'complement2',
+    'line_10',
+    'line_24'
+)->build();
+
+$result = $customersController->createAddress(
+    $customerId,
+    $request
+);
+```
+
+
+# Update Card
+
+Updates a card
+
+```php
+function updateCard(
+    string $customerId,
+    string $cardId,
+    UpdateCardRequest $request,
+    ?string $idempotencyKey = null
+): GetCardResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `cardId` | `string` | Template, Required | Card id |
+| `request` | [`UpdateCardRequest`](../../doc/models/update-card-request.md) | Body, Required | Request for updating a card |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$cardId = 'card_id4';
+
+$request = UpdateCardRequestBuilder::init(
+    'holder_name2',
+    10,
+    30,
+    CreateAddressRequestBuilder::init(
+        'street8',
+        'number4',
+        'zip_code2',
+        'neighborhood4',
+        'city2',
+        'state6',
+        'country2',
+        'complement6',
+        'line_18',
+        'line_26'
+    )->build(),
+    [
+        'key0' => 'metadata3'
+    ],
+    'label6'
+)->build();
+
+$result = $customersController->updateCard(
+    $customerId,
+    $cardId,
+    $request
+);
+```
+
+
+# Delete Access Token
+
+Delete a customer's access token
+
+```php
+function deleteAccessToken(
+    string $customerId,
+    string $tokenId,
+    ?string $idempotencyKey = null
+): GetAccessTokenResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `tokenId` | `string` | Template, Required | Token Id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$tokenId = 'token_id6';
+
+$result = $customersController->deleteAccessToken(
+    $customerId,
+    $tokenId
+);
+```
+
+
+# Create Customer
+
+Creates a new customer
+
+```php
+function createCustomer(CreateCustomerRequest $request, ?string $idempotencyKey = null): GetCustomerResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `request` | [`CreateCustomerRequest`](../../doc/models/create-customer-request.md) | Body, Required | Request for creating a customer |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
+
+## Example Usage
+
+```php
+$request = CreateCustomerRequestBuilder::init(
+    'Tony Stark',
+    'email0',
+    'document0',
+    'type4',
+    CreateAddressRequestBuilder::init(
+        'street6',
+        'number4',
+        'zip_code0',
+        'neighborhood2',
+        'city6',
+        'state2',
+        'country0',
+        'complement2',
+        'line_10',
+        'line_24'
+    )->build(),
+    [
+        'key0' => 'metadata3'
+    ],
+    CreatePhonesRequestBuilder::init()->build(),
+    'code4'
+)->build();
+
+$result = $customersController->createCustomer($request);
+```
+
+
+# Delete Access Tokens
+
+Delete a Customer's access tokens
+
+```php
+function deleteAccessTokens(string $customerId): ListAccessTokensResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+
+## Response Type
+
+[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$result = $customersController->deleteAccessTokens($customerId);
+```
+
+
+# Update Address
+
+Updates an address
+
+```php
+function updateAddress(
+    string $customerId,
+    string $addressId,
+    UpdateAddressRequest $request,
+    ?string $idempotencyKey = null
+): GetAddressResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `addressId` | `string` | Template, Required | Address Id |
+| `request` | [`UpdateAddressRequest`](../../doc/models/update-address-request.md) | Body, Required | Request for updating an address |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$addressId = 'address_id0';
+
+$request = UpdateAddressRequestBuilder::init(
+    'number4',
+    'complement2',
+    [
+        'key0' => 'metadata3'
+    ],
+    'line_24'
+)->build();
+
+$result = $customersController->updateAddress(
+    $customerId,
+    $addressId,
+    $request
+);
+```
+
+
+# Get Address
+
+Get a customer's address
+
+```php
+function getAddress(string $customerId, string $addressId): GetAddressResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `addressId` | `string` | Template, Required | Address Id |
+
+## Response Type
+
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$addressId = 'address_id0';
+
+$result = $customersController->getAddress(
+    $customerId,
+    $addressId
+);
+```
+
+
+# Delete Address
+
+Delete a Customer's address
+
+```php
+function deleteAddress(
+    string $customerId,
+    string $addressId,
+    ?string $idempotencyKey = null
+): GetAddressResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `addressId` | `string` | Template, Required | Address Id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetAddressResponse`](../../doc/models/get-address-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$addressId = 'address_id0';
+
+$result = $customersController->deleteAddress(
+    $customerId,
+    $addressId
+);
+```
+
+
+# Get Customers
+
+Get all Customers
+
+```php
+function getCustomers(
+    ?string $name = null,
+    ?string $document = null,
+    ?int $page = 1,
+    ?int $size = 10,
+    ?string $email = null,
+    ?string $code = null
+): ListCustomersResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `name` | `?string` | Query, Optional | Name of the Customer |
+| `document` | `?string` | Query, Optional | Document of the Customer |
+| `page` | `?int` | Query, Optional | Current page the the search<br>**Default**: `1` |
+| `size` | `?int` | Query, Optional | Quantity pages of the search<br>**Default**: `10` |
+| `email` | `?string` | Query, Optional | Customer's email |
+| `code` | `?string` | Query, Optional | Customer's code |
+
+## Response Type
+
+[`ListCustomersResponse`](../../doc/models/list-customers-response.md)
+
+## Example Usage
+
+```php
+$page = 1;
+
+$size = 10;
+
+$result = $customersController->getCustomers(
+    null,
+    null,
+    $page,
+    $size
+);
+```
+
+
+# Get Access Tokens
+
+Get all access tokens from a customer
+
+```php
+function getAccessTokens(string $customerId, ?int $page = null, ?int $size = null): ListAccessTokensResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+
+## Response Type
+
+[`ListAccessTokensResponse`](../../doc/models/list-access-tokens-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$result = $customersController->getAccessTokens($customerId);
+```
+
+
+# Delete Card
+
+Delete a customer's card
+
+```php
+function deleteCard(string $customerId, string $cardId, ?string $idempotencyKey = null): GetCardResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `cardId` | `string` | Template, Required | Card Id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$cardId = 'card_id4';
+
+$result = $customersController->deleteCard(
+    $customerId,
+    $cardId
+);
+```
+
+
+# Get Card
+
+Get a customer's card
+
+```php
+function getCard(string $customerId, string $cardId): GetCardResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `cardId` | `string` | Template, Required | Card id |
+
+## Response Type
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$cardId = 'card_id4';
+
+$result = $customersController->getCard(
+    $customerId,
+    $cardId
+);
+```
+
+
+# Create Card
+
+Creates a new card for a customer
+
+```php
+function createCard(
+    string $customerId,
+    CreateCardRequest $request,
+    ?string $idempotencyKey = null
+): GetCardResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `request` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Body, Required | Request for creating a card |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$request = CreateCardRequestBuilder::init()
+    ->type('credit')
+    ->build();
+
+$result = $customersController->createCard(
+    $customerId,
+    $request
+);
+```
+
+
+# Get Access Token
+
+Get a Customer's access token
+
+```php
+function getAccessToken(string $customerId, string $tokenId): GetAccessTokenResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `tokenId` | `string` | Template, Required | Token Id |
+
+## Response Type
+
+[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$tokenId = 'token_id6';
+
+$result = $customersController->getAccessToken(
+    $customerId,
+    $tokenId
+);
+```
+
+
+# Get Addresses
+
+Gets all adressess from a customer
+
+```php
+function getAddresses(string $customerId, ?int $page = null, ?int $size = null): ListAddressesResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+
+## Response Type
+
+[`ListAddressesResponse`](../../doc/models/list-addresses-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$result = $customersController->getAddresses($customerId);
+```
+
+
+# Update Customer
+
+Updates a customer
+
+```php
+function updateCustomer(
+    string $customerId,
+    UpdateCustomerRequest $request,
+    ?string $idempotencyKey = null
+): GetCustomerResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `request` | [`UpdateCustomerRequest`](../../doc/models/update-customer-request.md) | Body, Required | Request for updating a customer |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$request = UpdateCustomerRequestBuilder::init()->build();
+
+$result = $customersController->updateCustomer(
+    $customerId,
+    $request
+);
+```
+
+
+# Create Access Token
+
+Creates a access token for a customer
+
+```php
+function createAccessToken(
+    string $customerId,
+    CreateAccessTokenRequest $request,
+    ?string $idempotencyKey = null
+): GetAccessTokenResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `request` | [`CreateAccessTokenRequest`](../../doc/models/create-access-token-request.md) | Body, Required | Request for creating a access token |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetAccessTokenResponse`](../../doc/models/get-access-token-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$request = CreateAccessTokenRequestBuilder::init()->build();
+
+$result = $customersController->createAccessToken(
+    $customerId,
+    $request
+);
+```
+
+
+# Get Cards
+
+Get all cards from a customer
+
+```php
+function getCards(string $customerId, ?int $page = null, ?int $size = null): ListCardsResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+
+## Response Type
+
+[`ListCardsResponse`](../../doc/models/list-cards-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$result = $customersController->getCards($customerId);
+```
+
+
+# Renew Card
+
+Renew a card
+
+```php
+function renewCard(string $customerId, string $cardId, ?string $idempotencyKey = null): GetCardResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer id |
+| `cardId` | `string` | Template, Required | Card Id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetCardResponse`](../../doc/models/get-card-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$cardId = 'card_id4';
+
+$result = $customersController->renewCard(
+    $customerId,
+    $cardId
+);
+```
+
+
+# Update Customer Metadata
+
+Updates the metadata a customer
+
+```php
+function updateCustomerMetadata(
+    string $customerId,
+    UpdateMetadataRequest $request,
+    ?string $idempotencyKey = null
+): GetCustomerResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | The customer id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the customer metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $customersController->updateCustomerMetadata(
+    $customerId,
+    $request
+);
+```
+
+
+# Get Customer
+
+Get a customer
+
+```php
+function getCustomer(string $customerId): GetCustomerResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `customerId` | `string` | Template, Required | Customer Id |
+
+## Response Type
+
+[`GetCustomerResponse`](../../doc/models/get-customer-response.md)
+
+## Example Usage
+
+```php
+$customerId = 'customer_id8';
+
+$result = $customersController->getCustomer($customerId);
+```
+# Invoices
+
+```php
+$invoicesController = $client->getInvoicesController();
+```
+
+## Class Name
+
+`InvoicesController`
+
+## Methods
+
+* [Get Invoices](../../doc/controllers/invoices.md#get-invoices)
+* [Cancel Invoice](../../doc/controllers/invoices.md#cancel-invoice)
+* [Update Invoice Status](../../doc/controllers/invoices.md#update-invoice-status)
+* [Update Invoice Metadata](../../doc/controllers/invoices.md#update-invoice-metadata)
+* [Get Partial Invoice](../../doc/controllers/invoices.md#get-partial-invoice)
+* [Create Invoice](../../doc/controllers/invoices.md#create-invoice)
+* [Get Invoice](../../doc/controllers/invoices.md#get-invoice)
+
+
+# Get Invoices
+
+Gets all invoices
+
+```php
+function getInvoices(
+    ?int $page = null,
+    ?int $size = null,
+    ?string $code = null,
+    ?string $customerId = null,
+    ?string $subscriptionId = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null,
+    ?string $status = null,
+    ?\DateTime $dueSince = null,
+    ?\DateTime $dueUntil = null,
+    ?string $customerDocument = null
+): ListInvoicesResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `code` | `?string` | Query, Optional | Filter for Invoice's code |
+| `customerId` | `?string` | Query, Optional | Filter for Invoice's customer id |
+| `subscriptionId` | `?string` | Query, Optional | Filter for Invoice's subscription id |
+| `createdSince` | `?DateTime` | Query, Optional | Filter for Invoice's creation date start range |
+| `createdUntil` | `?DateTime` | Query, Optional | Filter for Invoices creation date end range |
+| `status` | `?string` | Query, Optional | Filter for Invoice's status |
+| `dueSince` | `?DateTime` | Query, Optional | Filter for Invoice's due date start range |
+| `dueUntil` | `?DateTime` | Query, Optional | Filter for Invoice's due date end range |
+| `customerDocument` | `?string` | Query, Optional | - |
+
+## Response Type
+
+[`ListInvoicesResponse`](../../doc/models/list-invoices-response.md)
+
+## Example Usage
+
+```php
+$result = $invoicesController->getInvoices();
+```
+
+
+# Cancel Invoice
+
+Cancels an invoice
+
+```php
+function cancelInvoice(string $invoiceId, ?string $idempotencyKey = null): GetInvoiceResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoiceId` | `string` | Template, Required | Invoice id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```php
+$invoiceId = 'invoice_id0';
+
+$result = $invoicesController->cancelInvoice($invoiceId);
+```
+
+
+# Update Invoice Status
+
+Updates the status from an invoice
+
+```php
+function updateInvoiceStatus(
+    string $invoiceId,
+    UpdateInvoiceStatusRequest $request,
+    ?string $idempotencyKey = null
+): GetInvoiceResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoiceId` | `string` | Template, Required | Invoice Id |
+| `request` | [`UpdateInvoiceStatusRequest`](../../doc/models/update-invoice-status-request.md) | Body, Required | Request for updating an invoice's status |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```php
+$invoiceId = 'invoice_id0';
+
+$request = UpdateInvoiceStatusRequestBuilder::init(
+    'status8'
+)->build();
+
+$result = $invoicesController->updateInvoiceStatus(
+    $invoiceId,
+    $request
+);
+```
+
+
+# Update Invoice Metadata
+
+Updates the metadata from an invoice
+
+```php
+function updateInvoiceMetadata(
+    string $invoiceId,
+    UpdateMetadataRequest $request,
+    ?string $idempotencyKey = null
+): GetInvoiceResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoiceId` | `string` | Template, Required | The invoice id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the invoice metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```php
+$invoiceId = 'invoice_id0';
+
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $invoicesController->updateInvoiceMetadata(
+    $invoiceId,
+    $request
+);
+```
+
+
+# Get Partial Invoice
+
+```php
+function getPartialInvoice(string $subscriptionId): GetInvoiceResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$result = $invoicesController->getPartialInvoice($subscriptionId);
+```
+
+
+# Create Invoice
+
+Create an Invoice
+
+```php
+function createInvoice(
+    string $subscriptionId,
+    string $cycleId,
+    ?CreateInvoiceRequest $request = null,
+    ?string $idempotencyKey = null
+): GetInvoiceResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `cycleId` | `string` | Template, Required | Cycle Id |
+| `request` | [`?CreateInvoiceRequest`](../../doc/models/create-invoice-request.md) | Body, Optional | - |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$cycleId = 'cycle_id6';
+
+$result = $invoicesController->createInvoice(
+    $subscriptionId,
+    $cycleId
+);
+```
+
+
+# Get Invoice
+
+Gets an invoice
+
+```php
+function getInvoice(string $invoiceId): GetInvoiceResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `invoiceId` | `string` | Template, Required | Invoice Id |
+
+## Response Type
+
+[`GetInvoiceResponse`](../../doc/models/get-invoice-response.md)
+
+## Example Usage
+
+```php
+$invoiceId = 'invoice_id0';
+
+$result = $invoicesController->getInvoice($invoiceId);
+```
+# Orders
+
+```php
+$ordersController = $client->getOrdersController();
+```
+
+## Class Name
+
+`OrdersController`
+
+## Methods
+
+* [Delete All Order Items](../../doc/controllers/orders.md#delete-all-order-items)
+* [Get Order Item](../../doc/controllers/orders.md#get-order-item)
+* [Update Order Metadata](../../doc/controllers/orders.md#update-order-metadata)
+* [Delete Order Item](../../doc/controllers/orders.md#delete-order-item)
+* [Get Order](../../doc/controllers/orders.md#get-order)
+* [Get Orders](../../doc/controllers/orders.md#get-orders)
+* [Update Order Item](../../doc/controllers/orders.md#update-order-item)
+* [Close Order](../../doc/controllers/orders.md#close-order)
+* [Create Order](../../doc/controllers/orders.md#create-order)
+* [Create Order Item](../../doc/controllers/orders.md#create-order-item)
+
+
+# Delete All Order Items
+
+```php
+function deleteAllOrderItems(string $orderId, ?string $idempotencyKey = null): GetOrderResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order Id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderResponse`](../../doc/models/get-order-response.md)
+
+## Example Usage
+
+```php
+$orderId = 'orderId2';
+
+$result = $ordersController->deleteAllOrderItems($orderId);
+```
+
+
+# Get Order Item
+
+```php
+function getOrderItem(string $orderId, string $itemId): GetOrderItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order Id |
+| `itemId` | `string` | Template, Required | Item Id |
+
+## Response Type
+
+[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
+
+## Example Usage
+
+```php
+$orderId = 'orderId2';
+
+$itemId = 'itemId8';
+
+$result = $ordersController->getOrderItem(
+    $orderId,
+    $itemId
+);
+```
+
+
+# Update Order Metadata
+
+Updates the metadata from an order
+
+```php
+function updateOrderMetadata(
+    string $orderId,
+    UpdateMetadataRequest $request,
+    ?string $idempotencyKey = null
+): GetOrderResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | The order id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the order metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderResponse`](../../doc/models/get-order-response.md)
+
+## Example Usage
+
+```php
+$orderId = 'order_id6';
+
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $ordersController->updateOrderMetadata(
+    $orderId,
+    $request
+);
+```
+
+
+# Delete Order Item
+
+```php
+function deleteOrderItem(string $orderId, string $itemId, ?string $idempotencyKey = null): GetOrderItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order Id |
+| `itemId` | `string` | Template, Required | Item Id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
+
+## Example Usage
+
+```php
+$orderId = 'orderId2';
+
+$itemId = 'itemId8';
+
+$result = $ordersController->deleteOrderItem(
+    $orderId,
+    $itemId
+);
+```
+
+
+# Get Order
+
+Gets an order
+
+```php
+function getOrder(string $orderId): GetOrderResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order id |
+
+## Response Type
+
+[`GetOrderResponse`](../../doc/models/get-order-response.md)
+
+## Example Usage
+
+```php
+$orderId = 'order_id6';
+
+$result = $ordersController->getOrder($orderId);
+```
+
+
+# Get Orders
+
+Gets all orders
+
+```php
+function getOrders(
+    ?int $page = null,
+    ?int $size = null,
+    ?string $code = null,
+    ?string $status = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null,
+    ?string $customerId = null
+): ListOrderResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `code` | `?string` | Query, Optional | Filter for order's code |
+| `status` | `?string` | Query, Optional | Filter for order's status |
+| `createdSince` | `?DateTime` | Query, Optional | Filter for order's creation date start range |
+| `createdUntil` | `?DateTime` | Query, Optional | Filter for order's creation date end range |
+| `customerId` | `?string` | Query, Optional | Filter for order's customer id |
+
+## Response Type
+
+[`ListOrderResponse`](../../doc/models/list-order-response.md)
+
+## Example Usage
+
+```php
+$result = $ordersController->getOrders();
+```
+
+
+# Update Order Item
+
+```php
+function updateOrderItem(
+    string $orderId,
+    string $itemId,
+    UpdateOrderItemRequest $request,
+    ?string $idempotencyKey = null
+): GetOrderItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order Id |
+| `itemId` | `string` | Template, Required | Item Id |
+| `request` | [`UpdateOrderItemRequest`](../../doc/models/update-order-item-request.md) | Body, Required | Item Model |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
+
+## Example Usage
+
+```php
+$orderId = 'orderId2';
+
+$itemId = 'itemId8';
+
+$request = UpdateOrderItemRequestBuilder::init(
+    242,
+    'description6',
+    100,
+    'category4'
+)->build();
+
+$result = $ordersController->updateOrderItem(
+    $orderId,
+    $itemId,
+    $request
+);
+```
+
+
+# Close Order
+
+```php
+function closeOrder(
+    string $id,
+    UpdateOrderStatusRequest $request,
+    ?string $idempotencyKey = null
+): GetOrderResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `string` | Template, Required | Order Id |
+| `request` | [`UpdateOrderStatusRequest`](../../doc/models/update-order-status-request.md) | Body, Required | Update Order Model |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderResponse`](../../doc/models/get-order-response.md)
+
+## Example Usage
+
+```php
+$id = 'id0';
+
+$request = UpdateOrderStatusRequestBuilder::init(
+    'status8'
+)->build();
+
+$result = $ordersController->closeOrder(
+    $id,
+    $request
+);
+```
+
+
+# Create Order
+
+Creates a new Order
+
+```php
+function createOrder(CreateOrderRequest $body, ?string $idempotencyKey = null): GetOrderResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreateOrderRequest`](../../doc/models/create-order-request.md) | Body, Required | Request for creating an order |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderResponse`](../../doc/models/get-order-response.md)
+
+## Example Usage
+
+```php
+$body = CreateOrderRequestBuilder::init(
+    [
+        CreateOrderItemRequestBuilder::init(
+            164,
+            'description2',
+            22,
+            'category6'
+        )->build()
+    ],
+    CreateCustomerRequestBuilder::init(
+        'Tony Stark',
+        'email6',
+        'document6',
+        'type0',
+        CreateAddressRequestBuilder::init(
+            'street6',
+            'number4',
+            'zip_code0',
+            'neighborhood2',
+            'city6',
+            'state2',
+            'country0',
+            'complement2',
+            'line_10',
+            'line_24'
+        )->build(),
+        [
+            'key0' => 'metadata3'
+        ],
+        CreatePhonesRequestBuilder::init()->build(),
+        'code8'
+    )->build(),
+    [
+        CreatePaymentRequestBuilder::init(
+            'payment_method8'
+        )->build()
+    ],
+    'code4',
+    true
+)->build();
+
+$result = $ordersController->createOrder($body);
+```
+
+
+# Create Order Item
+
+```php
+function createOrderItem(
+    string $orderId,
+    CreateOrderItemRequest $request,
+    ?string $idempotencyKey = null
+): GetOrderItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `orderId` | `string` | Template, Required | Order Id |
+| `request` | [`CreateOrderItemRequest`](../../doc/models/create-order-item-request.md) | Body, Required | Order Item Model |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetOrderItemResponse`](../../doc/models/get-order-item-response.md)
+
+## Example Usage
+
+```php
+$orderId = 'orderId2';
+
+$request = CreateOrderItemRequestBuilder::init(
+    242,
+    'description6',
+    100,
+    'category4'
+)->build();
+
+$result = $ordersController->createOrderItem(
+    $orderId,
+    $request
+);
+```
+# Payables
+
+```php
+$payablesController = $client->getPayablesController();
+```
+
+## Class Name
+
+`PayablesController`
+
+## Methods
+
+* [Get Payables](../../doc/controllers/payables.md#get-payables)
+* [Get Payable by Id](../../doc/controllers/payables.md#get-payable-by-id)
+
+
+# Get Payables
+
+```php
+function getPayables(
+    ?string $type = null,
+    ?string $splitId = null,
+    ?string $bulkAnticipationId = null,
+    ?int $installment = null,
+    ?string $status = null,
+    ?string $recipientId = null,
+    ?int $amount = null,
+    ?string $chargeId = null,
+    ?string $paymentDateUntil = null,
+    ?\DateTime $paymentDateSince = null,
+    ?\DateTime $updatedUntil = null,
+    ?\DateTime $updatedSince = null,
+    ?\DateTime $createdUntil = null,
+    ?\DateTime $createdSince = null,
+    ?string $liquidationArrangementId = null,
+    ?int $page = null,
+    ?int $size = null,
+    ?int $gatewayId = null
+): ListPayablesResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `type` | `?string` | Query, Optional | - |
+| `splitId` | `?string` | Query, Optional | - |
+| `bulkAnticipationId` | `?string` | Query, Optional | - |
+| `installment` | `?int` | Query, Optional | - |
+| `status` | `?string` | Query, Optional | - |
+| `recipientId` | `?string` | Query, Optional | - |
+| `amount` | `?int` | Query, Optional | - |
+| `chargeId` | `?string` | Query, Optional | - |
+| `paymentDateUntil` | `?string` | Query, Optional | - |
+| `paymentDateSince` | `?DateTime` | Query, Optional | - |
+| `updatedUntil` | `?DateTime` | Query, Optional | - |
+| `updatedSince` | `?DateTime` | Query, Optional | - |
+| `createdUntil` | `?DateTime` | Query, Optional | - |
+| `createdSince` | `?DateTime` | Query, Optional | - |
+| `liquidationArrangementId` | `?string` | Query, Optional | - |
+| `page` | `?int` | Query, Optional | - |
+| `size` | `?int` | Query, Optional | - |
+| `gatewayId` | `?int` | Query, Optional | - |
+
+## Response Type
+
+[`ListPayablesResponse`](../../doc/models/list-payables-response.md)
+
+## Example Usage
+
+```php
+$result = $payablesController->getPayables();
+```
+
+
+# Get Payable by Id
+
+```php
+function getPayableById(int $id): GetPayableResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `int` | Template, Required | - |
+
+## Response Type
+
+[`GetPayableResponse`](../../doc/models/get-payable-response.md)
+
+## Example Usage
+
+```php
+$id = 112;
+
+$result = $payablesController->getPayableById($id);
+```
+# Plans
+
+```php
+$plansController = $client->getPlansController();
+```
+
+## Class Name
+
+`PlansController`
+
+## Methods
+
+* [Get Plan](../../doc/controllers/plans.md#get-plan)
+* [Delete Plan Item](../../doc/controllers/plans.md#delete-plan-item)
+* [Update Plan Metadata](../../doc/controllers/plans.md#update-plan-metadata)
+* [Create Plan](../../doc/controllers/plans.md#create-plan)
+* [Update Plan](../../doc/controllers/plans.md#update-plan)
+* [Delete Plan](../../doc/controllers/plans.md#delete-plan)
+* [Get Plans](../../doc/controllers/plans.md#get-plans)
+* [Update Plan Item](../../doc/controllers/plans.md#update-plan-item)
+* [Create Plan Item](../../doc/controllers/plans.md#create-plan-item)
+* [Get Plan Item](../../doc/controllers/plans.md#get-plan-item)
+
+
+# Get Plan
+
+Gets a plan
+
+```php
+function getPlan(string $planId): GetPlanResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `planId` | `string` | Template, Required | Plan id |
+
+## Response Type
+
+[`GetPlanResponse`](../../doc/models/get-plan-response.md)
+
+## Example Usage
+
+```php
+$planId = 'plan_id8';
+
+$result = $plansController->getPlan($planId);
+```
+
+
+# Delete Plan Item
+
+Removes an item from a plan
+
+```php
+function deletePlanItem(string $planId, string $planItemId, ?string $idempotencyKey = null): GetPlanItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `planId` | `string` | Template, Required | Plan id |
+| `planItemId` | `string` | Template, Required | Plan item id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
+
+## Example Usage
+
+```php
+$planId = 'plan_id8';
+
+$planItemId = 'plan_item_id0';
+
+$result = $plansController->deletePlanItem(
+    $planId,
+    $planItemId
+);
+```
+
+
+# Update Plan Metadata
+
+Updates the metadata from a plan
+
+```php
+function updatePlanMetadata(
+    string $planId,
+    UpdateMetadataRequest $request,
+    ?string $idempotencyKey = null
+): GetPlanResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `planId` | `string` | Template, Required | The plan id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the plan metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetPlanResponse`](../../doc/models/get-plan-response.md)
+
+## Example Usage
+
+```php
+$planId = 'plan_id8';
+
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $plansController->updatePlanMetadata(
+    $planId,
+    $request
+);
+```
+
+
+# Create Plan
+
+Creates a new plan
+
+```php
+function createPlan(CreatePlanRequest $body, ?string $idempotencyKey = null): GetPlanResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreatePlanRequest`](../../doc/models/create-plan-request.md) | Body, Required | Request for creating a plan |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetPlanResponse`](../../doc/models/get-plan-response.md)
+
+## Example Usage
+
+```php
+$body = CreatePlanRequestBuilder::init(
+    'name6',
+    'description4',
+    'statement_descriptor6',
+    [
+        CreatePlanItemRequestBuilder::init(
+            'name8',
+            CreatePricingSchemeRequestBuilder::init(
+                'scheme_type8'
+            )->build(),
+            'id8',
+            'description2'
+        )->build()
+    ],
+    false,
+    [
+        'payment_methods9'
+    ],
+    [
+        207
+    ],
+    'currency6',
+    'interval6',
+    170,
+    [
+        201,
+        200
+    ],
+    'billing_type0',
+    CreatePricingSchemeRequestBuilder::init(
+        'scheme_type8'
+    )->build(),
+    [
+        'key0' => 'metadata7',
+        'key1' => 'metadata8'
+    ]
+)->build();
+
+$result = $plansController->createPlan($body);
+```
+
+
+# Update Plan
+
+Updates a plan
+
+```php
+function updatePlan(string $planId, UpdatePlanRequest $request, ?string $idempotencyKey = null): GetPlanResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `planId` | `string` | Template, Required | Plan id |
+| `request` | [`UpdatePlanRequest`](../../doc/models/update-plan-request.md) | Body, Required | Request for updating a plan |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetPlanResponse`](../../doc/models/get-plan-response.md)
+
+## Example Usage
+
+```php
+$planId = 'plan_id8';
+
+$request = UpdatePlanRequestBuilder::init(
+    'name6',
+    'description6',
+    [
+        151,
+        152
+    ],
+    'statement_descriptor6',
+    'currency6',
+    'interval4',
+    114,
+    [
+        'payment_methods1',
+        'payment_methods0',
+        'payment_methods9'
+    ],
+    'billing_type0',
+    'status8',
+    false,
+    [
+        115
+    ],
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $plansController->updatePlan(
+    $planId,
+    $request
+);
+```
+
+
+# Delete Plan
+
+Deletes a plan
+
+```php
+function deletePlan(string $planId, ?string $idempotencyKey = null): GetPlanResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `planId` | `string` | Template, Required | Plan id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetPlanResponse`](../../doc/models/get-plan-response.md)
+
+## Example Usage
+
+```php
+$planId = 'plan_id8';
+
+$result = $plansController->deletePlan($planId);
+```
+
+
+# Get Plans
+
+Gets all plans
+
+```php
+function getPlans(
+    ?int $page = null,
+    ?int $size = null,
+    ?string $name = null,
+    ?string $status = null,
+    ?string $billingType = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null
+): ListPlansResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `name` | `?string` | Query, Optional | Filter for Plan's name |
+| `status` | `?string` | Query, Optional | Filter for Plan's status |
+| `billingType` | `?string` | Query, Optional | Filter for plan's billing type |
+| `createdSince` | `?DateTime` | Query, Optional | Filter for plan's creation date start range |
+| `createdUntil` | `?DateTime` | Query, Optional | Filter for plan's creation date end range |
+
+## Response Type
+
+[`ListPlansResponse`](../../doc/models/list-plans-response.md)
+
+## Example Usage
+
+```php
+$result = $plansController->getPlans();
+```
+
+
+# Update Plan Item
+
+Updates a plan item
+
+```php
+function updatePlanItem(
+    string $planId,
+    string $planItemId,
+    UpdatePlanItemRequest $body,
+    ?string $idempotencyKey = null
+): GetPlanItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `planId` | `string` | Template, Required | Plan id |
+| `planItemId` | `string` | Template, Required | Plan item id |
+| `body` | [`UpdatePlanItemRequest`](../../doc/models/update-plan-item-request.md) | Body, Required | Request for updating the plan item |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
+
+## Example Usage
+
+```php
+$planId = 'plan_id8';
+
+$planItemId = 'plan_item_id0';
+
+$body = UpdatePlanItemRequestBuilder::init(
+    'name6',
+    'description4',
+    'status2',
+    UpdatePricingSchemeRequestBuilder::init(
+        'scheme_type8',
+        [
+            UpdatePriceBracketRequestBuilder::init(
+                144,
+                174
+            )->build()
+        ]
+    )->build()
+)->build();
+
+$result = $plansController->updatePlanItem(
+    $planId,
+    $planItemId,
+    $body
+);
+```
+
+
+# Create Plan Item
+
+Adds a new item to a plan
+
+```php
+function createPlanItem(
+    string $planId,
+    CreatePlanItemRequest $request,
+    ?string $idempotencyKey = null
+): GetPlanItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `planId` | `string` | Template, Required | Plan id |
+| `request` | [`CreatePlanItemRequest`](../../doc/models/create-plan-item-request.md) | Body, Required | Request for creating a plan item |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
+
+## Example Usage
+
+```php
+$planId = 'plan_id8';
+
+$request = CreatePlanItemRequestBuilder::init(
+    'name6',
+    CreatePricingSchemeRequestBuilder::init(
+        'scheme_type8'
+    )->build(),
+    'id6',
+    'description6'
+)->build();
+
+$result = $plansController->createPlanItem(
+    $planId,
+    $request
+);
+```
+
+
+# Get Plan Item
+
+Gets a plan item
+
+```php
+function getPlanItem(string $planId, string $planItemId): GetPlanItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `planId` | `string` | Template, Required | Plan id |
+| `planItemId` | `string` | Template, Required | Plan item id |
+
+## Response Type
+
+[`GetPlanItemResponse`](../../doc/models/get-plan-item-response.md)
+
+## Example Usage
+
+```php
+$planId = 'plan_id8';
+
+$planItemId = 'plan_item_id0';
+
+$result = $plansController->getPlanItem(
+    $planId,
+    $planItemId
+);
+```
+# Recipients
+
+```php
+$recipientsController = $client->getRecipientsController();
+```
+
+## Class Name
+
+`RecipientsController`
+
+## Methods
+
+* [Update Recipient](../../doc/controllers/recipients.md#update-recipient)
+* [Get Withdraw by Id](../../doc/controllers/recipients.md#get-withdraw-by-id)
+* [Get Recipient](../../doc/controllers/recipients.md#get-recipient)
+* [Get Balance](../../doc/controllers/recipients.md#get-balance)
+* [Get Recipients](../../doc/controllers/recipients.md#get-recipients)
+* [Update Recipient Default Bank Account](../../doc/controllers/recipients.md#update-recipient-default-bank-account)
+* [Get Transfers](../../doc/controllers/recipients.md#get-transfers)
+* [Get Transfer](../../doc/controllers/recipients.md#get-transfer)
+* [Create Withdraw](../../doc/controllers/recipients.md#create-withdraw)
+* [Get Anticipation](../../doc/controllers/recipients.md#get-anticipation)
+* [Update Recipient Transfer Settings](../../doc/controllers/recipients.md#update-recipient-transfer-settings)
+* [Get Recipient by Code](../../doc/controllers/recipients.md#get-recipient-by-code)
+* [Update Automatic Anticipation Settings](../../doc/controllers/recipients.md#update-automatic-anticipation-settings)
+* [Create Transfer](../../doc/controllers/recipients.md#create-transfer)
+* [Create Recipient](../../doc/controllers/recipients.md#create-recipient)
+* [Get Default Recipient](../../doc/controllers/recipients.md#get-default-recipient)
+* [Create Anticipation](../../doc/controllers/recipients.md#create-anticipation)
+* [Get Anticipation Limits](../../doc/controllers/recipients.md#get-anticipation-limits)
+* [Update Recipient Metadata](../../doc/controllers/recipients.md#update-recipient-metadata)
+* [Get Anticipations](../../doc/controllers/recipients.md#get-anticipations)
+* [Get Withdrawals](../../doc/controllers/recipients.md#get-withdrawals)
+* [Create KYC Link](../../doc/controllers/recipients.md#create-kyc-link)
+* [Update Recipient Code](../../doc/controllers/recipients.md#update-recipient-code)
+
+
+# Update Recipient
+
+Updates a recipient
+
+```php
+function updateRecipient(
+    string $recipientId,
+    UpdateRecipientRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateRecipientRequest`](../../doc/models/update-recipient-request.md) | Body, Required | Recipient data |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = UpdateRecipientRequestBuilder::init(
+    'name6',
+    'email0',
+    'description6',
+    'type4',
+    'status8',
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $recipientsController->updateRecipient(
+    $recipientId,
+    $request
+);
+```
+
+
+# Get Withdraw by Id
+
+```php
+function getWithdrawById(string $recipientId, string $withdrawalId): GetWithdrawResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | - |
+| `withdrawalId` | `string` | Template, Required | - |
+
+## Response Type
+
+[`GetWithdrawResponse`](../../doc/models/get-withdraw-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$withdrawalId = 'withdrawal_id2';
+
+$result = $recipientsController->getWithdrawById(
+    $recipientId,
+    $withdrawalId
+);
+```
+
+
+# Get Recipient
+
+Retrieves recipient information
+
+```php
+function getRecipient(string $recipientId): GetRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipiend id |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$result = $recipientsController->getRecipient($recipientId);
+```
+
+
+# Get Balance
+
+Get balance information for a recipient
+
+```php
+function getBalance(string $recipientId): GetBalanceResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+
+## Response Type
+
+[`GetBalanceResponse`](../../doc/models/get-balance-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$result = $recipientsController->getBalance($recipientId);
+```
+
+
+# Get Recipients
+
+Retrieves paginated recipients information
+
+```php
+function getRecipients(?int $page = null, ?int $size = null): ListRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+
+## Response Type
+
+[`ListRecipientResponse`](../../doc/models/list-recipient-response.md)
+
+## Example Usage
+
+```php
+$result = $recipientsController->getRecipients();
+```
+
+
+# Update Recipient Default Bank Account
+
+Updates the default bank account from a recipient
+
+```php
+function updateRecipientDefaultBankAccount(
+    string $recipientId,
+    UpdateRecipientBankAccountRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateRecipientBankAccountRequest`](../../doc/models/update-recipient-bank-account-request.md) | Body, Required | Bank account data |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = UpdateRecipientBankAccountRequestBuilder::init(
+    CreateBankAccountRequestBuilder::init(
+        'holder_name0',
+        'holder_type6',
+        'holder_document8',
+        'bank2',
+        'branch_number0',
+        'account_number4',
+        'account_check_digit0',
+        'type6',
+        [
+            'key0' => 'metadata1',
+            'key1' => 'metadata0'
+        ]
+    )->build(),
+    'bank_transfer'
+)->build();
+
+$result = $recipientsController->updateRecipientDefaultBankAccount(
+    $recipientId,
+    $request
+);
+```
+
+
+# Get Transfers
+
+Gets a paginated list of transfers for the recipient
+
+```php
+function getTransfers(
+    string $recipientId,
+    ?int $page = null,
+    ?int $size = null,
+    ?string $status = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null
+): ListTransferResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `status` | `?string` | Query, Optional | Filter for transfer status |
+| `createdSince` | `?DateTime` | Query, Optional | Filter for start range of transfer creation date |
+| `createdUntil` | `?DateTime` | Query, Optional | Filter for end range of transfer creation date |
+
+## Response Type
+
+[`ListTransferResponse`](../../doc/models/list-transfer-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$result = $recipientsController->getTransfers($recipientId);
+```
+
+
+# Get Transfer
+
+Gets a transfer
+
+```php
+function getTransfer(string $recipientId, string $transferId): GetTransferResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `transferId` | `string` | Template, Required | Transfer id |
+
+## Response Type
+
+[`GetTransferResponse`](../../doc/models/get-transfer-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$transferId = 'transfer_id6';
+
+$result = $recipientsController->getTransfer(
+    $recipientId,
+    $transferId
+);
+```
+
+
+# Create Withdraw
+
+```php
+function createWithdraw(string $recipientId, CreateWithdrawRequest $request): GetWithdrawResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | - |
+| `request` | [`CreateWithdrawRequest`](../../doc/models/create-withdraw-request.md) | Body, Required | - |
+
+## Response Type
+
+[`GetWithdrawResponse`](../../doc/models/get-withdraw-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = CreateWithdrawRequestBuilder::init(
+    242
+)->build();
+
+$result = $recipientsController->createWithdraw(
+    $recipientId,
+    $request
+);
+```
+
+
+# Get Anticipation
+
+Gets an anticipation
+
+```php
+function getAnticipation(string $recipientId, string $anticipationId): GetAnticipationResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `anticipationId` | `string` | Template, Required | Anticipation id |
+
+## Response Type
+
+[`GetAnticipationResponse`](../../doc/models/get-anticipation-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$anticipationId = 'anticipation_id0';
+
+$result = $recipientsController->getAnticipation(
+    $recipientId,
+    $anticipationId
+);
+```
+
+
+# Update Recipient Transfer Settings
+
+```php
+function updateRecipientTransferSettings(
+    string $recipientId,
+    UpdateTransferSettingsRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient Identificator |
+| `request` | [`UpdateTransferSettingsRequest`](../../doc/models/update-transfer-settings-request.md) | Body, Required | - |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = UpdateTransferSettingsRequestBuilder::init(
+    'transfer_enabled2',
+    'transfer_interval6',
+    'transfer_day6'
+)->build();
+
+$result = $recipientsController->updateRecipientTransferSettings(
+    $recipientId,
+    $request
+);
+```
+
+
+# Get Recipient by Code
+
+Retrieves recipient information
+
+```php
+function getRecipientByCode(string $code): GetRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `code` | `string` | Template, Required | Recipient code |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$code = 'code8';
+
+$result = $recipientsController->getRecipientByCode($code);
+```
+
+
+# Update Automatic Anticipation Settings
+
+Updates recipient metadata
+
+```php
+function updateAutomaticAnticipationSettings(
+    string $recipientId,
+    UpdateAutomaticAnticipationSettingsRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateAutomaticAnticipationSettingsRequest`](../../doc/models/update-automatic-anticipation-settings-request.md) | Body, Required | Metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = UpdateAutomaticAnticipationSettingsRequestBuilder::init()->build();
+
+$result = $recipientsController->updateAutomaticAnticipationSettings(
+    $recipientId,
+    $request
+);
+```
+
+
+# Create Transfer
+
+Creates a transfer for a recipient
+
+```php
+function createTransfer(
+    string $recipientId,
+    CreateTransferRequest $request,
+    ?string $idempotencyKey = null
+): GetTransferResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient Id |
+| `request` | [`CreateTransferRequest`](../../doc/models/create-transfer-request.md) | Body, Required | Transfer data |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetTransferResponse`](../../doc/models/get-transfer-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = CreateTransferRequestBuilder::init(
+    242,
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $recipientsController->createTransfer(
+    $recipientId,
+    $request
+);
+```
+
+
+# Create Recipient
+
+Creates a new recipient
+
+```php
+function createRecipient(CreateRecipientRequest $request, ?string $idempotencyKey = null): GetRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `request` | [`CreateRecipientRequest`](../../doc/models/create-recipient-request.md) | Body, Required | Recipient data |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$request = CreateRecipientRequestBuilder::init(
+    CreateBankAccountRequestBuilder::init(
+        'holder_name4',
+        'holder_type0',
+        'holder_document2',
+        'bank6',
+        'branch_number4',
+        'account_number8',
+        'account_check_digit4',
+        'type2',
+        [
+            'key0' => 'metadata5',
+            'key1' => 'metadata4',
+            'key2' => 'metadata3'
+        ]
+    )->build(),
+    [
+        'key0' => 'metadata3'
+    ],
+    'code4',
+    'bank_transfer'
+)->build();
+
+$result = $recipientsController->createRecipient($request);
+```
+
+
+# Get Default Recipient
+
+```php
+function getDefaultRecipient(): GetRecipientResponse
+```
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$result = $recipientsController->getDefaultRecipient();
+```
+
+
+# Create Anticipation
+
+Creates an anticipation
+
+```php
+function createAnticipation(
+    string $recipientId,
+    CreateAnticipationRequest $request,
+    ?string $idempotencyKey = null
+): GetAnticipationResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`CreateAnticipationRequest`](../../doc/models/create-anticipation-request.md) | Body, Required | Anticipation data |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetAnticipationResponse`](../../doc/models/get-anticipation-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = CreateAnticipationRequestBuilder::init(
+    242,
+    'timeframe8',
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)->build();
+
+$result = $recipientsController->createAnticipation(
+    $recipientId,
+    $request
+);
+```
+
+
+# Get Anticipation Limits
+
+Gets the anticipation limits for a recipient
+
+```php
+function getAnticipationLimits(
+    string $recipientId,
+    string $timeframe,
+    \DateTime $paymentDate
+): GetAnticipationLimitResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `timeframe` | `string` | Query, Required | Timeframe |
+| `paymentDate` | `DateTime` | Query, Required | Anticipation payment date |
+
+## Response Type
+
+[`GetAnticipationLimitResponse`](../../doc/models/get-anticipation-limit-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$timeframe = 'timeframe2';
+
+$paymentDate = DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z');
+
+$result = $recipientsController->getAnticipationLimits(
+    $recipientId,
+    $timeframe,
+    $paymentDate
+);
+```
+
+
+# Update Recipient Metadata
+
+Updates recipient metadata
+
+```php
+function updateRecipientMetadata(
+    string $recipientId,
+    UpdateMetadataRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $recipientsController->updateRecipientMetadata(
+    $recipientId,
+    $request
+);
+```
+
+
+# Get Anticipations
+
+Retrieves a paginated list of anticipations from a recipient
+
+```php
+function getAnticipations(
+    string $recipientId,
+    ?int $page = null,
+    ?int $size = null,
+    ?string $status = null,
+    ?string $timeframe = null,
+    ?\DateTime $paymentDateSince = null,
+    ?\DateTime $paymentDateUntil = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null
+): ListAnticipationResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `status` | `?string` | Query, Optional | Filter for anticipation status |
+| `timeframe` | `?string` | Query, Optional | Filter for anticipation timeframe |
+| `paymentDateSince` | `?DateTime` | Query, Optional | Filter for start range for anticipation payment date |
+| `paymentDateUntil` | `?DateTime` | Query, Optional | Filter for end range for anticipation payment date |
+| `createdSince` | `?DateTime` | Query, Optional | Filter for start range for anticipation creation date |
+| `createdUntil` | `?DateTime` | Query, Optional | Filter for end range for anticipation creation date |
+
+## Response Type
+
+[`ListAnticipationResponse`](../../doc/models/list-anticipation-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$result = $recipientsController->getAnticipations($recipientId);
+```
+
+
+# Get Withdrawals
+
+Gets a paginated list of transfers for the recipient
+
+```php
+function getWithdrawals(
+    string $recipientId,
+    ?int $page = null,
+    ?int $size = null,
+    ?string $status = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null
+): ListWithdrawals
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | - |
+| `page` | `?int` | Query, Optional | - |
+| `size` | `?int` | Query, Optional | - |
+| `status` | `?string` | Query, Optional | - |
+| `createdSince` | `?DateTime` | Query, Optional | - |
+| `createdUntil` | `?DateTime` | Query, Optional | - |
+
+## Response Type
+
+[`ListWithdrawals`](../../doc/models/list-withdrawals.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$result = $recipientsController->getWithdrawals($recipientId);
+```
+
+
+# Create KYC Link
+
+Create a KYC link
+
+```php
+function createKYCLink(string $recipientId): CreateKYCLinkResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+
+## Response Type
+
+[`CreateKYCLinkResponse`](../../doc/models/create-kyc-link-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$result = $recipientsController->createKYCLink($recipientId);
+```
+
+
+# Update Recipient Code
+
+Updates recipient code
+
+```php
+function updateRecipientCode(
+    string $recipientId,
+    UpdateRecipientCodeRequest $request,
+    ?string $idempotencyKey = null
+): GetRecipientResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `recipientId` | `string` | Template, Required | Recipient id |
+| `request` | [`UpdateRecipientCodeRequest`](../../doc/models/update-recipient-code-request.md) | Body, Required | UpdateRecipientCodeRequest |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetRecipientResponse`](../../doc/models/get-recipient-response.md)
+
+## Example Usage
+
+```php
+$recipientId = 'recipient_id0';
+
+$request = UpdateRecipientCodeRequestBuilder::init(
+    'code4'
+)->build();
+
+$result = $recipientsController->updateRecipientCode(
+    $recipientId,
+    $request
+);
+```
+# Subscriptions
+
+```php
+$subscriptionsController = $client->getSubscriptionsController();
+```
+
+## Class Name
+
+`SubscriptionsController`
+
+## Methods
+
+* [Update Subscription Card](../../doc/controllers/subscriptions.md#update-subscription-card)
+* [Create Discount](../../doc/controllers/subscriptions.md#create-discount)
+* [Update Subscription Billing Date](../../doc/controllers/subscriptions.md#update-subscription-billing-date)
+* [Update Subscription Start At](../../doc/controllers/subscriptions.md#update-subscription-start-at)
+* [Get Subscription](../../doc/controllers/subscriptions.md#get-subscription)
+* [Get Usages](../../doc/controllers/subscriptions.md#get-usages)
+* [Update Latest Period End At](../../doc/controllers/subscriptions.md#update-latest-period-end-at)
+* [Delete Discount](../../doc/controllers/subscriptions.md#delete-discount)
+* [Update Subscription Payment Method](../../doc/controllers/subscriptions.md#update-subscription-payment-method)
+* [Cancel Subscription](../../doc/controllers/subscriptions.md#cancel-subscription)
+* [Create Subscription](../../doc/controllers/subscriptions.md#create-subscription)
+* [Update Subscription Affiliation Id](../../doc/controllers/subscriptions.md#update-subscription-affiliation-id)
+* [Update Subscription Minium Price](../../doc/controllers/subscriptions.md#update-subscription-minium-price)
+* [Get Subscription Cycle by Id](../../doc/controllers/subscriptions.md#get-subscription-cycle-by-id)
+* [Get Usage Report](../../doc/controllers/subscriptions.md#get-usage-report)
+* [Renew Subscription](../../doc/controllers/subscriptions.md#renew-subscription)
+* [Delete Usage](../../doc/controllers/subscriptions.md#delete-usage)
+* [Create an Usage](../../doc/controllers/subscriptions.md#create-an-usage)
+* [Update Current Cycle Status](../../doc/controllers/subscriptions.md#update-current-cycle-status)
+* [Get Subscription Item](../../doc/controllers/subscriptions.md#get-subscription-item)
+* [Get Increment by Id](../../doc/controllers/subscriptions.md#get-increment-by-id)
+* [Delete Increment](../../doc/controllers/subscriptions.md#delete-increment)
+* [Get Discounts](../../doc/controllers/subscriptions.md#get-discounts)
+* [Update Subscription Due Days](../../doc/controllers/subscriptions.md#update-subscription-due-days)
+* [Create Subscription Item](../../doc/controllers/subscriptions.md#create-subscription-item)
+* [Update Split Subscription](../../doc/controllers/subscriptions.md#update-split-subscription)
+* [Get Subscription Items](../../doc/controllers/subscriptions.md#get-subscription-items)
+* [Get Subscriptions](../../doc/controllers/subscriptions.md#get-subscriptions)
+* [Create Increment](../../doc/controllers/subscriptions.md#create-increment)
+* [Create Usage](../../doc/controllers/subscriptions.md#create-usage)
+* [Get Discount by Id](../../doc/controllers/subscriptions.md#get-discount-by-id)
+* [Update Subscription Metadata](../../doc/controllers/subscriptions.md#update-subscription-metadata)
+* [Get Subscription Cycles](../../doc/controllers/subscriptions.md#get-subscription-cycles)
+* [Delete Subscription Item](../../doc/controllers/subscriptions.md#delete-subscription-item)
+* [Get Increments](../../doc/controllers/subscriptions.md#get-increments)
+* [Update Subscription Item](../../doc/controllers/subscriptions.md#update-subscription-item)
+
+
+# Update Subscription Card
+
+Updates the credit card from a subscription
+
+```php
+function updateSubscriptionCard(
+    string $subscriptionId,
+    UpdateSubscriptionCardRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `request` | [`UpdateSubscriptionCardRequest`](../../doc/models/update-subscription-card-request.md) | Body, Required | Request for updating a card |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateSubscriptionCardRequestBuilder::init(
+    CreateCardRequestBuilder::init()
+        ->type('credit')
+        ->build(),
+    'card_id2'
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionCard(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Create Discount
+
+Creates a discount
+
+```php
+function createDiscount(
+    string $subscriptionId,
+    CreateDiscountRequest $request,
+    ?string $idempotencyKey = null
+): GetDiscountResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `request` | [`CreateDiscountRequest`](../../doc/models/create-discount-request.md) | Body, Required | Request for creating a discount |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = CreateDiscountRequestBuilder::init(
+    185.28,
+    'discount_type4',
+    'item_id6'
+)->build();
+
+$result = $subscriptionsController->createDiscount(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Update Subscription Billing Date
+
+Updates the billing date from a subscription
+
+```php
+function updateSubscriptionBillingDate(
+    string $subscriptionId,
+    UpdateSubscriptionBillingDateRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `request` | [`UpdateSubscriptionBillingDateRequest`](../../doc/models/update-subscription-billing-date-request.md) | Body, Required | Request for updating the subscription billing date |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateSubscriptionBillingDateRequestBuilder::init(
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionBillingDate(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Update Subscription Start At
+
+Updates the start at date from a subscription
+
+```php
+function updateSubscriptionStartAt(
+    string $subscriptionId,
+    UpdateSubscriptionStartAtRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `request` | [`UpdateSubscriptionStartAtRequest`](../../doc/models/update-subscription-start-at-request.md) | Body, Required | Request for updating the subscription start date |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateSubscriptionStartAtRequestBuilder::init(
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionStartAt(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Get Subscription
+
+Gets a subscription
+
+```php
+function getSubscription(string $subscriptionId): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$result = $subscriptionsController->getSubscription($subscriptionId);
+```
+
+
+# Get Usages
+
+Lists all usages from a subscription item
+
+```php
+function getUsages(
+    string $subscriptionId,
+    string $itemId,
+    ?int $page = null,
+    ?int $size = null,
+    ?string $code = null,
+    ?string $group = null,
+    ?\DateTime $usedSince = null,
+    ?\DateTime $usedUntil = null
+): ListUsagesResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `itemId` | `string` | Template, Required | The subscription item id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `code` | `?string` | Query, Optional | Identification code in the client system |
+| `group` | `?string` | Query, Optional | Identification group in the client system |
+| `usedSince` | `?DateTime` | Query, Optional | - |
+| `usedUntil` | `?DateTime` | Query, Optional | - |
+
+## Response Type
+
+[`ListUsagesResponse`](../../doc/models/list-usages-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$itemId = 'item_id0';
+
+$result = $subscriptionsController->getUsages(
+    $subscriptionId,
+    $itemId
+);
+```
+
+
+# Update Latest Period End At
+
+```php
+function updateLatestPeriodEndAt(
+    string $subscriptionId,
+    UpdateCurrentCycleEndDateRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | - |
+| `request` | [`UpdateCurrentCycleEndDateRequest`](../../doc/models/update-current-cycle-end-date-request.md) | Body, Required | Request for updating the end date of the current signature cycle |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateCurrentCycleEndDateRequestBuilder::init()->build();
+
+$result = $subscriptionsController->updateLatestPeriodEndAt(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Delete Discount
+
+Deletes a discount
+
+```php
+function deleteDiscount(
+    string $subscriptionId,
+    string $discountId,
+    ?string $idempotencyKey = null
+): GetDiscountResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `discountId` | `string` | Template, Required | Discount Id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$discountId = 'discount_id8';
+
+$result = $subscriptionsController->deleteDiscount(
+    $subscriptionId,
+    $discountId
+);
+```
+
+
+# Update Subscription Payment Method
+
+Updates the payment method from a subscription
+
+```php
+function updateSubscriptionPaymentMethod(
+    string $subscriptionId,
+    UpdateSubscriptionPaymentMethodRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `request` | [`UpdateSubscriptionPaymentMethodRequest`](../../doc/models/update-subscription-payment-method-request.md) | Body, Required | Request for updating the paymentmethod from a subscription |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateSubscriptionPaymentMethodRequestBuilder::init(
+    'payment_method4',
+    'card_id2',
+    CreateCardRequestBuilder::init()
+        ->type('credit')
+        ->build()
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionPaymentMethod(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Cancel Subscription
+
+Cancels a subscription
+
+```php
+function cancelSubscription(
+    string $subscriptionId,
+    ?CreateCancelSubscriptionRequest $request = null,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `request` | [`?CreateCancelSubscriptionRequest`](../../doc/models/create-cancel-subscription-request.md) | Body, Optional | Request for cancelling a subscription |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = CreateCancelSubscriptionRequestBuilder::init(
+    true
+)->build();
+
+$result = $subscriptionsController->cancelSubscription(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Create Subscription
+
+Creates a new subscription
+
+```php
+function createSubscription(
+    CreateSubscriptionRequest $body,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreateSubscriptionRequest`](../../doc/models/create-subscription-request.md) | Body, Required | Request for creating a subscription |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$body = CreateSubscriptionRequestBuilder::init(
+    CreateCustomerRequestBuilder::init(
+        'Tony Stark',
+        'email6',
+        'document6',
+        'type0',
+        CreateAddressRequestBuilder::init(
+            'street6',
+            'number4',
+            'zip_code0',
+            'neighborhood2',
+            'city6',
+            'state2',
+            'country0',
+            'complement2',
+            'line_10',
+            'line_24'
+        )->build(),
+        [
+            'key0' => 'metadata3'
+        ],
+        CreatePhonesRequestBuilder::init()->build(),
+        'code8'
+    )->build(),
+    CreateCardRequestBuilder::init()
+        ->type('credit')
+        ->build(),
+    'code4',
+    'payment_method4',
+    'billing_type0',
+    'statement_descriptor6',
+    'description4',
+    'currency6',
+    'interval6',
+    170,
+    CreatePricingSchemeRequestBuilder::init(
+        'scheme_type8'
+    )->build(),
+    [
+        CreateSubscriptionItemRequestBuilder::init(
+            'description2',
+            CreatePricingSchemeRequestBuilder::init(
+                'scheme_type8'
+            )->build(),
+            'id8',
+            'plan_item_id8',
+            [
+                CreateDiscountRequestBuilder::init(
+                    90.66,
+                    'discount_type2',
+                    'item_id4'
+                )->build()
+            ],
+            'name8'
+        )->build()
+    ],
+    CreateShippingRequestBuilder::init(
+        52,
+        'description6',
+        'recipient_name2',
+        'recipient_phone6',
+        'address_id6',
+        CreateAddressRequestBuilder::init(
+            'street6',
+            'number4',
+            'zip_code0',
+            'neighborhood2',
+            'city6',
+            'state2',
+            'country0',
+            'complement2',
+            'line_10',
+            'line_24'
+        )->build(),
+        'type6'
+    )->build(),
+    [
+        CreateDiscountRequestBuilder::init(
+            90.66,
+            'discount_type2',
+            'item_id4'
+        )->build()
+    ],
+    [
+        'key0' => 'metadata7',
+        'key1' => 'metadata8'
+    ],
+    [
+        CreateIncrementRequestBuilder::init(
+            252.86,
+            'increment_type6',
+            'item_id6'
+        )->build()
+    ]
+)->build();
+
+$result = $subscriptionsController->createSubscription($body);
+```
+
+
+# Update Subscription Affiliation Id
+
+```php
+function updateSubscriptionAffiliationId(
+    string $subscriptionId,
+    UpdateSubscriptionAffiliationIdRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | - |
+| `request` | [`UpdateSubscriptionAffiliationIdRequest`](../../doc/models/update-subscription-affiliation-id-request.md) | Body, Required | Request for updating a subscription affiliation id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateSubscriptionAffiliationIdRequestBuilder::init(
+    'gateway_affiliation_id2'
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionAffiliationId(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Update Subscription Minium Price
+
+Atualização do valor mínimo da assinatura
+
+```php
+function updateSubscriptionMiniumPrice(
+    string $subscriptionId,
+    UpdateSubscriptionMinimumPriceRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `request` | [`UpdateSubscriptionMinimumPriceRequest`](../../doc/models/update-subscription-minimum-price-request.md) | Body, Required | Request da requisição com o valor mínimo que será configurado |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateSubscriptionMinimumPriceRequestBuilder::init()->build();
+
+$result = $subscriptionsController->updateSubscriptionMiniumPrice(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Get Subscription Cycle by Id
+
+```php
+function getSubscriptionCycleById(string $subscriptionId, string $cycleId): GetPeriodResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `cycleId` | `string` | Template, Required | - |
+
+## Response Type
+
+[`GetPeriodResponse`](../../doc/models/get-period-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$cycleId = 'cycleId0';
+
+$result = $subscriptionsController->getSubscriptionCycleById(
+    $subscriptionId,
+    $cycleId
+);
+```
+
+
+# Get Usage Report
+
+```php
+function getUsageReport(string $subscriptionId, string $periodId): GetUsageReportResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription Id |
+| `periodId` | `string` | Template, Required | The period Id |
+
+## Response Type
+
+[`GetUsageReportResponse`](../../doc/models/get-usage-report-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$periodId = 'period_id0';
+
+$result = $subscriptionsController->getUsageReport(
+    $subscriptionId,
+    $periodId
+);
+```
+
+
+# Renew Subscription
+
+```php
+function renewSubscription(string $subscriptionId, ?string $idempotencyKey = null): GetPeriodResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | - |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetPeriodResponse`](../../doc/models/get-period-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$result = $subscriptionsController->renewSubscription($subscriptionId);
+```
+
+
+# Delete Usage
+
+Deletes a usage
+
+```php
+function deleteUsage(
+    string $subscriptionId,
+    string $itemId,
+    string $usageId,
+    ?string $idempotencyKey = null
+): GetUsageResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `itemId` | `string` | Template, Required | The subscription item id |
+| `usageId` | `string` | Template, Required | The usage id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetUsageResponse`](../../doc/models/get-usage-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$itemId = 'item_id0';
+
+$usageId = 'usage_id0';
+
+$result = $subscriptionsController->deleteUsage(
+    $subscriptionId,
+    $itemId,
+    $usageId
+);
+```
+
+
+# Create an Usage
+
+Create Usage
+
+```php
+function createAnUsage(string $subscriptionId, string $itemId, ?string $idempotencyKey = null): GetUsageResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `itemId` | `string` | Template, Required | Item id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetUsageResponse`](../../doc/models/get-usage-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$itemId = 'item_id0';
+
+$result = $subscriptionsController->createAnUsage(
+    $subscriptionId,
+    $itemId
+);
+```
+
+
+# Update Current Cycle Status
+
+```php
+function updateCurrentCycleStatus(
+    string $subscriptionId,
+    UpdateCurrentCycleStatusRequest $request,
+    ?string $idempotencyKey = null
+): void
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `request` | [`UpdateCurrentCycleStatusRequest`](../../doc/models/update-current-cycle-status-request.md) | Body, Required | Request for updating the end date of the subscription current status |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+`void`
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateCurrentCycleStatusRequestBuilder::init(
+    'status8'
+)->build();
+
+$subscriptionsController->updateCurrentCycleStatus(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Get Subscription Item
+
+Get Subscription Item
+
+```php
+function getSubscriptionItem(string $subscriptionId, string $itemId): GetSubscriptionItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `itemId` | `string` | Template, Required | Item id |
+
+## Response Type
+
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$itemId = 'item_id0';
+
+$result = $subscriptionsController->getSubscriptionItem(
+    $subscriptionId,
+    $itemId
+);
+```
+
+
+# Get Increment by Id
+
+```php
+function getIncrementById(string $subscriptionId, string $incrementId): GetIncrementResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription Id |
+| `incrementId` | `string` | Template, Required | The increment Id |
+
+## Response Type
+
+[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$incrementId = 'increment_id8';
+
+$result = $subscriptionsController->getIncrementById(
+    $subscriptionId,
+    $incrementId
+);
+```
+
+
+# Delete Increment
+
+Deletes a increment
+
+```php
+function deleteIncrement(
+    string $subscriptionId,
+    string $incrementId,
+    ?string $idempotencyKey = null
+): GetIncrementResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `incrementId` | `string` | Template, Required | Increment id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$incrementId = 'increment_id8';
+
+$result = $subscriptionsController->deleteIncrement(
+    $subscriptionId,
+    $incrementId
+);
+```
+
+
+# Get Discounts
+
+```php
+function getDiscounts(string $subscriptionId, int $page, int $size): ListDiscountsResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `page` | `int` | Query, Required | Page number |
+| `size` | `int` | Query, Required | Page size |
+
+## Response Type
+
+[`ListDiscountsResponse`](../../doc/models/list-discounts-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$page = 30;
+
+$size = 18;
+
+$result = $subscriptionsController->getDiscounts(
+    $subscriptionId,
+    $page,
+    $size
+);
+```
+
+
+# Update Subscription Due Days
+
+Updates the boleto due days from a subscription
+
+```php
+function updateSubscriptionDueDays(
+    string $subscriptionId,
+    UpdateSubscriptionDueDaysRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `request` | [`UpdateSubscriptionDueDaysRequest`](../../doc/models/update-subscription-due-days-request.md) | Body, Required | - |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateSubscriptionDueDaysRequestBuilder::init(
+    226
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionDueDays(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Create Subscription Item
+
+Creates a new Subscription item
+
+```php
+function createSubscriptionItem(
+    string $subscriptionId,
+    CreateSubscriptionItemRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `request` | [`CreateSubscriptionItemRequest`](../../doc/models/create-subscription-item-request.md) | Body, Required | Request for creating a subscription item |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = CreateSubscriptionItemRequestBuilder::init(
+    'description6',
+    CreatePricingSchemeRequestBuilder::init(
+        'scheme_type8'
+    )->build(),
+    'id6',
+    'plan_item_id6',
+    [
+        CreateDiscountRequestBuilder::init(
+            90.66,
+            'discount_type2',
+            'item_id4'
+        )->build()
+    ],
+    'name6'
+)->build();
+
+$result = $subscriptionsController->createSubscriptionItem(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Update Split Subscription
+
+```php
+function updateSplitSubscription(string $id, UpdateSubscriptionSplitRequest $request): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `string` | Template, Required | Subscription's id |
+| `request` | [`UpdateSubscriptionSplitRequest`](../../doc/models/update-subscription-split-request.md) | Body, Required | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$id = 'id0';
+
+$request = UpdateSubscriptionSplitRequestBuilder::init(
+    false,
+    [
+        CreateSplitRequestBuilder::init(
+            'type2',
+            118,
+            'recipient_id2'
+        )->build()
+    ]
+)->build();
+
+$result = $subscriptionsController->updateSplitSubscription(
+    $id,
+    $request
+);
+```
+
+
+# Get Subscription Items
+
+Get Subscription Items
+
+```php
+function getSubscriptionItems(
+    string $subscriptionId,
+    ?int $page = null,
+    ?int $size = null,
+    ?string $name = null,
+    ?string $code = null,
+    ?string $status = null,
+    ?string $description = null,
+    ?string $createdSince = null,
+    ?string $createdUntil = null
+): ListSubscriptionItemsResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `name` | `?string` | Query, Optional | The item name |
+| `code` | `?string` | Query, Optional | Identification code in the client system |
+| `status` | `?string` | Query, Optional | The item statis |
+| `description` | `?string` | Query, Optional | The item description |
+| `createdSince` | `?string` | Query, Optional | Filter for item's creation date start range |
+| `createdUntil` | `?string` | Query, Optional | Filter for item's creation date end range |
+
+## Response Type
+
+[`ListSubscriptionItemsResponse`](../../doc/models/list-subscription-items-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$result = $subscriptionsController->getSubscriptionItems($subscriptionId);
+```
+
+
+# Get Subscriptions
+
+Gets all subscriptions
+
+```php
+function getSubscriptions(
+    ?int $page = null,
+    ?int $size = null,
+    ?string $code = null,
+    ?string $billingType = null,
+    ?string $customerId = null,
+    ?string $planId = null,
+    ?string $cardId = null,
+    ?string $status = null,
+    ?\DateTime $nextBillingSince = null,
+    ?\DateTime $nextBillingUntil = null,
+    ?\DateTime $createdSince = null,
+    ?\DateTime $createdUntil = null
+): ListSubscriptionsResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+| `code` | `?string` | Query, Optional | Filter for subscription's code |
+| `billingType` | `?string` | Query, Optional | Filter for subscription's billing type |
+| `customerId` | `?string` | Query, Optional | Filter for subscription's customer id |
+| `planId` | `?string` | Query, Optional | Filter for subscription's plan id |
+| `cardId` | `?string` | Query, Optional | Filter for subscription's card id |
+| `status` | `?string` | Query, Optional | Filter for subscription's status |
+| `nextBillingSince` | `?DateTime` | Query, Optional | Filter for subscription's next billing date start range |
+| `nextBillingUntil` | `?DateTime` | Query, Optional | Filter for subscription's next billing date end range |
+| `createdSince` | `?DateTime` | Query, Optional | Filter for subscription's creation date start range |
+| `createdUntil` | `?DateTime` | Query, Optional | Filter for subscriptions creation date end range |
+
+## Response Type
+
+[`ListSubscriptionsResponse`](../../doc/models/list-subscriptions-response.md)
+
+## Example Usage
+
+```php
+$result = $subscriptionsController->getSubscriptions();
+```
+
+
+# Create Increment
+
+Creates a increment
+
+```php
+function createIncrement(
+    string $subscriptionId,
+    CreateIncrementRequest $request,
+    ?string $idempotencyKey = null
+): GetIncrementResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `request` | [`CreateIncrementRequest`](../../doc/models/create-increment-request.md) | Body, Required | Request for creating a increment |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = CreateIncrementRequestBuilder::init(
+    185.28,
+    'increment_type8',
+    'item_id6'
+)->build();
+
+$result = $subscriptionsController->createIncrement(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Create Usage
+
+Creates a usage
+
+```php
+function createUsage(
+    string $subscriptionId,
+    string $itemId,
+    CreateUsageRequest $body,
+    ?string $idempotencyKey = null
+): GetUsageResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `itemId` | `string` | Template, Required | Item id |
+| `body` | [`CreateUsageRequest`](../../doc/models/create-usage-request.md) | Body, Required | Request for creating a usage |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetUsageResponse`](../../doc/models/get-usage-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$itemId = 'item_id0';
+
+$body = CreateUsageRequestBuilder::init(
+    156,
+    'description4',
+    DateTimeHelper::fromRfc3339DateTimeRequired('2016-03-13T12:52:32.123Z')
+)->build();
+
+$result = $subscriptionsController->createUsage(
+    $subscriptionId,
+    $itemId,
+    $body
+);
+```
+
+
+# Get Discount by Id
+
+```php
+function getDiscountById(string $subscriptionId, string $discountId): GetDiscountResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `discountId` | `string` | Template, Required | - |
+
+## Response Type
+
+[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$discountId = 'discountId0';
+
+$result = $subscriptionsController->getDiscountById(
+    $subscriptionId,
+    $discountId
+);
+```
+
+
+# Update Subscription Metadata
+
+Updates the metadata from a subscription
+
+```php
+function updateSubscriptionMetadata(
+    string $subscriptionId,
+    UpdateMetadataRequest $request,
+    ?string $idempotencyKey = null
+): GetSubscriptionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `request` | [`UpdateMetadataRequest`](../../doc/models/update-metadata-request.md) | Body, Required | Request for updating the subscrption metadata |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$request = UpdateMetadataRequestBuilder::init(
+    [
+        'key0' => 'metadata3'
+    ]
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionMetadata(
+    $subscriptionId,
+    $request
+);
+```
+
+
+# Get Subscription Cycles
+
+```php
+function getSubscriptionCycles(string $subscriptionId, string $page, string $size): ListCyclesResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `page` | `string` | Query, Required | Page number |
+| `size` | `string` | Query, Required | Page size |
+
+## Response Type
+
+[`ListCyclesResponse`](../../doc/models/list-cycles-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$page = 'page8';
+
+$size = 'size0';
+
+$result = $subscriptionsController->getSubscriptionCycles(
+    $subscriptionId,
+    $page,
+    $size
+);
+```
+
+
+# Delete Subscription Item
+
+Deletes a subscription item
+
+```php
+function deleteSubscriptionItem(
+    string $subscriptionId,
+    string $subscriptionItemId,
+    ?string $idempotencyKey = null
+): GetSubscriptionItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription id |
+| `subscriptionItemId` | `string` | Template, Required | Subscription item id |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$subscriptionItemId = 'subscription_item_id4';
+
+$result = $subscriptionsController->deleteSubscriptionItem(
+    $subscriptionId,
+    $subscriptionItemId
+);
+```
+
+
+# Get Increments
+
+```php
+function getIncrements(string $subscriptionId, ?int $page = null, ?int $size = null): ListIncrementsResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The subscription id |
+| `page` | `?int` | Query, Optional | Page number |
+| `size` | `?int` | Query, Optional | Page size |
+
+## Response Type
+
+[`ListIncrementsResponse`](../../doc/models/list-increments-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$result = $subscriptionsController->getIncrements($subscriptionId);
+```
+
+
+# Update Subscription Item
+
+Updates a subscription item
+
+```php
+function updateSubscriptionItem(
+    string $subscriptionId,
+    string $itemId,
+    UpdateSubscriptionItemRequest $body,
+    ?string $idempotencyKey = null
+): GetSubscriptionItemResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | Subscription Id |
+| `itemId` | `string` | Template, Required | Item id |
+| `body` | [`UpdateSubscriptionItemRequest`](../../doc/models/update-subscription-item-request.md) | Body, Required | Request for updating a subscription item |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
+
+## Example Usage
+
+```php
+$subscriptionId = 'subscription_id0';
+
+$itemId = 'item_id0';
+
+$body = UpdateSubscriptionItemRequestBuilder::init(
+    'description4',
+    'status2',
+    UpdatePricingSchemeRequestBuilder::init(
+        'scheme_type8',
+        [
+            UpdatePriceBracketRequestBuilder::init(
+                144,
+                174
+            )->build()
+        ]
+    )->build(),
+    'name6'
+)->build();
+
+$result = $subscriptionsController->updateSubscriptionItem(
+    $subscriptionId,
+    $itemId,
+    $body
+);
+```
+# Tokens
+
+```php
+$tokensController = $client->getTokensController();
+```
+
+## Class Name
+
+`TokensController`
+
+## Methods
+
+* [Get Token](../../doc/controllers/tokens.md#get-token)
+* [Create Token](../../doc/controllers/tokens.md#create-token)
+
+
+# Get Token
+
+Gets a token from its id
+
+:information_source: **Note** This endpoint does not require authentication.
+
+```php
+function getToken(string $id, string $publicKey): GetTokenResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `string` | Template, Required | Token id |
+| `publicKey` | `string` | Template, Required | Public key |
+
+## Response Type
+
+[`GetTokenResponse`](../../doc/models/get-token-response.md)
+
+## Example Usage
+
+```php
+$id = 'id0';
+
+$publicKey = 'public_key6';
+
+$result = $tokensController->getToken(
+    $id,
+    $publicKey
+);
+```
+
+
+# Create Token
+
+:information_source: **Note** This endpoint does not require authentication.
+
+```php
+function createToken(
+    string $publicKey,
+    CreateTokenRequest $request,
+    ?string $idempotencyKey = null
+): GetTokenResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `publicKey` | `string` | Template, Required | Public key |
+| `request` | [`CreateTokenRequest`](../../doc/models/create-token-request.md) | Body, Required | Request for creating a token |
+| `idempotencyKey` | `?string` | Header, Optional | - |
+
+## Response Type
+
+[`GetTokenResponse`](../../doc/models/get-token-response.md)
+
+## Example Usage
+
+```php
+$publicKey = 'public_key6';
+
+$request = CreateTokenRequestBuilder::init(
+    'card',
+    CreateCardTokenRequestBuilder::init(
+        'number6',
+        'holder_name2',
+        228,
+        68,
+        'cvv4',
+        'brand0',
+        'label6'
+    )->build()
+)->build();
+
+$result = $tokensController->createToken(
+    $publicKey,
+    $request
+);
+```
+# Transactions
+
+```php
+$transactionsController = $client->getTransactionsController();
+```
+
+## Class Name
+
+`TransactionsController`
+
+
+# Get Transaction
+
+```php
+function getTransaction(string $transactionId): GetTransactionResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `transactionId` | `string` | Template, Required | - |
+
+## Response Type
+
+[`GetTransactionResponse`](../../doc/models/get-transaction-response.md)
+
+## Example Usage
+
+```php
+$transactionId = 'transaction_id8';
+
+$result = $transactionsController->getTransaction($transactionId);
+```
+# Transfers
+
+```php
+$transfersController = $client->getTransfersController();
+```
+
+## Class Name
+
+`TransfersController`
+
+## Methods
+
+* [Get Transfer by Id](../../doc/controllers/transfers.md#get-transfer-by-id)
+* [Get Transfers](../../doc/controllers/transfers.md#get-transfers)
+* [Create Transfer](../../doc/controllers/transfers.md#create-transfer)
+
+
+# Get Transfer by Id
+
+```php
+function getTransferById(string $transferId): GetTransfer
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `transferId` | `string` | Template, Required | - |
+
+## Response Type
+
+[`GetTransfer`](../../doc/models/get-transfer.md)
+
+## Example Usage
+
+```php
+$transferId = 'transfer_id6';
+
+$result = $transfersController->getTransferById($transferId);
+```
+
+
+# Get Transfers
+
+Gets all transfers
+
+```php
+function getTransfers(): ListTransfers
+```
+
+## Response Type
+
+[`ListTransfers`](../../doc/models/list-transfers.md)
+
+## Example Usage
+
+```php
+$result = $transfersController->getTransfers();
+```
+
+
+# Create Transfer
+
+```php
+function createTransfer(CreateTransfer $request): GetTransfer
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `request` | [`CreateTransfer`](../../doc/models/create-transfer.md) | Body, Required | - |
+
+## Response Type
+
+[`GetTransfer`](../../doc/models/get-transfer.md)
+
+## Example Usage
+
+```php
+$request = CreateTransferBuilder::init(
+    242,
+    'source_id0',
+    'target_id6'
+)->build();
+
+$result = $transfersController->createTransfer($request);
+```
+
+# ApiException
+
+Thrown when there is a network error or HTTP response status code is not okay.
+
+## Methods
+
+| Name | Type | Description |
+|  --- | --- | --- |
+| getHttpRequest() | [`HttpRequest`](http-request.md) | Returns the HTTP request. |
+| getHttpResponse() | ?[`HttpResponse`](http-response.md) | Returns the HTTP response. |
+| hasResponse() | bool | Is the response available? |
+
+# Client Class Documentation
+
+The following parameters are configurable for the API Client:
+
+| Parameter | Type | Description |
+|  --- | --- | --- |
+| `serviceRefererName` | `string` |  |
+| `timeout` | `int` | Timeout for API calls in seconds.<br>*Default*: `0` |
+| `enableRetries` | `bool` | Whether to enable retries and backoff feature.<br>*Default*: `false` |
+| `numberOfRetries` | `int` | The number of retries to make.<br>*Default*: `0` |
+| `retryInterval` | `float` | The retry time interval between the endpoint calls.<br>*Default*: `1` |
+| `backOffFactor` | `float` | Exponential backoff factor to increase interval between retries.<br>*Default*: `2` |
+| `maximumRetryWaitTime` | `int` | The maximum wait time in seconds for overall retrying requests.<br>*Default*: `0` |
+| `retryOnTimeout` | `bool` | Whether to retry on request timeout.<br>*Default*: `true` |
+| `httpStatusCodesToRetry` | `array` | Http status codes to retry against.<br>*Default*: `408, 413, 429, 500, 502, 503, 504, 521, 522, 524` |
+| `httpMethodsToRetry` | `array` | Http methods to retry against.<br>*Default*: `'GET', 'PUT'` |
+| `basicAuthCredentials` | [`BasicAuthCredentials`](auth/basic-authentication.md) | The Credentials Setter for Basic Authentication |
+
+The API client can be initialized as follows:
+
+```php
+$client = PagarmeApiSDKClientBuilder::init()
+    ->basicAuthCredentials(
+        BasicAuthCredentialsBuilder::init(
+            'BasicAuthUserName',
+            'BasicAuthPassword'
+        )
+    )
+    ->serviceRefererName('ServiceRefererName')
+    ->build();
+```
+
+## PagarmeApiSDK Client
+
+The gateway for the SDK. This class acts as a factory for the Controllers and also holds the configuration of the SDK.
+
+## Controllers
+
+| Name | Description |
+|  --- | --- |
+| getSubscriptionsController() | Gets SubscriptionsController |
+| getOrdersController() | Gets OrdersController |
+| getPlansController() | Gets PlansController |
+| getInvoicesController() | Gets InvoicesController |
+| getCustomersController() | Gets CustomersController |
+| getChargesController() | Gets ChargesController |
+| getRecipientsController() | Gets RecipientsController |
+| getTokensController() | Gets TokensController |
+| getTransactionsController() | Gets TransactionsController |
+| getTransfersController() | Gets TransfersController |
+| getPayablesController() | Gets PayablesController |
+| getBalanceOperationsController() | Gets BalanceOperationsController |
+
+# HttpRequest
+
+Represents a single Http Request.
+
+## Methods
+
+| Name | Type | Description |
+|  --- | --- | --- |
+| getHttpMethod() | string | The HTTP method of the request. |
+| getQueryUrl() | string | The endpoint URL for the API request. |
+| getHeaders() | array | Request headers. |
+| getParameters() | array | Input parameters for the body. |
+
+# HttpResponse
+
+Http response received.
+
+## Methods
+
+| Name | Type | Description |
+|  --- | --- | --- |
+| getStatusCode() | int | The status code of the response. |
+| getHeaders() | array | Response headers. |
+| getRawBody() | string | Raw body of the response. |
